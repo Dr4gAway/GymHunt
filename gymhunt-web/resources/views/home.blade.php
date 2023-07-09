@@ -1,8 +1,9 @@
 @extends('layout.site')
 @section('titulo', 'GymHunt - Home')
-@section('content') 
+@section('content')
 
-<body class="bg-gradient-to-t from-indigo-500 via-indigo-400 to-indigo-300 my-24 md:my-30 lg:my-24">
+<section class="bg-gradient-to-t from-indigo-500 via-indigo-400 to-indigo-300 my-24 md:my-30 lg:my-24 flex flex-col">
+
     <div class="flex m-10 items-center">
         <div class="py-10">
             <h1 class="text-5xl font-medium font-sans ">Conheça nosso sistema, treine no academia mais próxima à você, em um ambiente de melhor qualidade!</h1>
@@ -18,6 +19,12 @@
             <img src=".\img\mapa.png" alt="mapa ficticio" class="rounded-lg">
         </div>
     </div>
-</body> 
+    
+    <div class="self-center">
+        <livewire:counter />
+    </div>
+
+</section>
+
 @endsection
 

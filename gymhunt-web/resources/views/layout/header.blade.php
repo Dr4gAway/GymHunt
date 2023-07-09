@@ -5,6 +5,7 @@
         <title>@yield('titulo')</title>
         <!-- Import tailwindCSS -->
         @vite('resources/css/app.css')
+        @livewireStyles
     </head>
 
     <header class="h-16 md:h-30 lg:h-24 bg-gray-600 fixed inset-x-0 top-0 z-50 rounded-b-lg">
@@ -32,3 +33,5 @@
             </div>
         </nav>
     </header>
+
+    <body>
