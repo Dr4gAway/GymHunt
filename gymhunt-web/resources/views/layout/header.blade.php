@@ -28,7 +28,7 @@
             </div>  
             
             <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                <a href="login.index" class="text-2xl font-semibold leading-6 text-gray-400">Log in <i class="fa-solid fa-right-to-bracket fa-xl"></i></a>
+                <a href="{{url('/login')}}" class="text-2xl font-semibold leading-6 text-gray-400">Log in <i class="fa-solid fa-right-to-bracket fa-xl"></i></a>
             </div>
         </nav>
     </header>
