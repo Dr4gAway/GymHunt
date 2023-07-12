@@ -2,7 +2,7 @@
 @section('titulo', 'GymHunt - Home')
 @section('content')
 
-<section class="bg-gradient-to-t from-indigo-500 via-indigo-400 to-indigo-300 my-24 md:my-30 lg:my-24 flex flex-col">
+<section class="bg-gradient-to-t from-indigo-500 via-indigo-400 to-indigo-300 h-full flex flex-col">
 
     <div class="flex m-10 items-center">
         <div class="py-10">

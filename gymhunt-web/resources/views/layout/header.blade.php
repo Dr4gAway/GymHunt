@@ -8,28 +8,20 @@
         @livewireStyles
     </head>
 
-    <header class="h-16 md:h-30 lg:h-24 bg-gray-600 fixed inset-x-0 top-0 z-50 rounded-b-lg">
-        <nav class="flex items-center justify-between p-3 m-1" aria-label="Global">
-            <div class="flex items-center">
-                <div class="flex">
-                    <a href="/" class="-m-1.5 p-1.5">
-                        <img src="\img\logoGymHunt.png" alt="" class="h-16 w-auto">
-                    </a>
-                </div>
-                
-                <div class="ml-10 md:block">
-                    <div class="hidden lg:flex items-baseline space-x-4 lg:gap-x-12 m-2">
-                        <a href="#" class="text-2xl font-semibold leading-6 hover:text-white rounded-md px-3 py-2 hover:bg-gray-700 text-gray-400">Product</a>
-                        <a href="#" class="text-2xl font-semibold leading-6 hover:text-white rounded-md px-3 py-2 hover:bg-gray-700 text-gray-400">Features</a>
-                        <a href="#" class="text-2xl font-semibold leading-6 hover:text-white rounded-md px-3 py-2 hover:bg-gray-700 text-gray-400">Marketplace</a>
-                        <a href="#" class="text-2xl font-semibold leading-6 hover:text-white rounded-md px-3 py-2 hover:bg-gray-700 text-gray-400">Company</a>
-                    </div>
-                </div>
-
+    <header class="px-8 h-[100px] bg-white shadow-lg font-poppins flex">
+        <nav class="flex items-center justify-between w-full transition-all" aria-label="Global">
+            <div class="flex items-center gap-8">
+                <a href="/">
+                    <img src="\img\logo.svg" alt="Gym hunt brand" class="h-12">
+                </a>
+                <a href="#" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Home</a>
+                <a href="#" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Produto</a>
+                <a href="#" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Sobre nós</a>
             </div>  
             
-            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                <a href="{{url('/login')}}" class="text-2xl font-semibold leading-6 text-gray-400">Log in <i class="fa-solid fa-right-to-bracket fa-xl"></i></a>
+            <div class="flex items-center justify-items-center gap-8">
+                <a href="{{url('/login')}}" class="text-2xl outline-4 hover:ring ring-gymhunt-purple-1 rounded-2xl transition-all px-4 py-2">Login</a>
+                <a href="#" class="w-[176px] h-12 text-2xl text-center bg-gymhunt-purple-1 rounded-2xl text-white px-4 py-2">Signup</a>
             </div>
         </nav>
     </header>

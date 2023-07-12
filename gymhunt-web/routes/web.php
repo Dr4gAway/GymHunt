@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/login', function() {
-    return view('login.index');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/feed', function() {
+        return view('feed');
+    });
 });
+
+require __DIR__.'/auth.php';

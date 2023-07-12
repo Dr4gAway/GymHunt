@@ -12,7 +12,7 @@ class LoginRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return !Auth::check();
+        return true;
     }
 
     /**
@@ -25,6 +25,15 @@ class LoginRequest extends FormRequest
         return [
             'email' => 'required|string|email',
             'password' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'email.email' => 'Digite um endereço de email valido.',
+            'email.required' => 'Email é necessário.',
+            'password.required' => 'Senha é necessária.'
         ];
     }
 }
