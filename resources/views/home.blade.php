@@ -6,7 +6,7 @@
 
     <div class="flex m-10 items-center">
         <div class="py-10">
-            <h1 class="text-5xl font-medium font-sans ">Conheça nosso sistema, treine no academia mais próxima à você, em um ambiente de melhor qualidade!</h1>
+            <h1 class="text-5xl font-medium ">Conheça nosso sistema, treine no academia mais próxima à você, em um ambiente de melhor qualidade!</h1>
 
             <a href="#"> 
                 <button class="text-2xl p-3 bg-gradient-to-r from-indigo-600 to-gray-400 opacity-80 border-solid border-zinc-400 border-1 my-5 rounded-full">

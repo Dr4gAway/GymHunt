@@ -21,10 +21,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/feed', function() {
         return view('feed');
     });
-
-    Route::get('/', function () {
-        return view('feed');
-    });
 });
 
 require __DIR__.'/auth.php';
