@@ -35,6 +35,8 @@ class SignupRequest extends FormRequest
         return [
             'email.email' => 'Digite um endereço de email valido.',
             'email.required' => 'Email é necessário.',
+            'phone.required' => 'Telefone é necessário.',
+            'phone.size' => 'Digite um telefone válido.',
             'password.required' => 'Senha é necessária.',
             'password_confirmation.required' => 'Confirmação é necessária.',
             'password_confirmation.same' => 'As senhas são diferentes.',
