@@ -26,7 +26,18 @@ class SignupRequest extends FormRequest
             'email' => 'required|email|unique:users',
             'phone' => 'required|string|size:13',
             'password' => 'required|string',
-            'password_confirmation' => 'required'
+            'password_confirmation' => 'required|same:password'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'email.email' => 'Digite um endereço de email valido.',
+            'email.required' => 'Email é necessário.',
+            'password.required' => 'Senha é necessária.',
+            'password_confirmation.required' => 'Confirmação é necessária.',
+            'password_confirmation.same' => 'As senhas são diferentes.',
         ];
     }
 }

@@ -1,5 +1,5 @@
 @extends('layout.site')
-@section('titulo', 'GymHunt - Home')
+@section('titulo', 'GymHunt - Login')
 @section('content') 
 
 <div class="flex flex-col justify-center px-6 py-4 lg:px-8">
