@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
-class LoginRequest extends FormRequest
+class SignupRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,17 +22,11 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|string|email',
-            'password' => 'required'
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'email.email' => 'Digite um endereço de email valido.',
-            'email.required' => 'Email é necessário.',
-            'password.required' => 'Senha é necessária.'
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'phone' => 'required|string|size:13',
+            'password' => 'required|string',
+            'password_confirmation' => 'required'
         ];
     }
 }
