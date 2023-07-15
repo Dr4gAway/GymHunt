@@ -1,5 +1,11 @@
 @extends('layout.site')
 @section('titulo', 'GymHunt - Home')
 @section('content')
-    Você foi logado!
+
+    <section class="flex w-full items-center">
+        <livewire:timeline />
+    </section>
+
+
+
 @endsection
