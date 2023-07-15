@@ -2,10 +2,8 @@
 @section('titulo', 'GymHunt - Home')
 @section('content')
 
-    <section class="flex w-full items-center">
+    <section class="flex w-full items-center my-8">
         <livewire:timeline />
     </section>
-
-
 
 @endsection

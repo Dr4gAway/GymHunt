@@ -18,6 +18,10 @@ export default {
       fontFamily: {
         poppins: ['Poppins'],
       },
+      minWidth: {
+        '1/2': '50%',
+        '3/5': '60%'
+      }
     },
   },
   plugins: [],
