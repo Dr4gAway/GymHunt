@@ -1,4 +1,4 @@
-<div class="flex flex-col w-full max-w-2xl p-4 rounded-2xl bg-white gap-4">
+<div class="flex flex-col w-2xl p-4 rounded-2xl bg-white gap-4">
     <div class="flex justify-between">
         <div class="flex items-center gap-4">
             <div class="rounded-full h-10 w-10 bg-red-500"></div>
