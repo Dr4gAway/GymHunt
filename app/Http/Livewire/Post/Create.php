@@ -9,10 +9,10 @@ use App\Models\Post;
 
 class Create extends Component
 {
-    public ?string $body;
+    public ?string $body = null;
 
     protected $rules = [
-        'body' => 'required|email',
+        'body' => 'required|string|min:6',
     ];
 
     public function render()
@@ -21,11 +21,16 @@ class Create extends Component
     }
 
     public function store() {
+        $this->validate();
 
         Post::create([
-            'body' => $body,
-            'created_by' => Auth::id(),
+            'body' => $this->body,
+            'created_by' => Auth::id()
         ]);
+
+        $this->emitUp('post::created');
+
+        $this->reset('body');
         
     }
 }

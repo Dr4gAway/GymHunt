@@ -58,4 +58,4 @@
         @endguest
     </header>
 
-    <body class="font-poppins bg-[#DFE6F9]">
+    <body class="font-poppins bg-[#DFE6F9] min-h-screen">

@@ -11,6 +11,15 @@ use App\Models\Image;
 class Post extends Model
 {
     use HasFactory;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<string, string>
+     */
+    protected $fillable = [
+        'body',
+        'created_by'
+    ];
 
     /* Get the user that owns the post
     *
