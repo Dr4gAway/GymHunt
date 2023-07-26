@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use \Illuminate\Database\Eloquent\Relations\BelongsTo;
+use \Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
@@ -38,5 +39,15 @@ class Post extends Model
    public function images(): HasMany
    {
        return $this->hasMany(Image::class);
+   }
+
+   /**
+    * Get all of the comments for the post
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+   public function comments(): HasMany
+   {
+       return $this->hasMany(Comment::class);
    }
 }

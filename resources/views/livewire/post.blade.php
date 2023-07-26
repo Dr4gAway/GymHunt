@@ -19,13 +19,15 @@
 
         </div>
         <div class="flex flex-col gap-4 text-xs">
-            <x-post.comment name="Title" body="Here goes your message" />
-            <x-post.comment name="Title" body="Here goes your message" />
-            <x-post.comment name="Title" body="Here goes your message" />
-            <x-post.comment name="Title" body="Here goes your message" />
+            <p class="text-lg font-bold">Comentários</p>
+            @foreach($post->comments as $comment)
+                <x-post.comment :name="$comment->user->name" :body="$comment->body" :show-all="true" />
+            @endforeach
             
             <p class="text-gymhunt-purple-1">Ver mais</p>
         </div>
     </div>
+
+    <livewire:comment.create :post_id="$post->id" />
 
 </div>
