@@ -1,4 +1,4 @@
-<div class="flex items-center flex-col w-full max-w-2xl gap-8" wire:poll.1000ms>
+<div class="flex items-center flex-col w-full max-w-2xl gap-8">
     <livewire:post.create />
 
     @foreach ($this->posts as $post)
