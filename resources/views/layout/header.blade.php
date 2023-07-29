@@ -7,6 +7,7 @@
         <!-- Import Google Fonts-->
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700;900&display=swap" rel="stylesheet">
 
+        <link rel="icon" href=".\img\logoIcon.png" >
         <!-- Import TailwindCSS -->
         @vite('resources/css/app.css')
         @livewireStyles

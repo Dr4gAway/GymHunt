@@ -38,7 +38,7 @@
             <p class="mt-2 text-lg leading-8 text-gray-600">Ao realizar seu cadastro, você poderá explorar nosso site da melhor maneira!</p>
         </div>
         
-        <form action="{{route('signup')}}" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20">
+        <form action="{{route('signup')}}" method="POST" class="mx-auto mt-10 max-w-xl sm:mt-14">
             @csrf
             @method('POST')
 
@@ -85,23 +85,27 @@
                 <div class="sm:col-span-2">
                     <label for="password_confirmation" class="block text-sm font-semibold leading-6 text-gray-900">Confirme sua senha</label>
                     <div class="mt-2.5">
-                        <input type="email" name="password_confirmation" id="password_confirmation" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
 
-                <div class="sm:col-span-2">
-                    <label for="CNPJ" class="block text-sm font-semibold leading-6 text-gray-900">cnpj</label>
-                    <div class="mt-2.5">
-                        <input type="text" name="phone" id="telefone" placeholder="ex: +55 (XX) XXXXX-XXXX"  class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                <div class="sm:col-span-2 space-y-3">
+                    <label for="password" class="block text-sm font-semibold leading-6 text-gray-900">Insira suas imagens</label>
+                    <div class="sm:col-span-2">
+                        <label for="banner" class="block text-sm font-semibold leading-6 text-gray-900">1. Banner</label> 
+                        <div class="mt-2.5">
+                            <input type="file" name="banner" id="banner" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
                     </div>
-                </div>
 
-                <div class="sm:col-span-2">
-                    <label for="avatar" class="block text-sm font-semibold leading-6 text-gray-900">Avatar</label>
-                    <div class="mt-2.5">
-                        <input type="file" name="avatar" id="avatar" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    <div class="sm:col-span-2">
+                        <label for="avatar" class="block text-sm font-semibold leading-6 text-gray-900">2. Avatar</label>
+                        <div class="mt-2.5">
+                            <input type="file" name="avatar" id="avatar" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
                     </div>
                 </div>
+                
 
                 <div class="sm:col-span-2">
                     <label for="conta" class="block text-sm font-semibold leading-6 text-gray-900">Eu sou: </label>
@@ -143,20 +147,26 @@
                     </div>
                 </div>
 
-                <div class="sm:col-span-2">
+                <div class="sm:col-span-2 space-y-3">
                     <label for="horario" class="block text-sm font-semibold leading-6 text-gray-900">Horários de funcionamento</label>
-                    <div class="mt-2.5 flex justify-between space-x-5">
-                        <div class="mt-2.5">
+                    <div class="mt-2.5 flex justify-between">
+                        <div class="mt-2">
                             <label for="horarioAb">Horário de abertura</label>
                             <input type="time" name="horarioAb" id="horarioAb" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
 
-                        <div class="mt-2.5">
+                        <div class="mt-2">
                             <label for="horarioF">Horário de fechamento</label>
                             <input type="time" name="horarioF" id="horarioF" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                     </div>
-                    
+
+                    <div class="sm:col-span-2">
+                        <label for="obs" class="block text-sm font-semibold leading-6 text-gray-900">Observação</label>
+                        <div class="mt-2.5">
+                            <input type="text" name="obs" id="obs" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="flex gap-x-4 sm:col-span-2">
