@@ -9,12 +9,14 @@ class Post extends Component
 {
     public Item $post;
 
-    public function mount(Item $post) {
-        $this->$post = $post;
-    }
+    protected $listeners = [
+        'comment::created' => '$refresh'
+    ];
 
-    public function render()
+    public function render(Item $post)
     {
+        $this->$post = $post;
+        
         return view('livewire.post');
     }
 }

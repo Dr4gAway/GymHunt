@@ -23,5 +23,9 @@ class Create extends Component
             'created_by' => Auth::id(),
             'post_id' => $this->post_id
         ]);
+
+        $this->body = null;
+
+        $this->emitUp('comment::created');
     }
 }

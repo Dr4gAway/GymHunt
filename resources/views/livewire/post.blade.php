@@ -21,7 +21,10 @@
         <div class="flex flex-col gap-4 text-xs">
             <p class="text-lg font-bold">Comentários</p>
             @foreach($post->comments as $comment)
-                <x-post.comment :name="$comment->user->name" :body="$comment->body" :show-all="true" />
+                
+                <div class="flex flex-col items-centerflex-col gap-1">
+                    <livewire:comment.view :comment="$comment" wire:key="post-{{$comment->post->id}}-comment-{{$comment->id}}" />
+                </div>
             @endforeach
             
             <p class="text-gymhunt-purple-1">Ver mais</p>
