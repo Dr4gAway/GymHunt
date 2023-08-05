@@ -2,20 +2,20 @@
 @section('titulo', 'GymHunt - Home')
 @section('content')
 
-<section class="bg-gradient-to-t from-indigo-500 via-indigo-400 to-indigo-300 h-full flex flex-col">
+<div class="flex flex-col justify-center my-12 px-6 py-4 lg:px-8">
 
-    <div class="flex m-10 items-center">
-        <div class="py-10">
-            <h1 class="text-5xl font-medium ">Conheça nosso sistema, treine no academia mais próxima à você, em um ambiente de melhor qualidade!</h1>
-
+    <div class="px-6 py-8 sm:py-8 lg:px-8 flex">
+        <div class="py-10 space-y-8">
+            <h1 class="text-8xl font-sans font-bold">Treine em qualquer lugar</h1>
+            <p class="text-4xl font-sans font-semibold">Conheça o nosso sistema e treine na academia mais próxima com a melhor qualidade</p>
             <a href="#"> 
-                <button class="text-2xl p-3 bg-gradient-to-r from-indigo-600 to-gray-400 opacity-80 border-solid border-zinc-400 border-1 my-5 rounded-full">
-                    Explore o mapa da sua região <i class="fa-solid fa-map-location-dot"></i> 
+                <button class="text-2xl p-3 text-white uppercase bg-gymhunt-purple-2 border-solid border-zinc-400 border-1 my-5 rounded-lg">
+                    Explore o mapa <b>da sua região</b> <i class="fa-solid fa-map-location-dot"></i> 
                 </button>
             </a>
         </div>
 
-        <div class="">
+        <div class="">  
             <img src=".\img\mapa.png" alt="mapa ficticio" class="rounded-lg">
         </div>
     </div>
