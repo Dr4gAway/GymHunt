@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Image;
+use App\Models\Like;
 
 class Post extends Model
 {
@@ -39,6 +40,16 @@ class Post extends Model
    public function images(): HasMany
    {
        return $this->hasMany(Image::class);
+   }
+
+   /**
+    * Get all of the Likes for the post
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+   public function likes(): HasMany
+   {
+       return $this->hasMany(Like::class);
    }
 
    /**

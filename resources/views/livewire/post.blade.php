@@ -6,8 +6,14 @@
         </div>
 
         <div class="flex items-center gap-6">
-            <img src="img\icons\heart-icon.svg" alt="like" class="h-5">
+            <div class="flex items-center gap-2">
+                {{$post->likes->count()}}
+
+                {{$this->liked}}
+                <img src="img\icons\heart-icon.svg" wire:click="likeStore" alt="like" class="h-5">
+            </div>
             <img src="img\icons\copy-icon.svg" alt="like" class="h-5">
+            
             <img src="img\icons\more-icon.svg" alt="like" class="h-5">
         </div>
     </div>
@@ -21,7 +27,6 @@
         <div class="flex flex-col gap-4 text-xs">
             <p class="text-lg font-bold">Comentários</p>
             @foreach($post->comments as $comment)
-                
                 <div class="flex flex-col items-centerflex-col gap-1">
                     <livewire:comment.view :comment="$comment" wire:key="post-{{$comment->post->id}}-comment-{{$comment->id}}" />
                 </div>
