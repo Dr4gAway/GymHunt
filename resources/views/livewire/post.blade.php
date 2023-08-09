@@ -6,11 +6,9 @@
         </div>
 
         <div class="flex items-center gap-6">
-            <div class="flex items-center gap-2">
-                {{$post->likes->count()}}
-
-                {{$this->liked}}
-                <img src="img\icons\heart-icon.svg" wire:click="likeStore" alt="like" class="h-5">
+            <div class="flex items-center gap-2 cursor-pointer">
+                {{$likesCount}}
+                <img src="{{ $liked ? 'img\icons\heart-selected-icon.svg' : 'img\icons\heart-icon.svg' }}" wire:click="handleLike" alt="like" class="h-5">
             </div>
             <img src="img\icons\copy-icon.svg" alt="like" class="h-5">
             
