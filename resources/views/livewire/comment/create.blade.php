@@ -1,4 +1,5 @@
 <div class="flex w-full gap-4">
+	<div class="flex-none rounded-full h-10 w-10 bg-red-500"></div>
     <textarea wire:model="body" 
 	    class=" border-4 border-gymhunt-purple-1
 		    focus:outline-none focus:ring ring-gymhunt-purple-2

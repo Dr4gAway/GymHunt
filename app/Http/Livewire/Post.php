@@ -6,12 +6,16 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use \App\Models\Post as Item;
 use \App\Models\Like;
+use \App\Models\Comment;
 
 class Post extends Component
 {
     public Item $post;
+
     public ?Like $liked = null;
     public int $likeCount = 0;
+
+    public bool $showAll = false;
 
     protected $listeners = [
         'comment::created' => '$refresh'
@@ -27,6 +31,12 @@ class Post extends Component
         $this->$post = $post;
         
         return view('livewire.post');
+    }
+    
+    public function getCommentsProperty() {
+        $comments = Comment::where('post_id', $this->post->id)->latest()->get();
+
+        return $comments;
     }
 
     public function getLikedStatus() {
