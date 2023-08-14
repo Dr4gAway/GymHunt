@@ -121,6 +121,20 @@
             <!-- More posts... -->
     </div>
 
+    <div class="m-12">
+        <div class="flex flex-rol space-x-12">
+            <div>
+                <img src=".\img\workout.png"  alt="">
+            </div>
+
+            <div>
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"> Por quê do GymHunt</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor odit eaque illum perspiciatis, non neque voluptate adipisci placeat harum culpa dolore, sunt quibusdam nihil tenetur iste? Ipsa nam odio velit!</p>
+            </div>
+
+        </div>
+    </div>
+
     <div class="self-center">
         <livewire:counter />
     </div>
