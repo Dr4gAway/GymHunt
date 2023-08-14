@@ -9,6 +9,10 @@
 
         <!-- Import TailwindCSS -->
         @vite('resources/css/app.css')
+
+        <!-- Import AlpineJs -->
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
+        
         @livewireStyles
     </head>
 
