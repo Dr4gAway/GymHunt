@@ -1,5 +1,13 @@
 <div class="flex flex-col w-full max-w-[662px] p-4 rounded-2xl bg-white gap-4">
-    <div class="flex justify-between">
+    <div class="flex justify-between" x-data="{
+        open: false,
+
+        toClipboard() {
+            navigator.clipboard.writeText('localhost:8000/feed/posts/'+@js($post->id))
+            this.open = true;
+            setTimeout(() => {this.open = false}, 1000)
+        }
+    }">
         <div class="flex items-center gap-4">
             <div class="rounded-full h-10 w-10 bg-red-500"></div>
             <h4 class="font-bold">{{$post->user->name}}</h4>
@@ -10,7 +18,15 @@
                 {{$likesCount}}
                 <img src="{{ $liked ? '\img\icons\heart-selected-icon.svg' : '\img\icons\heart-icon.svg' }}" wire:click="handleLike" alt="like" class="h-5">
             </div>
-            <img src="\img\icons\copy-icon.svg" alt="like" class="h-5">
+            <div class="relative">
+                <div class="absolute bg-gymhunt-purple-2 text-white px-2 py-1 rounded-lg text-xs
+                            top-0 left-1/2 -translate-y-[32px] -translate-x-1/2
+                            transition-all"
+                 x-show="open">Copiado!</div>
+                
+                 <img src="\img\icons\copy-icon.svg" alt="like" class="h-5 cursor-pointer"
+                x-on:click="toClipboard()">
+            </div>
             
             <img src="\img\icons\more-icon.svg" alt="like" class="h-5">
         </div>
