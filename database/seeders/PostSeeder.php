@@ -20,6 +20,9 @@ class PostSeeder extends Seeder
             'created_by' => $user
         ]); */
 
-        Post::factory(10)->create();
+        $this->call([
+        UserSeeder::class,
+        PostSeeder::class,
+    ]);
     }
 }
