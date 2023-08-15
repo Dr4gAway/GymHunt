@@ -5,14 +5,14 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use \App\Models\Post as Item;
-use \App\Models\Like;
+use \App\Models\PostLike;
 use \App\Models\Comment;
 
 class Post extends Component
 {
     public Item $post;
 
-    public ?Like $liked = null;
+    public ?PostLike $liked = null;
     public int $likeCount = 0;
 
     public bool $showAll = false;
@@ -40,14 +40,14 @@ class Post extends Component
     }
 
     public function getLikedStatus() {
-        $this->liked = Like::where('post_id', $this->post->id)
-                           ->where('user_id', Auth::id())
-                           ->first();
+        $this->liked = PostLike::where('post_id', $this->post->id)
+                               ->where('user_id', Auth::id())
+                               ->first();
     }
 
     public function getLikesCount() {
-        $this->likesCount = Like::where('post_id', $this->post->id)
-                                ->count();
+        $this->likesCount = PostLike::where('post_id', $this->post->id)
+                                    ->count();
     }
 
     public function handleLike()
@@ -56,7 +56,7 @@ class Post extends Component
         {
             $this->liked->delete();
         } else {
-            Like::create([
+            PostLike::create([
                 'user_id' => Auth::id(),
                 'post_id' => $this->post->id
             ]);

@@ -7,6 +7,6 @@ Route::View('/', 'home')->name('home');
 
 Route::View('/feed', 'feed')->name('home');
 
-Route::get('/feed/posts/{id}', [PostController::class, 'index'])->name('post');
+Route::Get('/feed/posts/{id}', [PostController::class, 'index'])->name('post');
 
 require __DIR__.'/auth.php';

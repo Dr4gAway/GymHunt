@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Post;
 use App\Models\User;
 
-class Like extends Model
+class PostLike extends Model
 {
     use HasFactory;
 

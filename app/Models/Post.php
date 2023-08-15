@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Image;
-use App\Models\Like;
+use App\Models\PostLike;
 
 class Post extends Model
 {
@@ -47,9 +47,9 @@ class Post extends Model
     *
     * @return \Illuminate\Database\Eloquent\Relations\HasMany
     */
-   public function likes(): HasMany
+   public function post_likes(): HasMany
    {
-       return $this->hasMany(Like::class);
+       return $this->hasMany(PostLike::class);
    }
 
    /**
