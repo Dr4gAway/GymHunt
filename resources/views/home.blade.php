@@ -6,11 +6,11 @@
     <div class="flex">
         <div class="p-12 space-y-8">
             <div class="spcae-y-2">
-                <p class="text-8xl font-sans font-bold">Treine</p>
-                <p class="text-8xl font-sans font-bold">em qualquer lugar</p>
+                <p class="text-8xl font-poppins font-bold">Treine</p>
+                <p class="text-8xl font-poppins font-bold">em qualquer lugar</p>
             </div>
 
-            <p class="text-4xl font-sans font-semibold w-3/5">Conheça o nosso sistema e treine na academia mais próxima com a melhor qualidade</p>
+            <p class="text-4xl font-poppins text-slate-600 font-medium w-3/5">Conheça o nosso sistema e treine na academia mais próxima com a melhor qualidade</p>
             
             <a href="#"> 
                 <button class="flex space-x-2 text-3xl p-7 tracking-widest text-white uppercase bg-gymhunt-purple-2 border-solid border-zinc-400 border-1 my-10 rounded-lg">
@@ -38,10 +38,10 @@
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"> Conheça mais funcionalidades do nosso sistema</h2>
                 <p class="mt-2 text-lg leading-8 text-gray-600">Veja uma prévia do que você terá para navegar pelo site!</p>
             </div>
-            <div class="grid grid-cols-1 gap-x-8 gap-y-10 border-t border-gymhunt-purple-2 pt-10 sm:mt-10 sm:pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3 ">
+            <div class="grid grid-cols-1 gap-x-10 gap-y-10 border-t border-gymhunt-purple-2 pt-10 sm:mt-10 sm:pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3 ">
                 <article class="flex flex-col justify-between bg-white shadow-2xl px-8 py-6 rounded-lg">
                     <div class="flex items-center gap-x-4 text-xs">
-                        <img src=".\img\loc.png" alt="">
+                        <img src=".\img\pub.png" alt="">
                     </div>
                     
                     <div class="group relative">
@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="group relative">
-                        <h6 class="text-md text-right leading-6 text-gray-800 group-hover:text-gray-500">
+                    <h6 class="text-md text-right leading-6 text-gray-800 group-hover:text-gray-500 group-hover:font-semibold">
                             <a href="#">
                                 <span class="absolute inset-0"></span> Ver mais
                             </a>
@@ -67,7 +67,7 @@
 
                 <article class="flex flex-col justify-between bg-white shadow-2xl px-8 py-6 rounded-lg">
                     <div class="flex items-center gap-x-4 text-xs">
-                        <img src=".\img\workout.png" alt="">
+                        <img src=".\img\pub.png" alt="">
                     </div>
                     
                     <div class="group relative">
@@ -83,7 +83,7 @@
                     </div>
 
                     <div class="group relative">
-                        <h6 class="text-md text-right leading-6 text-gray-800 group-hover:text-gray-500">
+                        <h6 class="text-md text-right leading-6 text-gray-800 group-hover:text-gray-500 group-hover:font-semibold">
                             <a href="#">
                                 <span class="absolute inset-0"></span> Ver mais
                             </a>
@@ -93,7 +93,7 @@
 
                 <article class="flex flex-col justify-between bg-white shadow-2xl px-8 py-6 rounded-lg">
                     <div class="flex items-center gap-x-4 text-xs">
-                        <img src=".\img\feed.png" alt="">
+                        <img src=".\img\pub.png" alt="">
                     </div>
                     
                     <div class="group relative">
@@ -109,7 +109,7 @@
                     </div>
 
                     <div class="group relative">
-                        <h6 class="text-md text-right leading-6 text-gray-800 group-hover:text-gray-500">
+                        <h6 class="text-md text-right leading-6 text-gray-800 group-hover:text-gray-500 group-hover:font-semibold">
                             <a href="#">
                                 <span class="absolute inset-0"></span> Ver mais
                             </a>
@@ -122,14 +122,14 @@
     </div>
 
     <div class="m-12">
-        <div class="flex flex-rol space-x-12">
+        <div class="flex flex-rol space-x-20">
             <div>
-                <img src=".\img\workout.png"  alt="">
+                <img width="5000px" src=".\img\workout.png"  alt="">
             </div>
 
-            <div>
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"> Por quê do GymHunt</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor odit eaque illum perspiciatis, non neque voluptate adipisci placeat harum culpa dolore, sunt quibusdam nihil tenetur iste? Ipsa nam odio velit!</p>
+            <div class="max-w-12xl space-y-8 bg-white shadow-2xl px-8 py-6 rounded-lg">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"> Por quê do GymHunt?</h2>
+                <p class="text-2xl leading-relaxed text-justify font-poppins">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor odit eaque illum perspiciatis, non neque voluptate adipisci placeat harum culpa dolore, sunt quibusdam nihil tenetur iste? Ipsa nam odio velit! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi consectetur eaque sunt atque accusamus porro qui voluptatum aut cupiditate, nihil fugiat modi repudiandae, officia blanditiis facere, deserunt sed cumque libero. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste ratione illo aspernatur, at eaque illum optio earum deserunt atque mollitia in minus dolores maiores porro? Vero molestiae voluptatem pariatur odio?</p>
             </div>
 
         </div>

@@ -18,6 +18,9 @@ export default {
       fontFamily: {
         poppins: ['Poppins'],
       },
+      boxShadow:{
+        '2xl': '0px 2px 22px 3px rgba(189,189,189,1)',
+      }
     },
   },
   plugins: [],
