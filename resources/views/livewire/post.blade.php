@@ -1,11 +1,12 @@
 <div class="flex flex-col w-full max-w-[662px] p-4 rounded-2xl bg-white gap-4">
     <div class="flex justify-between" x-data="{
-        open: false,
+        copyOpen: false,
+        menuOpen: false,
 
         toClipboard() {
-            navigator.clipboard.writeText('localhost:8000/feed/posts/'+@js($post->id))
-            this.open = true;
-            setTimeout(() => {this.open = false}, 1000)
+            navigator.clipboard.writeText('localhost:8000/feed/posts/'+ @js($post->id) )
+            this.copyOpen = true;
+            setTimeout(() => {this.copyOpen = false}, 1000)
         }
     }">
         <div class="flex items-center gap-4">
@@ -22,13 +23,30 @@
                 <div class="absolute bg-gymhunt-purple-2 text-white px-2 py-1 rounded-lg text-xs
                             top-0 left-1/2 -translate-y-[32px] -translate-x-1/2
                             transition-all"
-                 x-show="open">Copiado!</div>
+                 x-show="copyOpen">Copiado!</div>
                 
                  <img src="\img\icons\copy-icon.svg" alt="like" class="h-5 cursor-pointer"
                 x-on:click="toClipboard()">
             </div>
             
-            <img src="\img\icons\more-icon.svg" alt="like" class="h-5">
+            <div class="relative">
+                <img src="\img\icons\more-icon.svg" alt="like" class="h-5" x-on:click="menuOpen = !menuOpen">
+
+                <ul x-show="menuOpen" class="absolute top-auto right-1 flex flex-col items-center text-right gap-1 bg-white p-4 rounded-md drop-shadow-md ">
+                    <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-1">
+                        <img src="\img\icons\edit-icon.svg" alt="like" class="h-5 cursor-pointer">
+                        editar
+                    </li>
+                    <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-1">
+                        <img src="\img\icons\delete-icon.svg" alt="like" class="h-5 cursor-pointer">
+                        excluir
+                    </li>
+                    <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-1 w-fit">
+                        <img src="\img\icons\flag-icon.svg" alt="like" class="h-5 cursor-pointer">
+                        reportar
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
