@@ -4,4 +4,7 @@
         <p  class="font-semibold">{{$comment->user->name}}</p>
         <p class="grow font-medium">{{ $comment->body }}</p>
     </div>
+
+    {{$likesCount}}
+    <img src="{{ $liked ? '\img\icons\heart-selected-icon.svg' : '\img\icons\heart-icon.svg' }}" wire:click="handleLike" alt="like" class="h-5">
 </div>
