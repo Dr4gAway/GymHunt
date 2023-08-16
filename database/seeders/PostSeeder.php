@@ -14,15 +14,15 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        /* $user = User::query()->first();
+        $user = User::query()->first();
 
-        Post::factory(10)->create([
+        Post::factory(100)->create([
             'created_by' => $user
-        ]); */
+        ]);
 
-        $this->call([
+        /* $this->call([
         UserSeeder::class,
         PostSeeder::class,
-    ]);
+    ]); */
     }
 }
