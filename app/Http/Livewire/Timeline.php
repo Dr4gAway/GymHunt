@@ -8,6 +8,8 @@ use App\Models\Post;
 
 class Timeline extends Component
 {
+    public int $perPage = 5;
+
     protected $listeners = [
         'post::created' => '$refresh'
     ];
@@ -20,8 +22,12 @@ class Timeline extends Component
     public function getPostsProperty(): LengthAwarePaginator {
         $posts = Post::query()
                     ->latest()
-                    ->paginate(5);
+                    ->paginate($this->perPage);
 
         return $posts;
+    }
+
+    public function loadMore() {
+        $this->perPage += 5;
     }
 }
