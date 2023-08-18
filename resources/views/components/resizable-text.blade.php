@@ -1,7 +1,6 @@
 @props([
     'model' => null,
     'placeholder' => 'placeholder',
-    'customClasses' => []
 ])
 
 <div class="w-full">

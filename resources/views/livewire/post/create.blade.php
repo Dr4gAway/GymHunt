@@ -3,7 +3,7 @@
 
     <div class="flex w-full gap-4">
 
-        <x-resizable-text model="body" customClasses="['w-full']" placeholder="Como vai seu treino?" />
+        <x-resizable-text model="body" placeholder="Como vai seu treino?" />
         
         <button wire:click="store" class="">
 
