@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class, 'created_by');
             $table->string('body');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

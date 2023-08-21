@@ -20,7 +20,8 @@ class Post extends Model
      */
     protected $fillable = [
         'body',
-        'created_by'
+        'created_by',
+        'photo'
     ];
 
     /* Get the user that owns the post
