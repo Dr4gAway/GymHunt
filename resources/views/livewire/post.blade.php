@@ -56,6 +56,15 @@
 
     <livewire:comment.create :post_id="$post->id" />
 
+    @if($post->images()->count())
+        <div>
+            @foreach($post->images as $image)
+                <img src="{{$image->path}}" alt="meu mano migues">
+            @endforeach
+
+        </div>
+    @endif
+
     <div class="w-full h-px bg-gymhunt-purple-2"></div>
     
     <div class="flex flex-col gap-4">

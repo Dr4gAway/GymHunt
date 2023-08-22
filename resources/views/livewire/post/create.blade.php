@@ -14,13 +14,15 @@
             </button>
         </div>
 
-        <input type="file" wire:model="photo">
+        <input type="file" wire:model="photos">
 
         @error('photo') <span class="error">{{ $message }}</span> @enderror
 
-        @isset($photo)
+        @isset($photos)
             photo Preview:
+            @foreach($photos as $photo)
             <img src="{{ $photo->temporaryUrl() }}">
+            @endforeach
         @endisset
     </div>
     

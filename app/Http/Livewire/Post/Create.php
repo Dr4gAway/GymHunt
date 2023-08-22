@@ -17,10 +17,7 @@ class Create extends Component
 
     public ?string $body = null;
 
-    public $photo;
-    public $file;
-    public $fileOriginalName;
-    public $filePath;
+    public $photos = [];
 
     protected $rules = [
         'body' => 'required|string|min:6'
@@ -34,25 +31,25 @@ class Create extends Component
     public function store() {
         $this->validate();
 
-        $this->originalFileName = $this->photo->getClientOriginalName();
-
-        if($this->photo)
+        if($this->photos)
         {
-            $filePath = $this->photo->store('photos', 'public');
-
             $post = Post::create([
                 'body' => $this->body,
-                'created_by' => Auth::id(),
-                'photo' => $filePath
+                'created_by' => Auth::id()
             ]);
 
-            Image::create([
-                'user_id' => Auth::id(),
-                'post_id' => $post->id,
-                'name' => Str::random(16),
-                'path' => $filePath,
-                'extension' => strtolower($this->photo->extension()) 
-            ]);
+            foreach($this->photos as $photo)
+            {
+                $filePath = $photo->store('photos', 'public');
+    
+                Image::create([
+                    'user_id' => Auth::id(),
+                    'post_id' => $post->id,
+                    'name' => Str::random(16),
+                    'path' => "storage/".$filePath,
+                    'extension' => strtolower($photo->extension()) 
+                ]);
+            }
         } else {
             Post::create([
                 'body' => $this->body,
