@@ -6,7 +6,10 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use App\Models\Post;
+use App\Models\Image;
 
 class Create extends Component
 {
@@ -15,6 +18,9 @@ class Create extends Component
     public ?string $body = null;
 
     public $photo;
+    public $file;
+    public $fileOriginalName;
+    public $filePath;
 
     protected $rules = [
         'body' => 'required|string|min:6'
@@ -28,12 +34,24 @@ class Create extends Component
     public function store() {
         $this->validate();
 
+        $this->originalFileName = $this->photo->getClientOriginalName();
+
         if($this->photo)
         {
-            Post::create([
+            $filePath = $this->photo->store('photos', 'public');
+
+            $post = Post::create([
                 'body' => $this->body,
                 'created_by' => Auth::id(),
-                'photo' => $this->photo->store('photos')
+                'photo' => $filePath
+            ]);
+
+            Image::create([
+                'user_id' => Auth::id(),
+                'post_id' => $post->id,
+                'name' => Str::random(16),
+                'path' => $filePath,
+                'extension' => strtolower($this->photo->extension()) 
             ]);
         } else {
             Post::create([

@@ -11,6 +11,14 @@ class Image extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'post_id',
+        'name',
+        'path',
+        'extension'
+    ];
+
     /**
      * Get the post that owns the image
      *
