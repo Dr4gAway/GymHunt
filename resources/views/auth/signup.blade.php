@@ -4,7 +4,7 @@
 
 <div class="flex flex-col justify-center my-12 px-6 py-4 lg:px-8">
     
-        <!-- <div class="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div class="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
             
             <form class="space-y-6" action="{{route('signup')}}" method="POST">
 
@@ -25,7 +25,7 @@
                     <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cadastre-se</button>
                 </div>
             </form>
-        </div> -->
+        </div> 
 
     <div class="bg-white px-6 py-8 sm:py-8 lg:px-8">
         <div class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]" aria-hidden="true">

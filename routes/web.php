@@ -23,4 +23,8 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
+Route::get('/perfil', function(){
+    return view('perfilUser');
+})->name('perfilUser');
+
 require __DIR__.'/auth.php';
