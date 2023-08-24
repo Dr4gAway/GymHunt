@@ -52,18 +52,34 @@
 
     <p>{{$post->body}}</p>
 
-    <div class="min-w-3/5 h-64 rounded-2xl bg-gradient-to-r from-gymhunt-purple-1 to-gymhunt-purple-2"></div>
+    @if($this->postType = 4)
+        @isset($this->post->images()->first()->path)
+            @if($this->vertical)
+                <img src="{{$this->post->images()->first()->path}}" class="object-contain max-w-[416px] max-h-[592px]">
+            @else
+                <img src="{{$this->post->images()->first()->path}}" class="object-cover max-h-[410px]">
+            @endif
+        @endisset
+
+    @elseif($this->postType = 2)
+        <div class="flex w-full h-[315px]">
+            @foreach($post->images as $image)
+                este
+                <img src="{{$image->path}}" class="w-[50px]">
+            @endforeach
+        </div>
+
+    @endif
+
+    <!-- <div class="min-w-3/5 h-64 rounded-2xl bg-gradient-to-r from-gymhunt-purple-1 to-gymhunt-purple-2"></div> -->
 
     <livewire:comment.create :post_id="$post->id" />
+    {{$post->images->count()}}
+    {{$this->postType}}
 
-    @if($post->images()->count())
-        <div>
-            @foreach($post->images as $image)
-                <img src="{{$image->path}}" alt="meu mano migues">
-            @endforeach
+    {{$this->vertical ? 'sim' : 'nao'}}
 
-        </div>
-    @endif
+    
 
     <div class="w-full h-px bg-gymhunt-purple-2"></div>
     

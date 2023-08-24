@@ -65,4 +65,48 @@ class Post extends Component
         $this->getLikedStatus();
         $this->getLikesCount();
     }
+
+    public function getVerticalProperty()
+    {
+        if($this->postType == 4)
+        {
+            if (isset($this->post->images()->first()->path))
+            {
+                $image = $this->post->images()->first()->path;
+                $size = getimagesize($image);
+    
+                if($size[1] > $size[0])
+                {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public function getPostTypeProperty()
+    {
+        $postType = 0;
+
+        if($this->post->images->count() > 2)
+        {
+            return $postType = 3;
+        }
+
+        if($this->post->images->count() > 1)
+        {
+            return $postType = 2;
+        }
+
+        if($this->post->images->count() == 0)
+        {
+            return $postType = 1;
+        } else {
+            //Only one image
+            return $postType = 4;
+        }
+    }
 }
