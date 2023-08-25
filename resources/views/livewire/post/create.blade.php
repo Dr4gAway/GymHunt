@@ -19,11 +19,17 @@
         @error('photo') <span class="error">{{ $message }}</span> @enderror
 
         @isset($photos)
-            photo Preview:
-            @foreach($photos as $index => $photo)
-                <img src="{{ $photo->temporaryUrl() }}">
-                <button type="button" wire:click="removeImage({{$index}})">Deletar imagem</button>
-            @endforeach
+            <div class="flex gap-8 drop-shadow-md">
+                @foreach($photos as $index => $photo)
+                    <div class="relative">
+                        <img src="{{ $photo->temporaryUrl() }}" class="w-[100px] h-[100px] object-cover rounded-2xl">
+                        <img src="\img\icons\delete-icon.svg" alt="remove image"
+                        wire:click="removeImage({{$index}})"
+                        class="h-10 absolute bottom-0 right-0 translate-x-1/2
+                             bg-white p-1 rounded-full cursor-pointer drop-shadow-md">
+                    </div>
+                @endforeach
+            </div>
         @endisset
     </div>
     
