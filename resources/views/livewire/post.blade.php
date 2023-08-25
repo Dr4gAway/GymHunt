@@ -81,13 +81,13 @@
         </div>
     @elseif($this->postType == 4)
         <div class="flex max-w-full gap-1 h-[315px] rounded-2xl overflow-hidden cursor-pointer">
-            <img src="{{$post->images[0]->path}}" class="w-full object-cover">
+            <img src="/{{$post->images[0]->path}}" class="w-full object-cover">
             <div class="relative w-full flex flex-col gap-1">
                 @foreach ($post->images as $index => $image)
                     @if($index > 2)
                         @break
                     @elseif ($index != 0)
-                        <img src="{{$image->path}}" class="w-full h-1/2 object-cover">
+                        <img src="/{{$image->path}}" class="w-full h-1/2 object-cover">
                     @endif
                 @endforeach
                 <div class="absolute grid place-content-center w-full h-full bg-gymhunt-purple-2 opacity-50">
