@@ -52,34 +52,52 @@
 
     <p>{{$post->body}}</p>
 
-    @if($this->postType = 4)
-        @isset($this->post->images()->first()->path)
-            @if($this->vertical)
-                <img src="{{$this->post->images()->first()->path}}" class="object-contain max-w-[416px] max-h-[592px]">
-            @else
-                <img src="{{$this->post->images()->first()->path}}" class="object-cover max-h-[410px]">
-            @endif
-        @endisset
-
-    @elseif($this->postType = 2)
-        <div class="flex w-full h-[315px]">
+    @if($this->postType == 1)
+        <div>
+            @isset($this->post->images()->first()->path)
+                @if($this->vertical)
+                    <img src="{{$this->post->images()->first()->path}}" class="rounded-2xl object-contain max-w-[416px] max-h-[592px]">
+                @else
+                    <img src="{{$this->post->images()->first()->path}}" class="rounded-2xl object-cover max-h-[410px]">
+                @endif
+            @endisset
+        </div>
+    @elseif($this->postType == 2)
+        <div class="flex max-w-full gap-1 h-[315px] rounded-2xl overflow-hidden">
             @foreach($post->images as $image)
-                este
-                <img src="{{$image->path}}" class="w-[50px]">
+                <img src="{{$image->path}}" class="w-1/2 object-cover">
             @endforeach
         </div>
-
+    @elseif($this->postType == 3)
+        <div class="flex max-w-full gap-1 h-[315px] rounded-2xl overflow-hidden">
+            <img src="{{$post->images[0]->path}}" class="w-1/2 object-cover">
+            <div class="w-1/2 flex flex-col gap-1">
+                @foreach ($post->images as $index => $image)
+                    @if ($index != 0)
+                        <img src="{{$image->path}}" class="w-full h-1/2 object-cover">
+                    @endif
+                @endforeach
+            </div>
+        </div>
+    @elseif($this->postType == 4)
+        <div class="flex max-w-full gap-1 h-[315px] rounded-2xl overflow-hidden cursor-pointer">
+            <img src="{{$post->images[0]->path}}" class="w-full object-cover">
+            <div class="relative w-full flex flex-col gap-1">
+                @foreach ($post->images as $index => $image)
+                    @if($index > 2)
+                        @break
+                    @elseif ($index != 0)
+                        <img src="{{$image->path}}" class="w-full h-1/2 object-cover">
+                    @endif
+                @endforeach
+                <div class="absolute grid place-content-center w-full h-full bg-gymhunt-purple-2 opacity-50">
+                    <span class="text-8xl text-white pointer-events-none">+{{$post->images->count() - 3}}</span>
+                </div>
+            </div>
+        </div>
     @endif
 
-    <!-- <div class="min-w-3/5 h-64 rounded-2xl bg-gradient-to-r from-gymhunt-purple-1 to-gymhunt-purple-2"></div> -->
-
     <livewire:comment.create :post_id="$post->id" />
-    {{$post->images->count()}}
-    {{$this->postType}}
-
-    {{$this->vertical ? 'sim' : 'nao'}}
-
-    
 
     <div class="w-full h-px bg-gymhunt-purple-2"></div>
     

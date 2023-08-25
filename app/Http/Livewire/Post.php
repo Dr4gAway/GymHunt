@@ -68,7 +68,7 @@ class Post extends Component
 
     public function getVerticalProperty()
     {
-        if($this->postType == 4)
+        if($this->postType == 1)
         {
             if (isset($this->post->images()->first()->path))
             {
@@ -91,22 +91,24 @@ class Post extends Component
     {
         $postType = 0;
 
+        if($this->post->images->count() > 3)
+        {
+            return $postType = 4;
+        }
         if($this->post->images->count() > 2)
         {
             return $postType = 3;
         }
-
         if($this->post->images->count() > 1)
         {
             return $postType = 2;
         }
-
-        if($this->post->images->count() == 0)
+        if($this->post->images->count() == 1)
         {
             return $postType = 1;
         } else {
             //Only one image
-            return $postType = 4;
+            return $postType = 0;
         }
     }
 }
