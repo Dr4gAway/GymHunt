@@ -58,7 +58,7 @@
                 @if($this->vertical)
                     <img src="{{$this->post->images()->first()->path}}" class="rounded-2xl object-contain max-w-[416px] max-h-[592px]">
                 @else
-                    <img src="{{$this->post->images()->first()->path}}" class="rounded-2xl object-cover max-h-[410px]">
+                    <img src="{{$this->post->images()->first()->path}}" class="w-full rounded-2xl object-cover max-h-[410px]">
                 @endif
             @endisset
         </div>
