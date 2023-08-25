@@ -56,25 +56,25 @@
         <div>
             @isset($this->post->images()->first()->path)
                 @if($this->vertical)
-                    <img src="{{$this->post->images()->first()->path}}" class="rounded-2xl object-contain max-w-[416px] max-h-[592px]">
+                    <img src="/{{$this->post->images()->first()->path}}" class="rounded-2xl object-contain max-w-[416px] max-h-[592px]">
                 @else
-                    <img src="{{$this->post->images()->first()->path}}" class="w-full rounded-2xl object-cover max-h-[410px]">
+                    <img src="/{{$this->post->images()->first()->path}}" class="w-full rounded-2xl object-cover max-h-[410px]">
                 @endif
             @endisset
         </div>
     @elseif($this->postType == 2)
         <div class="flex max-w-full gap-1 h-[315px] rounded-2xl overflow-hidden">
             @foreach($post->images as $image)
-                <img src="{{$image->path}}" class="w-1/2 object-cover">
+                <img src="/{{$image->path}}" class="w-1/2 object-cover">
             @endforeach
         </div>
     @elseif($this->postType == 3)
         <div class="flex max-w-full gap-1 h-[315px] rounded-2xl overflow-hidden">
-            <img src="{{$post->images[0]->path}}" class="w-1/2 object-cover">
+            <img src="/{{$post->images[0]->path}}" class="w-1/2 object-cover">
             <div class="w-1/2 flex flex-col gap-1">
                 @foreach ($post->images as $index => $image)
                     @if ($index != 0)
-                        <img src="{{$image->path}}" class="w-full h-1/2 object-cover">
+                        <img src="/{{$image->path}}" class="w-full h-1/2 object-cover">
                     @endif
                 @endforeach
             </div>
@@ -98,8 +98,6 @@
     @endif
 
     <livewire:comment.create :post_id="$post->id" />
-
-    <div class="w-full h-px bg-gymhunt-purple-2"></div>
     
     <div class="flex flex-col gap-4">
         @if($this->comments->first())
