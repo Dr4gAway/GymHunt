@@ -20,8 +20,9 @@
 
         @isset($photos)
             photo Preview:
-            @foreach($photos as $photo)
-            <img src="{{ $photo->temporaryUrl() }}">
+            @foreach($photos as $index => $photo)
+                <img src="{{ $photo->temporaryUrl() }}">
+                <button type="button" wire:click="removeImage({{$index}})">Deletar imagem</button>
             @endforeach
         @endisset
     </div>

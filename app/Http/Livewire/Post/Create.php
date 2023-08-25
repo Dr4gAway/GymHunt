@@ -19,8 +19,13 @@ class Create extends Component
 
     public $photos = [];
 
+    protected $listeners = [
+        'image::removed' => '$refresh'
+    ];
+
     protected $rules = [
-        'body' => 'required|string|min:6'
+        'body' => 'required|string|min:6',
+        'photos.*' => 'max:2048'
     ];
 
     public function render()
@@ -57,10 +62,36 @@ class Create extends Component
             ]);
         }
 
-
         $this->emitUp('post::created');
+        $this->reset(['body', 'photos']);
+        $this->cleanupOldUploads();
+    }
 
-        $this->reset('body');
-        
+    public function removeImage($index)
+    {   
+        if(isset($this->photos[$index]))
+        {
+            unset($this->photos[$index]);
+        }
+
+        $this->emitSelf('image::removed');
+    }
+
+    protected function cleanupOldUploads()
+    {
+        //if (FileUploadConfiguration::isUsingS3()) return;
+
+        $storage = Storage::disk('local');
+
+        foreach ($storage->allFiles('livewire-tmp') as $filePathname) {
+            // On busy websites, this cleanup code can run in multiple threads causing part of the output
+            // of allFiles() to have already been deleted by another thread.
+            if (! $storage->exists($filePathname)) continue;
+
+            $yesterdaysStamp = now()->subDay()->timestamp;
+            if ($yesterdaysStamp > $storage->lastModified($filePathname)) {
+                $storage->delete($filePathname);
+            }
+        }
     }
 }
