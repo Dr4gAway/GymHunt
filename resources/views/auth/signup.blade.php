@@ -51,12 +51,15 @@
                 </div>
             </div>
 
-            <x-form.text name="cpf" label="CPF" type="text"/>
+            <x-form.text name="cpf" label="CPF" type="text"/>// para usuário comum 
             <x-form.text name="dataNasc" label="Data de nascimento" type="date"/>
 
-            <x-form.text name="cnpj" label="CNPJ" type="text"/>
-
-            
+           
+            <x-form.text name="cnpj" label="CNPJ" type="text"/> //para academias
+            <div class="grid grid-flow-col justify-stretch space-x-2">
+                <x-form.text name="timeOpen" label="Horário de abertura" type="time"/>
+                <x-form.text name="timeClose" label="Horário de fechamento" type="time"/>
+            </div>
 
             <div>
                 <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cadastre-se</button>
