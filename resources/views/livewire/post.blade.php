@@ -71,9 +71,6 @@
 
         <button x-on:click="updateImages({{$this->post->images}})">update</button>
 
-
-        
-
         @if($this->postType == 1)
             <div x-on:click="imageOpen = !imageOpen">
                 @isset($this->post->images()->first()->path)

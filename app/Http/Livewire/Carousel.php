@@ -10,7 +10,7 @@ class Carousel extends Component
 {
     public $images = [];
 
-    public $imageSelected = [];
+    public $imageSelected;
 
     protected $listeners = [
         "carousel::updated" => 'updateImages',
@@ -23,13 +23,15 @@ class Carousel extends Component
 
     public function updateImages($newImages)
     {
-        $this->imageSelected = $newImages[0];
+        $this->imageSelected = $newImages[0]['path'];
         //dd($this->imageSelected);
         $this->images = $newImages;
     }
 
     public function changeImage($newImage)
     {
-        $this->selectedImage = $newImage;
+        $this->imageSelected = $newImage;
+
+        //dd($this->selectedImage);
     }
 }
