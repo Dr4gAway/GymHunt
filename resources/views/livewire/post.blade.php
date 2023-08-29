@@ -30,23 +30,25 @@
             </div>
             
             <div class="relative">
-                <img src="\img\icons\more-icon.svg" alt="like" class="h-5 cursor-pointer" x-on:click="menuOpen = !menuOpen">
+              <img src="\img\icons\more-icon.svg" alt="like" class="h-5 cursor-pointer" x-on:click="menuOpen = !menuOpen">
 
                 <ul x-show="menuOpen" class="absolute z-10 top-auto right-1 flex flex-col items-end text-right gap-1 bg-white p-4 rounded-md w-max">
                     <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-1">
-                        <span>Reportar</span>
+                         <span>Reportar</span>
                         <img src="\img\icons\flag-icon.svg" alt="like" class="h-5 cursor-pointer">
-                    </li>
-                    <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-2">
+                      </li>
+                      <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-2">
                         <span>Editar</span>
                         <img src="\img\icons\edit-icon.svg" alt="like" class="h-5 cursor-pointer">
                     </li>
-                    <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-1">
-                        <span>Excluir</span>
-                        <img src="\img\icons\delete-icon.svg" alt="like" class="h-5 cursor-pointer">
-                    </li>
-                </ul>
-            </div>
+
+                     <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-1">
+                         <span>Excluir</span>
+                         <img src="\img\icons\delete-icon.svg" alt="like" class="h-5 cursor-pointer" wire:click="handleDelete">
+                      </li>
+                 </ul>
+                </div>
+
         </div>
     </div>
 
