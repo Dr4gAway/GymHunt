@@ -111,4 +111,12 @@ class Post extends Component
             return $postType = 0;
         }
     }
+
+    public function handleDelete()
+    {
+        $this->post->delete();
+
+        dd('success', 'Post deletado com sucesso.');
+    }
+
 }
