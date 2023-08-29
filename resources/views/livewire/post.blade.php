@@ -56,14 +56,10 @@
         imageOpen: false,
 
         updateImages(images) {
-
             this.imageOpen = true
-
             Livewire.emit('carousel::updated', images)
         }
-
     }">
-
     
         <div x-show="imageOpen">
             <livewire:carousel  />

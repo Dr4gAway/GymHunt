@@ -17,7 +17,7 @@
                 @method('POST')
 
                 @error('invalid_credentials')
-                    <p class="text-red-500"> {{$message}} </p>   
+                    <p class="text-red-500"> {{ $message }} </p>   
                 @enderror
 
                 <x-form.text name="name" label="Nome" placeholder="e.g: Bruno Suwa" />
