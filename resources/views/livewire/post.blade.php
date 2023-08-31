@@ -2,13 +2,24 @@
     <div class="flex justify-between" x-data="{
         copyOpen: false,
         menuOpen: false,
+        editOpen: false,
 
         toClipboard() {
             navigator.clipboard.writeText('localhost:8000/feed/posts/'+ @js($post->id) )
             this.copyOpen = true;
             setTimeout(() => {this.copyOpen = false}, 1000)
+        },
+
+        updatePost(body, images) {
+            this.editOpen = true
+            this.menuOpen = false
+            Livewire.emit('post::updated', body, images)
         }
     }">
+        <div x-show="editOpen">
+            <livewire:post.update />
+        </div>
+
         <div class="flex items-center gap-4">
             <div class="rounded-full h-10 w-10 bg-red-500"></div>
             <h4 class="font-bold">{{$post->user->name}}</h4>
@@ -37,7 +48,7 @@
                          <span>Reportar</span>
                         <img src="\img\icons\flag-icon.svg" alt="like" class="h-5 cursor-pointer">
                       </li>
-                      <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-2">
+                      <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-2" x-on:click="updatePost('{{ $post->body }}', {{$this->post->images->pluck('path')}})">
                         <span>Editar</span>
                         <img src="\img\icons\edit-icon.svg" alt="like" class="h-5 cursor-pointer">
                     </li>
@@ -67,10 +78,8 @@
             <livewire:carousel  />
         </div>
 
-        <button x-on:click="updateImages({{$this->post->images}})">update</button>
-
         @if($this->postType == 1)
-            <div x-on:click="imageOpen = !imageOpen">
+            <div x-on:click="updateImages({{$this->post->images}})" class="cursor-pointer">
                 @isset($this->post->images()->first()->path)
                     @if($this->vertical)
                         <img src="/{{$this->post->images()->first()->path}}" class="rounded-2xl object-contain max-w-[416px] max-h-[592px]">
@@ -80,13 +89,13 @@
                 @endisset
             </div>
         @elseif($this->postType == 2)
-            <div class="flex max-w-full gap-1 h-[315px] rounded-2xl overflow-hidden">
+            <div x-on:click="updateImages({{$this->post->images}})" class="flex max-w-full gap-1 h-[315px] rounded-2xl overflow-hidden cursor-pointer">
                 @foreach($post->images as $image)
                     <img src="/{{$image->path}}" class="w-1/2 object-cover">
                 @endforeach
             </div>
         @elseif($this->postType == 3)
-            <div class="flex max-w-full gap-1 h-[315px] rounded-2xl overflow-hidden">
+            <div x-on:click="updateImages({{$this->post->images}})" class="flex max-w-full gap-1 h-[315px] rounded-2xl overflow-hidden cursor-pointer">
                 <img src="/{{$post->images[0]->path}}" class="w-1/2 object-cover">
                 <div class="w-1/2 flex flex-col gap-1">
                     @foreach ($post->images as $index => $image)
@@ -97,7 +106,7 @@
                 </div>
             </div>
         @elseif($this->postType == 4)
-            <div class="flex max-w-full gap-1 h-[315px] rounded-2xl overflow-hidden cursor-pointer">
+            <div x-on:click="updateImages({{$this->post->images}})" class="flex max-w-full gap-1 h-[315px] rounded-2xl overflow-hidden cursor-pointer">
                 <img src="/{{$post->images[0]->path}}" class="w-full object-cover">
                 <div class="relative w-full flex flex-col gap-1">
                     @foreach ($post->images as $index => $image)

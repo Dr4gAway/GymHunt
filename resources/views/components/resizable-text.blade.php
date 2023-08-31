@@ -14,6 +14,7 @@
         class=" border-4 border-gymhunt-purple-1
                 focus:outline-none focus:ring ring-gymhunt-purple-2
                 placeholder:text-gymhunt-purple-2
+                min-h-fit
                 rounded-lg px-5 py-3 w-full resize-none overflow-hidden"
         >
     </textarea>

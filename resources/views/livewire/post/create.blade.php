@@ -16,7 +16,7 @@
 
         <input type="file" wire:model="photos">
 
-        @error('photo') <span class="error">{{ $message }}</span> @enderror
+        @error('photos.*') <span class="error">{{ $message }}</span> @enderror
 
         @isset($photos)
             <div class="flex gap-8 drop-shadow-md">
