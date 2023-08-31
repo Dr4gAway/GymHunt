@@ -42,9 +42,9 @@
                         <img src="\img\icons\edit-icon.svg" alt="like" class="h-5 cursor-pointer">
                     </li>
 
-                     <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-1">
+                     <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-1" wire:click="handleDelete">
                          <span>Excluir</span>
-                         <img src="\img\icons\delete-icon.svg" alt="like" class="h-5 cursor-pointer" wire:click="handleDelete">
+                         <img src="\img\icons\delete-icon.svg" alt="like" class="h-5 cursor-pointer" >
                       </li>
                  </ul>
                 </div>
