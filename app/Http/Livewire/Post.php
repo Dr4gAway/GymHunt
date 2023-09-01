@@ -18,7 +18,8 @@ class Post extends Component
     public bool $showAll = false;
 
     protected $listeners = [
-        'comment::created' => '$refresh'
+        'comment::created' => '$refresh',
+        'post::updated' => '$refresh'
     ];
 
     public function mount() {

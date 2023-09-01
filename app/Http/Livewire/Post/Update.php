@@ -16,8 +16,11 @@ class Update extends Component
     use WithFileUploads;
 
     public ?string $body = null;
+    public Post $post;
 
     public $images = [];
+    public $oldImages = [];
+    public $deleteImages = [];
 
     protected $listeners = [
         'image::removed' => '$refresh',
@@ -39,38 +42,49 @@ class Update extends Component
 
         if($this->images)
         {
-            $post = Post::create([
-                'body' => $this->body,
-                'created_by' => Auth::id()
-            ]);
+            $this->post->body = $this->body;
+
+            $this->post->save();
+
+            for($i = 0; $i < count($this->oldImages); $i++)
+            {
+                if(!in_array($this->oldImages[$i], $this->images))
+                    Image::where('path', $this->oldImages)->delete();
+            }
 
             foreach($this->images as $image)
             {
-                $filePath = $photo->store('photos', 'public');
+                if (is_string($image))
+                    continue;
+
+                $filePath = $image->store('photos', 'public');
     
                 Image::create([
                     'user_id' => Auth::id(),
-                    'post_id' => $post->id,
+                    'post_id' => $this->post->id,
                     'name' => Str::random(16),
                     'path' => "storage/".$filePath,
                     'extension' => strtolower($image->extension()) 
                 ]);
             }
         } else {
-            Post::create([
-                'body' => $this->body,
-                'created_by' => Auth::id()
-            ]);
+            Post::where('id', $this->post->id)
+                ->update([
+                    'body' => $this->body
+                ]);
         }
 
-        $this->emitUp('post::created');
-        $this->reset(['body', 'photos']);
+        $this->emitUp('post::updated');
+        $this->reset(['body', 'images']);
         $this->cleanupOldUploads();
+        $this->dispatchBrowserEvent('update::close');
     }
 
-    public function updatePost($body, $images) {
-        $this->body = $body;
+    public function updatePost($data, $images) {
+        $this->post = Post::find($data['id']);
+        $this->body = $this->post->body;
         $this->images = $images;
+        $this->oldImages = $images;
     }
 
     public function removeImage($index)

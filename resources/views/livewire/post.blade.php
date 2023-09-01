@@ -10,10 +10,10 @@
             setTimeout(() => {this.copyOpen = false}, 1000)
         },
 
-        updatePost(body, images) {
+        updatePost(post, images) {
             this.editOpen = true
             this.menuOpen = false
-            Livewire.emit('post::updated', body, images)
+            Livewire.emit('post::updated', post, images)
         }
     }">
         <div x-show="editOpen">
@@ -30,6 +30,7 @@
                 {{$likesCount}}
                 <img src="{{ $liked ? '\img\icons\heart-selected-icon.svg' : '\img\icons\heart-icon.svg' }}" wire:click="handleLike" alt="like" class="h-5">
             </div>
+            
             <div class="relative">
                 <div class="absolute bg-gymhunt-purple-2 text-white px-2 py-1 rounded-lg text-xs
                             top-0 left-1/2 -translate-y-[32px] -translate-x-1/2
@@ -41,24 +42,24 @@
             </div>
             
             <div class="relative">
-              <img src="\img\icons\more-icon.svg" alt="like" class="h-5 cursor-pointer" x-on:click="menuOpen = !menuOpen">
+                <img src="\img\icons\more-icon.svg" alt="like" class="h-5 cursor-pointer" x-on:click="menuOpen = !menuOpen">
 
                 <ul x-show="menuOpen" class="absolute z-10 top-auto right-1 flex flex-col items-end text-right gap-1 bg-white p-4 rounded-md w-max">
                     <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-1">
                          <span>Reportar</span>
                         <img src="\img\icons\flag-icon.svg" alt="like" class="h-5 cursor-pointer">
                       </li>
-                      <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-2" x-on:click="updatePost('{{ $post->body }}', {{$this->post->images->pluck('path')}})">
+                      <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-2" x-on:click="updatePost({{ $post }}, {{$this->post->images->pluck('path')}})">
                         <span>Editar</span>
                         <img src="\img\icons\edit-icon.svg" alt="like" class="h-5 cursor-pointer">
                     </li>
 
-                     <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-1" wire:click="handleDelete">
-                         <span>Excluir</span>
-                         <img src="\img\icons\delete-icon.svg" alt="like" class="h-5 cursor-pointer" >
-                      </li>
-                 </ul>
-                </div>
+                    <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-1" wire:click="handleDelete">
+                        <span>Excluir</span>
+                        <img src="\img\icons\delete-icon.svg" alt="like" class="h-5 cursor-pointer" >
+                    </li>
+                </ul>
+            </div>
 
         </div>
     </div>
