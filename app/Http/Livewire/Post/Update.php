@@ -62,7 +62,7 @@ class Update extends Component
                 Image::create([
                     'user_id' => Auth::id(),
                     'post_id' => $this->post->id,
-                    'name' => Str::random(16),
+                    'name' => basename($filePath),
                     'path' => "storage/".$filePath,
                     'extension' => strtolower($image->extension()) 
                 ]);
