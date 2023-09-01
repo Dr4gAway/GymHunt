@@ -49,7 +49,7 @@ class Update extends Component
             for($i = 0; $i < count($this->oldImages); $i++)
             {
                 if(!in_array($this->oldImages[$i], $this->images))
-                    Image::where('path', $this->oldImages)->delete();
+                    Image::where('path', $this->oldImages[$i])->delete();
             }
 
             foreach($this->images as $image)
