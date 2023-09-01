@@ -13,7 +13,7 @@
         updatePost(post, images) {
             this.editOpen = true
             this.menuOpen = false
-            Livewire.emit('post::updated', post, images)
+            Livewire.emit('post::updateRequest', post, images)
         }
     }">
         <div x-show="editOpen">

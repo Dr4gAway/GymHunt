@@ -24,7 +24,7 @@ class Update extends Component
 
     protected $listeners = [
         'image::removed' => '$refresh',
-        'post::updated' => 'updatePost'
+        'post::updateRequest' => 'updatePost'
     ];
 
     protected $rules = [
