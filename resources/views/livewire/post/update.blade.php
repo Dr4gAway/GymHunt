@@ -20,7 +20,7 @@
                     @foreach($images as $index => $image)
                         @if(is_string($image))
                             <div class="relative">
-                                <img src="{{ $image }}" class="w-[100px] h-[100px] object-cover rounded-2xl">
+                                <img src="/{{ $image }}" class="w-[100px] h-[100px] object-cover rounded-2xl">
                                 <img src="\img\icons\delete-icon.svg" alt="remove image"
                                 wire:click="removeImage({{$index}})"
                                 class="h-10 absolute bottom-0 right-0 translate-x-1/2
