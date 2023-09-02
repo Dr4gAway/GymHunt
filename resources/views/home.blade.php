@@ -49,7 +49,7 @@
                             Localizador de academias
                         </h3>
                         
-                        <p class="max-w-sm sm:text-md md:text-lg lg:text-xl line-clamp-3 text-center leading-6 text-gray-800">No nosso sistema você pode ver a academia mais próxima de sua localização lalblalalalalalal.</p>
+                        <p class="max-w-sm sm:text-md md:text-lg lg:text-xl line-clamp-3 text-center leading-6 text-gray-800">Localize a academia mais próxima de sua você, além de ver suas avaliações.</p>
                     </div>
 
                     <div class="group relative">
@@ -71,7 +71,7 @@
                             Registro de Treinos
                         </h3>
                         
-                        <p class="max-w-sm sm:text-md md:text-lg lg:text-xl line-clamp-3 text-center leading-6 text-gray-800">No nosso sistema você pode ver a academia mais próxima de sua localização lalblalalalalalal.</p>
+                        <p class="max-w-sm sm:text-md md:text-lg lg:text-xl line-clamp-3 text-center leading-6 text-gray-800">Registre seus treinos diariamente e tenha maior controle da sua evolução!</p>
                     </div>
 
                     <div class="group relative">
@@ -93,7 +93,7 @@
                             Comunidade de GymBro's
                         </h3>
                         
-                        <p class="max-w-sm sm:text-md md:text-lg lg:text-xl line-clamp-3 text-center leading-6 text-gray-800">No nosso sistema você pode ver a academia mais próxima de sua localização lalblalalalalalal.</p>
+                        <p class="max-w-sm sm:text-md md:text-lg lg:text-lg line-clamp-3 text-center leading-6 text-gray-800">Facilita a comunicação com a comunidade a qual apresentam um objetivo em comum.</p>
                     </div>
 
                     <div class="group relative">
@@ -110,7 +110,7 @@
             </div>
             <!-- More posts... -->
     </div>
-
+    <a name="sobre"></a>
     <div class="m-12">
         <div class="flex flex-rol justify-center space-x-16">
             <div>
@@ -119,7 +119,10 @@
 
             <div class="max-w-2xl space-y-8 bg-white shadow-2xl px-8 py-6 rounded-lg">
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"> Por quê do GymHunt?</h2>
-                <p class="sm:text-md md:text-lg lg:text-xl line-clamp-10 leading-loose text-justify font-poppins">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor odit eaque illum perspiciatis, non neque voluptate adipisci placeat harum culpa dolore, sunt quibusdam nihil tenetur iste? Ipsa nam odio velit! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi consectetur eaque sunt atque accusamus porro qui voluptatum aut cupiditate, nihil fugiat modi repudiandae, officia blanditiis facere, deserunt sed cumque libero. Lorem ipsum dolor sit am.</p>
+                <p class="sm:text-md md:text-lg lg:text-xl line-clamp-10 leading-loose text-justify font-poppins">A nossa plataforma "GymHunt" tem com a intenção de auxiliar os usuarios na hora de localizar academias. 
+                    Além disso temos intenção de prover maior controle de cada usuário no desempenho individual,
+                    Portanto, o sistema ajudará de forma efetiva cada usuário na sua evolução e na localização de academias.
+                </p>
             </div>
 
         </div>

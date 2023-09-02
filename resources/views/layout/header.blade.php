@@ -47,8 +47,8 @@
                         <img src="\img\logo.svg" alt="Gym hunt brand" class="h-12">
                     </a>
                     <a href="{{route('home')}}" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Home</a>
-                    <a href="#" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Produto</a>
-                    <a href="#" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Sobre nós</a>
+                    <a href="#func" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Produto</a>
+                    <a href="#sobre" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Sobre nós</a>
                 </div>  
                 
                 <div class="flex items-center justify-center center gap-8">

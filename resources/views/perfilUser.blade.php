@@ -2,51 +2,8 @@
 @section('titulo', 'GymHunt - Perfil')
 @section('content') 
 
-<!-- <div>
-    <div>
-        <div class="w-full h-[200px] bg-red-500">
-            <img class="w-full" src=".\img\banner.png" alt="">
-        </div>
-
-        <div class="left-5 rounded-full bg-green-500 w-64 h-64"></div>
-        <div>
-            <div class="flex flex-rol items-end space-x-5">
-                            <h3 class="font-bold text-3xl">Gilmar dos Santos</h3>
-                            <h6 class="text-lg">@gilmass</h6>
-                        </div>
-            </div>
-
-        <div>
-            <div class="absolute bottom-[-60] left-0 translate-y-1/2 ml-5 flex items-end">
-                          
-            </div>
-            <div class="flex flex-col ml-64">
-                    
-
-                    <div class="flex flex-rol items-end space-x-8 space-y-3 font-poppins">
-                        <p class="font-medium"><b>400</b> seguidores</p>
-                        <p class="font-medium"><b>690</b> seguindo</p>
-                        <div class="flex flex-row items-center space-x-2">
-                            <div class="rounded-full bg-blue-200 w-6 h-6"></div>
-                            <p>Seguidores em comum</p>
-                        </div>
-                    </div>
-                </div>
-        </div>
-        
-        
-        <div>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo ut dolore explicabo similique laudantium laborum ea veniam esse repudiandae. Ipsa consequatur reprehenderit atque, assumenda non eligendi. Quod facilis expedita dolor.</span>
-        </div>
-        
-    </div>
-    <div class="">
-        ehnrgerngernr
-    </div>
-</div> -->
-
 <div class="flex flex-col justify-between bg-gymhunt-gray-1"> <!-tela inteira->
-    <div class="w-full h-[200px] bg-red-500">
+    <div class="w-full h-[200px]">
         <img class="w-full" src=".\img\banner.png" alt="">
     </div>
     
@@ -57,7 +14,6 @@
             <div class="m-4 space-y-2">
                 <div class="flex flex-rol items-end space-x-6 font-poppins">
                     <h3 class="font-bold text-3xl">Gilmar dos Santos</h3>
-                    <h6 class="text-lg">@gilmass</h6>
                 </div>
 
                 <div class="flex flex-rol items-end space-x-6 font-poppins">
@@ -86,7 +42,7 @@
         <p class="line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda facere inventore tempore iusto reiciendis at odio, tempora asperiores mollitia eum corrupti modi quos eaque sit error quaerat rem sequi iure!</p> 
         <div class="flex flex-rol items-end space-x-8 space-y-2" >
             <p> <i class="fa-solid fa-location-dot"></i> Bauru - SP </p>
-            <p> <i class="fa-regular fa-calendar-days"></i> Desde 28 de fevereiro de 2023</p>
+            <p> <i class="fa-regular fa-calendar-days"></i> Desde 28 de fevereiro de 2023</p>  <!-- data de inclusão  -->
         </div>
 
         <div class="w-full h-0.5 bg-slate-950"></div>
