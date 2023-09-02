@@ -1,4 +1,16 @@
-<div class="flex flex-col w-full max-w-[662px] p-4 rounded-2xl bg-white gap-4">
+<div class="flex flex-col w-full max-w-[662px] p-4 rounded-2xl bg-white gap-4" x-data="{
+    disableScroll() {
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        window.onscroll = () => {
+            window.scrollTo(scrollLeft, scrollTop);
+        }
+    },
+
+    enableScroll() {
+        window.onscroll = function() {};
+    }
+}">
     <div class="flex justify-between" x-data="{
         copyOpen: false,
         menuOpen: false,
@@ -14,6 +26,8 @@
             this.editOpen = true
             this.menuOpen = false
             Livewire.emit('post::updateRequest', post, images)
+
+            disableScroll()
         }
     }">
         <div x-show="editOpen">
@@ -71,6 +85,7 @@
 
         updateImages(images) {
             this.imageOpen = true
+            disableScroll();
             Livewire.emit('carousel::updated', images)
         }
     }">

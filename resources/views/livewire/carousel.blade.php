@@ -1,8 +1,12 @@
 <div class="fixed z-10 inset-0  flex flex-col w-screen h-screen p-8 gap-8" x-data="{
     selected: null,
+
+    closeModal() {
+        enableScroll();
+        imageOpen = !imageOpen;
+    }
 }">
-    <div class="bg-black bg-opacity-20 fixed inset-0 z-10" x-on:click="imageOpen = !imageOpen">
-</div>
+    <div class="bg-black bg-opacity-20 fixed inset-0 z-10" x-on:click="closeModal()"></div>
     @if($imageSelected)
         <img src="/{{$imageSelected}}" class="max-h-full h-full object-scale-down z-30 bg-black bg-opacity-40">
     @endif
