@@ -178,5 +178,13 @@
 
 </div>
 
+
+
+
+
+<div id="modal" x-show="openMenu()">
+    <!-- Código modal foda -->
+</div>
+
 @endsection
 

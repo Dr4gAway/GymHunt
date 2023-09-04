@@ -24,7 +24,6 @@
             @enderror
             <div class="grid grid-flow-col justify-stretch space-x-2">
                 <x-form.text name="name" label="Nome" placeholder="Digite seu nome completo"/>
-                <x-form.text name="apelido" label="Apelido" placeholder="@"/>
             </div>
 
             <x-form.text name="phone" label="Telefone" placeholder="ex: XXXXXXXXXXXXX"/>
