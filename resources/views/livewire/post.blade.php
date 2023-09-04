@@ -30,7 +30,6 @@
             disableScroll()
         }
     }">
-        <x-modal></x-modal>
         <div x-show="editOpen">
             <livewire:post.update />
         </div>
