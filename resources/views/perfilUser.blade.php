@@ -46,6 +46,7 @@
 
                 <div class="" x-data="{
                     configOpen: false,
+                    menuAlert: false,
 
                     toClipboard() {
                         navigator.clipboard.writeText('localhost:8000/perfil')
@@ -59,10 +60,21 @@
                     modalClose() {
                         this.configOpen = false 
                         enableScroll()
+                    }, 
+
+                    openAlert(){
+                        this.menuAlert = true
+                    }, 
+
+                    closeAlert(){
+                        this.menuAlert = false
                     }
-                }">
+
+                }"> 
+
+
                     <button class="bg-gymhunt-purple-2 text-lg py-2 px-3 rounded-2xl">Seguir</button>
-                    <button class="bg-gymhunt-purple-2 text-lg py-2 px-3 rounded-2xl" x-on:click="modalOpen()"> <i class="fa-regular fa-pen-to-square fa-lg"></i> Editar perfil</button>
+                    <button class="bg-gymhunt-purple-2 text-lg py-2 px-3 rounded-2xl" x-on:click="modalOpen()"><i class="fa-solid fa-pencil"></i> Editar perfil</button>
 
                     <div class="fixed inset-0 flex flex-col w-screen h-screen p-8 gap-8 z-20" x-show="configOpen">
                         <!-- Overlay  -->
@@ -73,7 +85,7 @@
 
                             <div class="font-poppins text-black flex flex-col w-full gap-4 space-y-2">
                                 <div class="grid grid-flow-col justify-between items-stretch space-x-3">
-                                    <p> <i class="fa-regular fa-pen-to-square fa-lg"></i> Editar perfil</p>
+                                    <p> <i class="fa-solid fa-pencil"></i> Editar perfil</p>
                                     <button class="font-black" x-on:click="modalClose()"> <i class="fa-solid fa-x"></i> </button>
                                 </div>
 
@@ -90,13 +102,17 @@
                                 
                                 <div class="w-full h-0.5 bg-slate-950"></div>
 
-                                <x-form.text name="name" label="Nome" placeholder="Digite seu nome completo"/>
+                                <x-form.text name="name" label="Nome" placeholder="Digite seu nome completo" />  
                                 <x-form.text name="email" label="Email" type="email" placeholder="ex: email@gmail.com"/>
                                 <x-form.text name="bio" label="Biografia" type="textarea" placeholder=""/>
                                 <x-form.text name="dataNasc" label="Data de nascimento" type="date"/>
                                 <div class="grid grid-flow-col justify-stretch space-x-2">
                                     <x-form.text name="phone" label="Telefone" placeholder="ex: XXXXXXXXXXXXX"/>
-                                    <x-form.text class="disable:opacity-75" name="cpf" label="CPF" type="text"/>
+                                    <div class="flex flex-col space-y-1">
+                                        <p class="font-poppins font-bold text-lg">CPF</p>
+                                        <label class="p-1.5 rounded-md ring-1 ring-gray-300 shadow-xl bg-neutral-500 opacity-40" x-on:click="openAlert()">458.066.118-41</label>
+                                    </div>
+                                    <!-- <x-form.text class="disable:opacity-75" name="cpf" label="CPF" type="text"/> -->
                                 </div>
 
                                 <div class="grid grid-flow-col justify-between space-x-2">
@@ -104,6 +120,36 @@
                                     <button type="submit" class="justify-center rounded-lg bg-gymhunt-purple-1 px-5 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Salvar</button>
                                 </div>
                             </div>  
+                        </div>
+                    </div>
+
+                    <!--alert-->
+                    <div class="relative z-20" x-show="menuAlert">
+                        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+                        <div class="fixed inset-0 z-10 overflow-y-auto">
+                            <div class="flex min-h-full items-end justify-center text-center sm:items-center sm:p-0">
+                            
+                            <div class="relative transform overflow-hidden  rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                                <div class="bg-white p-4 sm:p-6 sm:pb-4">
+                                <div class=" items-center justify-between sm:flex sm:items-start">
+                                    <div class="flex items-center justify-center rounded-full bg-red-100 text-red-500 sm:mx-0 sm:h-10 sm:w-10">
+                                        <i class="fa-solid fa-triangle-exclamation fa-xl"></i>
+                                    </div>
+
+                                    <div class="mt-3 space-y-2 justify-center text-center sm:ml-4 sm:mt-0 sm:text-left">
+                                        <h3 class="text-base font-semibold leading-6 text-gray-900"  id="modal-title">Você não pode editar esse campo</h3>
+                                        <p class="text-base from-neutral-500 leading-6 text-gray-900" >O CPF não é um campo editável</p>
+                                    </div>
+
+                                    <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                                        <button type="button" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto" x-on:click="closeAlert()">OK </button>
+                                    </div>
+                                </div>
+                                </div>
+                                
+                            </div>
+                            </div>
                         </div>
                     </div>
 
@@ -136,5 +182,8 @@
         </div>
     </div>
 </div>
+
+
+
 
 @endsection
