@@ -26,6 +26,6 @@ class Create extends Component
 
         $this->body = null;
 
-        $this->emit('comment::created');
+        $this->emitUp('comment::created');
     }
 }

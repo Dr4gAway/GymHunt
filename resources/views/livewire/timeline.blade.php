@@ -1,5 +1,24 @@
-<div class="flex items-center flex-col w-full max-w-2xl gap-8">
+<div class="flex items-center flex-col w-full max-w-2xl gap-8" x-data="{
+    disableScroll() {
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        window.onscroll = () => {
+            window.scrollTo(scrollLeft, scrollTop);
+        }
+    },
+
+    enableScroll() {
+        window.onscroll = function() {};
+    },
+
+    imageOpen: false
+}">
+
     <livewire:post.create />
+
+    <div x-show="imageOpen">
+        <livewire:carousel  />
+    </div>
 
     @foreach ($this->posts as $post)
         <livewire:post :post="$post" wire:key="post-{{$post->id}}" /> 
@@ -16,9 +35,9 @@
                     rootMargin: '300px'
                 })
                 observer.observe(this.$el)
-        }
+        },
 
     }" x-init="infinityScroll()" class="w-6 h-6 bg-blue-500">
-
     </div>
+
 </div>

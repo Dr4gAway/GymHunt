@@ -1,15 +1,5 @@
 <div class="flex flex-col w-full max-w-[662px] p-4 rounded-2xl bg-white gap-4" x-data="{
-    disableScroll() {
-        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-        window.onscroll = () => {
-            window.scrollTo(scrollLeft, scrollTop);
-        }
-    },
-
-    enableScroll() {
-        window.onscroll = function() {};
-    }
+    
 }">
     <div class="flex justify-between" x-data="{
         copyOpen: false,
@@ -87,18 +77,14 @@
     <p>{{$post->body}}</p>
 
     <div x-data="{
-        imageOpen: false,
-
         updateImages(images) {
-            this.imageOpen = true
+            imageOpen = true
+
+            console.log(imageOpen)
             disableScroll();
-            Livewire.emit('carousel::updated', images)
+            Livewire.emitTo('carousel', 'carousel::updated', images)
         }
     }">
-    
-        <div x-show="imageOpen">
-            <livewire:carousel  />
-        </div>
 
         @if($this->postType == 1)
             <div x-on:click="updateImages({{$this->post->images}})" class="cursor-pointer">
