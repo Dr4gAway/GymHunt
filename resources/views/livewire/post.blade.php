@@ -62,16 +62,22 @@
                     <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-1">
                          <span>Reportar</span>
                         <img src="\img\icons\flag-icon.svg" alt="like" class="h-5 cursor-pointer">
-                      </li>
-                      <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-2" x-on:click="updatePost({{ $post }}, {{$this->post->images->pluck('path')}})">
+                    </li>
+
+                    @can('update', $post)
+                    <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-2" x-on:click="updatePost({{ $post }}, {{$this->post->images->pluck('path')}})">
                         <span>Editar</span>
                         <img src="\img\icons\edit-icon.svg" alt="like" class="h-5 cursor-pointer">
                     </li>
+                    @endcan
+                    @can('delete', $post)
 
                     <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-1" wire:click="handleDelete">
                         <span>Excluir</span>
                         <img src="\img\icons\delete-icon.svg" alt="like" class="h-5 cursor-pointer" >
                     </li>
+
+                    @endcan
                 </ul>
             </div>
 

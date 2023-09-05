@@ -3,13 +3,18 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
 use \App\Models\Post as Item;
 use \App\Models\PostLike;
 use \App\Models\Comment;
 
 class Post extends Component
 {
+    use AuthorizesRequests;
+    
     public Item $post;
 
     public ?PostLike $liked = null;
@@ -115,6 +120,8 @@ class Post extends Component
 
     public function handleDelete()
     {
+        $this->authorize('delete', $this->post);
+
         $this->post->delete();
 
         dd('success', 'Post deletado com sucesso.');
