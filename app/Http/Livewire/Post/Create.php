@@ -5,15 +5,18 @@ namespace App\Http\Livewire\Post;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+
 use App\Models\Post;
 use App\Models\Image;
 
 class Create extends Component
 {
     use WithFileUploads;
+    use AuthorizesRequests;
 
     public ?string $body = null;
 
@@ -34,6 +37,11 @@ class Create extends Component
     }
 
     public function store() {
+        if(!Auth::check())
+        {
+            return redirect()->route('login');
+        }
+
         $this->validate();
 
         if($this->photos)

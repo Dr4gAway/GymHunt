@@ -20,7 +20,6 @@ class Update extends Component
 
     public $images = [];
     public $oldImages = [];
-    public $deleteImages = [];
 
     protected $listeners = [
         'image::removed' => '$refresh',
@@ -40,7 +39,7 @@ class Update extends Component
     public function store() {
         $this->validate();
 
-        if($this->images)
+        if($this->images || $this->oldImages)
         {
             $this->post->body = $this->body;
 
