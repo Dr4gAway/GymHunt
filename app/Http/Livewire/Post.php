@@ -134,20 +134,14 @@ class Post extends Component
     {
         $storage = Storage::disk('public');
 
-        foreach($this->post->images->pluck('path') as $image)
+        foreach($this->post->images as $image)
         {
-            if(Str::contains($image, 'storage/'))
+            if(Str::contains($image->path, 'storage/'))
             {
-                $path = Str::substr($image, 8);
+                $path = Str::substr($image->path, 8);
                 $storage->delete($path);
             }
+            $image->delete();
         }
     }
-
-    /* 
-        foreach($this->post->images->pluck('path') as $image)
-        {
-            //Removing "storage/" from the image path
-        } */
-
 }
