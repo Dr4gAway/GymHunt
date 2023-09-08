@@ -3,9 +3,24 @@
     'placeholder' => 'placeholder',
 ])
 
+
+{{-- 
+    resize = () => {
+        $el.style.height == 0 ? 'auto' : ($el.scrollHeight + 5) + 'px';
+    }
+    --}}
 <div class="w-full">
     <textarea
-        x-data="{ resize: () => { $el.style.height = 'auto'; $el.style.height = ($el.scrollHeight + 5) + 'px' } }"
+        x-data="{
+            resize() {
+                if ($el.style.height != 0) {
+                    $el.style.height = 'auto';
+                    $el.style.height = ($el.scrollHeight + 8) + 'px'
+                }
+                else
+                    $el.style.height = 'auto'
+            }
+        }"
         wire:model="{{ $model }}"
         x-init="resize()"
         @input="resize()"
