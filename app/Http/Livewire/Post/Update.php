@@ -48,11 +48,15 @@ class Update extends Component
             for($i = 0; $i < count($this->oldImages); $i++)
             {
                 if(!in_array($this->oldImages[$i], $this->images))
+                {
+                    $this->cleanupPostImage($this->oldImages[$i]);
                     Image::where('path', $this->oldImages[$i])->delete();
+                }
             }
 
             foreach($this->images as $image)
             {
+                //Only already uploded images are Strings
                 if (is_string($image))
                     continue;
 
@@ -111,6 +115,17 @@ class Update extends Component
             if ($yesterdaysStamp > $storage->lastModified($filePathname)) {
                 $storage->delete($filePathname);
             }
+        }
+    }
+
+    protected function cleanupPostImage($imagePath)
+    {
+        $storage = Storage::disk('public');
+
+        if(Str::contains($imagePath, 'storage/'))
+        {
+            $path = Str::substr($imagePath, 8);
+            $storage->delete($path);
         }
     }
 }

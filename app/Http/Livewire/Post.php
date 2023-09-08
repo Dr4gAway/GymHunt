@@ -4,6 +4,8 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
@@ -122,9 +124,30 @@ class Post extends Component
     {
         $this->authorize('delete', $this->post);
 
+        $this->cleanupPostImages();
         $this->post->delete();
 
         dd('success', 'Post deletado com sucesso.');
     }
+
+    protected function cleanupPostImages()
+    {
+        $storage = Storage::disk('public');
+
+        foreach($this->post->images->pluck('path') as $image)
+        {
+            if(Str::contains($image, 'storage/'))
+            {
+                $path = Str::substr($image, 8);
+                $storage->delete($path);
+            }
+        }
+    }
+
+    /* 
+        foreach($this->post->images->pluck('path') as $image)
+        {
+            //Removing "storage/" from the image path
+        } */
 
 }
