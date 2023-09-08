@@ -27,8 +27,14 @@ class Update extends Component
     ];
 
     protected $rules = [
-        'body' => 'string|min:6',
+        'body' => 'required|string|min:6',
         'images.*' => 'max:2048'
+    ];
+
+    protected $messages = [
+        'body.required' => 'Não se pode enviar um post vazio',
+        'body.min' => 'São necessários pelo menos 6 caracteres',
+        'images.*' => 'Foto inválida'
     ];
 
     public function render()

@@ -17,8 +17,6 @@
 
             <input type="file" wire:model="images">
 
-            @error('images.*') <span class="error">{{ $message }}</span> @enderror
-
             @isset($images)
                 <div class="flex gap-8 drop-shadow-md">
                     @foreach($images as $index => $image)
@@ -42,6 +40,13 @@
                     @endforeach
                 </div>
             @endisset
+
+            @error('photos.*') <span class="error">{{ $message }}</span> @enderror
+            @if($errors->any())
+                <div class="flex flex-col text-red-500">
+                    {!! implode('', $errors->all(':message')) !!}
+                </div>
+            @endif
 
             <button type="submit" class="self-end bg-gymhunt-purple-1 text-white rounded-2xl px-4 py-2 w-fit">
                 Enviar
