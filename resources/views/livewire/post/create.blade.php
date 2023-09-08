@@ -16,8 +16,6 @@
 
         <input type="file" wire:model="photos">
 
-        @error('photos.*') <span class="error">{{ $message }}</span> @enderror
-
         @isset($photos)
             <div class="flex gap-8 drop-shadow-md">
                 @foreach($photos as $index => $photo)
@@ -31,6 +29,13 @@
                 @endforeach
             </div>
         @endisset
+        
+        @error('photos.*') <span class="error">{{ $message }}</span> @enderror
+        @if($errors->any())
+            <div class="flex flex-col text-red-500">
+                {!! implode('', $errors->all(':message')) !!}
+            </div>
+        @endif
     </div>
     
 </form>

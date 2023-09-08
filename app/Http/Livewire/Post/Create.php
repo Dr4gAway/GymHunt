@@ -31,6 +31,12 @@ class Create extends Component
         'photos.*' => 'max:2048'
     ];
 
+    protected $messages = [
+        'body.required' => 'Não se pode enviar um post vazio',
+        'body.min' => 'São necessários pelo menos 6 caracteres',
+        'photos.*' => 'Foto inválida'
+    ];
+
     public function render()
     {
         return view('livewire.post.create');
