@@ -27,4 +27,8 @@ Route::get('/perfil', function(){
     return view('perfilUser');
 })->name('perfilUser');
 
+Route::get('/academia', function(){
+    return view('perfilGym');
+})->name('perfilGym');
+
 require __DIR__.'/auth.php';

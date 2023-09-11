@@ -21,29 +21,19 @@
     </div>
     
     <div class="items-center w-full flex flex-row"> <!-header infos do perfil->
-        <div class="ml-12 w-60 h-60"> <img class="w-full" src=".\img\avatar.png" alt=""> </div>         
+        <div class="ml-12 w-60 h-50"> <img class="w-full" src=".\img\avatar.png" alt=""> </div>         
         
         <div class="w-full flex flex-row justify-between ">
             <div class="m-4 space-y-2">
-                <div class="flex flex-rol items-end space-x-6 font-poppins">
-                    <h3 class="font-bold text-3xl">Gilmar dos Santos</h3>
-                </div>
-
-                <div class="flex flex-rol items-end space-x-6 font-poppins">
-                    <p class="font-medium"><b>400</b> seguidores</p>
-                    <p class="font-medium"><b>690</b> seguindo</p>
-                    <div class="flex flex-row items-center space-x-2">
-                        <div class="rounded-full bg-blue-400 w-6 h-6"></div>
-                        <p>Seguidores em comum</p>
-                    </div>
+                <div class="flex flex-row items-end space-x-6 font-poppins">
+                    <p class="font-bold text-3xl">Origamid</p>
+                    <div>
+                        <h3 class="text-gymhunt-purple-2 text-2xl"> <i class="fa-regular fa-star"></i> 4.5  </h3>
+                    </div> 
                 </div>
             </div>
     
             <div class="flex flex-rol font-poppins text-white space-x-3 my-4 mx-6">
-                <div>
-                    <button class="bg-gymhunt-purple-2 text-lg py-2 px-3 rounded-2xl">. . .</button>
-                </div>
-
                 <div class="" x-data="{
                     configOpen: false,
                     menuAlert: false,
@@ -156,27 +146,23 @@
         </div>
     </div>
 
-    <div class="mx-12 space-y-3 font-poppins"> <!--publicações -->
-        <p class="line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda facere inventore tempore iusto reiciendis at odio, tempora asperiores mollitia eum corrupti modi quos eaque sit error quaerat rem sequi iure!</p> 
-        <div class="flex flex-rol items-end space-x-8 space-y-2" >
-            <p> <i class="fa-solid fa-location-dot"></i> Bauru - SP </p>
-            <p> <i class="fa-regular fa-calendar-days"></i> Desde 28 de fevereiro de 2023</p>  <!-- data de inclusão  -->
+    <div class="mx-12 font-poppins"> <!--publicações -->
+        
+
+        <div class="flex flex-row justify-center font-poppins font-medium text-2xl">
+            <h4 class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Atividade</h4>
+            <h4 class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Galeria</h4>
+            <h4 class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Avaliações</h4>
+            <h4 class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Sobre nós</h4>
         </div>
 
         <div class="w-full h-0.5 bg-slate-950"></div>
 
-        <div class="grid grid-cols-4 gap-4 mb-96-">
-            <a href="#"> <img class="w-550" src=".\img\image.png" alt=""></a>
-            <a href="#"> <img class="w-550" src=".\img\image (1).png" alt=""></a>
-            <a href="#"> <img class="w-550" src=".\img\image.png" alt=""></a>
-            <a href="#"> <img class="w-550" src=".\img\image (1).png" alt=""></a>
-            <a href="#"> <img class="w-550" src=".\img\image.png" alt=""></a>
-            <a href="#"> <img class="w-550" src=".\img\image (1).png" alt=""></a>
-            <a href="#"> <img class="w-550" src=".\img\image.png" alt=""></a>
-            <a href="#"> <img class="w-550" src=".\img\image (1).png" alt=""></a>
-            <a href="#"> <img class="w-550" src=".\img\image.png" alt=""></a>
-            <a href="#"> <img class="w-550" src=".\img\image (1).png" alt=""></a>
-            <a href="#"> <img class="w-550" src=".\img\image.png" alt=""></a>
+        <div class="flex flex-rol">
+            <div class="bg-white rounded-lg p-4 text-center">
+                <p class="text-gymhunt-purple-1 font-semibold">Localização </p>
+                <img class="rounded-lg border border-gymhunt-purple-1" src=".\img\image (1).png" alt="">
+            </div>
         </div>
     </div>
 </div>
