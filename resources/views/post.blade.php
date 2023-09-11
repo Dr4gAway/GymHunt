@@ -14,14 +14,15 @@
     
         enableScroll() {
             window.onscroll = function() {};
-        },
-    
-        imageOpen: false
+        }
     }">
 
         <div x-show="imageOpen">
-            <livewire:carousel  />
+            <livewire:carousel />
         </div>
+
+        
+
         <livewire:post :post="$post" :showAll="true" />
     </section>
 @endsection

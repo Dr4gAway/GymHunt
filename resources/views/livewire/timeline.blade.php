@@ -1,4 +1,8 @@
 <div class="flex items-center flex-col w-full max-w-2xl gap-8" x-data="{
+    imageOpen: false,
+    editOpen: false,
+
+
     disableScroll() {
         scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
@@ -11,13 +15,23 @@
         window.onscroll = function() {};
     },
 
-    imageOpen: false
+    updatePost(post, images) {
+        this.editOpen = true
+        menuOpen = false
+        Livewire.emit('post::updateRequest', post, images)
+
+        disableScroll()
+    }
 }">
 
     <livewire:post.create />
 
     <div x-show="imageOpen">
         <livewire:carousel  />
+    </div>
+
+    <div x-show="editOpen">
+        <livewire:post.update />
     </div>
 
     @foreach ($this->posts as $post)

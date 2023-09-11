@@ -14,12 +14,12 @@
 
         updatePost(post, images) {
             this.editOpen = true
-            this.menuOpen = false
             Livewire.emit('post::updateRequest', post, images)
 
             disableScroll()
         }
     }">
+
         <div x-show="editOpen">
             <livewire:post.update />
         </div>
@@ -46,7 +46,7 @@
             </div>
             
             <div class="relative">
-                <img src="\img\icons\more-icon.svg" alt="like" class="h-5 cursor-pointer" x-on:click="menuOpen = !menuOpen">
+                <img src="\img\icons\more-icon.svg" alt="like" class="h-5 cursor-pointer" x-on:click="menuOpen = !menuOpen" x-on:click.away="menuOpen = false">
 
                 <ul x-show="menuOpen" class="absolute z-10 top-auto right-1 flex flex-col items-end text-right gap-1 bg-white p-4 rounded-md w-max">
                     <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-1">
