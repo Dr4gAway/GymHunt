@@ -104,7 +104,7 @@
                                 <x-form.text name="email" label="Email" type="email" placeholder="ex: email@gmail.com"/>
                                 <x-form.text name="bio" label="Biografia" type="textarea" placeholder=""/>
                                 <x-form.text name="dataNasc" label="Data de nascimento" type="date"/>
-                                <div class="grid grid-flow-col justify-stretch space-x-2">
+                                <div class="grid grid-cols-2 justify-stretch space-x-2">
                                     <x-form.text name="phone" label="Telefone" placeholder="ex: XXXXXXXXXXXXX"/>
                                     <div class="flex flex-col space-y-1">
                                         <p class="font-poppins font-bold text-lg">CPF</p>

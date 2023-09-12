@@ -31,4 +31,8 @@ Route::get('/academia', function(){
     return view('perfilGym');
 })->name('perfilGym');
 
+Route::get('/avaliações', function(){
+    return view('avaliacoesGym');
+})->name('avaliacoesGym');
+
 require __DIR__.'/auth.php';

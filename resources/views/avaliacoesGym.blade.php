@@ -1,5 +1,5 @@
 @extends('layout.site')
-@section('titulo', 'GymHunt - Perfil da Academia')
+@section('titulo', 'GymHunt - Avaliações da Academia')
 @section('content') 
 
 <div class="flex flex-col justify-between bg-gymhunt-gray-1" x-data="{
@@ -149,42 +149,21 @@
     </div>
 
     <div class="mx-12 font-poppins"> <!--publicações -->
-        
-
         <div class="flex flex-row justify-center font-poppins font-medium text-2xl">
-            <a href="{{route('perfilGym')}}" class="border-b-4 border-gymhunt-purple-2 text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Atividade</a>
+            <a href="{{route('perfilGym')}}" class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Atividade</a>
             <a class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Galeria</a>
-            <a href="{{route('avaliacoesGym')}}" class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Avaliações</a>
+            <a href="{{route('avaliacoesGym')}}" class="border-b-4 border-gymhunt-purple-2 text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Avaliações</a>
             <a class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Sobre nós</a>
         </div>
 
         <div class="w-full h-0.5 bg-slate-950"></div>
 
         <div class="flex flex-rol justify-center space-x-8 m-10">
-            <div class="bg-yellow-500 w-1/2"></div>
-            <div class="bg-white rounded-lg p-4 text-center space-y-4">
-                <p class="text-gymhunt-purple-1 font-semibold text-2xl">Localização </p>
-                <img class="rounded-lg border border-gymhunt-purple-1" src=".\img\image (1).png" alt="">
-                <div>
-                    <a href="" class="text-gymhunt-purple-2 font-medium">Ver no mapa</a> <!--vai para tela de valiações-->
-                </div>
-            </div>
+            <div class="bg-yellow-500 p-4"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed beatae rerum quaerat quasi et animi reiciendis, praesentium ab adipisci ex enim, nam mollitia excepturi qui. Debitis perspiciatis quas eveniet asperiores!</div>
+            
         </div>
 
-        <div class="flex flex-rol justify-center space-x-8 m-10">
-            <div class="bg-yellow-500 w-1/2"></div>
-            <div class="bg-white rounded-lg p-4 text-center space-y-4 max-w-xs">
-                <p class="text-gymhunt-purple-1 font-semibold text-2xl">Avaliação </p>
-                <div class="">
-                    <p class="font-semibold text-left">Comentário gerais</p>
-                    <p class="rounded-lg p-2 border border-gymhunt-purple-2 line-clamp-6 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, aspernatur! Tempora, illo error assumenda porro temporibus enim</p>
-                </div>
-                <div>
-                    <a href="" class="text-gymhunt-purple-2 font-medium">Ver mais avaliações</a> <!--vai para tela de valiações-->
-                </div>
-                <button class="bg-gymhunt-purple-2 text-white text-lg py-2 px-3 rounded-2xl w-full"> <i class="fa-solid fa-ranking-star"></i> Deixe sua avaliação</button> <!--vai para tela de fazer avaliações-->
-            </div>
-        </div>
+    
     </div>
 
     <div class="flex items-center justify-center m-4">
