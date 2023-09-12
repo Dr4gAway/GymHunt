@@ -16,7 +16,7 @@
         @livewireStyles
     </head>
 
-    <header class="text-base font-normal  px-8 h-[100px] bg-white shadow-lg font-poppins flex">
+    <header class="text-base font-normal px-8 h-[100px] bg-white shadow-lg font-poppins flex">
         @auth
             <nav class="flex items-center justify-between w-full transition-all" aria-label="Global">
                 <div class="flex items-center justify-center center justify-items-center gap-8 flex-grow pr-8">

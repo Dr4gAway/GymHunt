@@ -25,10 +25,10 @@
         
         <div class="w-full flex flex-row justify-between ">
             <div class="m-4 space-y-2">
-                <div class="flex flex-row items-end space-x-6 font-poppins">
-                    <p class="font-bold text-3xl">Origamid</p>
+                <div class="flex flex-row items-center space-x-4 font-poppins">
+                    <p class="font-bold text-4xl">Origamid</p>
                     <div>
-                        <h3 class="text-gymhunt-purple-2 text-2xl"> <i class="fa-regular fa-star"></i> 4.5  </h3>
+                        <h3 class="text-gymhunt-purple-2 text-xl"> <i class="fa-regular fa-star"></i> 4.5  </h3>
                     </div> 
                 </div>
             </div>
@@ -92,14 +92,14 @@
 
                                 <x-form.text name="name" label="Nome" placeholder="Digite seu nome completo" />  
                                 <x-form.text name="email" label="Email" type="email" placeholder="ex: email@gmail.com"/>
-                                <x-form.text name="bio" label="Biografia" type="textarea" placeholder=""/>
-                                <x-form.text name="dataNasc" label="Data de nascimento" type="date"/>
+                                <x-form.text name="bio" label="Endereço" type="textarea" placeholder=""/>
                                 <div class="grid grid-flow-col justify-stretch space-x-2">
-                                    <x-form.text name="phone" label="Telefone" placeholder="ex: XXXXXXXXXXXXX"/>
                                     <div class="flex flex-col space-y-1">
-                                        <p class="font-poppins font-bold text-lg">CPF</p>
+                                        <p class="font-poppins font-bold text-lg">CNPJ</p>
                                         <label class="p-1.5 rounded-md ring-1 ring-gray-300 shadow-xl bg-neutral-500 opacity-40" x-on:click="openAlert()">458.066.118-41</label>
                                     </div>
+                                    <x-form.text name="phone" label="Telefone" placeholder="ex: XXXXXXXXXXXXX"/>
+                                    <x-form.text name="horarios" type="time" label="Horários" placeholder=""/>
                                     <!-- <x-form.text class="disable:opacity-75" name="cpf" label="CPF" type="text"/> -->
                                 </div>
 
@@ -150,20 +150,42 @@
         
 
         <div class="flex flex-row justify-center font-poppins font-medium text-2xl">
-            <h4 class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Atividade</h4>
-            <h4 class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Galeria</h4>
-            <h4 class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Avaliações</h4>
-            <h4 class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Sobre nós</h4>
+            <a class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Atividade</a>
+            <a class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Galeria</a>
+            <a class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Avaliações</a>
+            <a class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Sobre nós</a>
         </div>
 
         <div class="w-full h-0.5 bg-slate-950"></div>
 
-        <div class="flex flex-rol">
-            <div class="bg-white rounded-lg p-4 text-center">
-                <p class="text-gymhunt-purple-1 font-semibold">Localização </p>
+        <div class="flex flex-rol justify-center space-x-8 m-10">
+            <div class="bg-yellow-500 w-1/2"></div>
+            <div class="bg-white rounded-lg p-4 text-center space-y-4">
+                <p class="text-gymhunt-purple-1 font-semibold text-2xl pb-4 ">Localização </p>
                 <img class="rounded-lg border border-gymhunt-purple-1" src=".\img\image (1).png" alt="">
+                <div>
+                    <a href="" class="text-gymhunt-purple-2 font-medium">Ver no mapa</a> <!--vai para tela de valiações-->
+                </div>
             </div>
         </div>
+
+        <div class="flex flex-rol justify-center space-x-8 m-10">
+            <div class="bg-yellow-500 w-1/2"></div>
+            <div class="bg-white rounded-lg p-4 text-center space-y-4">
+                <p class="text-gymhunt-purple-1 font-semibold text-2xl pb-4">Avaliação </p>
+                <img class="rounded-lg border border-gymhunt-purple-1" src=".\img\image (1).png" alt="">
+                <div>
+                    <a href="" class="text-gymhunt-purple-2 font-medium">Ver mais avaliações</a> <!--vai para tela de valiações-->
+                </div>
+                <button class="bg-gymhunt-purple-2 text-white text-lg py-2 px-3 rounded-2xl w-full"> <i class="fa-solid fa-ranking-star"></i> Deixe sua avaliação</button> <!--vai para tela de fazer avaliações-->
+            </div>
+        </div>
+    </div>
+
+    <div class="flex items-center justify-center m-4">
+        <div class="w-1/4 h-0.5 bg-gymhunt-purple-2"></div>
+        <a href=""> <p class="text-gymhunt-purple-2 font-semibold text-lg px-2">Veja mais publicações</p> </a> <!--leva para a tela da galeria, somente publicações-->
+        <div class="w-1/4 h-0.5 bg-gymhunt-purple-2"></div>
     </div>
 </div>
 
