@@ -24,10 +24,14 @@ class Post extends Component
 
     public bool $showAll = false;
 
-    protected $listeners = [
-        'comment::created' => '$refresh',
-        'post::updated' => '$refresh'
-    ];
+    //protected $listeners = [ 'comment::created' => '$refresh'];
+
+    protected function getListeners() {
+        return [
+            'comment::created' => '$refresh',
+            "post::updated{$this->post->id}" => '$refresh'
+        ];
+    }
 
     public function mount() {
         $this->getLikedStatus();

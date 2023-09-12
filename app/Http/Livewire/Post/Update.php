@@ -83,7 +83,7 @@ class Update extends Component
                 ]);
         }
 
-        $this->emitUp('post::updated');
+        $this->emitTo('post', "post::updated{$this->post->id}");
         $this->reset(['body', 'images']);
         $this->cleanupOldUploads();
         $this->dispatchBrowserEvent('update::close');

@@ -4,7 +4,6 @@
     <div class="flex justify-between" x-data="{
         copyOpen: false,
         menuOpen: false,
-        editOpen: false,
 
         toClipboard() {
             navigator.clipboard.writeText('localhost:8000/feed/posts/'+ @js($post->id) )
@@ -19,10 +18,6 @@
             disableScroll()
         }
     }">
-
-        <div x-show="editOpen">
-            <livewire:post.update />
-        </div>
 
         <div class="flex items-center gap-4">
             <div class="rounded-full h-10 w-10 bg-red-500"></div>
