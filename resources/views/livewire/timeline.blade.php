@@ -2,7 +2,6 @@
     imageOpen: false,
     editOpen: false,
 
-
     disableScroll() {
         scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
