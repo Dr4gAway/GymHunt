@@ -33,6 +33,26 @@
         <livewire:post.update />
     </div>
 
+    <div class="fixed place-self-center">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="relative z-40 self-center justify-self-center flex flex-col gap-3 items-center bg-white p-4 w-fit rounded-2xl max-w-2xl">
+            <p>Tem certeza?</p>
+
+            <div class="flex gap-2"> 
+                <button class="bg-red-500 rounded-2xl px-4 py-2">Cancelar</button>
+                <button class="bg-green-500 rounded-2xl px-4 py-2">Confirmar</button>
+            </div> 
+        </div>
+    
+        <div class="bg-black bg-opacity-20 fixed inset-0" x-on:click="closeModal()"></div>
+    </div>
+
+
     @foreach ($this->posts as $post)
         <livewire:post :post="$post" wire:key="post-{{$post->id}}" /> 
     @endforeach
