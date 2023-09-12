@@ -4,6 +4,8 @@
     <div class="flex justify-between" x-data="{
         copyOpen: false,
         menuOpen: false,
+        deleteOpen: false,
+        
 
         toClipboard() {
             navigator.clipboard.writeText('localhost:8000/feed/posts/'+ @js($post->id) )
@@ -16,8 +18,41 @@
             Livewire.emit('post::updateRequest', post, images)
 
             disableScroll()
+        },
+
+        deletePost() {
+            this.deleteOpen = false;
+            $wire.handleDelete();
         }
     }">
+
+        <!-- Delete modal -->
+
+        <div class="fixed z-10 inset-0 place-self-center flex flex-col items-center justify-center w-screen h-screen" x-show="deleteOpen">
+            <div class="relative z-40 flex flex-col gap-3 items-center bg-white w-fit rounded-2xl max-w-xl">
+                <div class="flex items-center p-4 gap-4">
+                    <img src="\img\icons\warning-icon.svg" alt="like" class="h-24 cursor-pointer">
+                    <div>
+                        <span class="font-semibold text-2xl">Você está deletando um post</span>
+                        <p>Você está prestes a deletar um post. Esta ação não poderá ser desfeita, tem certeza?</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-2 bg-gymhunt-grey-1 w-full justify-end p-4 rounded-b-xl"> 
+                    <button class=" px-4 py-2 hover:text-gymhunt-purple-1">Cancelar</button>
+                    <button class="bg-gymhunt-purple-1 hover:bg-gymhunt-purple-2 rounded-2xl px-4 py-2 text-white font-semibold flex items-center gap-1"
+                            x-on:click="deletePost">
+                        <img src="\img\icons\check-white-icon.svg" class="h-6" alt="">
+                        Confirmar
+                    </button>
+                </div> 
+            </div>
+
+            <!-- Overlay -->
+            <div class="bg-black bg-opacity-20 fixed inset-0" x-on:click="closeModal()"></div>
+        </div>
+
+        <!-- End Modal -->
 
         <div class="flex items-center gap-4">
             <div class="rounded-full h-10 w-10 bg-red-500"></div>
@@ -57,7 +92,7 @@
                     @endcan
                     @can('delete', $post)
 
-                    <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-1" wire:click="handleDelete">
+                    <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-1" x-on:click="deleteOpen = !deleteOpen" x-on:click.away="deleteOpen = false">
                         <span>Excluir</span>
                         <img src="\img\icons\delete-icon.svg" alt="like" class="h-5 cursor-pointer" >
                     </li>

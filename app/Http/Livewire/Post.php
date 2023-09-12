@@ -130,8 +130,6 @@ class Post extends Component
 
         $this->cleanupPostImages();
         $this->post->delete();
-
-        dd('success', 'Post deletado com sucesso.');
     }
 
     protected function cleanupPostImages()
