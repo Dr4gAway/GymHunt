@@ -157,11 +157,23 @@
         </div>
 
         <div class="w-full h-0.5 bg-slate-950"></div>
+        <div class="flex justify-end">
+            <button class="bg-gymhunt-purple-2 text-lg py-2 px-3 rounded-2xl text-white font-medium my-4" x-on:click="modalOpen()">Deixe sua avaliação</button>
+        </div>
+
+        <div class="w-940 flex flex-rol justify-center bg-white">
+            <div class="flex justify-center">
+                <p class="">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae tempore iusto provident. Neque culpa maxime eveniet, ipsam rem, sed nihil sapiente odio, dolor accusamus perferendis iure distinctio autem sit veniam.</p>
+
+            </div>
+        </div>
 
         <div class="flex flex-rol justify-center space-x-8 m-10">
             <div class="bg-yellow-500 p-4"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed beatae rerum quaerat quasi et animi reiciendis, praesentium ab adipisci ex enim, nam mollitia excepturi qui. Debitis perspiciatis quas eveniet asperiores!</div>
             
         </div>
+
+
 
     
     </div>

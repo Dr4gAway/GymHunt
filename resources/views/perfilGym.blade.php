@@ -162,6 +162,17 @@
 
         <div class="flex flex-rol justify-center space-x-8 m-10">
             <div class="bg-yellow-500 w-1/2"></div>
+            <div class="bg-white rounded-lg p-4 px-8 text-center space-y-4">
+                <p class="text-gymhunt-purple-1 font-semibold text-2xl">Visitar academia</p>
+                <img class="rounded-lg border border-gymhunt-purple-1 w-64 h-64" src=".\img\Validação DayUse.png" alt="">
+                <div>
+                    <a href="" class="text-gymhunt-purple-2 font-medium">Clique para gerar validação</a> <!--vai para tela de valiações-->
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-rol justify-center space-x-8 m-10">
+            <div class="bg-yellow-500 w-1/2"></div>
             <div class="bg-white rounded-lg p-4 text-center space-y-4">
                 <p class="text-gymhunt-purple-1 font-semibold text-2xl">Localização </p>
                 <img class="rounded-lg border border-gymhunt-purple-1" src=".\img\image (1).png" alt="">
