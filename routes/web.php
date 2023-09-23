@@ -35,4 +35,8 @@ Route::get('/avaliações', function(){
     return view('avaliacoesGym');
 })->name('avaliacoesGym');
 
+Route::get('/gerandoAvaliação', function(){
+    return view('comentario');
+})->name('comentario');
+
 require __DIR__.'/auth.php';

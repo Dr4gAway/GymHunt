@@ -41,7 +41,7 @@
     
             <div class="flex flex-rol font-poppins text-white space-x-3 my-4 mx-6">
                 <div>
-                    <button class="bg-gymhunt-purple-2 text-lg py-2 px-3 rounded-2xl">. . .</button>
+                    <button class="bg-gymhunt-purple-2 text-center rounded-2xl h-11 w-12"> <i class="fa-solid fa-ellipsis fa-lg"></i></button>
                 </div>
 
                 <div class="" x-data="{

@@ -191,9 +191,9 @@
                     <p class="rounded-lg p-2 border border-gymhunt-purple-2 line-clamp-6 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, aspernatur! Tempora, illo error assumenda porro temporibus enim</p>
                 </div>
                 <div>
-                    <a href="" class="text-gymhunt-purple-2 font-medium">Ver mais avaliações</a> <!--vai para tela de valiações-->
+                    <a href="{{route('avaliacoesGym')}}" class="text-gymhunt-purple-2 font-medium">Ver mais avaliações</a> <!--vai para tela de valiações-->
                 </div>
-                <button class="bg-gymhunt-purple-2 text-white text-lg py-2 px-3 rounded-2xl w-full"> <i class="fa-solid fa-ranking-star"></i> Deixe sua avaliação</button> <!--vai para tela de fazer avaliações-->
+                <a href="{{route('comentario')}}"> <button class="bg-gymhunt-purple-2 text-lg py-2 px-3 rounded-2xl text-white font-medium my-4" x-on:click="modalOpen()"> <i class="fa-solid fa-ranking-star"></i> Deixe sua avaliação</button> </a>
             </div>
         </div>
     </div>

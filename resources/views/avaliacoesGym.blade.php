@@ -158,29 +158,137 @@
 
         <div class="w-full h-0.5 bg-slate-950"></div>
         <div class="flex justify-end">
-            <button class="bg-gymhunt-purple-2 text-lg py-2 px-3 rounded-2xl text-white font-medium my-4" x-on:click="modalOpen()">Deixe sua avaliação</button>
+            <a href="{{route('comentario')}}"> <button class="bg-gymhunt-purple-2 text-lg py-2 px-3 rounded-2xl text-white font-medium my-4" x-on:click="modalOpen()"> <i class="fa-solid fa-ranking-star"></i> Deixe sua avaliação</button> </a>
         </div>
 
-        <div class="w-940 flex flex-rol justify-center bg-white">
-            <div class="flex justify-center">
-                <p class="">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae tempore iusto provident. Neque culpa maxime eveniet, ipsam rem, sed nihil sapiente odio, dolor accusamus perferendis iure distinctio autem sit veniam.</p>
+        <div class="flex flex-col justify-center items-center space-y-8">
+            <div class="bg-white w-1/2 p-8 rounded-lg">
+                <div class="flex flex-row justify-between"> <!--nomezinho-->
+                    <div class="flex flex-row items-center space-x-3"> <!--nome e foto-->
+                        <div class="w-11 h-9"> <img class="w-full" src=".\img\avatar.png" alt="">  </div> 
+                        <p class="font-semibold text-md">Gym Finder</p>
+                    </div>
 
+                    <div class="flex flex-row items-center space-x-4"> <!--icones-->
+                        <p><i class="fa-regular fa-heart fa-lg"></i></p>
+                        <p><i class="fa-solid fa-link fa-lg"></i></p>
+                        <p><i class="fa-solid fa-ellipsis-vertical fa-lg"></i></p>
+                    </div>
+                </div>
+
+                <div class="flex flex-row space-x-10 my-8 mb-0"> <!--avaliações-->
+                    <div class="flex flex-row justify-between w-1/2"> <!--estrela-->
+                        <div class="space-y-5">
+                            <p class="font-medium text-md">Aparelhos </p>
+                            <p class="font-medium text-md">Ambiente </p>
+                            <p class="font-medium text-md">Estrutura </p>
+                            <p class="font-medium text-md">Professores </p>
+                            <p class="font-medium text-md">Música</p>
+                        </div>
+
+                        <div class="space-y-5">
+                        <p> <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i> </p>
+                        <p> <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i> </p>
+                        <p> <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i> </p>
+                        <p> <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i> </p>
+                        <p> <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i> </p>
+                        </div>
+                    </div>
+
+                    <div class="w-1/2"> <!--comentario-->
+                        <p class="font-semibold text-left">Comentário</p>
+                        <p class="rounded-lg p-2 border border-gymhunt-purple-2 line-clamp-6 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, aspernatur! Tempora, illo error assumenda porro temporibus enim</p>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="flex flex-rol justify-center space-x-8 m-10">
-            <div class="bg-yellow-500 p-4"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed beatae rerum quaerat quasi et animi reiciendis, praesentium ab adipisci ex enim, nam mollitia excepturi qui. Debitis perspiciatis quas eveniet asperiores!</div>
+            <div class="bg-white w-1/2 p-8 rounded-lg">
+                <div class="flex flex-row justify-between"> <!--nomezinho-->
+                    <div class="flex flex-row items-center 4"> <!--nome e foto-->
+                        <div class="w-11 h-9"> <img class="w-full" src=".\img\avatar.png" alt="">  </div> 
+                        <p class="font-semibold text-md">Gym Finder</p>
+                    </div>
+
+                    <div class="flex flex-row items-center space-x-4"> <!--icones-->
+                        <p><i class="fa-regular fa-heart fa-lg"></i></p>
+                        <p><i class="fa-solid fa-link fa-lg"></i></p>
+                        <p><i class="fa-solid fa-ellipsis-vertical fa-lg"></i></p>
+                    </div>
+                </div>
+
+                <div class="flex flex-row space-x-10 my-8 mb-0"> <!--avaliações-->
+                    <div class="flex flex-row justify-between w-1/2"> <!--estrela-->
+                        <div class="space-y-5">
+                            <p class="font-medium text-md">Aparelhos </p>
+                            <p class="font-medium text-md">Ambiente </p>
+                            <p class="font-medium text-md">Estrutura </p>
+                            <p class="font-medium text-md">Professores </p>
+                            <p class="font-medium text-md">Música</p>
+                        </div>
+
+                        <div class="space-y-5">
+                        <p> <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i> </p>
+                        <p> <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i> </p>
+                        <p> <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i> </p>
+                        <p> <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i> </p>
+                        <p> <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i> </p>
+                        </div>
+                    </div>
+
+                    <div class="w-1/2"> <!--comentario-->
+                        <p class="font-semibold text-left">Comentário</p>
+                        <p class="rounded-lg p-2 border border-gymhunt-purple-2 line-clamp-6 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, aspernatur! Tempora, illo error assumenda porro temporibus enim</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white w-1/2 p-8 rounded-lg">
+                <div class="flex flex-row justify-between"> <!--nomezinho-->
+                    <div class="flex flex-row items-center space-x-3"> <!--nome e foto-->
+                        <div class="w-11 h-9"> <img class="w-full" src=".\img\avatar.png" alt="">  </div> 
+                        <p class="font-semibold text-md">Gym Finder</p>
+                    </div>
+
+                    <div class="flex flex-row items-center space-x-4"> <!--icones-->
+                        <p><i class="fa-regular fa-heart fa-lg"></i></p>
+                        <p><i class="fa-solid fa-link fa-lg"></i></p>
+                        <p><i class="fa-solid fa-ellipsis-vertical fa-lg"></i></p>
+                    </div>
+                </div>
+
+                <div class="flex flex-row space-x-10 my-8 mb-0"> <!--avaliações-->
+                    <div class="flex flex-row justify-between w-1/2"> <!--estrela-->
+                        <div class="space-y-5">
+                            <p class="font-medium text-md">Aparelhos </p>
+                            <p class="font-medium text-md">Ambiente </p>
+                            <p class="font-medium text-md">Estrutura </p>
+                            <p class="font-medium text-md">Professores </p>
+                            <p class="font-medium text-md">Música</p>
+                        </div>
+
+                        <div class="space-y-5">
+                        <p> <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i> </p>
+                        <p> <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i> </p>
+                        <p> <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i> </p>
+                        <p> <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i> </p>
+                        <p> <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i>  <i class="fa-regular fa-star"></i> </p>
+                        </div>
+                    </div>
+
+                    <div class="w-1/2"> <!--comentario-->
+                        <p class="font-semibold text-left">Comentário</p>
+                        <p class="rounded-lg p-2 border border-gymhunt-purple-2 line-clamp-6 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, aspernatur! Tempora, illo error assumenda porro temporibus enim</p>
+                    </div>
+                </div>
+            </div>
             
         </div>
-
-
-
     
     </div>
 
     <div class="flex items-center justify-center m-4">
         <div class="w-1/4 h-0.5 bg-gymhunt-purple-2"></div>
-        <a href=""> <p class="text-gymhunt-purple-2 font-semibold text-lg px-2">Veja mais publicações</p> </a> <!--leva para a tela da galeria, somente publicações-->
+        <a href=""> <p class="text-gymhunt-purple-2 font-semibold text-lg px-2">Veja mais avaliações</p> </a> <!--leva para a tela da galeria, somente publicações-->
         <div class="w-1/4 h-0.5 bg-gymhunt-purple-2"></div>
     </div>
 </div>
