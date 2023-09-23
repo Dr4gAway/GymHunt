@@ -5,7 +5,6 @@
         copyOpen: false,
         menuOpen: false,
         deleteOpen: false,
-        
 
         toClipboard() {
             navigator.clipboard.writeText('localhost:8000/feed/posts/'+ @js($post->id) )
@@ -22,14 +21,18 @@
 
         deletePost() {
             this.deleteOpen = false;
-            $wire.handleDelete();
+
+            if(@js(Route::currentRouteName()) != 'post')
+                $wire.handleDelete(false);
+            else
+                $wire.handleDelete(true);
         }
     }">
 
         <!-- Delete modal -->
 
         <div class="fixed z-10 inset-0 place-self-center flex flex-col items-center justify-center w-screen h-screen" x-show="deleteOpen">
-            <div class="relative z-40 flex flex-col gap-3 items-center bg-white w-fit rounded-2xl max-w-xl">
+            <div class="relative z-40 flex flex-col gap-3 items-center bg-white w-fit rounded-2xl max-w-xl" x-on:click.away="deleteOpen = false">
                 <div class="flex items-center p-4 gap-4">
                     <img src="\img\icons\warning-icon.svg" alt="like" class="h-24 cursor-pointer">
                     <div>
@@ -39,7 +42,7 @@
                 </div>
 
                 <div class="flex gap-2 bg-gymhunt-grey-1 w-full justify-end p-4 rounded-b-xl"> 
-                    <button class=" px-4 py-2 hover:text-gymhunt-purple-1">Cancelar</button>
+                    <button class=" px-4 py-2 hover:text-gymhunt-purple-1" x-on:click="deleteOpen = false" >Cancelar</button>
                     <button class="bg-gymhunt-purple-1 hover:bg-gymhunt-purple-2 rounded-2xl px-4 py-2 text-white font-semibold flex items-center gap-1"
                             x-on:click="deletePost">
                         <img src="\img\icons\check-white-icon.svg" class="h-6" alt="">

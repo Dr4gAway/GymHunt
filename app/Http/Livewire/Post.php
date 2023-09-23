@@ -24,6 +24,8 @@ class Post extends Component
 
     public bool $showAll = false;
 
+    public $route;
+
     //protected $listeners = [ 'comment::created' => '$refresh'];
 
     protected function getListeners() {
@@ -36,6 +38,8 @@ class Post extends Component
     public function mount() {
         $this->getLikedStatus();
         $this->getLikesCount();
+
+        $this->route = url()->current();
     }
 
     public function render(Item $post)
@@ -124,12 +128,17 @@ class Post extends Component
         }
     }
 
-    public function handleDelete()
+    public function handleDelete($redirect)
     {
         $this->authorize('delete', $this->post);
 
         $this->cleanupPostImages();
         $this->post->delete();
+
+        if($redirect)
+            return redirect()->route('feed');
+        else
+            $this->emitTo('timeline', 'post::deleted');
     }
 
     protected function cleanupPostImages()

@@ -11,7 +11,8 @@ class Timeline extends Component
     public int $perPage = 5;
 
     protected $listeners = [
-        'post::created' => '$refresh'
+        'post::created' => '$refresh',
+        'post::deleted' => '$refresh'
     ];
 
     public function render()
