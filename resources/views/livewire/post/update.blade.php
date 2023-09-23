@@ -1,4 +1,4 @@
-<div class="fixed inset-0 flex flex-col w-screen h-screen p-8 gap-8 z-20" x-data="{
+<div class="fixed inset-0 flex flex-col w-full h-screen my-8 gap-8 z-20" x-data="{
     selected: null,
 
     closeModal() {
@@ -10,7 +10,7 @@
     <div class="bg-black bg-opacity-20 fixed inset-0 " x-on:click="closeModal()"></div>
 
     <form wire:submit.prevent="store" method="POST" class="self-center w-full flex gap-4 bg-white p-4 rounded-2xl max-w-2xl z-20"  enctype="multipart/form-data" >
-        <span class="rounded-full h-10 w-10 bg-blue-500"></span>
+        <!-- <span class="rounded-full h-10 w-10 bg-blue-500"></span> -->
 
         <div class="flex flex-col w-full gap-4">
             <x-resizable-text model="body" placeholder="Como vai seu treino?" />
