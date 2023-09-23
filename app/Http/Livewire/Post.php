@@ -23,6 +23,7 @@ class Post extends Component
     public int $likeCount = 0;
 
     public bool $showAll = false;
+    public int $perPage = 5;
 
     public $route;
 
@@ -50,9 +51,12 @@ class Post extends Component
     }
     
     public function getCommentsProperty() {
-        $comments = Comment::where('post_id', $this->post->id)->latest()->get();
-
+        $comments = Comment::where('post_id', $this->post->id)->latest()->paginate($this->perPage);
         return $comments;
+    }
+
+    public function incrementComments() {
+        $this->perPage += 3;
     }
 
     public function getLikedStatus() {

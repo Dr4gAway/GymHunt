@@ -174,16 +174,26 @@
                 <div class="flex gap-2 items-center">
                     <p class="text-lg font-bold">Comentários</p>
                     <span>•</span>
-                    <p class="leading-none">{{$this->comments->count()}}</p>
+                    <p class="leading-none">{{$this->post->comments->count()}}</p>
                 </div>
                 @foreach($this->comments as $comment)
                     <livewire:comment.view :comment="$comment" wire:key="post-{{$comment->post->id}}-comment-{{$comment->id}}" />
                 @endforeach
+
+                @if(!$this->comments->onLastPage())
+                <div class="relative flex justify-center">
+                    <span class="pointer-events-none absolute top-0 translate-y-[-150%] left-0 w-full h-[36px] bg-gradient-to-t from-white"></span>
+                    <button wire:click="incrementComments()" class="bg-gymhunt-purple-1 hover:bg-gymhunt-purple-2 rounded-2xl px-4 py-2 text-white font-semibold flex items-center gap-1">
+                        Mostrar mais
+                    </button>
+                </div>
+                @endif
+
             @else
                 <div class="flex gap-2 items-center">
                     <p class="text-lg font-bold">Comentários</p>
                     <span>•</span>
-                    <p class="leading-none">{{$this->comments->count()}}</p>
+                    <p class="leading-none">{{$this->post->comments->count()}}</p>
                 </div>
                 
                 <div class="relative">

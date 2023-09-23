@@ -37,20 +37,23 @@
         <livewire:post :post="$post" wire:key="post-{{$post->id}}" /> 
     @endforeach
 
-    <div x-data="{
-        infinityScroll() {
-            const observer = new IntersectionObserver((items) => {
-                items.forEach((item) => {
-                    if(item.isIntersecting)
-                        @this.loadMore();
+    @if(!$this->posts->onLastPage())
+        <div x-data="{
+            infinityScroll() {
+                const observer = new IntersectionObserver((items) => {
+                    items.forEach((item) => {
+                        if(item.isIntersecting)
+                            @this.loadMore();
+                        })
+                    }, {
+                        rootMargin: '300px'
                     })
-                }, {
-                    rootMargin: '300px'
-                })
-                observer.observe(this.$el)
-        },
+                    observer.observe(this.$el)
+            },
 
-    }" x-init="infinityScroll()" class="w-6 h-6 bg-blue-500">
-    </div>
+        }" x-init="infinityScroll()" class="w-6 h-6">
+        </div>
+    @endif
+
 
 </div>
