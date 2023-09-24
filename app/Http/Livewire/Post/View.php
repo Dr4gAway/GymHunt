@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Post;
 
 use Livewire\Component;
 
@@ -13,7 +13,7 @@ use \App\Models\Post as Item;
 use \App\Models\PostLike;
 use \App\Models\Comment;
 
-class Post extends Component
+class View extends Component
 {
     use AuthorizesRequests;
     
@@ -47,7 +47,7 @@ class Post extends Component
     {
         $this->$post = $post;
         
-        return view('livewire.post');
+        return view('livewire.post.view');
     }
     
     public function getCommentsProperty() {

@@ -36,6 +36,6 @@
 
         
 
-        <livewire:post :post="$post" :showAll="true" />
+        <livewire:post.view :post="$post" :showAll="true" />
     </section>
 @endsection

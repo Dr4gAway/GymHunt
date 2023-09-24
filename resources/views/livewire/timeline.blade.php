@@ -34,7 +34,7 @@
     
 
     @foreach ($this->posts as $post)
-        <livewire:post :post="$post" wire:key="post-{{$post->id}}" /> 
+        <livewire:post.view :post="$post" wire:key="post-{{$post->id}}" /> 
     @endforeach
 
     @if(!$this->posts->onLastPage())
