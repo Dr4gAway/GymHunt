@@ -7,9 +7,12 @@ use Livewire\Component;
 use App\Models\Comment;
 use App\Models\CommentLike;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class View extends Component
 {
+    use AuthorizesRequests;
+
     public Comment $comment;
 
     public ?CommentLike $liked = null;
@@ -48,5 +51,15 @@ class View extends Component
 
         $this->getLikedStatus();
         $this->getLikesCount();
+    }
+
+    public function handleDelete()
+    {
+        $this->authorize('delete', $this->comment);
+
+        $this->comment->delete();
+
+    
+        $this->emitUp('comment::deleted');
     }
 }

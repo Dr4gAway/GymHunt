@@ -32,6 +32,7 @@ class View extends Component
     protected function getListeners() {
         return [
             'comment::created' => '$refresh',
+            'comment::deleted' => '$refresh',
             "post::updated{$this->post->id}" => '$refresh'
         ];
     }
