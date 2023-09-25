@@ -7,11 +7,26 @@
         <div class="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
     </div>
             
-    <div class="mx-auto max-w-2xl text-center">
-        <img class="mx-auto w-auto" src=".\img\logoIcon.png" alt="Your Company">
-        <h2 class="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"></h2>
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Faça seu cadastro</h2>
-        <p class="mt-2 text-lg leading-8 text-gray-600">Ao realizar seu cadastro, você poderá explorar nosso site da melhor maneira!</p>
+            <form class="space-y-6" action="{{route('signup')}}" method="POST">
+
+                @csrf
+                @method('POST')
+
+                @error('invalid_credentials')
+                    <p class="text-red-500"> {{ $message }} </p>   
+                @enderror
+
+                <x-form.text name="name" label="Nome" placeholder="e.g: Bruno Suwa" />
+                <x-form.text name="phone" label="Telefone" placeholder="e.g: +55 (14) 99722-1343" />
+                <x-form.text name="email" label="Email" placeholder="e.g: bruno.s@gmail.com.br" />
+                <x-form.text name="password" label="Senha" type="password" placeholder="e.g: senha123"/>
+                <x-form.text name="password_confirmation" label="Confirme sua senha" type="password" placeholder="e.g: senha123"/>
+
+                <div>
+                    <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cadastre-se</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <div class="mt-4 sm:mx-auto sm:w-full sm:max-w-sm lg:max-w-xl">
