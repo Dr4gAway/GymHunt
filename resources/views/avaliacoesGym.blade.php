@@ -162,7 +162,7 @@
         </div>
 
         <div class="flex flex-col justify-center items-center space-y-8">
-            <div class="bg-white w-1/2 p-8 rounded-lg">
+            <div class="bg-white w-1/2 p-8 rounded-lg shadow-xl">
                 <div class="flex flex-row justify-between"> <!--nomezinho-->
                     <div class="flex flex-row items-center space-x-3"> <!--nome e foto-->
                         <div class="w-11 h-9"> <img class="w-full" src=".\img\avatar.png" alt="">  </div> 
