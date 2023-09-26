@@ -15,17 +15,26 @@ class SignupController extends Controller
     }
 
     public function store(SignupRequest $request) {
-        $request->validated();
+        
+        if($request->validated())
+        {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $request->password,
+                'phone' => $request->phone,
+            ]);
+    
+            Auth::login($user);
+    
+            return redirect('/feed');
+        } else {
+            return back()->withErrors([
+                'invalid_credentials' => 'As credênciais são invalidas',
+            ])->withInput();
+        }
+        
+        
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-            'phone' => $request->phone,
-        ]);
-
-        Auth::login($user);
-
-        return redirect('/feed');
     }
 }

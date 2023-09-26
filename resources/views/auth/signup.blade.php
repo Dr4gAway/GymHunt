@@ -40,13 +40,12 @@
                 <div class="mt-2.5">
                     <input type="file" name="banner" id="banner" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
-
+                
                 @error('banner')
                     <p class="text-red-500"> {{$message}} </p>   
                 @enderror
             </div>
         </div> -->
-
         <button type="submit" class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md"> Cadastrar-se </button>
     </form>
 </section>

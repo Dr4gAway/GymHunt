@@ -13,7 +13,7 @@
             <p class="sm:text-xl md:text-2xl lg:text-4xl font-poppins text-slate-600 font-medium w-3/5">Conheça o nosso sistema e treine na academia mais próxima com a melhor qualidade</p>
 
             <a href="#">
-                <button class="flex space-x-2 sm:text-md md:text-xl lg:text-3xl p-7 tracking-widest text-white uppercase bg-gymhunt-purple-2 border-solid border-zinc-400 border-1 my-10 rounded-lg">
+                <button class="flex space-x-2 sm:text-md md:text-xl lg:text-3xl p-7 tracking-widest text-white uppercase bg-gymhunt-purple-2 hover:bg-white hover:text-gymhunt-purple-2 hover:ring-4 hover:ring-gymhunt-purple-2 border-solid border-1 my-10 rounded-lg">
                     <i class="fa-solid fa-map-location-dot fa-2x"></i>
                     <div>
                         <p>Explore o mapa</p>
@@ -41,7 +41,7 @@
             <div class="flex justify-center space-x-5 gap-x-1 gap-y-10 border-t border-gymhunt-purple-2 pt-10 sm:mt-10 sm:pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3 ">
                 <article class="flex flex-col w-fit bg-white shadow-2xl px-8 py-6 rounded-lg">
                     <div class="flex items-center gap-x-1 text-xs">
-                        <img src=".\img\pub.png" alt="">
+                        <img src=".\img\pub.png" alt=""> <!--imagens devem ter tamanho 400x468-->
                     </div>
 
                     <div class="space-y-3">
