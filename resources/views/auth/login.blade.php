@@ -20,16 +20,16 @@
                     <p class="text-red-500"> {{$message}} </p>   
                 @enderror
 
-                <x-form.text name="email" label="Email" placeholder="e.g: seuemail@gmail.com.br" />
-                <x-form.text name="password" label="Senha" type="password" placeholder="e.g: senha123"/>
+                <x-form.text name="email" label="Email" placeholder="ex: seuemail@gmail.com.br" />
+                <x-form.text name="password" label="Senha" type="password" placeholder="ex: senha123"/>
 
                 <div>
                     <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Logar</button>
                 </div>
             </form>
 
-            <p class="mt-10 text-center text-md text-gray-200"> Não tem uma conta?
-                <a href="#" class="font-semibold leading-6 text-indigo-900 hover:text-indigo-300">Cadastre-se</a>
+            <p class="mt-10 text-center text-md text-gray-700"> Não tem uma conta?
+                <a href="{{route('signup')}}" class="font-semibold leading-6 text-indigo-900 hover:text-indigo-300">Cadastre-se</a>
             </p>
         </div>
     </div>

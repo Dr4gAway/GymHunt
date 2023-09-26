@@ -22,6 +22,16 @@ export default {
       minWidth: {
         '1/2': '50%',
         '3/5': '60%'
+      },
+      boxShadow:{
+        '2xl': '0px 2px 22px 3px rgba(189,189,189,1)',
+      },
+      lineClamp:{
+        '10':'10',
+      },
+      width:{
+        '550':'550px',
+        '940':'940px'
       }
     },
   },

@@ -7,6 +7,7 @@
         <!-- Import Google Fonts-->
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700;900&display=swap" rel="stylesheet">
 
+        <link rel="icon" href=".\img\logoIcon.png" >
         <!-- Import TailwindCSS -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -44,19 +45,19 @@
         @endauth
 
         @guest
-            <nav class="flex items-center justify-between w-full transition-all" aria-label="Global">
+            <nav class="flex items-center justify-between w-full transition-all">
                 <div class="flex items-center gap-8">
                     <a href="/">
                         <img src="\img\logo.svg" alt="Gym hunt brand" class="h-12">
                     </a>
-                    <a href="#" class="hover:border-b-4 border-black transition-all px-3 py-2">Home</a>
-                    <a href="#" class="hover:border-b-4 border-black transition-all px-3 py-2">Produto</a>
-                    <a href="#" class="hover:border-b-4 border-black transition-all px-3 py-2">Sobre nós</a>
+                    <a href="{{route('home')}}" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Home</a>
+                    <a href="#" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Produto</a>
+                    <a href="#" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Sobre nós</a>
                 </div>  
                 
                 <div class="flex items-center justify-center center gap-8">
                     <a href="{{route('login')}}" class="font-medium outline-4 hover:text-gymhunt-purple-1 hover:ring ring-gymhunt-purple-1 rounded-2xl transition-all px-4 py-2">Login</a>
-                    <a href="{{route('signup')}}" class="w-[176px] h-12 flex items-center justify-center bg-gymhunt-purple-1 hover:bg-gymhunt-purple-2 rounded-2xl text-white px-4 py-2"><span>Signup</span></a>
+                    <a href="{{route('signup')}}" class="w-[176px] h-12 text-2xl text-center bg-gymhunt-purple-1 rounded-2xl text-white px-4 py-2"><span>Signup</span></a>
                 </div>
             </nav>
         @endguest
