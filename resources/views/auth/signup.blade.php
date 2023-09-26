@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <div class="mt-4 sm:mx-auto sm:w-full sm:max-w-sm lg:max-w-xl">
+    <!-- <div class="mt-4 sm:mx-auto sm:w-full sm:max-w-sm lg:max-w-xl">
         <form class="space-y-6 mx-auto max-w-xl" action="{{route('signup')}}" method="POST">
             @csrf
             @method('POST')
@@ -79,7 +79,7 @@
                 <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cadastre-se</button>
             </div>
         </form>
-    </div>
+    </div> -->
 </div>
 
     
