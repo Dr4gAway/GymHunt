@@ -26,7 +26,9 @@ class SignupRequest extends FormRequest
             'email' => 'required|email|unique:users',
             'phone' => 'required|string|size:13',
             'password' => 'required|string|min:8|max:32',
-            'password_confirmation' => 'required|same:password'
+            'password_confirmation' => 'required|same:password',
+            /* 'avatar' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'banner' => 'nullable|image|mimes:jpeg,jpg,png,gif' */
         ];
     }
 
@@ -44,6 +46,9 @@ class SignupRequest extends FormRequest
             'password.max' => 'Máximo de 32 caracteres.',
             'password_confirmation.required' => 'Confirmação é necessária.',
             'password_confirmation.same' => 'As senhas são diferentes.',
+            /*'avatar' => 'Imagem inválida.',
+            'avatar.required' => 'Foto de perfil é necessária.',
+            'banner' => 'Imagem inválida.', */
         ];
     }
 }
