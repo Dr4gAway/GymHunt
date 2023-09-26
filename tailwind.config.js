@@ -12,11 +12,16 @@ export default {
       colors: {
         'gymhunt': {
           'purple-1': '#5348D9',
-          'purple-2': '#8787DE'
+          'purple-2': '#8787DE',
+          'grey-1': '#DFE6F9'
         }
       },
       fontFamily: {
         poppins: ['Poppins'],
+      },
+      minWidth: {
+        '1/2': '50%',
+        '3/5': '60%'
       },
       boxShadow:{
         '2xl': '0px 2px 22px 3px rgba(189,189,189,1)',

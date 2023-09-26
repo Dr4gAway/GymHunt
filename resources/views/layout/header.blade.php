@@ -9,7 +9,11 @@
 
         <link rel="icon" href=".\img\logoIcon.png" >
         <!-- Import TailwindCSS -->
-        @vite('resources/css/app.css')
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Import AlpineJs -->
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
+        
         @livewireStyles
     </head>
 
@@ -59,4 +63,4 @@
         @endguest
     </header>
 
-    <body class="font-poppins">
+    <body class="font-poppins bg-[#DFE6F9] min-h-screen">
