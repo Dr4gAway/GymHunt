@@ -8,11 +8,10 @@ Route::View('/', 'home')->name('home');
 Route::get('/', function () {
     return view('home');
 })->name('home');
+
 Route::View('/feed', 'feed')->name('feed');
 
 Route::Get('/feed/posts/{id}', [PostController::class, 'index'])->name('post');
-
-    
 
 Route::get('/perfil', function(){
     return view('perfilUser');
