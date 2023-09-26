@@ -1,4 +1,4 @@
-<div class="flex flex-col w-full max-w-[662px] p-4 rounded-2xl bg-white gap-4" x-data="{
+<div class="flex flex-col w-full max-w-[662px] p-4 rounded-2xl shadow-xl bg-white gap-4" x-data="{
     
 }">
     <div class="flex justify-between" x-data="{
@@ -31,7 +31,7 @@
 
         <!-- Delete modal -->
 
-        <div class="fixed z-10 inset-0 place-self-center flex flex-col items-center justify-center w-screen h-screen" x-show="deleteOpen">
+        <div class="fixed z-10 inset-0 place-self-center flex flex-col shadow-xl items-center justify-center w-screen h-screen" x-show="deleteOpen">
             <div class="relative z-40 flex flex-col gap-3 items-center bg-white w-fit rounded-2xl max-w-xl" x-on:click.away="deleteOpen = false">
                 <div class="flex items-center p-4 gap-4">
                     <img src="\img\icons\warning-icon.svg" alt="like" class="h-24 cursor-pointer">
@@ -59,7 +59,7 @@
 
         <div class="flex items-center gap-4">
             <div class="rounded-full h-10 w-10 bg-red-500"></div>
-            <h4 class="font-bold">{{$post->user->name}}</h4>
+            <a href="{{route('perfilUser')}}"><h4 class="font-bold">{{$post->user->name}}</h4></a>
         </div>
 
         <div class="flex items-center gap-6">
@@ -81,7 +81,7 @@
             <div class="relative">
                 <img src="\img\icons\more-icon.svg" alt="like" class="h-5 cursor-pointer" x-on:click="menuOpen = !menuOpen" x-on:click.away="menuOpen = false">
 
-                <ul x-show="menuOpen" class="absolute z-10 top-auto right-1 flex flex-col items-end text-right gap-1 bg-white p-4 rounded-md w-max">
+                <ul x-show="menuOpen" class="absolute z-10 top-auto right-1 flex flex-col items-end text-right gap-1 shadow-xl bg-white p-4 rounded-md w-max">
                     <li class="cursor-pointer hover:bg-gray-100 px-2 flex gap-1">
                          <span>Reportar</span>
                         <img src="\img\icons\flag-icon.svg" alt="like" class="h-5 cursor-pointer">

@@ -119,9 +119,10 @@
 
             <div class="max-w-2xl space-y-8 bg-white shadow-2xl px-8 py-6 rounded-lg">
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"> Por quê do GymHunt?</h2>
-                <p class="sm:text-md md:text-lg lg:text-xl line-clamp-10 leading-loose text-justify font-poppins">A nossa plataforma "GymHunt" tem com a intenção de auxiliar os usuarios na hora de localizar academias. 
-                    Além disso temos intenção de prover maior controle de cada usuário no desempenho individual,
-                    Portanto, o sistema ajudará de forma efetiva cada usuário na sua evolução e na localização de academias.
+                <p class="sm:text-md md:text-lg lg:text-xl line-clamp-10 leading-loose text-justify font-poppins">
+                    A nossa plataforma foi desenvolvida como uma forma de expandir e facilitar o acesso a diferentes academias, 
+                    nela o usuário tem a posibilidade de navegar para encontrar os estabelecimentos que desejar frequentar e realizar 
+                    atividades físicas onde estiver, sem a necessidade de prender-se a uma única localização e academia.
                 </p>
             </div>
 

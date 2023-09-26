@@ -9,6 +9,8 @@ Route::View('/feed', 'feed')->name('feed');
 
 Route::Get('/feed/posts/{id}', [PostController::class, 'index'])->name('post');
 
+Route::Get('/perfil/{id}', [ProfileController::class, 'index'])->name('perfil');
+
 Route::get('/perfil', function(){
     return view('perfilUser');
 })->name('perfilUser');
