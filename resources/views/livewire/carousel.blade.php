@@ -8,18 +8,20 @@
 }">
     <div class="bg-black bg-opacity-20 fixed inset-0 z-10" x-on:click="closeModal()"></div>
     @if($imageSelected)
-        <img src="/{{$imageSelected}}" class="max-h-full h-full object-scale-down z-30 bg-black bg-opacity-40">
+    <div class="flex justify-center w-full z-30 bg-black bg-opacity-40 h-full max-h-4/5">
+        <img src="/{{$imageSelected}}" class="object-scale-down">
+    </div>
     @endif
 
     <div class="flex w-full h-fit items-center justify-center gap-4">
         @foreach($images as $image)
             @if($image['path'] == $imageSelected)
                 <div class="cursor-pointer z-20 overflow-hidden ring ring-gymhunt-purple-2 ring-offset-4 ring-offset-gymhunt-purple-2">
-                    <img src="/{{$image['path']}}" class="object-cover w-32 h-32" wire:click="changeImage('{{ $image['path'] }}')">
+                    <img src="/{{$image['path']}}" class="object-cover aspect-square h-full max-h-36" wire:click="changeImage('{{ $image['path'] }}')">
                 </div>
             @else
                 <div class="cursor-pointer z-20 overflow-hidden">
-                    <img src="/{{$image['path']}}" class="object-cover w-32 h-32" wire:click="changeImage('{{ $image['path'] }}')">
+                    <img src="/{{$image['path']}}" class="object-cover aspect-square h-full max-h-36" wire:click="changeImage('{{ $image['path'] }}')">
                 </div>
             @endif
         @endforeach
