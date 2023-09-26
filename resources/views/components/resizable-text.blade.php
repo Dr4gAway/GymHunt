@@ -26,7 +26,7 @@
         @input="resize()"
         wire:ignore
         placeholder="{{ $placeholder }}"
-        class=" border-4 border-gymhunt-purple-1
+        class=" border-2 border-gymhunt-purple-1
                 focus:outline-none focus:ring ring-gymhunt-purple-2
                 placeholder:text-gymhunt-purple-2
                 min-h-fit
