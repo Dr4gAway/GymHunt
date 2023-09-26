@@ -32,9 +32,7 @@ class SignupController extends Controller
     
             return redirect('/feed');
         } else {
-            return back()->withErrors([
-                'invalid_credentials' => 'As credênciais são invalidas',
-            ])->withInput();
+            return back()->withErrors()->withInput();
         }
         
         
