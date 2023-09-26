@@ -25,7 +25,7 @@ class SignupRequest extends FormRequest
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
             'phone' => 'required|string|size:13',
-            'password' => 'required|string',
+            'password' => 'required|string|min:8|max:32',
             'password_confirmation' => 'required|same:password'
         ];
     }
@@ -33,11 +33,15 @@ class SignupRequest extends FormRequest
     public function messages()
     {
         return [
+            'name' => 'Nome inválido',
+            'name.required' => 'Nome é necessário',
             'email.email' => 'Digite um endereço de email valido.',
             'email.required' => 'Email é necessário.',
             'phone.required' => 'Telefone é necessário.',
             'phone.size' => 'Digite um telefone válido.',
             'password.required' => 'Senha é necessária.',
+            'password.min' => 'Mínimo de 8 caracteres.',
+            'password.max' => 'Máximo de 32 caracteres.',
             'password_confirmation.required' => 'Confirmação é necessária.',
             'password_confirmation.same' => 'As senhas são diferentes.',
         ];
