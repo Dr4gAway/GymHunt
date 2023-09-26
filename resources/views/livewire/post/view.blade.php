@@ -148,8 +148,8 @@
             </div>
         @elseif($this->postType == 4)
             <div x-on:click="updateImages({{$this->post->images}})" class="flex max-w-full gap-1 h-[315px] rounded-2xl overflow-hidden cursor-pointer">
-                <img src="/{{$post->images[0]->path}}" class="w-full object-cover">
-                <div class="relative w-full flex flex-col gap-1">
+                <img src="/{{$post->images[0]->path}}" class="w-1/2 object-cover">
+                <div class="relative w-1/2 flex flex-col gap-1">
                     @foreach ($post->images as $index => $image)
                         @if($index > 2)
                             @break
