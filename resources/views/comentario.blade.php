@@ -37,7 +37,7 @@
 
                     <div class="w-1/2"> <!--comentario-->
                         <p class="font-semibold text-left text-xl mb-3">Comentário</p>
-                        <p class="rounded-lg p-3 border border-gymhunt-purple-2 line-clamp-10 text-justify text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum totam temporibus officia eius, molestiae, voluptatem pariatur quae, ut magnam a explicabo amet possimus quisquam ipsa tempore nihil quas maiores veritatis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, aspernatur! Tempora, illo error assumenda porro temporibus enim Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates possimus, reiciendis quae at blanditiis iikdk sssss</p>
+                        <textarea rows="10" cols="60" class="rounded-lg p-3 border border-gymhunt-purple-2 line-clamp-10 text-justify text-lg"> </textarea>
                         <div class="flex flex-row justify-between items-end space-x-2 my-3">
                             <button type="submit" x-on:click="modalClose()" class="justify-center rounded-lg bg-gymhunt-purple-2 px-5 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cancelar</button>
                             <button type="submit" class="justify-center rounded-lg bg-gymhunt-purple-1 px-5 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Avaliar</button>

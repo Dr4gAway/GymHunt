@@ -63,7 +63,7 @@
 
                 <article class="flex flex-col w-fit bg-white shadow-2xl px-8 py-6 rounded-lg">
                     <div class="flex items-center gap-x-1 text-xs">
-                        <img src=".\img\pub.png" alt="">
+                        <img src=".\img\registerGym.png" alt="">
                     </div>
 
                     <div class="space-y-3">
@@ -114,7 +114,7 @@
     <div class="m-12">
         <div class="flex flex-rol justify-center space-x-16">
             <div>
-                <img width="700px" src=".\img\logoGymHunt.png"  alt="">
+                <img width="700px" src=".\img\bannerHome.png"  alt="">
             </div>
 
             <div class="max-w-2xl space-y-8 bg-white shadow-2xl px-8 py-6 rounded-lg">
