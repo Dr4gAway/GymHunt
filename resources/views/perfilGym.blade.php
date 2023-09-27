@@ -3,6 +3,9 @@
 @section('content') 
 
 <div class="flex flex-col justify-between bg-gymhunt-gray-1" x-data="{
+    imageOpen: false,
+    editOpen: false,
+
     disableScroll() {
         scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
@@ -15,6 +18,14 @@
         window.onscroll = function() {};
     }
 }"> <!-tela inteira->
+
+    <div x-show="imageOpen">
+        <livewire:carousel  />
+    </div>
+
+    <div x-show="editOpen">
+        <livewire:post.update />
+    </div>
 
     <div class="w-full h-[200px]">
         <img class="w-full" src="\img\banner.png" alt="">
@@ -73,7 +84,10 @@
 
                             <div class="font-poppins text-black flex flex-col w-full gap-4 space-y-2">
                                 <div class="grid grid-flow-col justify-between items-stretch space-x-3">
-                                    <p> <i class="fa-solid fa-pencil"></i> Editar perfil</p>
+                                    {{ Auth::user()->email }}
+                                    @auth
+                                        <p> <i class="fa-solid fa-pencil"></i> Editar perfil</p>    
+                                    @endauth
                                     <button class="font-black" x-on:click="modalClose()"> <i class="fa-solid fa-x"></i> </button>
                                 </div>
 
