@@ -7,7 +7,7 @@
 
 {{-- $atributes->class(['flex items-center']) --}}
 
-<div>
+<div {{ $attributes->class(['']) }}>
     <label for="{{$name}}" class="block text-lg font-bold leading-6 text-gray-900">{{ $label }}</label>
     <div class="mt-2">
         <input

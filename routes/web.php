@@ -2,12 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 
 Route::View('/', 'home')->name('home');
-
-Route::get('/', function () {
-    return view('home');
-})->name('home');
 
 Route::View('/feed', 'feed')->name('feed');
 
