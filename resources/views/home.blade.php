@@ -98,7 +98,7 @@
 
                     <div class="group relative">
                         <h6 class="text-md text-right leading-6 text-gray-800 group-hover:text-gray-500 group-hover:font-semibold">
-                            <a href="#">
+                            <a href="{{route('feed')}}">
                                 <span class="absolute inset-0"></span> Ver mais
                             </a>
                         </h6>

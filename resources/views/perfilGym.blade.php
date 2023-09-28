@@ -73,6 +73,7 @@
 
                 }"> 
                     <button class="bg-gymhunt-purple-2 text-lg py-2 px-3 rounded-2xl">Seguir</button>
+                    
                     <button class="bg-gymhunt-purple-2 text-lg py-2 px-3 rounded-2xl" x-on:click="modalOpen()"><i class="fa-solid fa-pencil"></i> Editar perfil</button>
 
                     <div class="fixed inset-0 flex flex-col w-screen h-screen p-8 gap-8 z-20" x-show="configOpen"> <!--tela do modal -->

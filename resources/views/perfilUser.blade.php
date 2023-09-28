@@ -16,6 +16,14 @@
     }
 }">
 
+    <div x-show="imageOpen">
+        <livewire:carousel  />
+    </div>
+
+    <div x-show="editOpen">
+        <livewire:post.update />
+    </div>
+
     {{-- Profile Banner --}}
     <img src=".\img\banner.png" class="w-full h-[200px]" >
 
@@ -27,7 +35,7 @@
 
             {{-- Followers --}}
             <div class="flex flex-col gap-2">
-                <h3 class="font-bold text-3xl">Gilmar dos Santos</h3>
+                <h3 class="font-bold text-3xl">{{$user->name}}</h3>
 
                 <div class="flex  space-x-6">
                     <a href="#" class="font-medium"><b>400</b> seguidores </a>
