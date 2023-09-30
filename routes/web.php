@@ -28,4 +28,8 @@ Route::get('/gerandoAvaliação', function(){
     return view('comentario');
 })->name('comentario');
 
+Route::get('/workoutlog', function(){
+    return view('workout_log');
+})->name('workoutlog');
+
 require __DIR__.'/auth.php';
