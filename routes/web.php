@@ -28,4 +28,8 @@ Route::get('/gerandoAvaliação', function(){
     return view('comentario');
 })->name('comentario');
 
+Route::Get('/explore', function() {
+    return View('location.gym');
+});
+
 require __DIR__.'/auth.php';
