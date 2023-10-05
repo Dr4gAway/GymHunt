@@ -23,6 +23,9 @@ export default {
         '1/2': '50%',
         '3/5': '60%'
       },
+      maxHeight: {
+        '4/5': '80%',
+      },
       boxShadow:{
         '2xl': '0px 2px 22px 3px rgba(189,189,189,1)',
       },

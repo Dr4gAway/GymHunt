@@ -204,7 +204,7 @@
 
             <div class="bg-white w-1/2 p-8 rounded-lg">
                 <div class="flex flex-row justify-between"> <!--nomezinho-->
-                    <div class="flex flex-row items-center 4"> <!--nome e foto-->
+                    <div class="flex flex-row items-center space-x-3"> <!--nome e foto-->
                         <div class="w-11 h-9"> <img class="w-full" src=".\img\avatar.png" alt="">  </div> 
                         <p class="font-semibold text-md">Gym Finder</p>
                     </div>

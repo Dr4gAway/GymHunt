@@ -2,12 +2,13 @@
 @section('titulo', 'GymHunt - Cadastro')
 @section('content')
 <section class="flex flex-col w-full max-w-2xl mx-auto my-8 gap-8 ">
-    <h2 class="flex flex-col self-start font-bold">
-        <span class="text-6xl">
+    <h2 class="flex flex-col self-center">
+        <img class="mx-auto w-auto" src=".\img\logoIcon.png" alt="Your Company">
+        <span class="text-4xl self-center font-bold">
             Cadastre-se
         </span>
-        <span class="text-4xl">
-            Agora no nosso sitema
+        <span class="text-2xl font-semibold">
+            agora no nosso sitema
         </span>
     </h2>
     <form action="{{route('signup')}}" method="POST" class="flex flex-col w-full gap-4">
@@ -21,13 +22,14 @@
         </div>
         <x-form.text name="phone" label="Telefone" class="w-full"/>
 
-    <!-- <div class="mt-4 sm:mx-auto sm:w-full sm:max-w-sm lg:max-w-xl">
+    <!--
+        <div class="mt-4 sm:mx-auto sm:w-full sm:max-w-sm lg:max-w-xl">
         <form class="space-y-6 mx-auto max-w-xl" action="{{route('signup')}}" method="POST">
             @csrf
             @method('POST')
 
-        <!-- <span class="text-lg font-bold leading-6 text-gray-900">Insira suas imagens</span>
-        <div class="flex flex-col gap-4">
+            <span class="text-lg font-bold leading-6 text-gray-900">Insira suas imagens</span>
+            <div class="flex flex-col gap-4">
             <div>
                 <label for="avatar" class="block text-sm font-semibold leading-6 text-gray-900 ">1. Avatar</label>
                 <div class="mt-2.5">
@@ -48,8 +50,13 @@
                     <p class="text-red-500"> {{$message}} </p>   
                 @enderror
             </div>
+            
         </form>
     </div> -->
+
+    <button type="submit" class="bg-gymhunt-purple-1 text-white px-4 py-2 rounded-md font-bold hover:bg-gymhunt-purple-2">Cadastrar-se</button>
+
+    </form>
 </div>
 
     

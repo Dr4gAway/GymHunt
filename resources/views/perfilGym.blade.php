@@ -3,6 +3,9 @@
 @section('content') 
 
 <div class="flex flex-col justify-between bg-gymhunt-gray-1" x-data="{
+    imageOpen: false,
+    editOpen: false,
+
     disableScroll() {
         scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
@@ -16,17 +19,25 @@
     }
 }"> <!-tela inteira->
 
+    <div x-show="imageOpen">
+        <livewire:carousel  />
+    </div>
+
+    <div x-show="editOpen">
+        <livewire:post.update />
+    </div>
+
     <div class="w-full h-[200px]">
-        <img class="w-full" src=".\img\banner.png" alt="">
+        <img class="w-full" src="\img\banner.png" alt="">
     </div>
     
     <div class="items-center w-full flex flex-row"> <!-header infos do perfil->
-        <div class="ml-12 w-60 h-50"> <img class="w-full" src=".\img\avatar.png" alt=""> </div>         
+        <div class="ml-12 w-60 h-50"> <img class="w-full" src="\img\avatar.png" alt=""> </div>         
         
         <div class="w-full flex flex-row justify-between ">
             <div class="m-4 space-y-2">
                 <div class="flex flex-row items-center space-x-4 font-poppins">
-                    <p class="font-bold text-4xl">Origamid</p>
+                    <p class="font-bold text-4xl">{{$user->name}}</p>
                     <div>
                         <h3 class="text-gymhunt-purple-2 text-xl"> <i class="fa-regular fa-star"></i> 4.5  </h3>
                     </div> 
@@ -76,7 +87,10 @@
 
                             <div class="font-poppins text-black flex flex-col w-full gap-4 space-y-2">
                                 <div class="grid grid-flow-col justify-between items-stretch space-x-3">
-                                    <p> <i class="fa-solid fa-pencil"></i> Editar perfil</p>
+                                    {{ Auth::user()->email }}
+                                    @auth
+                                        <p> <i class="fa-solid fa-pencil"></i> Editar perfil</p>    
+                                    @endauth
                                     <button class="font-black" x-on:click="modalClose()"> <i class="fa-solid fa-x"></i> </button>
                                 </div>
 
@@ -151,19 +165,62 @@
         </div>
     </div>
 
-    <div class="mx-12 font-poppins"> <!--publicações -->
-        
+    <div class="mx-12 flex flex-col gap-4">
 
-        <div class="flex flex-row justify-center font-poppins font-medium text-2xl">
-            <a href="{{route('perfilGym')}}" class="border-b-4 border-gymhunt-purple-2 text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Atividade</a>
-            <a class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Galeria</a>
-            <a href="{{route('avaliacoesGym')}}" class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Avaliações</a>
-            <a class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Sobre nós</a>
+        <div>
+            <div class="flex flex-row justify-center font-poppins font-medium text-2xl">
+                <a href="{{route('perfilGym')}}" class="border-b-4 border-gymhunt-purple-2 text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Atividade</a>
+                <a href="#" class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center cursor-pointer">Galeria</a>
+                {{-- <a href="{{route('avaliacoesGym')}}" class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Avaliações</a> --}}
+                <a href="#" class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Sobre nós</a>
+            </div>
+    
+            <div class="w-full h-0.5 bg-slate-950"></div>
         </div>
 
-        <div class="w-full h-0.5 bg-slate-950"></div>
 
-        <div class="flex flex-rol justify-center space-x-8 m-10">
+        <div class="flex w-full gap-8">
+            <div class="flex flex-col items-center w-full gap-4">
+                @foreach ($user->posts as $post)
+                    <livewire:post.view :post="$post">
+                @endforeach
+            </div>
+
+            <div class="flex flex-col gap-4 items-center justify-center w-550 h-full">
+                <div class="bg-white rounded-lg p-4 px-8 text-center space-y-4">
+                    <p class="text-gymhunt-purple-1 font-semibold text-2xl">Visitar academia</p>
+                    <img class="rounded-lg border border-gymhunt-purple-1 w-64 h-64" src="\img\Validação DayUse.png" alt="">
+                    <div>
+                        <a href="" class="text-gymhunt-purple-2 font-medium">Clique para gerar validação</a> <!--vai para tela de valiações-->
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-4 text-center space-y-4">
+                    <p class="text-gymhunt-purple-1 font-semibold text-2xl">Localização </p>
+                    <img class="rounded-lg border border-gymhunt-purple-1" src="\img\image (1).png" alt="">
+                    <div>
+                        <a href="" class="text-gymhunt-purple-2 font-medium">Ver no mapa</a> <!--vai para tela de valiações-->
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-4 text-center space-y-4 max-w-xs">
+                    <p class="text-gymhunt-purple-1 font-semibold text-2xl">Avaliação </p>
+                    <div class="">
+                        <p class="font-semibold text-left">Comentário gerais</p>
+                        <p class="rounded-lg p-2 border border-gymhunt-purple-2 line-clamp-6 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, aspernatur! Tempora, illo error assumenda porro temporibus enim</p>
+                    </div>
+                    <div>
+                        <a href="{{route('avaliacoesGym')}}" class="text-gymhunt-purple-2 font-medium">Ver mais avaliações</a> <!--vai para tela de valiações-->
+                    </div>
+                    <a href="{{route('comentario')}}"> <button class="bg-gymhunt-purple-2 text-lg py-2 px-3 rounded-2xl text-white font-medium my-4" x-on:click="modalOpen()"> <i class="fa-solid fa-ranking-star"></i> Deixe sua avaliação</button> </a>
+                </div>
+
+
+            </div>
+        </div>
+
+
+       {{--  <div class="flex flex-rol justify-center space-x-8 m-10">
             <div class="bg-yellow-500 w-1/2"></div>
             <div class="bg-white rounded-lg p-4 px-8 text-center space-y-4">
                 <p class="text-gymhunt-purple-1 font-semibold text-2xl">Visitar academia</p>
@@ -199,7 +256,7 @@
                 <a href="{{route('comentario')}}"> <button class="bg-gymhunt-purple-2 text-lg py-2 px-3 rounded-2xl text-white font-medium my-4" x-on:click="modalOpen()"> <i class="fa-solid fa-ranking-star"></i> Deixe sua avaliação</button> </a>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="flex items-center justify-center m-4">
         <div class="w-1/4 h-0.5 bg-gymhunt-purple-2"></div>
