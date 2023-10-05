@@ -62,14 +62,17 @@
 
                 }"> 
                     <button class="bg-gymhunt-purple-2 text-lg py-2 px-3 rounded-2xl">Seguir</button>
-                    <button class="bg-gymhunt-purple-2 text-lg py-2 px-3 rounded-2xl" x-on:click="modalOpen()"><i class="fa-solid fa-pencil"></i> Editar perfil</button>
+                    <button class="bg-gymhunt-purple-2 text-lg py-2 px-3 rounded-2xl" x-on:click="modalOpen()">
+                        <i class="fa-solid fa-pencil"></i>
+                        Editar perfil
+                    </button>
 
                     <div class="fixed inset-0 flex flex-col w-screen h-screen p-8 gap-8 z-20" x-show="configOpen"> <!--tela do modal -->
                         <!-- Overlay  -->
                         <div class="bg-black bg-opacity-20 fixed inset-0 " x-on:click="modalClose()"></div>
 
                         <!-- Trovar pra form em algum momento -->
-                        <div class="self-center w-full flex bg-white p-6 rounded-2xl max-w-xl z-20">
+                        <div class="self-center w-full flex bg-white p-6 rounded-2xl max-w-2xl h-8 z-20">
 
                             <div class="font-poppins text-black flex flex-col w-full gap-4 space-y-2">
                                 <div class="grid grid-flow-col justify-between items-stretch space-x-3">
@@ -92,7 +95,7 @@
 
                                 <x-form.text name="name" label="Nome" placeholder="Digite seu nome completo" />  
                                 <x-form.text name="email" label="Email" type="email" placeholder="ex: email@gmail.com"/>
-                                <x-form.text name="bio" label="Endereço" type="textarea" placeholder=""/>
+                                <x-resizable-text model="none" />
                                 <div class="grid grid-cols-2 justify-stretch space-x-2">
                                     <x-form.text name="timeOpen" label="Horário de abertura" type="time"/>
                                     <x-form.text name="timeClose" label="Horário de fechamento" type="time"/>
