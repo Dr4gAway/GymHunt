@@ -90,8 +90,6 @@
             style: 'mapbox://styles/mapbox/streets-v11'
         });
 
-        const marker = new mapboxgl.Marker().setLngLat([-40, -20]).addTo(map);      
-        
         const searchJS = document.getElementById('search-js');
         searchJS.onload = function () {
             const searchBox = new MapboxSearchBox();
@@ -104,6 +102,23 @@
             map.addControl(searchBox);
         };
 
-        map.on('click', (e) => console.log(e.lngLat));
+        var waypoints = []
+
+        map.on('click', (e) => {
+            const coordinates = e.lngLat;
+
+            const waypoint = {
+                coordinates: coordinates.toArray(),
+                name: `teste ${waypoints.length + 1}`
+            }
+
+            if (!waypoints.includes(waypoint)) {
+                new mapboxgl.Marker()
+                    .setLngLat(waypoint.coordinates)
+                    .addTo(map);
+            }
+
+            waypoints.push(waypoint)
+        });
     </script>
 </html>
