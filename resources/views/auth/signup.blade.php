@@ -15,11 +15,24 @@
 
         <x-form.text name="name" label="Nome" class="w-full"/>
         <x-form.text name="email" label="Email" class="w-full"/>
+
         <div class="flex gap-4">
             <x-form.text name="password" label="Senha" type="password" class="w-full"/>
             <x-form.text name="password_confirmation" label="Confirmar senha" type="password" class="w-full"/>
         </div>
         <x-form.text name="phone" label="Telefone" class="w-full"/>
+
+        <span class="text-center font-bold text-2xl mt-3">Selecione</span>
+        <div class="flex gap-8 justify-center">
+            <div class="gap-4 flex flex-col w-full items-center">
+                <img class="w-32" src=".\img\academia.png" alt="Selecione:" />
+                <span class="text-2xl font-bold">Academeia</span>
+            </div>
+            <div class="gap-4 flex flex-col w-full items-center">
+                <img class="w-32" src=".\img\musculo.png" >
+                <span class="text-2xl font-bold">Pessoa</span>
+            </div>
+        </div
 
         <!-- Imagens -->
 
