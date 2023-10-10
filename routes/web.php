@@ -29,7 +29,9 @@ Route::get('/gerandoAvaliação', function(){
 })->name('comentario');
 
 Route::get('/explore', function() {
-    return view('location.gym');
+    return view('location.explore');
 });
+
+Route::get('/gym-card', App\Http\Livewire\Gym\View::class);
 
 require __DIR__.'/auth.php';
