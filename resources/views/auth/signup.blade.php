@@ -10,7 +10,7 @@
             Agora no nosso sitema
         </span>
     </h2>
-    <form action="{{route('signup')}}" method="POST" class="flex flex-col w-full gap-4">
+    <form action="{{route('signup')}}" method="POST" class="flex flex-col w-full gap-4" x-data="{}" x-init="alert('component inicializado')">
         @CSRF
 
         <x-form.text name="name" label="Nome" class="w-full"/>
@@ -22,17 +22,24 @@
         </div>
         <x-form.text name="phone" label="Telefone" class="w-full"/>
 
-        <span class="text-center font-bold text-2xl mt-3">Selecione</span>
+        <span class="text-center font-bold text-2xl mt-3">Qual usuário você se encaixa?</span>
         <div class="flex gap-8 justify-center">
-            <div class="gap-4 flex flex-col w-full items-center">
-                <img class="w-32" src=".\img\academia.png" alt="Selecione:" />
-                <span class="text-2xl font-bold">Academeia</span>
-            </div>
-            <div class="gap-4 flex flex-col w-full items-center">
-                <img class="w-32" src=".\img\musculo.png" >
-                <span class="text-2xl font-bold">Pessoa</span>
-            </div>
-        </div
+            <label for="common" class="flex flex-col w-full">
+                <input type="radio" name="user_type" id="common" value="common" class="hidden peer">
+                <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
+                    <img class="w-32" src=".\img\academia.png" alt="Selecione:" />
+                    <span class="text-2xl font-bold">Academeia</span>
+                </div>
+            </label>
+
+            <label for="gym" class="flex flex-col w-full">
+                <input type="radio" name="user_type" id="gym" value="gym" class="hidden peer">
+                <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
+                    <img class="w-32" src=".\img\musculo.png" >
+                    <span class="text-2xl font-bold">Pessoa</span>
+                </div>
+            </label>
+        </div>
 
         <!-- Imagens -->
 
@@ -59,6 +66,7 @@
                 @enderror
             </div>
         </div> -->
+        <button wire:ignore @click.prevent="alert('teste')">Próximo</button>
         <button type="submit" class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md"> Cadastrar-se </button>
     </form>
 </section>

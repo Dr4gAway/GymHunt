@@ -12,7 +12,8 @@ export default {
       colors: {
         'gymhunt': {
           'purple-1': '#5348D9',
-          'purple-2': '#8787DE'
+          'purple-2': '#8787DE',
+          'purple-3': '#C3C3EF'
         }
       },
       fontFamily: {
@@ -30,6 +31,6 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: []
 }
 
