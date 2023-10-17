@@ -16,6 +16,8 @@ class SignupController extends Controller
 
     public function store(SignupRequest $request) {
         
+        dd($request);
+
         if($request->validated())
         {
             $user = User::create([
@@ -26,16 +28,20 @@ class SignupController extends Controller
                 'phone' => $request->phone,
                 //'cpf' => $request->cpf,
                 //'dataNasc' => $request->dataNasc,
-            ]); 
-              
+            ]);
             Auth::login($user);
     
             return redirect('/feed');
         } else {
             return back()->withErrors()->withInput();
         }
-        
-        
+    }
 
+    public function gymStore() {
+        return ('cadastro como academia');
+    }
+
+    public function commonStore() {
+        return ('cadastro como usuário');
     }
 }

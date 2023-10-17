@@ -14,6 +14,9 @@ Route::middleware('guest')->group(function () {
                 ->name('signup');
 
     Route::post('/signup', [SignupController::class, 'store']);
+
+    Route::Post('/signup/gym', [SignupController::class, 'gymStore'])->name('gymSignup');
+    Route::Post('/signup/common', [SignupController::class, 'commonStore'])->name('commonSignup');
 });
 
 Route::middleware('auth')->group(function () {

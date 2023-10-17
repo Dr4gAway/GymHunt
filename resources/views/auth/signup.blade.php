@@ -10,38 +10,62 @@
             Agora no nosso sitema
         </span>
     </h2>
-    <form action="{{route('signup')}}" method="POST" class="flex flex-col w-full gap-4" x-data="{}" x-init="alert('component inicializado')">
+    <form  method="POST" class="flex flex-col w-full gap-4" x-data='{
+        formStep: "default",
+        handleUserType() {
+            this.formStep = document.querySelector(`input[name="user_type"]:checked`).value;
+
+            console.log(this.formStep)
+        }
+    }'>
         @CSRF
 
-        <x-form.text name="name" label="Nome" class="w-full"/>
-        <x-form.text name="email" label="Email" class="w-full"/>
+        <div class="flex flex-col gap-4"
+            x-show="formStep == 'default'"  x-transition.opacity
+                                            x-transition:enter.duration.500ms
+                                            x-transition:leave.duration.400m>
+            <x-form.text name="name" label="Nome" class="w-full"/>
+            <x-form.text name="email" label="Email" class="w-full"/>
 
-        <div class="flex gap-4">
-            <x-form.text name="password" label="Senha" type="password" class="w-full"/>
-            <x-form.text name="password_confirmation" label="Confirmar senha" type="password" class="w-full"/>
+            <div class="flex gap-4">
+                <x-form.text name="password" label="Senha" type="password" class="w-full"/>
+                <x-form.text name="password_confirmation" label="Confirmar senha" type="password" class="w-full"/>
+            </div>
+            <x-form.text name="phone" label="Telefone" class="w-full"/>
+
+            <span class="text-center font-bold text-2xl mt-3">Qual usuário você se encaixa?</span>
+            <div class="flex gap-8 justify-center" id="teste">
+                <label for="common" class="flex flex-col w-full">
+                    <input type="radio" name="user_type" id="common" value="gym" class="hidden peer">
+                    <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
+                        <img class="w-32" src=".\img\academia.png" alt="Selecione:" />
+                        <span class="text-2xl font-bold">Academeia</span>
+                    </div>
+                </label>
+
+                <label for="gym" class="flex flex-col w-full">
+                    <input type="radio" name="user_type" id="gym" value="common" class="hidden peer">
+                    <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
+                        <img class="w-32" src=".\img\musculo.png" >
+                        <span class="text-2xl font-bold">Pessoa</span>
+                    </div>
+                </label>
+            </div>
         </div>
-        <x-form.text name="phone" label="Telefone" class="w-full"/>
 
-        <span class="text-center font-bold text-2xl mt-3">Qual usuário você se encaixa?</span>
-        <div class="flex gap-8 justify-center">
-            <label for="common" class="flex flex-col w-full">
-                <input type="radio" name="user_type" id="common" value="common" class="hidden peer">
-                <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
-                    <img class="w-32" src=".\img\academia.png" alt="Selecione:" />
-                    <span class="text-2xl font-bold">Academeia</span>
-                </div>
-            </label>
-
-            <label for="gym" class="flex flex-col w-full">
-                <input type="radio" name="user_type" id="gym" value="gym" class="hidden peer">
-                <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
-                    <img class="w-32" src=".\img\musculo.png" >
-                    <span class="text-2xl font-bold">Pessoa</span>
-                </div>
-            </label>
+        <div x-show="formStep == 'common'"  x-transition.opacity
+                                            x-transition:enter.duration.500ms
+                                            x-transition:leave.duration.400m>
+            Você é um usuário normal!
         </div>
 
-        <!-- Imagens -->
+        <div x-show="formStep == 'gym'" x-transition.opacity
+                                        x-transition:enter.duration.500ms
+                                        x-transition:leave.duration.400m>
+            Você é uma academia
+        </div>
+
+        <!-- Imagens
 
             <span class="text-lg font-bold leading-6 text-gray-900">Insira suas imagens</span>
             <div class="flex flex-col gap-4">
@@ -66,11 +90,38 @@
                 @enderror
             </div>
         </div> -->
-        <button wire:ignore @click.prevent="alert('teste')">Próximo</button>
+
+        <div class="flex w-full gap-4">
+            <button wire:ignore @click.prevent='formStep = "default"' :class="formStep == 'default' ? 'hidden' : '' "
+                    class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md w-full">
+                Voltar
+            </button>
+            <button wire:ignore @click.prevent='handleUserType' :class="formStep != 'default' ? 'hidden' : '' "
+                    class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md w-full">
+                Próximo
+            </button>
+        </div>
         <button type="submit" class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md"> Cadastrar-se </button>
     </form>
 </div>
-
-    
-
 @endsection
+
+@push('custom-scripts')
+    <script defer>
+
+        const form = document.querySelector('form')
+        const types = document.querySelectorAll(`input[name="user_type"]`)
+        const userType = document.querySelectorAll(`input[name="user_type"]:checked`)
+        types.forEach((type) => {
+            
+            type.addEventListener('change', () => {
+                if(type == gym)
+                    form.action = "{{ route('gymSignup') }}";
+                else
+                    form.action = "{{ route('commonSignup') }}";
+            })
+        })
+
+        console.log(types)
+    </script>
+@endpush
