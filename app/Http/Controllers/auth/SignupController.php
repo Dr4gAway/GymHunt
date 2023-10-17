@@ -21,17 +21,18 @@ class SignupController extends Controller
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
+                //'bio' => $request->biografia,
                 'password' => $request->password,
                 'phone' => $request->phone,
-            ]);
-    
+                //'cpf' => $request->cpf,
+                //'dataNasc' => $request->dataNasc,
+            ]); 
+              
             Auth::login($user);
     
             return redirect('/feed');
         } else {
-            return back()->withErrors([
-                'invalid_credentials' => 'As credênciais são invalidas',
-            ])->withInput();
+            return back()->withErrors()->withInput();
         }
         
         

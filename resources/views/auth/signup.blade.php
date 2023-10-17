@@ -43,8 +43,8 @@
 
         <!-- Imagens -->
 
-        <!-- <span class="text-lg font-bold leading-6 text-gray-900">Insira suas imagens</span>
-        <div class="flex flex-col gap-4">
+            <span class="text-lg font-bold leading-6 text-gray-900">Insira suas imagens</span>
+            <div class="flex flex-col gap-4">
             <div>
                 <label for="avatar" class="block text-sm font-semibold leading-6 text-gray-900 ">1. Avatar</label>
                 <div class="mt-2.5">
@@ -69,5 +69,8 @@
         <button wire:ignore @click.prevent="alert('teste')">Próximo</button>
         <button type="submit" class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md"> Cadastrar-se </button>
     </form>
-</section>
+</div>
+
+    
+
 @endsection
