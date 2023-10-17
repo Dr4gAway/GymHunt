@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('serie');
             $table->string('rep');
             $table->string('carga');
-            $table->string('data');
+            $table->timestamp('data');
             $table->timestamps();
         });
     }

@@ -12,7 +12,7 @@ class Create extends Component
     public ?int $serie = null;
     public ?int $rep = null;
     public ?int $carga = null;
-    public ?date $data = null;
+    public $data = null;
 
     public function render()
     {
