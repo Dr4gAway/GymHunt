@@ -22,32 +22,30 @@ class GymSignupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'document' => '',
-            'open_schedule' => '',
-            'close_schedule' => '',
+            'document' => 'required|string|size:14',
+            'open_schedule' => 'required|timestamp',
+            'close_schedule' => 'required|timestamp',
+            'city' => 'required|string|max:64',
+            'state' => 'required|string|max:64',
+            'district' => 'required|string|max:64',
+            'street' => 'required|string|max:64',
+            'number' => 'required|stirng|max:7',
+            'longitude' => 'required|decimal|between:-180,180',
+            'latitude' => 'required|decimal|between:-90,90'
 
             /* 'avatar' => 'nullable|image|mimes:jpeg,jpg,png,gif',
             'banner' => 'nullable|image|mimes:jpeg,jpg,png,gif' */
         ];
     }
 
-    public function messages()
+    /* public function messages()
     {
         return [
-            'name' => 'Nome inválido',
-            'name.required' => 'Nome é necessário',
-            'email.email' => 'Digite um endereço de email valido.',
-            'email.required' => 'Email é necessário.',
-            'phone.required' => 'Telefone é necessário.',
-            'phone.size' => 'Digite um telefone válido.',
-            'password.required' => 'Senha é necessária.',
-            'password.min' => 'Mínimo de 8 caracteres.',
-            'password.max' => 'Máximo de 32 caracteres.',
-            'password_confirmation.required' => 'Confirmação é necessária.',
-            'password_confirmation.same' => 'As senhas são diferentes.',
-            /*'avatar' => 'Imagem inválida.',
+            
+            'avatar' => 'Imagem inválida.',
             'avatar.required' => 'Foto de perfil é necessária.',
-            'banner' => 'Imagem inválida.', */
+            'banner' => 'Imagem inválida.', 
         ];
     }
+    */
 }

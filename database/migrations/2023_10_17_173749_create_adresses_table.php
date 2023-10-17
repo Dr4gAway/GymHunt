@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use App\Models\Gym;
+
 return new class extends Migration
 {
     /**
@@ -13,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('adresses', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Gym::class, 'owner');
             $table->string('city');
             $table->string('state');
             $table->string('district');
