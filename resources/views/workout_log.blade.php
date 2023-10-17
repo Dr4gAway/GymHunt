@@ -88,36 +88,9 @@
                 </div>
 
                 <div class="flex flex-row space-x-5"> <!--cards de treino-->
-                @foreach($exercice as $exercice)
-                    <div class="rounded-xl bg-white shadow-lg p-4 my-4 w-72"> <!--cada card-->
-                        <div class="flex flex-row items-center justify-between mb-2"> <!--nome do exercicio-->
-                            <p class="font-semibold">{{$exercice->nameExerc}} </p>
-                            <div class="text-red-500"> <i class="fa-solid fa-trash-can"></i> </div>
-                        </div>
 
-                        <div class="space-y-3"> <!--infos-->
-                            <div class="flex flex-row justify-between">
-                                <p>Série</p>
-                                <p>{{$exercice->serie}}</p>
-                            </div>
+                    <livewire:exercise.exercise-row /> 
 
-                            <div class="flex flex-row justify-between">
-                                <p>Repetições</p>
-                                <p>{{$exercice->rep}}</p>
-                            </div>
-
-                            <div class="flex flex-row justify-between">
-                                <p>Carga</p>
-                                <p>{{$exercice->carga}} kg</p>
-                            </div>
-
-                            <div class="flex flex-row justify-between">
-                                <p>Data</p>
-                                <p>{{$exercice->data}}</p>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
                     <div class="rounded-xl bg-white shadow-lg p-4 my-4 w-72"> <!--cada card-->
                         <div class="flex flex-row items-center justify-between mb-2"> <!--nome do exercicio-->
                             <p class="font-semibold">Leg Press </p>
@@ -161,7 +134,7 @@
                                 <div class="bg-black bg-opacity-20 fixed inset-0 " x-on:click="closeExerc()"></div>
 
                                 <!-- create exercice -->
-                                <livewire:exercice.create />
+                                <livewire:exercise.create />
                             </div> 
                         </div>
                     </div>
