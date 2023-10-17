@@ -35,16 +35,16 @@
 
             <span class="text-center font-bold text-2xl mt-3">Qual usuário você se encaixa?</span>
             <div class="flex gap-8 justify-center" id="teste">
-                <label for="common" class="flex flex-col w-full">
-                    <input type="radio" name="user_type" id="common" value="gym" class="hidden peer">
+                <label for="gym" class="flex flex-col w-full">
+                    <input type="radio" name="user_type" id="gym" value="gym" class="hidden peer">
                     <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
                         <img class="w-32" src=".\img\academia.png" alt="Selecione:" />
-                        <span class="text-2xl font-bold">Academeia</span>
+                        <span class="text-2xl font-bold">Academia</span>
                     </div>
                 </label>
 
-                <label for="gym" class="flex flex-col w-full">
-                    <input type="radio" name="user_type" id="gym" value="common" class="hidden peer">
+                <label for="common" class="flex flex-col w-full">
+                    <input type="radio" name="user_type" id="common" value="common" class="hidden peer">
                     <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
                         <img class="w-32" src=".\img\musculo.png" >
                         <span class="text-2xl font-bold">Pessoa</span>
@@ -62,7 +62,18 @@
         <div x-show="formStep == 'gym'" x-transition.opacity
                                         x-transition:enter.duration.500ms
                                         x-transition:leave.duration.400m>
-            Você é uma academia
+
+            <x-form.text name="document" label="CNPJ" type="text" class="w-full"/>
+            <x-form.text name="open_schedule" label="Abertura" type="number" class="w-full"/>
+            <x-form.text name="close_schedule" label="Fechamento" type="number" class="w-full"/>
+            <p>Endereço</p>
+            <x-form.text name="city" label="Cidade" type="text" class="w-full"/>
+            <x-form.text name="state" label="Estado" type="text" class="w-full"/>
+            <x-form.text name="district" label="Bairro" type="text" class="w-full"/>
+            <x-form.text name="street" label="Rua" type="text" class="w-full"/>
+            <x-form.text name="number" label="Numero" type="text" class="w-full"/>
+            <x-form.text name="latitude" label="Latitude" type="number" class="w-full"/>
+            <x-form.text name="longitude" label="longitude" type="number" class="w-full"/>
         </div>
 
         <!-- Imagens
@@ -119,6 +130,8 @@
                     form.action = "{{ route('gymSignup') }}";
                 else
                     form.action = "{{ route('commonSignup') }}";
+
+                    console.log(type.value);
             })
         })
 

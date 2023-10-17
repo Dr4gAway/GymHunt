@@ -5,6 +5,7 @@ namespace App\Http\Controllers\auth;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\SignupRequest;
+use App\Http\Requests\Auth\GymSignupRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -37,7 +38,11 @@ class SignupController extends Controller
         }
     }
 
-    public function gymStore() {
+    public function gymStore(GymSignupRequest $request) {
+        
+        $request->validated();
+        dd($request);
+
         return ('cadastro como academia');
     }
 

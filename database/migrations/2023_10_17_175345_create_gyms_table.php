@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('gyms', function (Blueprint $table) {
             $table->id();
             $table->string('document');
-            $table->timestamp('open_schedule');
-            $table->timestamp('close_schedule');
+            $table->integer('open_schedule');
+            $table->integer('close_schedule');
             $table->foreignIdFor(Adress::class, 'adress_id');
             $table->timestamps();
         });

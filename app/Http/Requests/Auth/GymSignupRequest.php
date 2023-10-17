@@ -23,15 +23,15 @@ class GymSignupRequest extends FormRequest
     {
         return [
             'document' => 'required|string|size:14',
-            'open_schedule' => 'required|timestamp',
-            'close_schedule' => 'required|timestamp',
+            'open_schedule' => 'required|integer|max:1440',
+            'close_schedule' => 'required|integer|max:1440',
             'city' => 'required|string|max:64',
             'state' => 'required|string|max:64',
             'district' => 'required|string|max:64',
             'street' => 'required|string|max:64',
-            'number' => 'required|stirng|max:7',
-            'longitude' => 'required|decimal|between:-180,180',
-            'latitude' => 'required|decimal|between:-90,90'
+            'number' => 'required|string|max:7',
+            'longitude' => 'required|numeric|between:-180,180',
+            'latitude' => 'required|numeric|between:-90,90'
 
             /* 'avatar' => 'nullable|image|mimes:jpeg,jpg,png,gif',
             'banner' => 'nullable|image|mimes:jpeg,jpg,png,gif' */
