@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('exercises', function (Blueprint $table) {
+        Schema::create('exercices', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Comment::class, 'comment_id');
             $table->string('nameExerc');
             $table->Integer('serie');
             $table->Integer('rep');

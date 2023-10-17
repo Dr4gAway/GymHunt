@@ -12,6 +12,8 @@ Route::Get('/feed/posts/{id}', [PostController::class, 'index'])->name('post');
 
 Route::Get('/perfil/{id}', [ProfileController::class, 'index'])->name('perfil');
 
+// Route::Get('/')
+
 Route::get('/perfil', function(){
     return view('perfilUser');
 })->name('perfilUser');

@@ -51,14 +51,6 @@
                         
                         <p class="max-w-sm sm:text-md md:text-lg lg:text-xl line-clamp-3 text-center leading-6 text-gray-800">Localize a academia mais próxima de sua você, além de ver suas avaliações.</p>
                     </div>
-
-                    <div class="group relative">
-                        <h6 class="text-md text-right leading-6 text-gray-800 group-hover:text-gray-500 group-hover:font-semibold">
-                            <a href="#">
-                                <span class="absolute inset-0"></span> Ver mais
-                            </a>
-                        </h6>
-                    </div>
                 </article>
 
                 <article class="flex flex-col w-fit bg-white shadow-2xl px-8 py-6 rounded-lg">
@@ -72,14 +64,6 @@
                         </h3>
                         
                         <p class="max-w-sm sm:text-md md:text-lg lg:text-xl line-clamp-3 text-center leading-6 text-gray-800">Registre seus treinos diariamente e tenha maior controle da sua evolução!</p>
-                    </div>
-
-                    <div class="group relative">
-                        <h6 class="text-md text-right leading-6 text-gray-800 group-hover:text-gray-500 group-hover:font-semibold">
-                            <a href="#">
-                                <span class="absolute inset-0"></span> Ver mais
-                            </a>
-                        </h6>
                     </div>
                 </article>
 
@@ -96,13 +80,6 @@
                         <p class="max-w-sm sm:text-md md:text-lg lg:text-lg line-clamp-3 text-center leading-6 text-gray-800">Facilita a comunicação com a comunidade a qual apresentam um objetivo em comum.</p>
                     </div>
 
-                    <div class="group relative">
-                        <h6 class="text-md text-right leading-6 text-gray-800 group-hover:text-gray-500 group-hover:font-semibold">
-                            <a href="{{route('feed')}}">
-                                <span class="absolute inset-0"></span> Ver mais
-                            </a>
-                        </h6>
-                    </div>
                 </article>
 
                 
@@ -143,15 +120,29 @@
                 </div>
             </div>
 
+            @auth
             <div class="space-y-3 sm:text-sm md:text-md lg:text-lg">
                 <h4 class="font-semibold">Navegue para</h4>
                 <div class="flex flex-col place-items-center space-y-2">
-                    <a href="#" class="hover:border-b-2">Home</a>
-                    <a href="#" class="hover:border-b-2">Feed</a>
-                    <a href="#" class="hover:border-b-2">Mapa</a>
-                    <a href="#" class="hover:border-b-2">Workout-log</a>
+                    <a href="{{route('home')}}" " class="hover:border-b-2">Home</a>
+                    <a href="{{route('feed')}}" class="hover:border-b-2">Feed</a>
+                    <a href="{{route('feed')}}" " class="hover:border-b-2">Mapa</a>
+                    <a href="{{route('workoutlog')}}" " class="hover:border-b-2">Workout-log</a>
                 </div>
             </div>
+            @endauth
+
+            @guest
+            <div class="space-y-3 sm:text-sm md:text-md lg:text-lg">
+                <h4 class="font-semibold">Navegue para</h4>
+                <div class="flex flex-col place-items-center space-y-2">
+                    <a href="{{route('home')}}" " class="hover:border-b-2">Home</a>
+                    <a href="{{route('login')}}" class="hover:border-b-2">Feed</a>
+                    <a href="{{route('login')}}" " class="hover:border-b-2">Mapa</a>
+                    <a href="{{route('login')}}" " class="hover:border-b-2">Workout-log</a>
+                </div>
+            </div>
+            @endguest
 
             <div class="space-y-5 flex flex-col place-items-center">
                 <h4 class="font-semibold">Contate-nos</h4>

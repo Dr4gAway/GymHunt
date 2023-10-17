@@ -61,13 +61,13 @@
                     <!-- Trocar pra form em algum momento -->
                     <div class="self-center w-full flex bg-white p-6 rounded-2xl max-w-xl z-20">
 
-                        <div class="font-poppins text-black flex flex-col w-full gap-4 space-y-2">
+                        <div class="font-poppins text-black flex flex-col w-full gap-4 space-y-3">
                             <div class="grid grid-flow-col justify-between items-stretch space-x-3">
                                 <p> <i class="fa-solid fa-plus"></i> Adicionar grupo muscular</p>   
                                 <button class="font-black" x-on:click="modalClose()"> <i class="fa-solid fa-x"></i> </button>
                             </div>
                             
-                            <x-form.text name="groupMusc" label="Grupo(s) Muscular(es)" placeholder="Escolha a categoria" />  
+                            <x-form.text name="groupMusc" label="Grupo(s) Muscular(es)" placeholder="Escolha a categoria" />  <!--essa info vai para o nome do grupo -->
 
                             <div class="grid grid-flow-col justify-between space-x-2">
                                 <button type="submit" x-on:click="modalClose()" class="  justify-center rounded-lg bg-gymhunt-purple-2 px-5 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cancelar</button>
@@ -88,35 +88,36 @@
                 </div>
 
                 <div class="flex flex-row space-x-5"> <!--cards de treino-->
+                @foreach($exercice as $exercice)
                     <div class="rounded-xl bg-white shadow-lg p-4 my-4 w-72"> <!--cada card-->
                         <div class="flex flex-row items-center justify-between mb-2"> <!--nome do exercicio-->
-                            <p class="font-semibold">Agachamento </p>
+                            <p class="font-semibold">{{$exercice->nameExerc}} </p>
                             <div class="text-red-500"> <i class="fa-solid fa-trash-can"></i> </div>
                         </div>
 
                         <div class="space-y-3"> <!--infos-->
                             <div class="flex flex-row justify-between">
                                 <p>Série</p>
-                                <p>5</p>
+                                <p>{{$exercice->serie}}</p>
                             </div>
 
                             <div class="flex flex-row justify-between">
                                 <p>Repetições</p>
-                                <p>8</p>
+                                <p>{{$exercice->rep}}</p>
                             </div>
 
                             <div class="flex flex-row justify-between">
                                 <p>Carga</p>
-                                <p>30 kg</p>
+                                <p>{{$exercice->carga}} kg</p>
                             </div>
 
                             <div class="flex flex-row justify-between">
                                 <p>Data</p>
-                                <p>05/03/2023</p>
+                                <p>{{$exercice->data}}</p>
                             </div>
                         </div>
                     </div>
-
+                @endforeach
                     <div class="rounded-xl bg-white shadow-lg p-4 my-4 w-72"> <!--cada card-->
                         <div class="flex flex-row items-center justify-between mb-2"> <!--nome do exercicio-->
                             <p class="font-semibold">Leg Press </p>
