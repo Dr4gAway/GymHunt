@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('district');
             $table->string('street');
             $table->string('number');
-            $table->string('longitude');
-            $table->string('latitude');
+            $table->decimal('longitude', $precision = 3, $scale = 15);
+            $table->decimal('latitude', $precision = 3, $scale = 15);
             $table->timestamps();
         });
     }
