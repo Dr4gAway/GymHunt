@@ -2,13 +2,16 @@
 @section('titulo', 'GymHunt - Cadastro')
 @section('content')
 <section class="flex flex-col w-full max-w-2xl mx-auto my-8 gap-8 ">
-    <h2 class="flex flex-col self-start font-bold">
-        <span class="text-6xl">
-            Cadastre-se
-        </span>
-        <span class="text-4xl">
-            Agora no nosso sitema
-        </span>
+    <h2 class="flex self-start font-bold gap-4">
+        <img src="\img\logoIcon.png" alt="Logo Gym hunt" class="w-24">
+        <div class="flex flex-col">
+            <span class="text-6xl">
+                Cadastre-se
+            </span>
+            <span class="text-4xl">
+                Agora no nosso sitema
+            </span>
+        </div>
     </h2>
     <form  method="POST" class="flex flex-col w-full gap-4" x-data='{
         formStep: "default",
@@ -38,7 +41,7 @@
                 <label for="gym" class="flex flex-col w-full">
                     <input type="radio" name="user_type" id="gym" value="gym" class="hidden peer">
                     <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
-                        <img class="w-32" src=".\img\academia.png" alt="Selecione:" />
+                        <img class="w-32" src="\img\academia.png" alt="Selecione:" />
                         <span class="text-2xl font-bold">Academia</span>
                     </div>
                 </label>
@@ -46,7 +49,7 @@
                 <label for="common" class="flex flex-col w-full">
                     <input type="radio" name="user_type" id="common" value="common" class="hidden peer">
                     <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
-                        <img class="w-32" src=".\img\musculo.png" >
+                        <img class="w-32" src="\img\musculo.png" >
                         <span class="text-2xl font-bold">Pessoa</span>
                     </div>
                 </label>
