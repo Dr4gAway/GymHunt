@@ -19,13 +19,16 @@ class Create extends Component
         return view('livewire.exercise.create');
     }
 
-    public function store(){
-       Exercise::create([
+    public function store() {
+
+       $exercise = Exercise::create([
         'nameExerc'=> $this->nameExerc,
         'serie'=> $this->serie,
         'rep'=> $this->rep,
         'carga'=> $this->carga,
         'data'=> $this->data
        ]);
+
+       $this->emitUp('exercise::created');
     }
 }

@@ -14,6 +14,6 @@ class Exercise extends Model
         'serie',
         'rep',
         'carga',
-        'data'
+        'data',
     ];
 }

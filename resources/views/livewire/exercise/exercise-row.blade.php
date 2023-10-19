@@ -1,4 +1,4 @@
-@foreach($exercise as $exercise)
+@foreach($this->exercises as $exercise)
 <div class="rounded-xl bg-white shadow-lg p-4 my-4 w-72"> <!--cada card-->
     <div class="flex flex-row items-center justify-between mb-2"> <!--nome do exercicio-->
         <p class="font-semibold">{{$exercise->nameExerc}}</p>

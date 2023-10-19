@@ -12,7 +12,9 @@ Route::Get('/feed/posts/{id}', [PostController::class, 'index'])->name('post');
 
 Route::Get('/perfil/{id}', [ProfileController::class, 'index'])->name('perfil');
 
-// Route::Get('/')
+Route::Get('/workout_log', function(){
+    return view('workout_log');
+})->name('workout_log');
 
 Route::get('/perfil', function(){
     return view('perfilUser');
