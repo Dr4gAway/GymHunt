@@ -61,19 +61,36 @@
 
         <div x-show="formStep == 'gym'" x-transition.opacity
                                         x-transition:enter.duration.500ms
-                                        x-transition:leave.duration.400m>
+                                        x-transition:leave.duration.400m
+             class="flex flex-col gap-2">
 
-            <x-form.text name="document" label="CNPJ" type="text" class="w-full"/>
-            <x-form.text name="open_schedule" label="Abertura" type="number" class="w-full"/>
-            <x-form.text name="close_schedule" label="Fechamento" type="number" class="w-full"/>
-            <p>Endereço</p>
-            <x-form.text name="city" label="Cidade" type="text" class="w-full"/>
-            <x-form.text name="state" label="Estado" type="text" class="w-full"/>
-            <x-form.text name="district" label="Bairro" type="text" class="w-full"/>
-            <x-form.text name="street" label="Rua" type="text" class="w-full"/>
-            <x-form.text name="number" label="Numero" type="text" class="w-full"/>
-            <x-form.text name="latitude" label="Latitude" type="number" class="w-full"/>
-            <x-form.text name="longitude" label="longitude" type="number" class="w-full"/>
+             <div class="flex flex-col gap-2 items-start">
+                <span class="text-center font-bold text-2xl mt-3">Documentos</span>
+                <x-form.text name="document" label="CNPJ" type="text" class="w-full"/>
+             </div>
+            <div class="flex flex-col gap-2 items-start">
+                <span class="text-center font-bold text-2xl mt-3">Horários</span>
+                <div class="flex gap-4 w-full">
+                    <x-form.text name="open_schedule" label="Abertura" type="number" class="w-full"/>
+                    <x-form.text name="close_schedule" label="Fechamento" type="number" class="w-full"/>
+                </div>
+            </div>
+            <div class="flex flex-col gap-2 items-start">
+                <span class="text-center font-bold text-2xl mt-3">Endereço</span>
+                <div class="flex w-full gap-4">
+                    <x-form.text name="city" label="Cidade" type="text" class="w-full grow"/>
+                    <x-form.text name="district" label="Bairro" type="text" class="flex-none"/>
+                    <x-form.text name="state" label="Estado" type="text" class="flex-none"/>
+                </div>
+                <div class="flex gap-4 w-full">
+                    <x-form.text name="street" label="Rua" type="text" class="w-full"/>
+                    <x-form.text name="number" label="Numero" type="text" class="flex-none"/>
+                </div>
+                <div class="flex gap-4 w-full">
+                    <x-form.text name="latitude" label="Latitude" type="number" class="w-full"/>
+                    <x-form.text name="longitude" label="longitude" type="number" class="w-full"/>
+                </div>
+            </div>
         </div>
 
         <!-- Imagens

@@ -4,8 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-use App\Models\Adress;
-
 return new class extends Migration
 {
     /**
@@ -18,7 +16,13 @@ return new class extends Migration
             $table->string('document');
             $table->integer('open_schedule');
             $table->integer('close_schedule');
-            $table->foreignIdFor(Adress::class, 'adress_id');
+            $table->string('city');
+            $table->string('state');
+            $table->string('district');
+            $table->string('street');
+            $table->string('number');
+            $table->decimal('longitude', $precision = 18, $scale = 15);
+            $table->decimal('latitude', $precision = 18, $scale = 15);
             $table->timestamps();
         });
     }

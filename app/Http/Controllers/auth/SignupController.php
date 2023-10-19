@@ -8,6 +8,7 @@ use App\Http\Requests\Auth\SignupRequest;
 use App\Http\Requests\Auth\GymSignupRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Gym;
 
 class SignupController extends Controller
 {
@@ -40,10 +41,34 @@ class SignupController extends Controller
 
     public function gymStore(GymSignupRequest $request) {
         
-        $request->validated();
-        dd($request);
+        if ($request->validated())
+        {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $request->password,
+                'phone' => $request->phone
+            ]);
+    
+            $gym = Gym::create([
+                'document' => $request->document,
+                'open_schedule' => $request->open_schedule,
+                'close_schedule' => $request->close_schedule,
+                'city' => $request->city,
+                'state' => $request->state,
+                'district' => $request->district,
+                'street' => $request->street,
+                'number' => $request->number,
+                'longitude' => $request->longitude,
+                'latitude' => $request->latitude
+            ]);
+    
+            Auth::login($user);
 
-        return ('cadastro como academia');
+            return redirect('/feed');
+        } else {
+            return back()->withErrors()->withInput();
+        }
     }
 
     public function commonStore() {

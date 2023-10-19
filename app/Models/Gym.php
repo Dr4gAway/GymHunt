@@ -9,6 +9,19 @@ use Illuminate\Database\Eloquent\Model;
 class Gym extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'document',
+        'open_schedule',
+        'close_schedule',
+        'city',
+        'state',
+        'district',
+        'street',
+        'number',
+        'longitude',
+        'latitude'
+    ];
 
     public function adress() : HasOne
     {

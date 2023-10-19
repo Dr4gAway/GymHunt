@@ -22,6 +22,13 @@ class GymSignupRequest extends FormRequest
     public function rules(): array
     {
         return [
+            /* User Data */
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'phone' => 'required|string|size:13',
+            'password' => 'required|string|min:8|max:32',
+            'password_confirmation' => 'required|same:password',
+            /* Gym data */
             'document' => 'required|string|size:14',
             'open_schedule' => 'required|integer|max:1440',
             'close_schedule' => 'required|integer|max:1440',
