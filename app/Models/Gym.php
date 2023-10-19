@@ -11,6 +11,7 @@ class Gym extends Model
     use HasFactory;
     
     protected $fillable = [
+        'user_id',
         'document',
         'open_schedule',
         'close_schedule',

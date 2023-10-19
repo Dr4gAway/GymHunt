@@ -60,7 +60,8 @@ class SignupController extends Controller
                 'street' => $request->street,
                 'number' => $request->number,
                 'longitude' => $request->longitude,
-                'latitude' => $request->latitude
+                'latitude' => $request->latitude,
+                'user_id' => $user->id
             ]);
     
             Auth::login($user);
