@@ -15,6 +15,8 @@
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
         
         @livewireStyles
+
+        @stack('custom-header')
     </head>
 
     <header class="text-base font-normal px-8 h-[100px] bg-white shadow-lg font-poppins flex">

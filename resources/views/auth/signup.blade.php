@@ -1,5 +1,8 @@
 @extends('layout.site')
 @section('titulo', 'GymHunt - Cadastro')
+@push('custom-header')
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+@endpush
 @section('content')
 <section class="flex flex-col w-full max-w-2xl mx-auto my-8 gap-8 ">
     <h2 class="flex self-start font-bold gap-4">
@@ -116,21 +119,22 @@
                     Selecionar localização
                 </button>
 
-                <div class="fixed inset-0 flex flex-col w-full h-screen my-8 gap-8 z-20" x-show="mapOpen" x-data="{
+                <div class="fixed inset-0 flex flex-col w-full h-screen my-8 gap-8 z-20 p-16" x-show="mapOpen" x-data="{
 
                 }" @update::close="closeModal()">
                     <!-- Overlay  -->
                     <div class="bg-black bg-opacity-20 fixed inset-0 " x-on:click="closeModal()"></div>
             
-                        <!-- <span class="rounded-full h-10 w-10 bg-blue-500"></span> -->
-                
-                        <div class="self-center w-full flex flex-col gap-4 bg-white p-4 rounded-2xl max-w-2xl z-20">
-                            <iframe width='100%' height='400px' src="https://api.mapbox.com/styles/v1/dr4gaway/clmvwb5lk05t701qx9zzfdd9w.html?title=false&access_token=pk.eyJ1IjoiZHI0Z2F3YXkiLCJhIjoiY2xtdnc2YjdnMG1nNzJpcGNiaDI4aXAzcSJ9.9XTO-r1_cZp9p51MazueCw&zoomwheel=false#17.54/-22.340987/-49.024319" title="Navigation" style="border:none;"></iframe>
-                
-                            <button type="submit" class="self-end bg-gymhunt-purple-1 text-white rounded-2xl px-4 py-2 w-fit">
-                                Enviar
-                            </button>
-                        </div>
+                    <!-- <span class="rounded-full h-10 w-10 bg-blue-500"></span> -->
+            
+                    <div class="self-center w-full max-w-6xl h-full max-h-[720px] flex flex-col gap-4 bg-white p-4 rounded-2xl z-20">
+                        <div id='map' class="w-full h-full absolute top-0 left-0"></div>
+                        {{-- <iframe id="map" width='100%' height='400px' src="https://api.mapbox.com/styles/v1/dr4gaway/clmvwb5lk05t701qx9zzfdd9w.html?title=false&access_token=pk.eyJ1IjoiZHI0Z2F3YXkiLCJhIjoiY2xtdnc2YjdnMG1nNzJpcGNiaDI4aXAzcSJ9.9XTO-r1_cZp9p51MazueCw&zoomwheel=false#17.54/-22.340987/-49.024319" title="Navigation" style="border:none;"></iframe> --}}
+
+                        <button type="submit" class="self-end bg-gymhunt-purple-1 text-white rounded-2xl px-4 py-2 w-fit">
+                            Enviar
+                        </button>
+                    </div>
                 </div>                
                 
                 {{-- <div class="flex gap-4 w-full">
@@ -182,8 +186,10 @@
 @endsection
 
 @push('custom-scripts')
-    <script defer>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    {{-- <script id="search-js" src="https://api.mapbox.com/search-js/v1.0.0-beta.17/web.js"></script> --}}
 
+    <script defer>
         const form = document.querySelector('form')
         const types = document.querySelectorAll(`input[name="user_type"]`)
         const userType = document.querySelectorAll(`input[name="user_type"]:checked`)
@@ -193,12 +199,53 @@
                 if(type == gym)
                     form.action = "{{ route('gymSignup') }}";
                 else
-                    form.action = "{{ route('commonSignup') }}";
+                    form.action = "{{ route('commonSignup') }}";    
 
                     console.log(type.value);
             })
         })
 
         console.log(types)
+    </script>
+
+    <script defer>
+        const ACCESS_TOKEN = 'pk.eyJ1IjoiZHI0Z2F3YXkiLCJhIjoiY2xtdnc2YjdnMG1nNzJpcGNiaDI4aXAzcSJ9.9XTO-r1_cZp9p51MazueCw';
+
+        mapboxgl.accessToken = ACCESS_TOKEN;
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/dr4gaway/clmvwb5lk05t701qx9zzfdd9w'
+        });
+
+        /* const searchJS = document.getElementById('search-js');
+        searchJS.onload = function () {
+            const searchBox = new MapboxSearchBox();
+            searchBox.accessToken = ACCESS_TOKEN;
+            searchBox.options = {
+                proximity: [-73.99209, 40.68933]
+            };
+            searchBox.marker = true;
+            searchBox.mapboxgl = mapboxgl;
+            map.addControl(searchBox);
+        }; */
+
+        var waypoints = []
+
+        map.on('click', (e) => {
+            const coordinates = e.lngLat;
+
+            const waypoint = {
+                coordinates: coordinates.toArray(),
+                name: `teste ${waypoints.length + 1}`
+            }
+
+            if (!waypoints.includes(waypoint)) {
+                new mapboxgl.Marker()
+                    .setLngLat(waypoint.coordinates)
+                    .addTo(map);
+            }
+
+            waypoints.push(waypoint)
+        });
     </script>
 @endpush
