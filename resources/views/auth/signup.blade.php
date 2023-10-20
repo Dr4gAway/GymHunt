@@ -14,11 +14,33 @@
         </div>
     </h2>
     <form  method="POST" class="flex flex-col w-full gap-4" x-data='{
+        mapOpen: false,
         formStep: "default",
         handleUserType() {
             this.formStep = document.querySelector(`input[name="user_type"]:checked`).value;
-
             console.log(this.formStep)
+        },
+
+        disableScroll() {
+            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+            window.onscroll = () => {
+                window.scrollTo(scrollLeft, scrollTop);
+            }
+        },
+        
+        enableScroll() {
+            window.onscroll = function() {};
+        },
+
+        closeModal() {
+            this.enableScroll();
+            this.mapOpen = !this.mapOpen
+        },
+
+        openModal() {
+            this.disableScroll();
+            this.mapOpen = !this.mapOpen
         }
     }'>
         @CSRF
@@ -89,10 +111,32 @@
                     <x-form.text name="street" label="Rua" type="text" class="w-full"/>
                     <x-form.text name="number" label="Numero" type="text" class="flex-none"/>
                 </div>
-                <div class="flex gap-4 w-full">
+                <button wire:ignore @click.prevent='openModal()'
+                 class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md w-full">
+                    Selecionar localização
+                </button>
+
+                <div class="fixed inset-0 flex flex-col w-full h-screen my-8 gap-8 z-20" x-show="mapOpen" x-data="{
+
+                }" @update::close="closeModal()">
+                    <!-- Overlay  -->
+                    <div class="bg-black bg-opacity-20 fixed inset-0 " x-on:click="closeModal()"></div>
+            
+                        <!-- <span class="rounded-full h-10 w-10 bg-blue-500"></span> -->
+                
+                        <div class="self-center w-full flex flex-col gap-4 bg-white p-4 rounded-2xl max-w-2xl z-20">
+                            <iframe width='100%' height='400px' src="https://api.mapbox.com/styles/v1/dr4gaway/clmvwb5lk05t701qx9zzfdd9w.html?title=false&access_token=pk.eyJ1IjoiZHI0Z2F3YXkiLCJhIjoiY2xtdnc2YjdnMG1nNzJpcGNiaDI4aXAzcSJ9.9XTO-r1_cZp9p51MazueCw&zoomwheel=false#17.54/-22.340987/-49.024319" title="Navigation" style="border:none;"></iframe>
+                
+                            <button type="submit" class="self-end bg-gymhunt-purple-1 text-white rounded-2xl px-4 py-2 w-fit">
+                                Enviar
+                            </button>
+                        </div>
+                </div>                
+                
+                {{-- <div class="flex gap-4 w-full">
                     <x-form.text name="latitude" label="Latitude" type="number" class="w-full"/>
                     <x-form.text name="longitude" label="longitude" type="number" class="w-full"/>
-                </div>
+                </div> --}}
             </div>
         </div>
 
