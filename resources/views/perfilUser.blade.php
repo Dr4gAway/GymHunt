@@ -87,7 +87,7 @@
                 <!-- Overlay  -->
                 <div class="bg-black bg-opacity-20 fixed inset-0 " x-on:click="modalClose()"></div>
 
-                <!-- Trovar pra form em algum momento -->
+                <!-- Trocar pra form em algum momento -->
                 <div class="self-center w-full h-full flex bg-white p-6 rounded-2xl max-w-xl z-20 overflow-scroll ">
 
                     <div class="font-poppins text-black flex flex-col w-full gap-4 space-y-2">

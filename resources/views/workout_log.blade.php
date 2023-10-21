@@ -91,34 +91,65 @@
 
                     <livewire:exercise.exercise-row /> 
 
-                    <div class="rounded-xl bg-white shadow-lg p-4 my-4 w-72"> <!--cada card-->
-                        <div class="flex flex-row items-center justify-between mb-2"> <!--nome do exercicio-->
-                            <p class="font-semibold">Leg Press </p>
-                            <div class="text-red-500"> <i class="fa-solid fa-trash-can"></i> </div>
-                        </div>
+                    <div class="flex justify-center items-center"> <!--cada card-->
+                        <div class="flex flex-col justify-center items-center space-y-3">
+                            <button class="rounded-xl border-dashed border-4 border-gymhunt-purple-1 bg-gymhunt-purple-2 opacity-60 shadow-lg p-4 my-4 h-48 w-72" x-on:click="openExerc()">
+                                <div class="text-gymhunt-purple-1 font-bold text-2xl">
+                                    <p>Adicionar</p>
+                                    <p>Exercício!</p>
+                                </div>
+                            </button>
 
-                        <div class="space-y-3"> <!--infos-->
-                            <div class="flex flex-row justify-between">
-                                <p>Série</p>
-                                <p>5</p>
-                            </div>
+                            <div class="fixed inset-0 flex flex-col w-screen h-screen p-8 gap-8 z-20" x-show="menuExerc"> <!--tela do modal -->
+                                <!-- Overlay  -->
+                                <div class="bg-black bg-opacity-20 fixed inset-0 " x-on:click="closeExerc()"></div>
 
-                            <div class="flex flex-row justify-between">
-                                <p>Repetições</p>
-                                <p>8</p>
-                            </div>
-
-                            <div class="flex flex-row justify-between">
-                                <p>Carga</p>
-                                <p>30 kg</p>
-                            </div>
-
-                            <div class="flex flex-row justify-between">
-                                <p>Data</p>
-                                <p>05/03/2023</p>
-                            </div>
+                                <!-- create exercice -->
+                                <livewire:exercise.create />
+                            </div> 
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="m-3">
+                <div>
+                    <button class="rounded-xl px-2 py-1 bg-slate-200 shadow-lg"><i class="fa-solid fa-chevron-down"></i> Quadríceps </button> <!--nome add no grupo muscular-->
+                </div>
+
+                <div class="flex flex-row space-x-5"> <!--cards de treino-->
+
+                    <livewire:exercise.exercise-row /> 
+
+                    <div class="flex justify-center items-center"> <!--cada card-->
+                        <div class="flex flex-col justify-center items-center space-y-3">
+                            <button class="rounded-xl border-dashed border-4 border-gymhunt-purple-1 bg-gymhunt-purple-2 opacity-60 shadow-lg p-4 my-4 h-48 w-72" x-on:click="openExerc()">
+                                <div class="text-gymhunt-purple-1 font-bold text-2xl">
+                                    <p>Adicionar</p>
+                                    <p>Exercício!</p>
+                                </div>
+                            </button>
+
+                            <div class="fixed inset-0 flex flex-col w-screen h-screen p-8 gap-8 z-20" x-show="menuExerc"> <!--tela do modal -->
+                                <!-- Overlay  -->
+                                <div class="bg-black bg-opacity-20 fixed inset-0 " x-on:click="closeExerc()"></div>
+
+                                <!-- create exercice -->
+                                <livewire:exercise.create />
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="m-3">
+                <div>
+                    <button class="rounded-xl px-2 py-1 bg-slate-200 shadow-lg"><i class="fa-solid fa-chevron-down"></i> Quadríceps </button> <!--nome add no grupo muscular-->
+                </div>
+
+                <div class="flex flex-row space-x-5"> <!--cards de treino-->
+
+                    <livewire:exercise.exercise-row /> 
 
                     <div class="flex justify-center items-center"> <!--cada card-->
                         <div class="flex flex-col justify-center items-center space-y-3">
