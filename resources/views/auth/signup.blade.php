@@ -103,18 +103,18 @@
                     <x-form.text name="close_schedule" label="Fechamento" type="number" class="w-full"/>
                 </div>
             </div>
-            <div class="flex flex-col gap-2 items-start">
+            <div class="flex flex-col gap-2 items-start" id="adress">
                 <span class="text-center font-bold text-2xl mt-3">Endereço</span>
-                <div class="flex w-full gap-4">
+                <div class="flex w-full gap-4" id="geralAdress">
+                    <x-form.text name="state" label="Estado" type="text" class="flex-none"/>◘
                     <x-form.text name="city" label="Cidade" type="text" class="w-full grow"/>
                     <x-form.text name="district" label="Bairro" type="text" class="flex-none"/>
-                    <x-form.text name="state" label="Estado" type="text" class="flex-none"/>
                 </div>
-                <div class="flex gap-4 w-full">
+                <div class="flex gap-4 w-full" id="specificAdress">
                     <x-form.text name="street" label="Rua" type="text" class="w-full"/>
                     <x-form.text name="number" label="Numero" type="text" class="flex-none"/>
                 </div>
-                <button wire:ignore @click.prevent='openModal()'
+                <button wire:ignore onclick="fetchUserData()" @click.prevent='openModal()'
                  class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md w-full">
                     Selecionar localização
                 </button>
@@ -128,7 +128,7 @@
                     <!-- <span class="rounded-full h-10 w-10 bg-blue-500"></span> -->
             
                     <div class="self-center w-full max-w-6xl h-full max-h-[720px] flex flex-col gap-4 bg-white p-4 rounded-2xl z-20">
-                        <div id='map' class="w-full h-full absolute top-0 left-0"></div>
+                        <!-- <div id='map' class="w-full h-full absolute top-0 left-0"></div> -->
                         {{-- <iframe id="map" width='100%' height='400px' src="https://api.mapbox.com/styles/v1/dr4gaway/clmvwb5lk05t701qx9zzfdd9w.html?title=false&access_token=pk.eyJ1IjoiZHI0Z2F3YXkiLCJhIjoiY2xtdnc2YjdnMG1nNzJpcGNiaDI4aXAzcSJ9.9XTO-r1_cZp9p51MazueCw&zoomwheel=false#17.54/-22.340987/-49.024319" title="Navigation" style="border:none;"></iframe> --}}
 
                         <button type="submit" class="self-end bg-gymhunt-purple-1 text-white rounded-2xl px-4 py-2 w-fit">
@@ -204,8 +204,6 @@
                     console.log(type.value);
             })
         })
-
-        console.log(types)
     </script>
 
     <script defer>
@@ -247,5 +245,37 @@
 
             waypoints.push(waypoint)
         });
+
+        async function fetchUserData() {
+
+            function isEmptyOrSpaces(str){
+                return str === null || str.match(/^ *$/) !== null;
+            }
+
+            const geralAdressFields = document.getElementById('adress');
+            const adresses = Array.from(geralAdressFields.querySelectorAll("div > div > div > input")).map((adress) => adress.value);
+            const searchString = adresses.filter((adress) => {
+                if (!isEmptyOrSpaces(adress))
+                    return adress
+            }).join('+');
+
+            console.log(searchString)
+
+
+            /* console.log(geralAdressFields)
+            const fieldTops = Array.from(geralAdressFields, field => field)
+            console.log("TOPS",fieldTops) */
+            // geralAdressFields.map((field) => {
+            //     console.log(field);
+            // })
+
+            let uuid = "{{ Ramsey\Uuid\Uuid::uuid4() }}"
+
+            console.log(uuid)
+
+            const curl = `https://api.mapbox.com/search/searchbox/v1/suggest?q=${searchString}&language=pt&limit=1&session_token=${uuid}&country=BR&access_token=pk.eyJ1IjoiZHI0Z2F3YXkiLCJhIjoiY2xtdnc2YjdnMG1nNzJpcGNiaDI4aXAzcSJ9.9XTO-r1_cZp9p51MazueCw`
+
+            console.log(curl)
+        }
     </script>
 @endpush
