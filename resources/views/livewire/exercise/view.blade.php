@@ -1,4 +1,5 @@
 <div class="rounded-xl bg-white shadow-lg p-4 my-4 w-72"> <!--cada card-->
+
     <div class="flex flex-row items-center justify-between mb-2"x-data="{
         deleteOpen: false,
         deleteExercise:false,
@@ -16,7 +17,7 @@
             this.deleteOpen = false 
         },
     }"> <!--nome do exercicio-->
-        <p class="font-semibold">{{$exercise->nameExerc}}</p>
+        <p class="font-semibold">{{$this->exercise->nameExerc}}</p>
         <button class="text-red-500"> <i class="fa-solid fa-trash-can" x-on:click.away="deleteExercise()"></i> </button>
         
         <div class="relative z-40 flex flex-col gap-3 items-center bg-white w-fit rounded-2xl max-w-xl" x-show="deleteOpen">
@@ -44,22 +45,22 @@
     <div class="space-y-3"> <!--infos-->
         <div class="flex flex-row justify-between">
             <p>Série</p>
-            <p>{{$exercise->serie}}</p>
+            <p>{{$this->exercise->serie}}</p>
         </div>
 
         <div class="flex flex-row justify-between">
             <p>Repetições</p>
-            <p>{{$exercise->rep}}</p>
+            <p>{{$this->exercise->rep}}</p>
         </div>
 
         <div class="flex flex-row justify-between">
             <p>Carga</p>
-            <p>{{$exercise->carga}} kg</p>
+            <p>{{$this->exercise->carga}} kg</p>
         </div>
 
         <div class="flex flex-row justify-between">
             <p>Data</p>
-            <p>{{$exercise->data}}</p>
+            <p>{{$this->exercise->data}}</p>
         </div>
     </div>
 </div>

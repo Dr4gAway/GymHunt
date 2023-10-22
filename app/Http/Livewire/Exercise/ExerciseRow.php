@@ -10,8 +10,6 @@ use App\Models\Exercise;
 class ExerciseRow extends Component
 {
     use AuthorizesRequests;
-    
-    public $exercise;
 
     public $perPage = 5;
 
@@ -27,24 +25,11 @@ class ExerciseRow extends Component
         return view('livewire.exercise.exercise-row');
     }
 
-    public function getExercisesProperty() {
+    public function getExercisesProperty(): LengthAwarePaginator {
         $exercises = Exercise::query()
                     ->latest()
                     ->paginate($this->perPage);
                 
         return $exercises;
     }
-
-    public function handleDelete($redirect)
-    {
-        //$this->authorize('delete', $this->exercise);
-
-        $this->exercise->delete();
-
-        if($redirect)
-            return redirect()->route('workout_log');
-        else
-            $this->emitTo('workout_log', 'exercise::deleted');
-    }
-   
 }
