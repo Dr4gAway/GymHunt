@@ -2,6 +2,8 @@
 @section('titulo', 'GymHunt - Cadastro')
 @push('custom-header')
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+
+    <link href='{{ URL::asset('css/marker.css'); }}' rel='stylesheet'/>
 @endpush
 @section('content')
 <section class="flex flex-col w-full max-w-2xl mx-auto my-8 gap-8 ">
@@ -16,7 +18,7 @@
             </span>
         </div>
     </h2>
-    <form  method="POST" class="flex flex-col w-full gap-4" x-data='{
+    <form method="POST" class="flex flex-col w-full gap-4" x-data='{
         mapOpen: false,
         formStep: "default",
         handleUserType() {
@@ -46,7 +48,7 @@
             this.mapOpen = !this.mapOpen
         }
     }'>
-        @CSRF
+        {!! csrf_field() !!}
 
         <div class="flex flex-col gap-4"
             x-show="formStep == 'default'"  x-transition.opacity
@@ -66,7 +68,7 @@
                 <label for="gym" class="flex flex-col w-full">
                     <input type="radio" name="user_type" id="gym" value="gym" class="hidden peer">
                     <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
-                        <img class="w-32" src="\img\academia.png" alt="Selecione:" />
+                        <img class="w-32" src="\img\gym-icon.png" alt="Selecione:" />
                         <span class="text-2xl font-bold">Academia</span>
                     </div>
                 </label>
@@ -105,12 +107,12 @@
             </div>
             <div class="flex flex-col gap-2 items-start" id="adress">
                 <span class="text-center font-bold text-2xl mt-3">Endereço</span>
-                <div class="flex w-full gap-4" id="geralAdress">
-                    <x-form.text name="state" label="Estado" type="text" class="flex-none"/>◘
+                <div class="flex w-full gap-4">
+                    <x-form.text name="state" label="Estado" type="text" class="flex-none"/>
                     <x-form.text name="city" label="Cidade" type="text" class="w-full grow"/>
                     <x-form.text name="district" label="Bairro" type="text" class="flex-none"/>
                 </div>
-                <div class="flex gap-4 w-full" id="specificAdress">
+                <div class="flex gap-4 w-full">
                     <x-form.text name="street" label="Rua" type="text" class="w-full"/>
                     <x-form.text name="number" label="Numero" type="text" class="flex-none"/>
                 </div>
@@ -119,28 +121,25 @@
                     Selecionar localização
                 </button>
 
-                <div class="fixed inset-0 flex flex-col w-full h-screen my-8 gap-8 z-20 p-16" x-show="mapOpen" x-data="{
+                <div class="fixed inset-0 flex flex-col w-full h-screen gap-8 z-20 p-16" x-show="mapOpen" x-data="{
 
                 }" @update::close="closeModal()">
                     <!-- Overlay  -->
                     <div class="bg-black bg-opacity-20 fixed inset-0 " x-on:click="closeModal()"></div>
             
-                    <!-- <span class="rounded-full h-10 w-10 bg-blue-500"></span> -->
-            
                     <div class="self-center w-full max-w-6xl h-full max-h-[720px] flex flex-col gap-4 bg-white p-4 rounded-2xl z-20">
-                        <!-- <div id='map' class="w-full h-full absolute top-0 left-0"></div> -->
-                        {{-- <iframe id="map" width='100%' height='400px' src="https://api.mapbox.com/styles/v1/dr4gaway/clmvwb5lk05t701qx9zzfdd9w.html?title=false&access_token=pk.eyJ1IjoiZHI0Z2F3YXkiLCJhIjoiY2xtdnc2YjdnMG1nNzJpcGNiaDI4aXAzcSJ9.9XTO-r1_cZp9p51MazueCw&zoomwheel=false#17.54/-22.340987/-49.024319" title="Navigation" style="border:none;"></iframe> --}}
+                        <div id='map' class="w-full h-full absolute top-0 left-0"></div>
 
-                        <button type="submit" class="self-end bg-gymhunt-purple-1 text-white rounded-2xl px-4 py-2 w-fit">
+                        {{-- <button type="submit" class="self-end bg-gymhunt-purple-1 text-white rounded-2xl px-4 py-2 w-fit">
                             Enviar
-                        </button>
+                        </button> --}}
                     </div>
                 </div>                
                 
-                {{-- <div class="flex gap-4 w-full">
-                    <x-form.text name="latitude" label="Latitude" type="number" class="w-full"/>
-                    <x-form.text name="longitude" label="longitude" type="number" class="w-full"/>
-                </div> --}}
+                <div class="gap-4 w-full hidden" id="coordinates">
+                    <x-form.text name="latitude" label="Latitude" type="number" step="0.000000000000001" class="w-full" readonly/>
+                    <x-form.text name="longitude" label="longitude" type="number" step="0.000000000000001" class="w-full" readonly/>
+                </div>
             </div>
         </div>
 
@@ -197,11 +196,12 @@
             
             type.addEventListener('change', () => {
                 if(type == gym)
-                    form.action = "{{ route('gymSignup') }}";
+                    /* form.action = "{{ route('gymSignup') }}"; */
+                    form.action = "{{ route('gymSignup') }}"
                 else
                     form.action = "{{ route('commonSignup') }}";    
 
-                    console.log(type.value);
+                console.log(form.action);
             })
         })
     </script>
@@ -214,68 +214,59 @@
             container: 'map',
             style: 'mapbox://styles/dr4gaway/clmvwb5lk05t701qx9zzfdd9w'
         });
-
-        /* const searchJS = document.getElementById('search-js');
-        searchJS.onload = function () {
-            const searchBox = new MapboxSearchBox();
-            searchBox.accessToken = ACCESS_TOKEN;
-            searchBox.options = {
-                proximity: [-73.99209, 40.68933]
-            };
-            searchBox.marker = true;
-            searchBox.mapboxgl = mapboxgl;
-            map.addControl(searchBox);
-        }; */
-
-        var waypoints = []
+        const selectedLocation = new mapboxgl.Marker()
 
         map.on('click', (e) => {
+            const formCoordinates = document.getElementById('coordinates')
+            const adressCoordinates = Array.from(formCoordinates.querySelectorAll("div > div > input")).map((coordinates) => coordinates)
+
             const coordinates = e.lngLat;
 
-            const waypoint = {
-                coordinates: coordinates.toArray(),
-                name: `teste ${waypoints.length + 1}`
-            }
+            selectedLocation.remove()
+            selectedLocation.setLngLat(coordinates)
+            selectedLocation.addTo(map)
 
-            if (!waypoints.includes(waypoint)) {
-                new mapboxgl.Marker()
-                    .setLngLat(waypoint.coordinates)
-                    .addTo(map);
-            }
+            adressCoordinates.forEach(adress => console.log(adress))
 
-            waypoints.push(waypoint)
+            console.log('input coordenadas: ', coordinates)
+
+            /* latitude */
+            adressCoordinates[0].value = coordinates.lat
+            /* Longitude */
+            adressCoordinates[1].value = coordinates.lng
         });
+        
+        // Set the custom marker image for the marker
+        const customImage = document.createElement('div')
+        customImage.className = 'custom-marker'
+        const gymLocation = new mapboxgl.Marker(customImage)
 
         async function fetchUserData() {
-
-            function isEmptyOrSpaces(str){
-                return str === null || str.match(/^ *$/) !== null;
-            }
-
             const geralAdressFields = document.getElementById('adress');
             const adresses = Array.from(geralAdressFields.querySelectorAll("div > div > div > input")).map((adress) => adress.value);
-            const searchString = adresses.filter((adress) => {
-                if (!isEmptyOrSpaces(adress))
-                    return adress
-            }).join('+');
-
-            console.log(searchString)
-
-
-            /* console.log(geralAdressFields)
-            const fieldTops = Array.from(geralAdressFields, field => field)
-            console.log("TOPS",fieldTops) */
-            // geralAdressFields.map((field) => {
-            //     console.log(field);
-            // })
+            const searchString = adresses.join(' ').trim().replace(/\s+/g, '+');
 
             let uuid = "{{ Ramsey\Uuid\Uuid::uuid4() }}"
 
-            console.log(uuid)
-
             const curl = `https://api.mapbox.com/search/searchbox/v1/suggest?q=${searchString}&language=pt&limit=1&session_token=${uuid}&country=BR&access_token=pk.eyJ1IjoiZHI0Z2F3YXkiLCJhIjoiY2xtdnc2YjdnMG1nNzJpcGNiaDI4aXAzcSJ9.9XTO-r1_cZp9p51MazueCw`
-
-            console.log(curl)
+            await fetch(curl)
+                .then((data) => data.json())
+                .then(({suggestions: [{mapbox_id}]}) => {
+                    uuid = "{{ Ramsey\Uuid\Uuid::uuid4() }}"
+                    return fetch(`https://api.mapbox.com/search/searchbox/v1/retrieve/${mapbox_id}?session_token=${uuid}&access_token=pk.eyJ1IjoiZHI0Z2F3YXkiLCJhIjoiY2xtdnc2YjdnMG1nNzJpcGNiaDI4aXAzcSJ9.9XTO-r1_cZp9p51MazueCw`)
+                })
+                .then(data => data.json())
+                .then(({features: [{properties, properties: {coordinates}}]}) =>{
+                        console.log('maker is not null')
+                        gymLocation.remove()
+                        gymLocation.setLngLat([coordinates.longitude, coordinates.latitude])
+                        gymLocation.setPopup(new mapboxgl.Popup().setHTML(`<h4>${properties.name}</h4>`))
+                        gymLocation.addTo(map)
+                
+                        console.log(coordinates)
+                        map.flyTo({center: [coordinates.longitude, coordinates.latitude]})
+                })
+                .catch(ex => console.log(ex))
         }
     </script>
 @endpush

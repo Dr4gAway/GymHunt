@@ -17,8 +17,6 @@ class SignupController extends Controller
     }
 
     public function store(SignupRequest $request) {
-        
-        dd($request);
 
         if($request->validated())
         {

@@ -37,22 +37,23 @@ class GymSignupRequest extends FormRequest
             'district' => 'required|string|max:64',
             'street' => 'required|string|max:64',
             'number' => 'required|string|max:7',
-            'longitude' => 'required|numeric|between:-180,180',
-            'latitude' => 'required|numeric|between:-90,90'
+            'longitude' => 'required|decimal:8,15',
+            'latitude' => 'required|decimal:8,15'
 
             /* 'avatar' => 'nullable|image|mimes:jpeg,jpg,png,gif',
             'banner' => 'nullable|image|mimes:jpeg,jpg,png,gif' */
         ];
     }
 
-    /* public function messages()
+     public function messages()
     {
         return [
             
-            'avatar' => 'Imagem inválida.',
+            /*'avatar' => 'Imagem inválida.',
             'avatar.required' => 'Foto de perfil é necessária.',
-            'banner' => 'Imagem inválida.', 
+            'banner' => 'Imagem inválida.', */
+            'email' => 'email invalido'
         ];
     }
-    */
+    
 }
