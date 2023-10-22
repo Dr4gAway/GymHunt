@@ -23,8 +23,8 @@
 
 <body class="flex justify-center items-center font-poppins bg-[#DFE6F9] min-h-screen">
 
-<div class="flex h-full w-full max-w-5xl max-h-[624px] rounded-2xl overflow-hidden">
-    <div class="flex flex-col w-full h-full mx-auto justify-between bg-white p-6" x-data='{
+<div class="flex h-full w-full max-w-5xl max-h-[724px] rounded-2xl">
+    <div class="flex flex-col w-full h-full mx-auto justify-between bg-white p-6 rounded-l-2xl" x-data='{
         formStep: "default",
         handleUserType() {
             this.formStep = document.querySelector(`input[name="user_type"]:checked`).value;
@@ -95,10 +95,12 @@
                 </div>
             </div>
     
-            <div x-show="formStep == 'common'"  x-transition.opacity
+            <div class="flex flex-col gap-4"
+                 x-show="formStep == 'common'"  x-transition.opacity
                                                 x-transition:enter.duration.500ms
                                                 x-transition:leave.duration.400m>
-                Você é um usuário normal!
+                <x-form.textUnderlined name="cpf" label="CPF" type="text" class="w-full"/>
+                <x-form.textUnderlined name="birth" label="Data de nascimento" type="date" class="w-full"/>
             </div>
     
             <div x-show="formStep == 'gym'" x-transition.opacity
@@ -108,7 +110,7 @@
     
                 <div class="flex flex-col gap-2 items-start">
                     <span class="text-center font-bold text-2xl">Documentos</span>
-                    <x-form.textUnderlined name="document" label="CNPJ" type="text" class="w-full"/>
+                    <x-form.textUnderlined name="cnpj" label="document" type="text" class="w-full"/>
                 </div>
                 <div class="flex flex-col gap-2 items-start">
                     <span class="text-center font-bold text-2xl mt-3">Horários</span>
@@ -133,18 +135,25 @@
                         Selecionar localização
                     </button>
     
-                    <div class="fixed inset-0 flex flex-col w-full h-screen gap-8 z-20 p-16" x-show="mapOpen" x-data="{
+                    <div class="fixed inset-0 flex flex-col w-full h-screen gap-8 z-20 p-8" x-show="mapOpen" x-data="{
     
                     }" @update::close="closeModal()">
                         <!-- Overlay  -->
                         <div class="bg-black bg-opacity-20 fixed inset-0 " x-on:click="closeModal()"></div>
                 
-                        <div class="self-center w-full max-w-6xl h-full max-h-[720px] flex flex-col gap-4 bg-white p-4 rounded-2xl z-20">
-                            {{-- <div id='map' class="w-full h-full absolute top-0 left-0"></div> --}}
+                        <div class="self-center w-full max-w-5xl h-full max-h-[960px] flex flex-col gap-4 bg-white p-4 rounded-2xl z-20">
+                            <div class="flex w-full justify-between">
+                                <h4 class="text-4xl font-bold">Selecionar Endereço</h4>
+                                <img src="img\icons\close-icon.svg" x-on:click="closeModal()" class="cursor-pointer">
+                            </div>
+
+                            <div class="w-full h-full bg-red-500"></div>
+                            
+                            {{-- <div id='map' class="w-full h-full absolute top-0 left-0"></div>  --}}
     
-                            {{-- <button type="submit" class="self-end bg-gymhunt-purple-1 text-white rounded-2xl px-4 py-2 w-fit">
-                                Enviar
-                            </button> --}}
+                            <button type="submit" class="self-end bg-gymhunt-purple-1 text-white rounded-md px-4 py-2 w-fit">
+                                Confirmar endereço
+                            </button>
                         </div>
                     </div>                
                     
@@ -198,8 +207,8 @@
         </div>
     </div>
 
-    <div class="h-max">
-        <img src="{{asset('img/background/dumbellBackground.png')}}" class="object-contain h-full">
+    <div class="w-1/2 rounded-r-2xl overflow-hidden">
+        <img src="{{asset('img/background/dumbellBackground.png')}}" class="object-cover h-full">
     </div>
    {{-- <img src="/{{$this->post->images()->first()->path}}" class="w-full rounded-2xl object-cover max-h-[410px]"> --}}
 </div>
