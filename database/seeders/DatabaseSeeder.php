@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder
              'name' => 'Test User',
              'email' => 'test@example.com',
              'password' => 'fodastico',
+             'phone' => fake()->phoneNumber(),
+             'cpf' => '12345678911',
+             'birth' => fake()->date()
         ]);
     }
 }

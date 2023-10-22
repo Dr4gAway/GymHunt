@@ -4,7 +4,7 @@ namespace App\Http\Controllers\auth;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\SignupRequest;
+use App\Http\Requests\Auth\CommonSignupRequest;
 use App\Http\Requests\Auth\GymSignupRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -16,7 +16,7 @@ class SignupController extends Controller
         return view('auth.signup');
     }
 
-    public function store(SignupRequest $request) {
+    public function userStore(CommonSignupRequest $request) {
 
         if($request->validated())
         {
@@ -26,8 +26,8 @@ class SignupController extends Controller
                 //'bio' => $request->biografia,
                 'password' => $request->password,
                 'phone' => $request->phone,
-                //'cpf' => $request->cpf,
-                //'dataNasc' => $request->dataNasc,
+                'cpf' => $request->cpf,
+                'birth' => $request->birth
             ]);
             Auth::login($user);
     
