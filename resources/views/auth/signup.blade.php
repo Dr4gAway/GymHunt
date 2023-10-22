@@ -1,189 +1,212 @@
-@extends('layout.site')
-@section('titulo', 'GymHunt - Cadastro')
-@push('custom-header')
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GymHunt - Cadastro</title>
 
-    <link href='{{ URL::asset('css/marker.css'); }}' rel='stylesheet'/>
-@endpush
-@section('content')
-<section class="flex flex-col w-full max-w-2xl mx-auto my-8 gap-8 ">
-    <h2 class="flex self-start font-bold gap-4">
-        <img src="\img\logoIcon.png" alt="Logo Gym hunt" class="w-24">
-        <div class="flex flex-col">
-            <span class="text-6xl">
-                Cadastre-se
-            </span>
-            <span class="text-4xl">
-                Agora no nosso sitema
-            </span>
-        </div>
-    </h2>
-    <form method="POST" class="flex flex-col w-full gap-4" x-data='{
-        mapOpen: false,
+    <!-- Import Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700;900&display=swap" rel="stylesheet">
+
+    <link rel="icon" href=".\img\logoIcon.png" >
+    <!-- Import TailwindCSS -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Import AlpineJs -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
+    
+    @livewireStyles
+
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+    <link href='{{ URL::asset('css/signup.css'); }}' rel='stylesheet'/>
+</head>
+
+<body class="flex justify-center items-center font-poppins bg-[#DFE6F9] min-h-screen">
+
+<div class="flex h-full w-full max-w-5xl max-h-[624px] rounded-2xl overflow-hidden">
+    <div class="flex flex-col w-full h-full mx-auto justify-between bg-white p-6" x-data='{
         formStep: "default",
         handleUserType() {
             this.formStep = document.querySelector(`input[name="user_type"]:checked`).value;
         },
-
-        disableScroll() {
-            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-            window.onscroll = () => {
-                window.scrollTo(scrollLeft, scrollTop);
-            }
-        },
-        
-        enableScroll() {
-            window.onscroll = function() {};
-        },
-
-        closeModal() {
-            this.enableScroll();
-            this.mapOpen = !this.mapOpen
-        },
-
-        openModal() {
-            this.disableScroll();
-            this.mapOpen = !this.mapOpen
-        }
     }'>
-        {!! csrf_field() !!}
-
-        <div class="flex flex-col gap-4"
-            x-show="formStep == 'default'"  x-transition.opacity
-                                            x-transition:enter.duration.500ms
-                                            x-transition:leave.duration.400m>
-            <x-form.text name="name" label="Nome" class="w-full"/>
-            <x-form.text name="email" label="Email" class="w-full"/>
-
-            <div class="flex gap-4">
-                <x-form.text name="password" label="Senha" type="password" class="w-full"/>
-                <x-form.text name="password_confirmation" label="Confirmar senha" type="password" class="w-full"/>
-            </div>
-            <x-form.text name="phone" label="Telefone" class="w-full"/>
-
-            <span class="text-center font-bold text-2xl mt-3">Qual usuário você se encaixa?</span>
-            <div class="flex gap-8 justify-center" id="teste">
-                <label for="gym" class="flex flex-col w-full">
-                    <input type="radio" name="user_type" id="gym" value="gym" class="hidden peer">
-                    <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md bg-white p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
-                        <img class="w-32" src="\img\gym-icon.png" alt="Selecione:" />
-                        <span class="text-2xl font-bold">Academia</span>
-                    </div>
-                </label>
-
-                <label for="common" class="flex flex-col w-full">
-                    <input type="radio" name="user_type" id="common" value="common" class="hidden peer">
-                    <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md bg-white p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
-                        <img class="w-32" src="\img\musculo.png" >
-                        <span class="text-2xl font-bold">Pessoa</span>
-                    </div>
-                </label>
-            </div>
-        </div>
-
-        <div x-show="formStep == 'common'"  x-transition.opacity
-                                            x-transition:enter.duration.500ms
-                                            x-transition:leave.duration.400m>
-            Você é um usuário normal!
-        </div>
-
-        <div x-show="formStep == 'gym'" x-transition.opacity
-                                        x-transition:enter.duration.500ms
-                                        x-transition:leave.duration.400m
-             class="flex flex-col gap-2">
-
-            <div class="flex flex-col gap-2 items-start">
-                <span class="text-center font-bold text-2xl mt-3">Documentos</span>
-                <x-form.text name="document" label="CNPJ" type="text" class="w-full"/>
-            </div>
-            <div class="flex flex-col gap-2 items-start">
-                <span class="text-center font-bold text-2xl mt-3">Horários</span>
-                <div class="flex gap-4 w-full">
-                    <x-form.text name="open_schedule" label="Abertura" type="number" class="w-full"/>
-                    <x-form.text name="close_schedule" label="Fechamento" type="number" class="w-full"/>
-                </div>
-            </div>
-            <div class="flex flex-col gap-2 items-start" id="address">
-                <span class="text-center font-bold text-2xl mt-3">Endereço</span>
-                <div class="flex w-full gap-4">
-                    <x-form.text name="state" label="Estado" type="text" class="flex-none"/>
-                    <x-form.text name="city" label="Cidade" type="text" class="w-full grow"/>
-                    <x-form.text name="district" label="Bairro" type="text" class="flex-none"/>
-                </div>
-                <div class="flex gap-4 w-full">
-                    <x-form.text name="street" label="Rua" type="text" class="w-full"/>
-                    <x-form.text name="number" label="Numero" type="text" class="flex-none"/>
-                </div>
-                <button wire:ignore onclick="fetchUserData()" @click.prevent='openModal()'
-                 class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md w-full">
-                    Selecionar localização
-                </button>
-
-                <div class="fixed inset-0 flex flex-col w-full h-screen gap-8 z-20 p-16" x-show="mapOpen" x-data="{
-
-                }" @update::close="closeModal()">
-                    <!-- Overlay  -->
-                    <div class="bg-black bg-opacity-20 fixed inset-0 " x-on:click="closeModal()"></div>
+        <h2 class="flex self-start font-bold gap-4 text-4xl">
+            {{-- <img src="\img\logoIcon.png" alt="Logo Gym hunt" class="w-24"> --}}
+            Cadastre-se
+        </h2>
+        <form method="POST" class="flex flex-col w-full gap-4" x-data='{
+            mapOpen: false,
+    
+            disableScroll() {
+                scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+                window.onscroll = () => {
+                    window.scrollTo(scrollLeft, scrollTop);
+                }
+            },
             
-                    <div class="self-center w-full max-w-6xl h-full max-h-[720px] flex flex-col gap-4 bg-white p-4 rounded-2xl z-20">
-                        <div id='map' class="w-full h-full absolute top-0 left-0"></div>
-
-                        {{-- <button type="submit" class="self-end bg-gymhunt-purple-1 text-white rounded-2xl px-4 py-2 w-fit">
-                            Enviar
-                        </button> --}}
+            enableScroll() {
+                window.onscroll = function() {};
+            },
+    
+            closeModal() {
+                this.enableScroll();
+                this.mapOpen = !this.mapOpen
+            },
+    
+            openModal() {
+                this.disableScroll();
+                this.mapOpen = !this.mapOpen
+            }
+        }'>
+            {!! csrf_field() !!}
+    
+            <div class="flex flex-col gap-4"
+                x-show="formStep == 'default'"  x-transition.opacity
+                                                x-transition:enter.duration.500ms
+                                                x-transition:leave.duration.400m>
+                
+                <x-form.textUnderlined name="name" label="Nome" class="w-full"/>
+                <x-form.textUnderlined name="email" label="Email" class="w-full"/>
+    
+                <div class="flex gap-4">
+                    <x-form.textUnderlined name="password" label="Senha" type="password" class="w-full"/>
+                    <x-form.textUnderlined name="password_confirmation" label="Confirmar senha" type="password" class="w-full"/>
+                </div>
+                <x-form.textUnderlined name="phone" label="Telefone" class="w-full"/>
+    
+                <span class="font-bold text-2xl mt-3">Qual usuário você se encaixa?</span>
+                <div class="flex gap-8 justify-center" id="teste">
+                    <label for="gym" class="flex flex-col w-full">
+                        <input type="radio" name="user_type" id="gym" value="gym" class="hidden peer">
+                        <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md bg-white p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
+                            <img class="w-16" src="\img\gym-icon.png" alt="Selecione:" />
+                            <span class="text-2xl font-bold">Academia</span>
+                        </div>
+                    </label>
+    
+                    <label for="common" class="flex flex-col w-full">
+                        <input type="radio" name="user_type" id="common" value="common" class="hidden peer">
+                        <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md bg-white p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
+                            <img class="w-16" src="\img\musculo.png" >
+                            <span class="text-2xl font-bold">Pessoa</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+    
+            <div x-show="formStep == 'common'"  x-transition.opacity
+                                                x-transition:enter.duration.500ms
+                                                x-transition:leave.duration.400m>
+                Você é um usuário normal!
+            </div>
+    
+            <div x-show="formStep == 'gym'" x-transition.opacity
+                                            x-transition:enter.duration.500ms
+                                            x-transition:leave.duration.400m
+                    class="flex flex-col gap-2">
+    
+                <div class="flex flex-col gap-2 items-start">
+                    <span class="text-center font-bold text-2xl">Documentos</span>
+                    <x-form.textUnderlined name="document" label="CNPJ" type="text" class="w-full"/>
+                </div>
+                <div class="flex flex-col gap-2 items-start">
+                    <span class="text-center font-bold text-2xl mt-3">Horários</span>
+                    <div class="flex gap-4 w-full">
+                        <x-form.textUnderlined name="open_schedule" label="Abertura" type="number" class="w-full"/>
+                        <x-form.textUnderlined name="close_schedule" label="Fechamento" type="number" class="w-full"/>
                     </div>
-                </div>                
+                </div>
+                <div class="flex flex-col gap-3 items-start" id="address">
+                    <span class="text-center font-bold text-2xl mt-3">Endereço</span>
+                    <div class="flex w-full gap-4">
+                        <x-form.textUnderlined name="state" label="Estado" type="text" class=""/>
+                        <x-form.textUnderlined name="city" label="Cidade" type="text" class="w-full grow"/>
+                        <x-form.textUnderlined name="district" label="Bairro" type="text" class="w-full"/>
+                    </div>
+                    <div class="flex gap-4 w-full">
+                        <x-form.textUnderlined name="street" label="Rua" type="text" class="w-full"/>
+                        <x-form.textUnderlined name="number" label="Numero" type="text" class=""/>
+                    </div>
+                    <button wire:ignore onclick="fetchUserData()" @click.prevent='openModal()'
+                        class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md w-full">
+                        Selecionar localização
+                    </button>
+    
+                    <div class="fixed inset-0 flex flex-col w-full h-screen gap-8 z-20 p-16" x-show="mapOpen" x-data="{
+    
+                    }" @update::close="closeModal()">
+                        <!-- Overlay  -->
+                        <div class="bg-black bg-opacity-20 fixed inset-0 " x-on:click="closeModal()"></div>
                 
-                <div class="gap-4 w-full hidden" id="coordinates">
-                    <x-form.text name="latitude" label="Latitude" type="number" step="0.000000000000001" class="w-full" readonly/>
-                    <x-form.text name="longitude" label="longitude" type="number" step="0.000000000000001" class="w-full" readonly/>
+                        <div class="self-center w-full max-w-6xl h-full max-h-[720px] flex flex-col gap-4 bg-white p-4 rounded-2xl z-20">
+                            {{-- <div id='map' class="w-full h-full absolute top-0 left-0"></div> --}}
+    
+                            {{-- <button type="submit" class="self-end bg-gymhunt-purple-1 text-white rounded-2xl px-4 py-2 w-fit">
+                                Enviar
+                            </button> --}}
+                        </div>
+                    </div>                
+                    
+                    <div class="gap-4 w-full hidden" id="coordinates">
+                        <x-form.text name="latitude" label="Latitude" type="number" step="0.000000000000001" class="w-full" readonly/>
+                        <x-form.text name="longitude" label="longitude" type="number" step="0.000000000000001" class="w-full" readonly/>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Imagens
-
-            <span class="text-lg font-bold leading-6 text-gray-900">Insira suas imagens</span>
-            <div class="flex flex-col gap-4">
-            <div>
-                <label for="avatar" class="block text-sm font-semibold leading-6 text-gray-900 ">1. Avatar</label>
-                <div class="mt-2.5">
-                    <input type="file" name="avatar" id="avatar" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+    
+            <!-- Imagens
+    
+                <span class="text-lg font-bold leading-6 text-gray-900">Insira suas imagens</span>
+                <div class="flex flex-col gap-4">
+                <div>
+                    <label for="avatar" class="block text-sm font-semibold leading-6 text-gray-900 ">1. Avatar</label>
+                    <div class="mt-2.5">
+                        <input type="file" name="avatar" id="avatar" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
+                    @error('avatar')
+                        <p class="text-red-500"> {{$message}} </p>   
+                    @enderror
                 </div>
-                @error('avatar')
-                    <p class="text-red-500"> {{$message}} </p>   
-                @enderror
-            </div>
-
-            <div>
-                <label for="banner" class="block text-sm font-semibold leading-6 text-gray-900">2. Banner</label> 
-                <div class="mt-2.5">
-                    <input type="file" name="banner" id="banner" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+    
+                <div>
+                    <label for="banner" class="block text-sm font-semibold leading-6 text-gray-900">2. Banner</label> 
+                    <div class="mt-2.5">
+                        <input type="file" name="banner" id="banner" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
+                    
+                    @error('banner')
+                        <p class="text-red-500"> {{$message}} </p>   
+                    @enderror
                 </div>
-                
-                @error('banner')
-                    <p class="text-red-500"> {{$message}} </p>   
-                @enderror
-            </div>
-        </div> -->
+            </div> -->
+        </form>
 
-        <div class="flex w-full gap-4">
+        <div class="flex w-full" :class="formStep === 'default' ? 'justify-end' : 'justify-between' ">
             <button wire:ignore @click.prevent='formStep = "default"' :class="formStep == 'default' ? 'hidden' : '' "
-                    class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md w-full">
+                    class="bg-transparent outline outline-4 text-gymhunt-purple-1 outline-gymhunt-purple-1 font-bold px-4 py-2 rounded-md">
                 Voltar
             </button>
             <button wire:ignore @click.prevent='handleUserType' :class="formStep != 'default' ? 'hidden' : '' "
-                    class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md w-full">
-                Próximo
+                    class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 w-fit end rounded-md">
+                Avançar
+            </button>
+            <button type="submit" x-show="formStep != 'default'"
+                    class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md">
+                Cadastrar-se
             </button>
         </div>
-        <button type="submit" x-show="formStep != 'default'" class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md"> Cadastrar-se </button>
-    </form>
-</div>
-@endsection
+    </div>
 
-@push('custom-scripts')
+    <div class="h-max">
+        <img src="{{asset('img/background/dumbellBackground.png')}}" class="object-contain h-full">
+    </div>
+   {{-- <img src="/{{$this->post->images()->first()->path}}" class="w-full rounded-2xl object-cover max-h-[410px]"> --}}
+</div>
+
+@livewireScripts
+</body>
+
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
 
     <script defer>
@@ -257,4 +280,4 @@
                 .catch(ex => console.log(ex))
         }
     </script>
-@endpush
+</html>
