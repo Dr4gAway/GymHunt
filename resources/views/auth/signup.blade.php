@@ -23,7 +23,6 @@
         formStep: "default",
         handleUserType() {
             this.formStep = document.querySelector(`input[name="user_type"]:checked`).value;
-            console.log(this.formStep)
         },
 
         disableScroll() {
@@ -67,7 +66,7 @@
             <div class="flex gap-8 justify-center" id="teste">
                 <label for="gym" class="flex flex-col w-full">
                     <input type="radio" name="user_type" id="gym" value="gym" class="hidden peer">
-                    <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
+                    <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md bg-white p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
                         <img class="w-32" src="\img\gym-icon.png" alt="Selecione:" />
                         <span class="text-2xl font-bold">Academia</span>
                     </div>
@@ -75,7 +74,7 @@
 
                 <label for="common" class="flex flex-col w-full">
                     <input type="radio" name="user_type" id="common" value="common" class="hidden peer">
-                    <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
+                    <div class="gap-4 flex flex-col w-full items-center shadow-xl rounded-md bg-white p-4 outline outline-2 outline-gymhunt-purple-1 peer-checked:bg-gymhunt-purple-3 cursor-pointer">
                         <img class="w-32" src="\img\musculo.png" >
                         <span class="text-2xl font-bold">Pessoa</span>
                     </div>
@@ -94,10 +93,10 @@
                                         x-transition:leave.duration.400m
              class="flex flex-col gap-2">
 
-             <div class="flex flex-col gap-2 items-start">
+            <div class="flex flex-col gap-2 items-start">
                 <span class="text-center font-bold text-2xl mt-3">Documentos</span>
                 <x-form.text name="document" label="CNPJ" type="text" class="w-full"/>
-             </div>
+            </div>
             <div class="flex flex-col gap-2 items-start">
                 <span class="text-center font-bold text-2xl mt-3">Horários</span>
                 <div class="flex gap-4 w-full">
@@ -105,7 +104,7 @@
                     <x-form.text name="close_schedule" label="Fechamento" type="number" class="w-full"/>
                 </div>
             </div>
-            <div class="flex flex-col gap-2 items-start" id="adress">
+            <div class="flex flex-col gap-2 items-start" id="address">
                 <span class="text-center font-bold text-2xl mt-3">Endereço</span>
                 <div class="flex w-full gap-4">
                     <x-form.text name="state" label="Estado" type="text" class="flex-none"/>
@@ -179,29 +178,24 @@
                 Próximo
             </button>
         </div>
-        <button type="submit" class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md"> Cadastrar-se </button>
+        <button type="submit" x-show="formStep != 'default'" class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md"> Cadastrar-se </button>
     </form>
 </div>
 @endsection
 
 @push('custom-scripts')
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
-    {{-- <script id="search-js" src="https://api.mapbox.com/search-js/v1.0.0-beta.17/web.js"></script> --}}
 
     <script defer>
         const form = document.querySelector('form')
         const types = document.querySelectorAll(`input[name="user_type"]`)
-        const userType = document.querySelectorAll(`input[name="user_type"]:checked`)
+
         types.forEach((type) => {
-            
             type.addEventListener('change', () => {
                 if(type == gym)
-                    /* form.action = "{{ route('gymSignup') }}"; */
                     form.action = "{{ route('gymSignup') }}"
                 else
-                    form.action = "{{ route('commonSignup') }}";    
-
-                console.log(form.action);
+                    form.action = "{{ route('commonSignup') }}";
             })
         })
     </script>
@@ -218,46 +212,40 @@
 
         map.on('click', (e) => {
             const formCoordinates = document.getElementById('coordinates')
-            const adressCoordinates = Array.from(formCoordinates.querySelectorAll("div > div > input")).map((coordinates) => coordinates)
-
+            const addressCoordinates = Array.from(formCoordinates.querySelectorAll("div > div > input")).map((coordinates) => coordinates)
             const coordinates = e.lngLat;
 
             selectedLocation.remove()
             selectedLocation.setLngLat(coordinates)
             selectedLocation.addTo(map)
 
-            adressCoordinates.forEach(adress => console.log(adress))
-
-            console.log('input coordenadas: ', coordinates)
-
             /* latitude */
-            adressCoordinates[0].value = coordinates.lat
+            addressCoordinates[0].value = coordinates.lat
             /* Longitude */
-            adressCoordinates[1].value = coordinates.lng
+            addressCoordinates[1].value = coordinates.lng
         });
         
         // Set the custom marker image for the marker
-        const customImage = document.createElement('div')
-        customImage.className = 'custom-marker'
-        const gymLocation = new mapboxgl.Marker(customImage)
+        const markerCustomImage = document.createElement('div')
+        markerCustomImage.className = 'custom-marker'
+        const gymLocation = new mapboxgl.Marker(markerCustomImage)
 
         async function fetchUserData() {
-            const geralAdressFields = document.getElementById('adress');
-            const adresses = Array.from(geralAdressFields.querySelectorAll("div > div > div > input")).map((adress) => adress.value);
-            const searchString = adresses.join(' ').trim().replace(/\s+/g, '+');
+            const addressFields = document.getElementById('address');
+            const address = Array.from(addressFields.querySelectorAll("div > div > div > input")).map((field) => field.value);
+            const searchString = address.join(' ').trim().replace(/\s+/g, '+');
 
             let uuid = "{{ Ramsey\Uuid\Uuid::uuid4() }}"
 
-            const curl = `https://api.mapbox.com/search/searchbox/v1/suggest?q=${searchString}&language=pt&limit=1&session_token=${uuid}&country=BR&access_token=pk.eyJ1IjoiZHI0Z2F3YXkiLCJhIjoiY2xtdnc2YjdnMG1nNzJpcGNiaDI4aXAzcSJ9.9XTO-r1_cZp9p51MazueCw`
-            await fetch(curl)
+            const suggestions = `https://api.mapbox.com/search/searchbox/v1/suggest?q=${searchString}&language=pt&limit=1&session_token=${uuid}&country=BR&access_token=pk.eyJ1IjoiZHI0Z2F3YXkiLCJhIjoiY2xtdnc2YjdnMG1nNzJpcGNiaDI4aXAzcSJ9.9XTO-r1_cZp9p51MazueCw`
+            await fetch(suggestions)
                 .then((data) => data.json())
                 .then(({suggestions: [{mapbox_id}]}) => {
                     uuid = "{{ Ramsey\Uuid\Uuid::uuid4() }}"
                     return fetch(`https://api.mapbox.com/search/searchbox/v1/retrieve/${mapbox_id}?session_token=${uuid}&access_token=pk.eyJ1IjoiZHI0Z2F3YXkiLCJhIjoiY2xtdnc2YjdnMG1nNzJpcGNiaDI4aXAzcSJ9.9XTO-r1_cZp9p51MazueCw`)
                 })
                 .then(data => data.json())
-                .then(({features: [{properties, properties: {coordinates}}]}) =>{
-                        console.log('maker is not null')
+                .then(({features: [{properties, properties: {coordinates}}]}) => {
                         gymLocation.remove()
                         gymLocation.setLngLat([coordinates.longitude, coordinates.latitude])
                         gymLocation.setPopup(new mapboxgl.Popup().setHTML(`<h4>${properties.name}</h4>`))
