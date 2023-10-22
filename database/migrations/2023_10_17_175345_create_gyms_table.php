@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('gyms', function (Blueprint $table) {
             $table->id();
-            $table->string('document');
+            $table->string('cnpj');
             $table->integer('open_schedule');
             $table->integer('close_schedule');
             $table->string('city');

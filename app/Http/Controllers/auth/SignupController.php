@@ -49,7 +49,7 @@ class SignupController extends Controller
             ]);
     
             $gym = Gym::create([
-                'document' => $request->document,
+                'cnpj' => $request->cnpj,
                 'open_schedule' => $request->open_schedule,
                 'close_schedule' => $request->close_schedule,
                 'city' => $request->city,

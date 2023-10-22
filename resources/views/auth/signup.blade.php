@@ -110,7 +110,7 @@
     
                 <div class="flex flex-col gap-2 items-start">
                     <span class="text-center font-bold text-2xl">Documentos</span>
-                    <x-form.textUnderlined name="cnpj" label="document" type="text" class="w-full"/>
+                    <x-form.textUnderlined name="cnpj" label="CNPJ" type="text" class="w-full"/>
                 </div>
                 <div class="flex flex-col gap-2 items-start">
                     <span class="text-center font-bold text-2xl mt-3">Horários</span>

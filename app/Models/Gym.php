@@ -12,7 +12,7 @@ class Gym extends Model
     
     protected $fillable = [
         'user_id',
-        'document',
+        'cnpj',
         'open_schedule',
         'close_schedule',
         'city',

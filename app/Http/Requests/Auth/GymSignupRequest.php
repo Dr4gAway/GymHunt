@@ -29,7 +29,7 @@ class GymSignupRequest extends FormRequest
             'password' => 'required|string|min:8|max:32',
             'password_confirmation' => 'required|same:password',
             /* Gym data */
-            'document' => 'required|string|size:14',
+            'cnpj' => 'required|string|size:14',
             'open_schedule' => 'required|integer|max:1440',
             'close_schedule' => 'required|integer|max:1440',
             'city' => 'required|string|max:64',
