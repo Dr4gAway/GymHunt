@@ -1,6 +1,7 @@
 @props([
     'name',
     'label',
+    'model' => null,
     'step' => null,
     'type' => 'text',
     'placeholder' => null
@@ -17,6 +18,9 @@
             type="{{ $type }}"
             @if($step)
                 step = {{$step}}
+            @endif
+            @if($model)
+                wire:model="{{ $model }}"
             @endif
             placeholder="{{ $placeholder }}"
             class="block w-full rounded-lg border-0 p-1.5 text-gray-900 drop-shadow-xl ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"

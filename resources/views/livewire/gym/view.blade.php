@@ -2,7 +2,7 @@
     <div class="flex items-center gap-4">
         <div class="flex items-center gap-1 text-base font-semibold">
             <div class="bg-red-500 h-8 w-8 rounded-full"></div>
-            <span>Gym Spotter</span>
+            <span>{{$name}}</span>
         </div>
         <div class="flex items-center gap-1">
             <div class="bg-red-500 rounded-full h-2 w-2"></div>
@@ -21,7 +21,10 @@
                 <i class="fa-regular fa-star"></i>
                 <span class="font-medium">3.7</span>
             </div>
-            <button class="bg-gymhunt-purple-1 text-white px-4 py-2 rounded-lg font-bold hover:bg-gymhunt-purple-2">Visitar perfil</button>
+            <a class="bg-gymhunt-purple-1 text-white px-4 py-2 rounded-lg font-bold hover:bg-gymhunt-purple-2"
+            href="{{route('perfil', $gymId)}}">
+                Visitar perfil
+            </a>
         </div>
     </div>
 </div>

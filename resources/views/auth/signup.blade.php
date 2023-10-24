@@ -130,7 +130,7 @@
                         <x-form.textUnderlined name="street" label="Rua" type="text" class="w-full"/>
                         <x-form.textUnderlined name="number" label="Numero" type="text" class=""/>
                     </div>
-                    <button wire:ignore @click.prevent onclick="fetchUserData()" @click.prevent='openModal()'
+                    <button wire:ignore onclick="fetchUserData()" @click.prevent='openModal()'
                         class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md w-full">
                         Selecionar localização
                     </button>
@@ -173,7 +173,7 @@
             </button>
 
             <input type="submit" value="Cadastrar-se" x-show="formStep != 'default'" form="signup"
-                    class="bg-gymhunt-purple-1 hover:bg-gymhunt-purple-2 text-white font-bold px-4 py-2 w-fit end rounded-md cursor-pointer ">
+                    class="bg-gymhunt-purple-1 hover:bg-gymhunt-purple-2 text-white font-bold px-4 py-2 w-fit end rounded-md cursor-pointer">
         </div>
     </div>
 
