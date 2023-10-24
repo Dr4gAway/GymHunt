@@ -23,8 +23,8 @@
 
 <body class="flex justify-center items-center font-poppins bg-[#DFE6F9] min-h-screen">
 
-<div class="flex h-full w-full max-w-5xl max-h-[724px] rounded-2xl">
-    <div class="flex flex-col w-full h-full mx-auto justify-between bg-white p-6 rounded-l-2xl" x-data='{
+<div class="flex h-full w-full max-w-5xl max-h-[45rem] rounded-2xl">
+    <div class="flex flex-col w-full h-full mx-auto justify-between bg-white p-6 rounded-l-2xl overflow-scroll" x-data='{
         formStep: "default",
         handleUserType() {
             this.formStep = document.querySelector(`input[name="user_type"]:checked`).value;
@@ -34,7 +34,7 @@
             {{-- <img src="\img\logoIcon.png" alt="Logo Gym hunt" class="w-24"> --}}
             Cadastre-se
         </h2>
-        <form method="POST" class="flex flex-col w-full gap-4" x-data='{
+        <form method="POST" class="flex flex-col w-full gap-4" id="signup" x-data='{
             mapOpen: false,
     
             disableScroll() {
@@ -59,7 +59,7 @@
                 this.mapOpen = !this.mapOpen
             }
         }'>
-            {!! csrf_field() !!}
+            {{ csrf_field() }}
     
             <div class="flex flex-col gap-4"
                 x-show="formStep == 'default'"  x-transition.opacity
@@ -130,7 +130,7 @@
                         <x-form.textUnderlined name="street" label="Rua" type="text" class="w-full"/>
                         <x-form.textUnderlined name="number" label="Numero" type="text" class=""/>
                     </div>
-                    <button wire:ignore onclick="fetchUserData()" @click.prevent='openModal()'
+                    <button wire:ignore @click.prevent onclick="fetchUserData()" @click.prevent='openModal()'
                         class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md w-full">
                         Selecionar localização
                     </button>
@@ -147,13 +147,9 @@
                                 <img src="img\icons\close-icon.svg" x-on:click="closeModal()" class="cursor-pointer">
                             </div>
 
-                            <div class="w-full h-full bg-red-500"></div>
+                            {{-- <div class="w-full h-full bg-red-500"></div> --}}
                             
-                            {{-- <div id='map' class="w-full h-full absolute top-0 left-0"></div>  --}}
-    
-                            <button type="submit" class="self-end bg-gymhunt-purple-1 text-white rounded-md px-4 py-2 w-fit">
-                                Confirmar endereço
-                            </button>
+                            <div id='map' class="w-full h-full absolute top-0 left-0"></div>
                         </div>
                     </div>                
                     
@@ -163,34 +159,9 @@
                     </div>
                 </div>
             </div>
-    
-            <!-- Imagens
-    
-                <span class="text-lg font-bold leading-6 text-gray-900">Insira suas imagens</span>
-                <div class="flex flex-col gap-4">
-                <div>
-                    <label for="avatar" class="block text-sm font-semibold leading-6 text-gray-900 ">1. Avatar</label>
-                    <div class="mt-2.5">
-                        <input type="file" name="avatar" id="avatar" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
-                    @error('avatar')
-                        <p class="text-red-500"> {{$message}} </p>   
-                    @enderror
-                </div>
-    
-                <div>
-                    <label for="banner" class="block text-sm font-semibold leading-6 text-gray-900">2. Banner</label> 
-                    <div class="mt-2.5">
-                        <input type="file" name="banner" id="banner" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
-                    
-                    @error('banner')
-                        <p class="text-red-500"> {{$message}} </p>   
-                    @enderror
-                </div>
-            </div> -->
-        </form>
 
+        </form>
+        
         <div class="flex w-full" :class="formStep === 'default' ? 'justify-end' : 'justify-between' ">
             <button wire:ignore @click.prevent='formStep = "default"' :class="formStep == 'default' ? 'hidden' : '' "
                     class="bg-transparent outline outline-4 text-gymhunt-purple-1 outline-gymhunt-purple-1 font-bold px-4 py-2 rounded-md">
@@ -200,10 +171,9 @@
                     class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 w-fit end rounded-md">
                 Avançar
             </button>
-            <button type="submit" x-show="formStep != 'default'"
-                    class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 rounded-md">
-                Cadastrar-se
-            </button>
+
+            <input type="submit" value="Cadastrar-se" x-show="formStep != 'default'" form="signup"
+                    class="bg-gymhunt-purple-1 hover:bg-gymhunt-purple-2 text-white font-bold px-4 py-2 w-fit end rounded-md cursor-pointer ">
         </div>
     </div>
 
@@ -224,11 +194,13 @@
 
         types.forEach((type) => {
             type.addEventListener('change', () => {
-                if(type == gym)
-                    form.action = "{{ route('gymSignup') }}"
-                else
+                if(type == common)
                     form.action = "{{ route('commonSignup') }}";
+                else
+                    form.action = "{{ route('gymSignup') }}"
+                console.log(form.action)
             })
+
         })
     </script>
 
