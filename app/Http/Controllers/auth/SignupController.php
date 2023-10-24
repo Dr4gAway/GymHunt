@@ -9,6 +9,7 @@ use App\Http\Requests\Auth\GymSignupRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Gym;
+use App\Models\Common;
 
 class SignupController extends Controller
 {
@@ -16,7 +17,7 @@ class SignupController extends Controller
         return view('auth.signup');
     }
 
-    public function userStore(CommonSignupRequest $request) {
+    public function commonStore(CommonSignupRequest $request) {
 
         if($request->validated())
         {
@@ -25,10 +26,15 @@ class SignupController extends Controller
                 'email' => $request->email,
                 //'bio' => $request->biografia,
                 'password' => $request->password,
-                'phone' => $request->phone,
-                'cpf' => $request->cpf,
-                'birth' => $request->birth
+                'phone' => $request->phone
             ]);
+
+            $common = Common::create([
+                'cpf' => $request->cpf,
+                'birth' => $request->birth,
+                'user_id' => $user->id
+            ]);
+
             Auth::login($user);
     
             return redirect('/feed');
@@ -68,9 +74,5 @@ class SignupController extends Controller
         } else {
             return back()->withErrors()->withInput();
         }
-    }
-
-    public function commonStore() {
-        return ('cadastro como usuário');
     }
 }
