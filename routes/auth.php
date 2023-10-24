@@ -13,8 +13,6 @@ Route::middleware('guest')->group(function () {
     Route::get('/signup', [SignupController::class, 'create'])
                 ->name('signup');
 
-    Route::post('/signup', [SignupController::class, 'store']);
-
     Route::Post('/signup/gym', [SignupController::class, 'gymStore'])->name('gymSignup');
     Route::Post('/signup/common', [SignupController::class, 'commonStore'])->name('commonSignup');
 });
