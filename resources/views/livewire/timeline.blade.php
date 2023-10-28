@@ -31,8 +31,6 @@
         <livewire:post.update />
     </div>
 
-    
-
     @foreach ($this->posts as $post)
         <livewire:post.view :post="$post" wire:key="post-{{$post->id}}" /> 
     @endforeach

@@ -18,7 +18,7 @@
         },
 
         updatePost(post, images) {
-           this.editOpen = true
+            this.editOpen = true
             menuOpen = false
             Livewire.emit('post::updateRequest', post, images)
 

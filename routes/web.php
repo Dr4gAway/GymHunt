@@ -28,4 +28,10 @@ Route::get('/gerandoAvaliação', function(){
     return view('comentario');
 })->name('comentario');
 
+Route::get('/explore', function() {
+    return view('location.explore');
+});
+
+Route::get('/gym-card', App\Http\Livewire\Gym\View::class);
+
 require __DIR__.'/auth.php';
