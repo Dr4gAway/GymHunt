@@ -1,9 +1,7 @@
 <div>
-    {{-- To atain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
-
     <livewire:gym.search />
-    <div id='map' class="w-full max-h-screen h-screen"></div>
 
+    <div id='map' class="w-full h-full"></div>
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
 
@@ -18,6 +16,8 @@
             style: 'mapbox://styles/mapbox/streets-v11'
         });
 
+        
+
         const searchJS = document.getElementById('search-js');
         searchJS.onload = function () {
             const searchBox = new MapboxSearchBox();
@@ -25,6 +25,7 @@
             searchBox.options = {
                 proximity: [-73.99209, 40.68933]
             };
+            searchBox.placeholder = 'Pesquise um endereço';
             searchBox.marker = true;
             searchBox.mapboxgl = mapboxgl;
             map.addControl(searchBox);
@@ -44,11 +45,34 @@
                 const popup = new mapboxgl.Popup({ closeOnClick: true, closeButton: false, autoPanPadding: 0 })
                             .setLngLat([gym.longitude, gym.latitude])
                             .setHTML(`
-                                <div class="relative t-0 l-0 p-2 m-0 border-b-gymhunt-purple-1 border-b-4">
-                                    <h1 class="font-bold font-poppins">${gym.name}!</h1>
-                                    <button wire:ignore @click.prevent onclick="goTo(${gym.longitude}, ${gym.latitude})"
-                                        class="bg-gymhunt-purple-1 hover:bg-gymhunt-purple-2 text-white font-bold px-2 py-1 w-full end rounded-md cursor-pointer"
-                                    > Ver mais perto </button>
+                                <div class="visible bg-white w-[250px] rounded-2xl overflow-hidden font-poppins">
+                                    <div class="relative bg-gymhunt-purple-1 w-full h-16 mb-8">
+                                        <div class="absolute left-1/2 top-0 translate-y-1/2 -translate-x-1/2 rounded-full bg-red-500 w-16 h-16"></div>
+                                    </div>
+                                    <div class="relative flex flex-col gap-4 p-3">
+                                        <h3 class="font-bold text-xl text-center">${gym.name}</h3>
+                                        <div class="flex flex-col gap-1">
+                                            <div class="flex items-center gap-2">
+                                                <div class="bg-gymhunt-purple-1 h-4 w-4 rounded-full"></div>
+                                                <span class="text-gymhunt-purple-1 font-semibold">Aberta</span>
+                                                <span>12:00 - 18:00</span>
+                                            </div>
+                                            <span class="text-justify">
+                                                ${"{{Illuminate\Support\Str::limit('Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit tenetur atque consectetur consequuntur maxime delectus iusto beatae accusamus aperiam, dicta reiciendis unde assumenda inventore in, quas eveniet pariatur ex nostrum. ', 80, '...')}}"}
+                                            </span>
+                                
+                                        </div>
+                                        <div class="flex items-center gap-4 h-fit">
+                                            <button wire:ignore @click.prevent
+                                                class="w-full h-full py-1 px-2 rounded-lg bg-gymhunt-purple-1 text-white font-bold text-base focus:ring-4 focus:ring-gymhunt-purple-1">
+                                                Visitar perfil
+                                            </button>
+                                            <button wire:ignore @click.prevent onclick="goTo(${gym.longitude}, ${gym.latitude})"
+                                                class="h-full py-1 px-2 rounded-xl bg-transparent border-4 border-gymhunt-purple-1 text-gymhunt-purple-1 font-bold text-base">
+                                                Zoom
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             `)
                             .addTo(map);
@@ -56,10 +80,32 @@
                 const marker = new mapboxgl.Marker()
                                 .setLngLat([gym.longitude, gym.latitude])
                                 .setPopup(popup)
-                                .addTo(map);
 
                 marker.on('click', (e) => {
                     map.flyTo({center: [gym.longitude, gym.latitude]})
+                })
+
+                map.on('move', () => {
+
+                    function isVisible(marker, map) {
+                        const {_sw, _ne} = map.getBounds()
+                        const {_lngLat: {lng}, _lngLat: {lat}} = marker
+                        const { transform: {_zoom}} = map
+                        return (
+                            lng > _sw.lng &&
+                            lng < _ne.lng &&
+                            lat > _sw.lat &&
+                            lat < _ne.lat &&
+                            _zoom > 12
+                        )
+                    }
+
+                    if(isVisible(marker, map))
+                        marker.addTo(map);
+                    else
+                        marker.remove()
+                    /* Latitude in Ne stands for north */
+                    /* Longitude in Ne stands for East */
                 })
             })
         }

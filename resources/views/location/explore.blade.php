@@ -17,9 +17,30 @@
         @livewireStyles
 
         <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+
+        <style>
+            /* Marker tweaks */
+            .mapboxgl-popup {
+                font-family: 'poppins';
+                padding: 0;
+                margin: 0;
+                width: 100%;
+            }
+            .mapboxgl-popup-close-button {
+                display: none;
+            }
+            .mapboxgl-popup-content {
+                font-family: 'poppins';
+                padding: 0;
+                margin: 0;
+                width: fit-content;
+                border-radius: 50%
+            }
+            mapbox-search-box > div > input::placeholder {
+                content: 'teste'
+            }
+        </style>
     </head>
-
-
 
     <body class="font-poppins bg-[#DFE6F9] max-h-screen">
 
