@@ -13,7 +13,7 @@ Route::Get('/feed/posts/{id}', [PostController::class, 'index'])->name('post');
 Route::Get('/perfil/{id}', [ProfileController::class, 'index'])->name('perfil');
 
 Route::get('/perfil', function(){
-    return view('perfilUser');
+    return view('perfilUser', ['user' => App\Models\User::find(12)]);
 })->name('perfilUser');
 
 Route::get('/academia', function(){
