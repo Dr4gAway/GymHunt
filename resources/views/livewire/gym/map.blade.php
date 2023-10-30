@@ -41,6 +41,8 @@
         async function loadGyms() {
             const gymMarkers = @js($this->gyms)
 
+            console.log(await gymMarkers)
+
             gymMarkers.forEach(gym => {
                 const popup = new mapboxgl.Popup({ closeOnClick: true, closeButton: false, autoPanPadding: 0 })
                             .setLngLat([gym.longitude, gym.latitude])

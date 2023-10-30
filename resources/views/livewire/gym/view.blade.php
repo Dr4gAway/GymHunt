@@ -4,10 +4,17 @@
             <div class="bg-red-500 h-8 w-8 rounded-full"></div>
             <span>{{$name}}</span>
         </div>
-        <div class="flex items-center gap-1">
-            <div class="bg-red-500 rounded-full h-2 w-2"></div>
-            <span class="text-sm">Fechada</span>
-        </div>
+        @if(date('H:i') > $gym->close_schedule && date('H:i') < $gym->open_schedule)
+            <div class="flex items-center gap-1">
+                <div class="bg-red-500 rounded-full h-2 w-2"></div>
+                <span class="text-sm">Fechada</span>
+            </div>
+        @else
+            <div class="flex items-center gap-1">
+                <div class="bg-green-500 rounded-full h-2 w-2"></div>
+                <span class="text-sm">Aberto</span>
+            </div>
+        @endif
     </div>
     <div class="w-full h-1 bg-black rounded-full"></div>
     <div class="space-y-2">
@@ -22,7 +29,7 @@
                 <span class="font-medium">3.7</span>
             </div>
             <a class="bg-gymhunt-purple-1 text-white px-4 py-2 rounded-lg font-bold hover:bg-gymhunt-purple-2"
-            href="{{route('perfil', $gymId)}}">
+            href="{{route('perfil', $gym->id)}}">
                 Visitar perfil
             </a>
         </div>

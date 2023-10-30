@@ -8,7 +8,7 @@ class View extends Component
 {
     public String $name;
 
-    public $gymId;
+    public $gym;
     
     public function render()
     {
