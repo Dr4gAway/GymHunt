@@ -100,7 +100,7 @@
                         </div>
                     </div>
                     
-                    <div class="w-full h-6 bg-slate-950"></div>
+                    <div class="w-full h-1 bg-slate-950"></div>
 
                     <x-form.text name="name" label="Nome" placeholder="Digite seu nome completo" />  
                     <x-form.text name="email" label="Email" type="email" placeholder="ex: email@gmail.com"/>
