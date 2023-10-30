@@ -152,6 +152,10 @@
             <div class="space-y-5 flex flex-col place-items-center">
                 <h4 class="font-semibold">Contate-nos</h4>
                 <a class="hover:border-b-2" href="mailto:equipegymhunt@gmail.com"> equipegymhunt@gmailcom</a>
+                <div class="space-y-5 flex flex-col place-items-center">
+                <h4 class="font-semibold">Saiba mais como utilizar o site</h4>
+                <a class="hover:border-b-2" href=""> Help do sistema</a>
+            </div> 
             </div> 
 
             <div class="space-y-3 flex flex-col place-items-center">
