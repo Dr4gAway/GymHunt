@@ -18,7 +18,7 @@
     @livewireStyles
 
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
-    <link href='{{ URL::asset('css/signup.css'); }}' rel='stylesheet'/>
+    <link href="{{ URL::asset('css/signup.css'); }}" rel='stylesheet'/>
 </head>
 
 <body class="flex justify-center items-center font-poppins bg-[#DFE6F9] min-h-screen">
@@ -115,8 +115,8 @@
                 <div class="flex flex-col gap-2 items-start">
                     <span class="text-center font-bold text-2xl mt-3">Horários</span>
                     <div class="flex gap-4 w-full">
-                        <x-form.textUnderlined name="open_schedule" label="Abertura" type="number" class="w-full"/>
-                        <x-form.textUnderlined name="close_schedule" label="Fechamento" type="number" class="w-full"/>
+                        <x-form.textUnderlined name="open_schedule" label="Abertura" type="time" class="w-full"/>
+                        <x-form.textUnderlined name="close_schedule" label="Fechamento" type="time" class="w-full"/>
                     </div>
                 </div>
                 <div class="flex flex-col gap-3 items-start" id="address">
@@ -137,14 +137,14 @@
     
                     <div class="fixed inset-0 flex flex-col w-full h-screen gap-8 z-20 p-8" x-show="mapOpen" x-data="{
     
-                    }" @update::close="closeModal()">
+                    }">
                         <!-- Overlay  -->
                         <div class="bg-black bg-opacity-20 fixed inset-0 " x-on:click="closeModal()"></div>
                 
                         <div class="self-center w-full max-w-5xl h-full max-h-[960px] flex flex-col gap-4 bg-white p-4 rounded-2xl z-20">
                             <div class="flex w-full justify-between">
                                 <h4 class="text-4xl font-bold">Selecionar Endereço</h4>
-                                <img src="img\icons\close-icon.svg" x-on:click="closeModal()" class="cursor-pointer">
+                                <img src="\img\icons\close-icon.svg" x-on:click="closeModal()" class="cursor-pointer">
                             </div>
 
                             {{-- <div class="w-full h-full bg-red-500"></div> --}}
