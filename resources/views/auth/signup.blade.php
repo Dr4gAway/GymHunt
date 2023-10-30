@@ -115,8 +115,8 @@
                 <div class="flex flex-col gap-2 items-start">
                     <span class="text-center font-bold text-2xl mt-3">Horários</span>
                     <div class="flex gap-4 w-full">
-                        <x-form.textUnderlined name="open_schedule" label="Abertura" type="number" class="w-full"/>
-                        <x-form.textUnderlined name="close_schedule" label="Fechamento" type="number" class="w-full"/>
+                        <x-form.textUnderlined name="open_schedule" label="Abertura" type="time" class="w-full"/>
+                        <x-form.textUnderlined name="close_schedule" label="Fechamento" type="time" class="w-full"/>
                     </div>
                 </div>
                 <div class="flex flex-col gap-3 items-start" id="address">
