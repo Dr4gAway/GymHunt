@@ -28,10 +28,16 @@
                 <i class="fa-regular fa-star"></i>
                 <span class="font-medium">3.7</span>
             </div>
-            <a class="bg-gymhunt-purple-1 text-white px-4 py-2 rounded-lg font-bold hover:bg-gymhunt-purple-2"
-            href="{{route('perfil', $gym->id)}}">
-                Visitar perfil
-            </a>
+            <div class="flex gap-2">
+                <button wire:ignore @click.prevent onclick="goTo('{{$gym->longitude}}', '{{$gym->latitude}}')"
+                        class="h-full py-1 px-2 rounded-xl bg-transparent border-4 border-gymhunt-purple-1 text-gymhunt-purple-1 font-bold text-base">
+                    Zoom
+                </button>
+                <a class="bg-gymhunt-purple-1 text-white px-4 py-2 rounded-lg font-bold hover:bg-gymhunt-purple-2"
+                href="{{route('perfil', $gym->id)}}">
+                    Visitar perfil
+                </a>
+            </div>
         </div>
     </div>
 </div>

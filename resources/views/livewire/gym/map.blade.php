@@ -44,6 +44,7 @@
             console.log(await gymMarkers)
 
             gymMarkers.forEach(gym => {
+                console.log(gym);
                 const popup = new mapboxgl.Popup({ closeOnClick: true, closeButton: false, autoPanPadding: 0 })
                             .setLngLat([gym.longitude, gym.latitude])
                             .setHTML(`
@@ -54,11 +55,6 @@
                                     <div class="relative flex flex-col gap-4 p-3">
                                         <h3 class="font-bold text-xl text-center">${gym.name}</h3>
                                         <div class="flex flex-col gap-1">
-                                            <div class="flex items-center gap-2">
-                                                <div class="bg-gymhunt-purple-1 h-4 w-4 rounded-full"></div>
-                                                <span class="text-gymhunt-purple-1 font-semibold">Aberta</span>
-                                                <span>12:00 - 18:00</span>
-                                            </div>
                                             <span class="text-justify">
                                                 ${"{{Illuminate\Support\Str::limit('Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit tenetur atque consectetur consequuntur maxime delectus iusto beatae accusamus aperiam, dicta reiciendis unde assumenda inventore in, quas eveniet pariatur ex nostrum. ', 80, '...')}}"}
                                             </span>
