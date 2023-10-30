@@ -28,6 +28,8 @@ class GymSignupRequest extends FormRequest
             'phone' => 'required|string|size:13',
             'password' => 'required|string|min:8|max:32',
             'password_confirmation' => 'required|same:password',
+            'avatar' => 'required|mimes:jpeg,jpg,png,gif',
+            'banner' => 'required|mimes:jpeg,jpg,png,gif',
             /* Gym data */
             'cnpj' => 'required|string|size:14',
             'open_schedule' => 'required|date_format:H:i',
@@ -39,9 +41,6 @@ class GymSignupRequest extends FormRequest
             'number' => 'required|string|max:7',
             'longitude' => 'required|decimal:8,15',
             'latitude' => 'required|decimal:8,15'
-
-            /* 'avatar' => 'nullable|image|mimes:jpeg,jpg,png,gif',
-            'banner' => 'nullable|image|mimes:jpeg,jpg,png,gif' */
         ];
     }
 
