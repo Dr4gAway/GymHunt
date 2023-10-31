@@ -1,7 +1,4 @@
-@extends('layout.site')
 @section('titulo', 'GymHunt - Perfil da Academia')
-@section('content') 
-
 <div class="flex flex-col w-full items-center bg-gymhunt-gray-1" x-data="{
     imageOpen: false,
     editOpen: false,
@@ -144,10 +141,16 @@
                     </div>
                 </div>
 
-            @else
-                <button class="bg-gymhunt-purple-1 hover:bg-gymhunt-purple-2 text-white font-bold px-4 py-2 w-fit end rounded-md cursor-pointer">
-                    Seguir
+            @elseif($following)
+                <button wire:click="handleFollow()"
+                    class="bg-gymhunt-purple-2 hover:bg-gymhunt-purple-2 text-white font-bold px-4 py-2 w-fit end rounded-md cursor-pointer">
+                    Seguindo
                 </button>
+            @else
+            <button wire:click="handleFollow()"
+                    class="bg-gymhunt-purple-1 hover:bg-gymhunt-purple-2 text-white font-bold px-4 py-2 w-fit end rounded-md cursor-pointer">
+                Seguir
+            </button>
             @endif        
             </div>
         </div>
@@ -230,4 +233,3 @@
     </div>
     
 </div>
-@endsection

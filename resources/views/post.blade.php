@@ -34,8 +34,6 @@
             <livewire:post.update />
         </div>
 
-        
-
         <livewire:post.view :post="$post" :showAll="true" />
     </section>
 @endsection

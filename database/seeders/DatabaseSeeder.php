@@ -28,5 +28,18 @@ class DatabaseSeeder extends Seeder
             'birth' => fake()->date(),
             'user_id' => $user->id
         ]);
+
+        $user2 = User::factory()->create([
+             'name' => 'Bruno Suwa',
+             'email' => 'Bruno@example.com',
+             'password' => 'brunobsi',
+             'phone' => fake()->phoneNumber(),
+        ]);
+
+        Common::create([
+            'cpf' => '12345678911',
+            'birth' => fake()->date(),
+            'user_id' => $user2->id
+        ]);
     }
 }
