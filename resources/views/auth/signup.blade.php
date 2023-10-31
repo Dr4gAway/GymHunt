@@ -115,7 +115,7 @@
                 </div>
             </div>
     
-            <div class="flex flex-col gap-4"
+            <div class="flex flex-col gap-4 max-w-full overflow-scroll"
                 x-show="formStep == 'required'"  x-transition.opacity
                                                 x-transition:enter.duration.500ms
                                                 x-transition:leave.duration.400m>
@@ -128,6 +128,16 @@
                     <x-form.textUnderlined name="password_confirmation" label="Confirmar senha" type="password" class="w-full"/>
                 </div>
                 <x-form.textUnderlined name="phone" label="Telefone" class="w-full"/>
+                
+                <div>
+                    <span class="font-bold text-lg">Sobre você</span>
+                    <textarea name="about" rows="5" placeholder="Conte sobre você ou seu negócio!"
+                        class="border-2 border-gymhunt-purple-1
+                        focus:outline-none focus:ring ring-gymhunt-purple-2
+                        placeholder:text-gymhunt-purple-2
+                        min-h-fit
+                        rounded-lg px-5 py-3 w-full resize-none"></textarea>
+                </div>
             </div>
     
             <div class="flex flex-col gap-4"

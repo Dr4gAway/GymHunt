@@ -26,6 +26,7 @@ class CommonSignupRequest extends FormRequest
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
             'phone' => 'required|string|size:13',
+            'about' => 'string|max:2000',
             'password' => 'required|string|min:8|max:32',
             'password_confirmation' => 'required|same:password',
             'avatar' => 'required|mimes:jpeg,jpg,png,gif',
@@ -50,9 +51,9 @@ class CommonSignupRequest extends FormRequest
             'password.max' => 'Máximo de 32 caracteres.',
             'password_confirmation.required' => 'Confirmação é necessária.',
             'password_confirmation.same' => 'As senhas são diferentes.',
-            /*'avatar' => 'Imagem inválida.',
+            'avatar' => 'Imagem inválida.',
             'avatar.required' => 'Foto de perfil é necessária.',
-            'banner' => 'Imagem inválida.', */
+            'banner' => 'Imagem inválida.',
         ];
     }
 }

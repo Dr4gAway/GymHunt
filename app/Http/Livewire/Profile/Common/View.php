@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Profile;
+namespace App\Http\Livewire\Profile\Common;
 
 use Livewire\Component;
 
@@ -9,11 +9,15 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Follower;
 
-class Common extends Component
+class View extends Component
 {
     public User $user;
 
     public ?Follower $following = null;
+
+    protected $listeners = [
+        'update::close' => '$refresh',
+    ];
 
     public function mount($id) {
         $this->user = User::find($id);
@@ -22,7 +26,7 @@ class Common extends Component
 
     public function render()
     {
-        return view('livewire.profile.common')
+        return view('livewire.profile.common.view')
                     ->layout('layout.site');
     }
 

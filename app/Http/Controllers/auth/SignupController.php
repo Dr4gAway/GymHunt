@@ -25,16 +25,16 @@ class SignupController extends Controller
         if($request->validated())
         {
             $avatar = $request->avatar->store('photos/avatars', 'public');
-            $banner = $request->avatar->store('photos/banners', 'public');
+            $banner = $request->banner->store('photos/banners', 'public');
 
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
-                //'bio' => $request->biografia,
+                'about' => $request->about,
                 'password' => $request->password,
                 'phone' => $request->phone,
-                'avatar' => 'storage/avatars/'.$avatar,
-                'banner' => 'storage/banners/'.$banner
+                'avatar' => 'storage/'.$avatar,
+                'banner' => 'storage/'.$banner
             ]);
 
             $common = Common::create([
@@ -63,6 +63,7 @@ class SignupController extends Controller
                 'email' => $request->email,
                 'password' => $request->password,
                 'phone' => $request->phone,
+                'about' => $request->about,
                 'avatar' => 'storage/'.$avatar,
                 'banner' => 'storage/'.$banner
             ]);

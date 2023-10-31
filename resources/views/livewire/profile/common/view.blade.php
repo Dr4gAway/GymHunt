@@ -27,119 +27,41 @@
     <img class="w-full h-[200px] object-cover" src="/{{$user->banner}}" alt="">
     
     {{-- Start --}}
-    <div class="flex flex-col gap-4 items-center max-w-[1280px] p-4">
+    <div class="flex flex-col gap-4 items-center w-full max-w-[1280px] p-4">
 
-        <div class="relative w-full h-[100px] flex justify-end items-center gap-4" x-data="{
-            configOpen: false,
-            menuAlert: false,
-
-            toClipboard() {
-                navigator.clipboard.writeText('localhost:8000/perfil')
-            },
-
-            modalOpen() {
-                this.configOpen = true,
-                disableScroll()
-            },
-
-            modalClose() {
-                this.configOpen = false 
-                enableScroll()
-            }, 
-
-            openAlert(){
-                this.menuAlert = true
-            }, 
-
-            closeAlert(){
-                this.menuAlert = false
-            }
-
-        }"> 
+        <div class="relative w-full h-[100px] flex justify-end items-center gap-4"> 
             <img class="absolute top-0 left-0 -translate-y-1/2 aspect-square rounded-full object-cover w-full sm:w-1/2 max-w-[200px] " src="/{{$user->avatar}}" alt=""> 
             
-            <div class="flex gap-4 h-full items-center">
+            <div class="flex gap-4 h-full items-center" x-data="{
+                configOpen: false,
+                menuAlert: false,
+            
+                modalOpen() {
+                    this.configOpen = true,
+                    disableScroll()
+                },
+            
+                modalClose() {
+                    this.configOpen = false 
+                    enableScroll()
+                }, 
+            
+                openAlert(){
+                    this.menuAlert = true
+                }, 
+            
+                closeAlert(){
+                    this.menuAlert = false
+                }
+            
+            }" @update::close="modalClose()">
             @if(Auth::user() == $user)
                 <button class="bg-gymhunt-purple-1 hover:bg-gymhunt-purple-2 text-white font-bold px-4 py-2 w-fit end rounded-md cursor-pointer" x-on:click="modalOpen()">
                     <i class="fa-solid fa-pencil"></i>
                     Editar perfil
                 </button>
 
-                {{-- Edit Profile --}}
-                <div class="fixed inset-0 flex flex-col items-center w-screen h-screen p-8 gap-8 z-20" x-show="configOpen">
-                    <!-- Overlay  -->
-                    <div class="bg-black bg-opacity-20 fixed inset-0" x-on:click="modalClose()"></div>
-
-                    <div class="flex flex-col w-full gap-4 bg-white p-6 rounded-2xl max-w-2xl z-20 overflow-scroll">
-                        <div class="flex justify-between w-full">
-                            <p class="font-bold text-lg"> <i class="fa-solid fa-pencil"></i> Editar perfil</p>    
-                            <button class="font-bold text-lg" x-on:click="modalClose()">
-                                <i class="fa-solid fa-x"></i>
-                            </button>
-                        </div>
-
-                        <div class="grid grid-flow-col justify-items-center space-x-3">
-                            <div class="relative w-24 h-24 rounded-full overflow-hidden">
-                                <div class="absolute w-full h-full flex items-center justify-center bg-gymhunt-purple-2 bg-opacity-20">
-                                    <i class="fa-solid fa-pencil"></i>
-                                </div>
-                                <div class="bg-red-500 w-full h-full"></div>
-                            </div>
-
-                            <div class="relative w-96 h-24 rounded-2xl overflow-hidden">
-                                <div class="absolute w-full h-full flex items-center justify-center bg-gymhunt-purple-2 bg-opacity-20">
-                                    <i class="fa-solid fa-pencil"></i>
-                                </div>
-                                <div class="bg-red-500 w-full h-full"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="w-full h-1 bg-slate-950"></div>
-
-                        <x-form.text name="name" label="Nome" placeholder="Digite seu nome completo" />  
-                        <x-form.text name="email" label="Email" type="email" placeholder="ex: email@gmail.com"/>
-
-                        <x-resizable-text placeholder="Biografia"/>
-
-                        <div class="flex items-center gap-4">
-                            <x-form.text class="w-full" name="timeOpen" label="Horário de abertura" type="time"/>
-                            <x-form.text class="w-full" name="timeClose" label="Horário de fechamento" type="time"/>
-                        </div>
-
-                        <div class="flex items-center gap-4">
-                            <x-form.text class="w-full" name="phone" label="Telefone" placeholder="ex: XXXXXXXXXXXXX"/>
-                            <div class="w-full flex flex-col space-y-1 col-span-1">
-                                <p class="font-poppins font-bold text-lg">CNPJ</p>
-                                <label class="p-1.5 rounded-md ring-1 ring-gray-300 shadow-xl bg-neutral-500 opacity-40" x-on:click="openAlert()">458.066.118-41</label>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-flow-col justify-between space-x-2">
-                            <button type="submit" x-on:click="modalClose()" class="  justify-center rounded-lg bg-gymhunt-purple-2 px-5 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cancelar</button>
-                            <button type="submit" class="justify-center rounded-lg bg-gymhunt-purple-1 px-5 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Salvar</button>
-                        </div>
-                    </div>  
-                </div>
-
-                <!--alert-->
-                <div class="absolute inset-0 w-full h-full flex justify-center items-center" x-show="menuAlert">
-                    {{-- Overlay --}}
-                    <div x-on:click="closeAlert()"
-                        class="fixed inset-0 w-full h-full bg-gray-500 bg-opacity-20 transition-opacity z-20"></div>
-
-                    <div class="flex self-center justify-center gap-4 py-4 px-8 rounded-2xl items-center bg-white z-30">
-                        <i class="fa-solid fa-triangle-exclamation fa-xl"></i>
-                        <div class="flex flex-col w-fit">
-                            <span class="font-bold">Você não pode editar esse campo</span>
-                            <span>O CPF não é um campo editável</span>
-                        </div>
-                        <button x-on:click="closeAlert()" type="button"
-                                class="w-fit rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500"
-                        >
-                            OK
-                        </button>
-                    </div>
-                </div>
+                <livewire:profile.common.update :user="$user" />
 
             @elseif($following)
                 <button wire:click="handleFollow()"
@@ -171,12 +93,12 @@
             </div>
         </div>
 
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-2 w-full">
             <span class="font-bold">
                 Biografia
             </span>
             <span>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis blanditiis exercitationem earum deleniti molestiae. Error assumenda ipsam voluptas itaque quae, dicta, magni fuga aspernatur iure eveniet eligendi, aperiam cupiditate aliquam!
+                {{$user->about}}
             </span>
         </div>
     </div> {{-- Wrapper 1280 --}}

@@ -26,6 +26,7 @@ class GymSignupRequest extends FormRequest
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
             'phone' => 'required|string|size:13',
+            'about' => 'string|max:2000',
             'password' => 'required|string|min:8|max:32',
             'password_confirmation' => 'required|same:password',
             'avatar' => 'required|mimes:jpeg,jpg,png,gif',

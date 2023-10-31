@@ -10,7 +10,7 @@ Route::View('/feed', 'feed')->name('feed');
 
 Route::Get('/feed/posts/{id}', [PostController::class, 'index'])->name('post');
 
-Route::get('/profile/{id}', App\Http\Livewire\Profile\Common::class);
+Route::get('/profile/{id}', App\Http\Livewire\Profile\Common\View::class);
 
 Route::get('/academia', function(){
     return view('perfilGym');
