@@ -22,15 +22,17 @@ class CommonSignupRequest extends FormRequest
     public function rules(): array
     {
         return [
+            /* User data */
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
             'phone' => 'required|string|size:13',
             'password' => 'required|string|min:8|max:32',
             'password_confirmation' => 'required|same:password',
+            'avatar' => 'required|mimes:jpeg,jpg,png,gif',
+            'banner' => 'required|mimes:jpeg,jpg,png,gif',
+            /* Common data */
             'cpf' => 'required|string|size:11',
             'birth' => 'required|date_format:Y-m-d'
-            /* 'avatar' => 'nullable|image|mimes:jpeg,jpg,png,gif',
-            'banner' => 'nullable|image|mimes:jpeg,jpg,png,gif' */
         ];
     }
 

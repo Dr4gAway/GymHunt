@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('gyms', function (Blueprint $table) {
             $table->id();
             $table->string('cnpj');
-            $table->integer('open_schedule');
-            $table->integer('close_schedule');
+            $table->time('open_schedule');
+            $table->time('close_schedule');
             $table->string('city');
             $table->string('state');
             $table->string('district');

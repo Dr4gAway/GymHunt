@@ -18,23 +18,53 @@
     @livewireStyles
 
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
-    <link href='{{ URL::asset('css/signup.css'); }}' rel='stylesheet'/>
+    <link href="{{ URL::asset('css/signup.css'); }}" rel='stylesheet'/>
 </head>
 
 <body class="flex justify-center items-center font-poppins bg-[#DFE6F9] min-h-screen">
 
 <div class="flex h-full w-full max-w-5xl max-h-[45rem] rounded-2xl">
     <div class="flex flex-col w-full h-full mx-auto justify-between bg-white p-6 rounded-l-2xl overflow-scroll" x-data='{
-        formStep: "default",
-        handleUserType() {
-            this.formStep = document.querySelector(`input[name="user_type"]:checked`).value;
+        formStep: "usertype",
+        oldFormStep: null,
+        stepFoward() {
+            console.log("antiga: ", this.formStep)
+            switch(this.formStep) {
+                case("usertype"):
+                    this.formStep = "required"
+                    break;
+                case("required"):
+                    this.formStep = document.querySelector(`input[name="user_type"]:checked`).value;
+                    break;
+                case("gym"):
+                case("common"):
+                    this.oldFormStep = this.formStep
+                    this.formStep = "images"
+                    break;
+            }
+            console.log("nova: ", this.formStep)
         },
+
+        stepBack() {
+            switch(this.formStep) {
+                case("gym"):
+                case("common"):
+                    this.formStep = "required"
+                    break;
+                case("required"):
+                    this.formStep = "usertype"
+                    break;
+                case("images"):
+                    this.formStep = this.oldFormStep
+                    break;
+            }
+        }
     }'>
         <h2 class="flex self-start font-bold gap-4 text-4xl">
             {{-- <img src="\img\logoIcon.png" alt="Logo Gym hunt" class="w-24"> --}}
             Cadastre-se
         </h2>
-        <form method="POST" class="flex flex-col w-full gap-4" id="signup" x-data='{
+        <form method="POST" class="flex flex-col w-full gap-4" id="signup" enctype="multipart/form-data" x-data='{
             mapOpen: false,
     
             disableScroll() {
@@ -60,21 +90,11 @@
             }
         }'>
             {{ csrf_field() }}
-    
+
             <div class="flex flex-col gap-4"
-                x-show="formStep == 'default'"  x-transition.opacity
+                 x-show="formStep == 'usertype'"  x-transition.opacity
                                                 x-transition:enter.duration.500ms
                                                 x-transition:leave.duration.400m>
-                
-                <x-form.textUnderlined name="name" label="Nome" class="w-full"/>
-                <x-form.textUnderlined name="email" label="Email" class="w-full"/>
-    
-                <div class="flex gap-4">
-                    <x-form.textUnderlined name="password" label="Senha" type="password" class="w-full"/>
-                    <x-form.textUnderlined name="password_confirmation" label="Confirmar senha" type="password" class="w-full"/>
-                </div>
-                <x-form.textUnderlined name="phone" label="Telefone" class="w-full"/>
-    
                 <span class="font-bold text-2xl mt-3">Qual usuário você se encaixa?</span>
                 <div class="flex gap-8 justify-center" id="teste">
                     <label for="gym" class="flex flex-col w-full">
@@ -93,6 +113,21 @@
                         </div>
                     </label>
                 </div>
+            </div>
+    
+            <div class="flex flex-col gap-4"
+                x-show="formStep == 'required'"  x-transition.opacity
+                                                x-transition:enter.duration.500ms
+                                                x-transition:leave.duration.400m>
+                
+                <x-form.textUnderlined name="name" label="Nome" class="w-full"/>
+                <x-form.textUnderlined name="email" label="Email" class="w-full"/>
+    
+                <div class="flex gap-4">
+                    <x-form.textUnderlined name="password" label="Senha" type="password" class="w-full"/>
+                    <x-form.textUnderlined name="password_confirmation" label="Confirmar senha" type="password" class="w-full"/>
+                </div>
+                <x-form.textUnderlined name="phone" label="Telefone" class="w-full"/>
             </div>
     
             <div class="flex flex-col gap-4"
@@ -115,8 +150,8 @@
                 <div class="flex flex-col gap-2 items-start">
                     <span class="text-center font-bold text-2xl mt-3">Horários</span>
                     <div class="flex gap-4 w-full">
-                        <x-form.textUnderlined name="open_schedule" label="Abertura" type="number" class="w-full"/>
-                        <x-form.textUnderlined name="close_schedule" label="Fechamento" type="number" class="w-full"/>
+                        <x-form.textUnderlined name="open_schedule" label="Abertura" type="time" class="w-full"/>
+                        <x-form.textUnderlined name="close_schedule" label="Fechamento" type="time" class="w-full"/>
                     </div>
                 </div>
                 <div class="flex flex-col gap-3 items-start" id="address">
@@ -137,19 +172,17 @@
     
                     <div class="fixed inset-0 flex flex-col w-full h-screen gap-8 z-20 p-8" x-show="mapOpen" x-data="{
     
-                    }" @update::close="closeModal()">
+                    }">
                         <!-- Overlay  -->
                         <div class="bg-black bg-opacity-20 fixed inset-0 " x-on:click="closeModal()"></div>
                 
                         <div class="self-center w-full max-w-5xl h-full max-h-[960px] flex flex-col gap-4 bg-white p-4 rounded-2xl z-20">
                             <div class="flex w-full justify-between">
                                 <h4 class="text-4xl font-bold">Selecionar Endereço</h4>
-                                <img src="img\icons\close-icon.svg" x-on:click="closeModal()" class="cursor-pointer">
+                                <img src="\img\icons\close-icon.svg" x-on:click="closeModal()" class="cursor-pointer">
                             </div>
-
-                            {{-- <div class="w-full h-full bg-red-500"></div> --}}
                             
-                            <div id='map' class="w-full h-full absolute top-0 left-0"></div>
+                            {{-- <div id='map' class="w-full h-full absolute top-0 left-0"></div> --}}
                         </div>
                     </div>                
                     
@@ -160,20 +193,52 @@
                 </div>
             </div>
 
+            <div x-show="formStep == 'images'" x-transition.opacity
+                                            x-transition:enter.duration.500ms
+                                            x-transition:leave.duration.400m
+                class="flex flex-col gap-2" x-data='{
+                    loadImage(event, inputId) {
+                        file = document.getElementById(inputId);
+                        file.src = URL.createObjectURL(event.target.files[0])
+                    }
+                }'>
+                <div>
+                    <span class="text-center font-bold text-2xl mt-3">Avatar</span>
+                    <div class="flex gap-4 items-center">
+                        <img id="avatarPreview" class="aspect-square h-32 border-2 border-gymhunt-purple-1 rounded-full object-cover">
+                        <input x-on:change="loadImage(event, 'avatarPreview')" type="file" name="avatar" id="avatar" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
+                    @error('avatar')
+                        <p class="text-red-500"> {{$message}} </p>   
+                    @enderror
+                </div>
+
+                <div class="">
+                    <span class="text-center font-bold text-2xl mt-3">Banner</span>
+                    <div class="flex flex-col gap-2 w-full">
+                        <img id="bannerPreview" class="aspect-banner border-2 object-cover border-gymhunt-purple-1 rounded-2xl">
+                        <input x-on:change="loadImage(event, 'bannerPreview')" type="file" name="banner" id="banner" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
+                    @error('banner')
+                        <p class="text-red-500"> {{$message}} </p>   
+                    @enderror
+                </div>
+            </div>
+
         </form>
         
-        <div class="flex w-full" :class="formStep === 'default' ? 'justify-end' : 'justify-between' ">
-            <button wire:ignore @click.prevent='formStep = "default"' :class="formStep == 'default' ? 'hidden' : '' "
+        <div class="flex w-full" :class="formStep === 'usertype' ? 'justify-end' : 'justify-between' ">
+            <button wire:ignore @click.prevent='stepBack' :class="formStep == 'usertype' ? 'hidden' : '' "
                     class="bg-transparent outline outline-4 text-gymhunt-purple-1 outline-gymhunt-purple-1 font-bold px-4 py-2 rounded-md">
                 Voltar
             </button>
-            <button wire:ignore @click.prevent='handleUserType' :class="formStep != 'default' ? 'hidden' : '' "
+            <button wire:ignore @click.prevent='stepFoward' :class="formStep != 'images' ? '' : 'hidden' "
                     class="bg-gymhunt-purple-1 text-white font-bold px-4 py-2 w-fit end rounded-md">
                 Avançar
             </button>
 
-            <input type="submit" value="Cadastrar-se" x-show="formStep != 'default'" form="signup"
-                    class="bg-gymhunt-purple-1 hover:bg-gymhunt-purple-2 text-white font-bold px-4 py-2 w-fit end rounded-md cursor-pointer">
+            <input type="submit" value="Cadastrar-se" x-show="formStep == 'images'" form="signup"
+                    class="bg-gymhunt-purple-1 hover:bg-gymhunt-purple-2 text-white font-bold px-4 py-2 w-fit end rounded-md cursor-pointer ">
         </div>
     </div>
 

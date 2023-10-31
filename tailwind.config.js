@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
     extend: {
+      aspectRatio: {
+        'banner': '6.4 / 1'
+      },
       colors: {
         'gymhunt': {
           'purple-1': '#5348D9',

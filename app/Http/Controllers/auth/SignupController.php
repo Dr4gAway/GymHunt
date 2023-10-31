@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\CommonSignupRequest;
 use App\Http\Requests\Auth\GymSignupRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use App\Models\Gym;
 use App\Models\Common;
@@ -19,14 +20,21 @@ class SignupController extends Controller
 
     public function commonStore(CommonSignupRequest $request) {
 
+        /* dd($request->validated()); */
+
         if($request->validated())
         {
+            $avatar = $request->avatar->store('photos/avatars', 'public');
+            $banner = $request->avatar->store('photos/banners', 'public');
+
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 //'bio' => $request->biografia,
                 'password' => $request->password,
-                'phone' => $request->phone
+                'phone' => $request->phone,
+                'avatar' => 'storage/avatars/'.$avatar,
+                'banner' => 'storage/banners/'.$banner
             ]);
 
             $common = Common::create([
@@ -47,11 +55,16 @@ class SignupController extends Controller
         
         if ($request->validated())
         {
+            $avatar = $request->avatar->store('photos/avatars', 'public');
+            $banner = $request->avatar->store('photos/banners', 'public');
+
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => $request->password,
-                'phone' => $request->phone
+                'phone' => $request->phone,
+                'avatar' => 'storage/avatars/'.$avatar,
+                'banner' => 'storage/banners/'.$banner
             ]);
     
             $gym = Gym::create([
