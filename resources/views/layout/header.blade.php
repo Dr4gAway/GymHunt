@@ -1,4 +1,4 @@
-<html class="min-h-screen">
+<html>
     <head>
         <!-- Icones Font Awesome -->
         <script src="https://kit.fontawesome.com/189da14b09.js" crossorigin="anonymous"></script>
@@ -13,29 +13,25 @@
 
         <!-- Import AlpineJs -->
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
+
+        <link rel="shortcut icon" href=".img/logo.svg" type="image/x-icon">
         
         @livewireStyles
-
-        @stack('custom-header')
     </head>
 
     <header class="text-base font-normal px-8 h-[100px] bg-white shadow-lg font-poppins flex">
         @auth
             <nav class="flex items-center justify-between w-full transition-all" aria-label="Global">
-                <div class="flex items-center justify-center center justify-items-center gap-8 flex-grow pr-8">
+                <div class="flex items-start justify-left justify-items-center gap-8 flex-grow pr-8">
                     <a href="/">
                         <img src="\img\logo.svg" alt="Gym hunt brand" class="h-12">
                     </a>
-                    <form action="#" method="POST" class=" flex flex-row items-center font-bold text-white w-full bg-gymhunt-purple-2 rounded-2xl pl-4 h-12 gap-4">
-                        <img src="\img\icons\search-icon.svg" alt="Search icon" class="h-6">
-                        <input type="text" name="" id="" class="bg-transparent h-full">
-                    </form>
                 </div>  
                 
                 <div class="flex items-center justify-items-center gap-8">
                     <a href="{{route('feed')}}" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Feed </a>
                     <a href="#" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Explorar</a>
-                    <a href="#" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Exercícios</a>
+                    <a href="{{route('workoutlog')}}" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Exercícios</a>
                     
                     <form action="{{url('/logout')}}" method="POST">
                         @csrf
@@ -54,7 +50,6 @@
                     </a>
                     <a href="{{route('home')}}" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Home</a>
                     <a href="#func" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Produto</a>
-                    <a href="#sobre" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Sobre nós</a>
                 </div>  
                 
                 <div class="flex items-center justify-center center gap-8">
@@ -65,4 +60,4 @@
         @endguest
     </header>
 
-    <body class="font-poppins bg-[#DFE6F9]">
+    <body class="font-poppins bg-[#DFE6F9] min-h-screen">
