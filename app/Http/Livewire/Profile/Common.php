@@ -26,6 +26,16 @@ class Common extends Component
                     ->layout('layout.site');
     }
 
+    public function getFollowingCountProperty() {
+        return Follower::where('follower', $this->user->id)
+                       ->count();
+    }
+
+    public function getFollowersCountProperty() {
+        return Follower::where('user_id', $this->user->id)
+        ->count();
+    }
+
     public function getFollowingStatus() {
         if (Auth::check())
         {
