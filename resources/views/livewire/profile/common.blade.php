@@ -24,7 +24,7 @@
         <livewire:post.update />
     </div>
 
-    <img class="w-full h-[200px] object-cover" src="\img\banner.png" alt="">
+    <img class="w-full h-[200px] object-cover" src="/{{$user->banner}}" alt="">
     
     {{-- Start --}}
     <div class="flex flex-col gap-4 items-center max-w-[1280px] p-4">
@@ -56,7 +56,7 @@
             }
 
         }"> 
-            <img class="absolute top-0 left-0 -translate-y-1/2 aspect-square w-full sm:w-1/2 max-w-[200px] " src="\img\avatar.png" alt=""> 
+            <img class="absolute top-0 left-0 -translate-y-1/2 aspect-square rounded-full object-cover w-full sm:w-1/2 max-w-[200px] " src="/{{$user->avatar}}" alt=""> 
             
             <div class="flex gap-4 h-full items-center">
             @if(Auth::user() == $user)
