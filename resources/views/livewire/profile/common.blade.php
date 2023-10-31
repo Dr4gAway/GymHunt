@@ -1,4 +1,4 @@
-@section('titulo', 'GymHunt - Perfil da Academia')
+
 <div class="flex flex-col w-full items-center bg-gymhunt-gray-1" x-data="{
     imageOpen: false,
     editOpen: false,
@@ -231,5 +231,4 @@
             <div class="w-full h-0.5 bg-gymhunt-purple-2"></div>
         </div>
     </div>
-    
 </div>
