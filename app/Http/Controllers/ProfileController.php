@@ -11,6 +11,6 @@ class ProfileController extends Controller
     {
         $user = User::find($id);
 
-    return view('perfilUser', compact('user'));
+        return view('livewire.profile.common.view', compact('user'));
     }
 }

@@ -15,17 +15,22 @@ class View extends Component
 
     public ?Follower $following = null;
 
-    protected $listeners = [
-        'update::close' => '$refresh',
-    ];
+    public $userId;
+    protected $queryString = ['userId'];
 
-    public function mount($id) {
+    protected $listeners = [ 'user::updated' => '$refresh'];
+
+    public function mount($id)
+    {
         $this->user = User::find($id);
-        $this->getFollowingStatus();
+        session(['id' => $id]);
     }
 
     public function render()
     {
+        $this->user = User::find(session('id'));
+        $this->getFollowingStatus();
+
         return view('livewire.profile.common.view')
                     ->layout('layout.site');
     }
@@ -43,9 +48,6 @@ class View extends Component
     public function getFollowingStatus() {
         if (Auth::check())
         {
-            /* $this->following = DB::table('followers')->where('user_id', $this->user->id)
-                                ->where('follower', Auth::id())->first(); */
-
             $this->following = Follower::where('user_id', $this->user->id)
                                        ->where('follower', Auth::id())
                                        ->first();
