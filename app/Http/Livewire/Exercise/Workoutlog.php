@@ -22,6 +22,7 @@ class Workoutlog extends Component
     public function getExerciseGroupProperty()
     {
         $exerciseGroup = Exercise::where('user_id', Auth::id())
+                                 ->orderBy('made_date', 'desc')
                                  ->get()
                                  ->groupBy(['made_date', 'muscle']);
         return $exerciseGroup;

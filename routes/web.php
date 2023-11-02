@@ -14,20 +14,18 @@ Route::get('/profile/{id}', App\Http\Livewire\Profile\Common\View::class)->name(
 
 Route::get('/gym/{id}', App\Http\Livewire\Profile\Gym\View::class)->name('profile_gym');
 
-Route::get('/avaliações', function(){
+/* Route::get('/avaliações', function(){
     return view('avaliacoesGym');
 })->name('avaliacoesGym');
 
 Route::get('/gerandoAvaliação', function(){
     return view('comentario');
-})->name('comentario');
+})->name('comentario'); */
 
 Route::get('/workoutlog', App\Http\Livewire\Exercise\Workoutlog::class)->name('workoutlog');
 
 Route::get('/explore', function() {
     return view('location.explore');
-});
-
-Route::get('/gym-card', App\Http\Livewire\Gym\View::class);
+})->name('explore');
 
 require __DIR__.'/auth.php';

@@ -15,7 +15,7 @@ class Map extends Component
     }
 
     function getGymsProperty() {
-        $gyms = User::select('name', 'longitude', 'latitude')
+        $gyms = User::select('name', 'longitude', 'latitude', 'users.id')
                         ->join('gyms', 'users.id', '=', 'gyms.user_id')
                         ->get();
         

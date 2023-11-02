@@ -61,10 +61,10 @@
                                 
                                         </div>
                                         <div class="flex items-center gap-4 h-fit">
-                                            <button wire:ignore @click.prevent
+                                            <a href="/gym/${gym.id}" wire:ignore
                                                 class="w-full h-full py-1 px-2 rounded-lg bg-gymhunt-purple-1 text-white font-bold text-base focus:ring-4 focus:ring-gymhunt-purple-1">
                                                 Visitar perfil
-                                            </button>
+                                            </a>
                                             <button wire:ignore @click.prevent onclick="goTo(${gym.longitude}, ${gym.latitude})"
                                                 class="h-full py-1 px-2 rounded-xl bg-transparent border-4 border-gymhunt-purple-1 text-gymhunt-purple-1 font-bold text-base">
                                                 Zoom
