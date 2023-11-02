@@ -59,7 +59,7 @@
 
         <div class="flex items-center gap-4">
             <div class="rounded-full h-10 w-10 bg-red-500"></div>
-            <a href="{{route('perfil', $post->user->id)}}"><h4 class="font-bold">{{$post->user->name}}</h4></a>
+            <a href="{{route('profile', $post->user->id)}}"><h4 class="font-bold">{{$post->user->name}}</h4></a>
         </div>
 
         <div class="flex items-center gap-6">

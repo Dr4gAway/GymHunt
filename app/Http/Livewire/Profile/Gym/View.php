@@ -1,35 +1,40 @@
 <?php
 
-namespace App\Http\Livewire\Profile\Common;
+namespace App\Http\Livewire\Profile\Gym;
 
 use Livewire\Component;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Gym;
+use App\Models\Post;
 use App\Models\Follower;
 
 class View extends Component
 {
     public User $user;
+    public Gym $gym;
+
+    public int $perPage = 5;
 
     public ?Follower $following = null;
 
     protected $listeners = [ 'user::updated' => '$refresh'];
 
-    public function mount($id)
-    {
-        $this->user = User::find($id);
-        session(['id' => $id]);
-    }
-
     public function render()
     {
         $this->user = User::find(session('id'));
-        $this->getFollowingStatus();
+        $this->gym = Gym::find(session('gym_id'));
+        
+        return view('livewire.profile.gym.view')
+            ->layout('layout.site');
+    }
 
-        return view('livewire.profile.common.view')
-                    ->layout('layout.site');
+    public function mount($id)
+    {
+        $this->gym = Gym::where('user_id', $id)->firstOrFail();
+        $this->user = User::find($id);
+        session(['gym_id' => $this->gym->id]);
+        session(['id' => $id]);
     }
 
     public function getFollowingCountProperty() {
@@ -48,8 +53,17 @@ class View extends Component
             $this->following = Follower::where('user_id', $this->user->id)
                                        ->where('follower', Auth::id())
                                        ->first();
-            
         }
+    }
+
+    public function getPostsProperty() {
+        $posts = Post::where('created_by', $this->user->id)->paginate($this->perPage);
+
+        return $posts;
+    }
+
+    public function loadMore() {
+        $this->perPage += 5;
     }
 
     public function handleFollow() {

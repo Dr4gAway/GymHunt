@@ -192,7 +192,7 @@
                                 <img src="\img\icons\close-icon.svg" x-on:click="closeModal()" class="cursor-pointer">
                             </div>
                             
-                            {{-- <div id='map' class="w-full h-full absolute top-0 left-0"></div> --}}
+                            <div id='map' class="w-full h-full absolute top-0 left-0"></div>
                         </div>
                     </div>                
                     
@@ -287,6 +287,7 @@
             container: 'map',
             style: 'mapbox://styles/dr4gaway/clmvwb5lk05t701qx9zzfdd9w'
         });
+        
         const selectedLocation = new mapboxgl.Marker()
 
         map.on('click', (e) => {

@@ -16,8 +16,6 @@
             style: 'mapbox://styles/mapbox/streets-v11'
         });
 
-        
-
         const searchJS = document.getElementById('search-js');
         searchJS.onload = function () {
             const searchBox = new MapboxSearchBox();
