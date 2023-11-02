@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('series');
             $table->string('repetitions');
             $table->string('weight');
+            $table->string('muscles');
             $table->timestamp('made_date');
             $table->timestamps();
         });
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('exercises');
     }
 };
