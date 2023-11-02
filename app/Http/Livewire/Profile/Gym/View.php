@@ -18,7 +18,10 @@ class View extends Component
 
     public ?Follower $following = null;
 
-    protected $listeners = [ 'user::updated' => '$refresh'];
+    protected $listeners = [
+        'user::updated' => '$refresh',
+        'post::created' => '$refresh'
+    ];
 
     public function render()
     {
@@ -57,7 +60,7 @@ class View extends Component
     }
 
     public function getPostsProperty() {
-        $posts = Post::where('created_by', $this->user->id)->paginate($this->perPage);
+        $posts = Post::where('created_by', $this->user->id)->latest()->paginate($this->perPage);
 
         return $posts;
     }

@@ -128,7 +128,7 @@
                 @endif
                 @if($user->posts->count() > 0)
                     @foreach ($this->posts as $post)
-                        <livewire:post.view :post="$post">
+                        <livewire:post.view :post="$post" wire:key="post-{{$post->id}}">
                     @endforeach
 
                     @if(!$this->posts->onLastPage())
@@ -144,7 +144,6 @@
                                 })
                                 observer.observe(this.$el)
                             },
-
                         }" x-init="infinityScroll()" class="w-6 h-6">
                         </div>
                     @endif
@@ -154,7 +153,7 @@
                 @endif
             </div>
             
-            <div class="bg-white rounded-lg p-4 text-center space-y-4 w-full max-w-md">
+            <div class="bg-white rounded-lg p-4 text-center space-y-4 w-full h-fit  max-w-md">
                 <p class="text-gymhunt-purple-1 font-semibold text-2xl">Localização</p>
                 <div id='map' class="w-full aspect-video" wire:ignore></div>
             </div>

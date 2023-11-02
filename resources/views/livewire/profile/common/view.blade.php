@@ -122,10 +122,27 @@
                     <livewire:post.create />
                 </div>
                 @endif
-                @if($user->posts->count() > 10
-                    @foreach ($user->posts as $post)
-                        <livewire:post.view :post="$post">
+                @if($this->posts->count() > 0)
+                    @foreach ($this->posts as $post)
+                        <livewire:post.view :post="$post" wire:key="post-{{$post->id}}">
                     @endforeach
+                    @if(!$this->posts->onLastPage())
+                        <div x-data="{
+                            infinityScroll() {
+                                const observer = new IntersectionObserver((items) => {
+                                    items.forEach((item) => {
+                                        if(item.isIntersecting)
+                                            @this.loadMore();
+                                        })
+                                    }, {
+                                        rootMargin: '300px'
+                                    })
+                                    observer.observe(this.$el)
+                            },
+
+                        }" x-init="infinityScroll()" class="w-6 h-6">
+                        </div>
+                    @endif
                 @else
                     <h3 class="text-gymhunt-purple-1 font-bold text-5xl">Nenhum post ainda!</h3>
                     <span class="font-bold">Parece que este usuário ainda não disse nada...</span>
@@ -137,7 +154,9 @@
 
         <div class="flex items-center justify-center w-full">
             <div class="w-full h-0.5 bg-gymhunt-purple-2"></div>
-            <a href="#" class="text-gymhunt-purple-2 font-semibold text-lg px-2 w-fit">Veja mais publicações</a> <!--leva para a tela da galeria, somente publicações-->
+            <a href="{{route('feed')}}" class="text-gymhunt-purple-2 font-semibold text-lg text-center px-2">
+                <span class="w- break-keep">Veja mais publicações</span>
+            </a>
             <div class="w-full h-0.5 bg-gymhunt-purple-2"></div>
         </div>
     </div>
