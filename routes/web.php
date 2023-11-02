@@ -14,10 +14,6 @@ Route::get('/profile/{id}', App\Http\Livewire\Profile\Common\View::class)->name(
 
 Route::get('/gym/{id}', App\Http\Livewire\Profile\Gym\View::class)->name('gym');
 
-Route::get('/academia', function(){
-    return view('perfilGym');
-})->name('perfilGym');
-
 Route::get('/avaliações', function(){
     return view('avaliacoesGym');
 })->name('avaliacoesGym');
