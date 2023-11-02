@@ -24,7 +24,7 @@ class View extends Component
 
     public function mount($id)
     {
-        $this->user = User::find($id);
+        $this->user = User::where('id', $id)->firstOrFail();
         session(['id' => $id]);
     }
 
