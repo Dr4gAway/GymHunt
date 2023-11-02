@@ -105,7 +105,7 @@
 
     <div class="w-full">
         <div class="flex flex-row justify-center font-poppins font-medium text-2xl">
-            <a href="{{route('perfilGym')}}" class="border-b-4 border-gymhunt-purple-2 text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Atividade</a>
+            <a href="#" class="border-b-4 border-gymhunt-purple-2 text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Atividade</a>
             <a href="#" class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center cursor-pointer">Galeria</a>
             {{-- <a href="{{route('avaliacoesGym')}}" class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Avaliações</a> --}}
             {{-- <a href="#" class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Sobre nós</a> --}}

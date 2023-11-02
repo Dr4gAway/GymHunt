@@ -13,6 +13,8 @@ use \App\Models\Post as Item;
 use \App\Models\PostLike;
 use \App\Models\Comment;
 
+use App\Models\Common;
+
 class View extends Component
 {
     use AuthorizesRequests;
@@ -40,8 +42,15 @@ class View extends Component
     public function mount() {
         $this->getLikedStatus();
         $this->getLikesCount();
-
+        
         $this->route = url()->current();
+    }
+
+    public function setProfile() {
+        if(Common::where('user_id', $this->post->user->id)->first())
+            return 'common';
+        else 
+            return 'gym';
     }
 
     public function render(Item $post)

@@ -59,7 +59,14 @@
 
         <div class="flex items-center gap-4">
             <div class="rounded-full h-10 w-10 bg-red-500"></div>
-            <a href="{{route('profile', $post->user->id)}}"><h4 class="font-bold">{{$post->user->name}}</h4></a>
+            <a href="{{$this->setProfile() == 'common' ? route('profile_common', $post->user->id) : route('profile_gym', $post->user->id)}}">
+                <h4 class="font-bold">{{$post->user->name}}</h4>
+            </a>
+            @if ($this->setProfile() == 'gym')
+                <span class="bg-gymhunt-purple-1 text-xs font-bold text-white py-1 px-2 rounded-lg">
+                    Academia
+                </span>
+            @endif
         </div>
 
         <div class="flex items-center gap-6">

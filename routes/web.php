@@ -10,9 +10,9 @@ Route::View('/feed', 'feed')->name('feed');
 
 Route::Get('/feed/posts/{id}', [PostController::class, 'index'])->name('post');
 
-Route::get('/profile/{id}', App\Http\Livewire\Profile\Common\View::class)->name('profile');
+Route::get('/profile/{id}', App\Http\Livewire\Profile\Common\View::class)->name('profile_common');
 
-Route::get('/gym/{id}', App\Http\Livewire\Profile\Gym\View::class)->name('gym');
+Route::get('/gym/{id}', App\Http\Livewire\Profile\Gym\View::class)->name('profile_gym');
 
 Route::get('/avaliações', function(){
     return view('avaliacoesGym');
