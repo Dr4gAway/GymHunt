@@ -122,7 +122,7 @@
                     <livewire:post.create />
                 </div>
                 @endif
-                @if($user->posts->count() > 1)
+                @if($user->posts->count() > 10
                     @foreach ($user->posts as $post)
                         <livewire:post.view :post="$post">
                     @endforeach
