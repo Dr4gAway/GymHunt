@@ -1,4 +1,4 @@
-<html>
+<html class="min-h-screen">
     <head>
         <!-- Icones Font Awesome -->
         <script src="https://kit.fontawesome.com/189da14b09.js" crossorigin="anonymous"></script>
@@ -15,6 +15,8 @@
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
         
         @livewireStyles
+
+        @stack('custom-header')
     </head>
 
     <header class="text-base font-normal px-8 h-[100px] bg-white shadow-lg font-poppins flex">
@@ -63,4 +65,4 @@
         @endguest
     </header>
 
-    <body class="font-poppins bg-[#DFE6F9] min-h-screen">
+    <body class="font-poppins bg-[#DFE6F9]">

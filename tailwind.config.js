@@ -9,10 +9,14 @@ export default {
   ],
   theme: {
     extend: {
+      aspectRatio: {
+        'banner': '6.4 / 1'
+      },
       colors: {
         'gymhunt': {
           'purple-1': '#5348D9',
           'purple-2': '#8787DE',
+          'purple-3': '#C3C3EF',
           'gray-1': '#DFE6F9',
         }
       },
@@ -35,9 +39,14 @@ export default {
       width:{
         '550':'550px',
         '940':'940px'
+      },
+      flexGrow: {
+        2: '2',
+        3: '3',
+        4: '4',
       }
     },
   },
-  plugins: [],
+  plugins: []
 }
 

@@ -10,19 +10,9 @@ Route::View('/feed', 'feed')->name('feed');
 
 Route::Get('/feed/posts/{id}', [PostController::class, 'index'])->name('post');
 
-Route::Get('/perfil/{id}', [ProfileController::class, 'index'])->name('perfil');
+Route::get('/profile/{id}', App\Http\Livewire\Profile\Common\View::class)->name('profile_common');
 
-Route::Get('/workout_log', function(){
-    return view('workout_log');
-})->name('workout_log');
-
-Route::get('/perfil', function(){
-    return view('perfilUser');
-})->name('perfilUser');
-
-Route::get('/academia', function(){
-    return view('perfilGym');
-})->name('perfilGym');
+Route::get('/gym/{id}', App\Http\Livewire\Profile\Gym\View::class)->name('profile_gym');
 
 Route::get('/avaliações', function(){
     return view('avaliacoesGym');
@@ -35,5 +25,11 @@ Route::get('/gerandoAvaliação', function(){
 Route::get('/workoutlog', function(){
     return view('workout_log');
 })->name('workoutlog');
+
+Route::get('/explore', function() {
+    return view('location.explore');
+});
+
+Route::get('/gym-card', App\Http\Livewire\Gym\View::class);
 
 require __DIR__.'/auth.php';

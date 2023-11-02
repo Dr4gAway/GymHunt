@@ -4,7 +4,7 @@ namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SignupRequest extends FormRequest
+class GymSignupRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,33 +22,38 @@ class SignupRequest extends FormRequest
     public function rules(): array
     {
         return [
+            /* User Data */
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
             'phone' => 'required|string|size:13',
+            'about' => 'string|max:2000',
             'password' => 'required|string|min:8|max:32',
             'password_confirmation' => 'required|same:password',
-            /* 'avatar' => 'nullable|image|mimes:jpeg,jpg,png,gif',
-            'banner' => 'nullable|image|mimes:jpeg,jpg,png,gif' */
+            'avatar' => 'required|mimes:jpeg,jpg,png,gif',
+            'banner' => 'required|mimes:jpeg,jpg,png,gif',
+            /* Gym data */
+            'cnpj' => 'required|string|size:14',
+            'open_schedule' => 'required|date_format:H:i',
+            'close_schedule' => 'required|date_format:H:i',
+            'city' => 'required|string|max:64',
+            'state' => 'required|string|max:64',
+            'district' => 'required|string|max:64',
+            'street' => 'required|string|max:64',
+            'number' => 'required|string|max:7',
+            'longitude' => 'required|decimal:8,15',
+            'latitude' => 'required|decimal:8,15'
         ];
     }
 
-    public function messages()
+     public function messages()
     {
         return [
-            'name' => 'Nome inválido',
-            'name.required' => 'Nome é necessário',
-            'email.email' => 'Digite um endereço de email valido.',
-            'email.required' => 'Email é necessário.',
-            'phone.required' => 'Telefone é necessário.',
-            'phone.size' => 'Digite um telefone válido.',
-            'password.required' => 'Senha é necessária.',
-            'password.min' => 'Mínimo de 8 caracteres.',
-            'password.max' => 'Máximo de 32 caracteres.',
-            'password_confirmation.required' => 'Confirmação é necessária.',
-            'password_confirmation.same' => 'As senhas são diferentes.',
+            
             /*'avatar' => 'Imagem inválida.',
             'avatar.required' => 'Foto de perfil é necessária.',
             'banner' => 'Imagem inválida.', */
+            'email' => 'email invalido'
         ];
     }
+    
 }
