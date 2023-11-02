@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Profile\Gym;
 
 use Livewire\Component;
 
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Gym;
 use App\Models\Post;
@@ -59,8 +61,10 @@ class View extends Component
         }
     }
 
-    public function getPostsProperty() {
-        $posts = Post::where('created_by', $this->user->id)->latest()->paginate($this->perPage);
+    public function getPostsProperty() : LengthAwarePaginator {
+        $posts = Post::where('created_by', $this->user->id)
+                     ->latest()
+                     ->paginate($this->perPage);
 
         return $posts;
     }

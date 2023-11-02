@@ -6,7 +6,6 @@ use Livewire\Component;
 
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Follower;
