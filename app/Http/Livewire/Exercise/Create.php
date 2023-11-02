@@ -8,25 +8,28 @@ use App\Models\Exercise;
 
 class Create extends Component
 {
-    public ?string $nameExerc = null; 
-    public ?int $serie = null;
-    public ?int $rep = null;
-    public ?int $carga = null;
-    public $data = null;
+    public ?string $name = null; 
+    public ?string $muscle = null; 
+    public ?int $series = null;
+    public ?int $repetitions = null;
+    public ?int $weight = null;
+    public $made_date = null;
 
     public function render()
     {
+        //if($muscle)
+
         return view('livewire.exercise.create');
     }
 
     public function store() {
 
        $exercise = Exercise::create([
-        'nameExerc'=> $this->nameExerc,
-        'serie'=> $this->serie,
-        'rep'=> $this->rep,
-        'carga'=> $this->carga,
-        'data'=> $this->data
+        'name'=> $this->name,
+        'series'=> $this->series,
+        'repetitions'=> $this->repetitions,
+        'weight'=> $this->weight,
+        'made_date'=> $this->made_date
        ]);
 
        $this->emitUp('exercise::created');

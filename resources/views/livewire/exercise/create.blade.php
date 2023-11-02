@@ -1,32 +1,58 @@
-<div class="self-center w-full flex bg-white p-6 rounded-2xl max-w-xl z-20">
-    <form wire:submit.prevent="store" method="post" enctype="multipart/form-data">
-        <div class="font-poppins text-black flex flex-col w-full gap-4 space-y-2">
-            <div class="grid grid-flow-col justify-between items-stretch space-x-3">
+<div x-data="{
+    createModal: false,
+
+    openExerciseCreate() {
+        this.createModal = true;
+        disableScroll();
+    },
+
+    closeCreateExercise() {
+        this.createModal = false;
+        enableScroll();
+    }
+}">
+    <div class="absolute inset-0 flex justify-center w-full z-20" x-show="createModal">
+        <!-- Overlay  -->
+        <div class="bg-black bg-opacity-20 fixed w-full h-full" x-on:click="closeCreateExercise()"></div>
+
+        <form wire:submit.prevent="store" method="post" enctype="multipart/form-data"
+              class="flex flex-col self-center w-fit h-fit p-8 rounded-md bg-white gap-4 z-30"
+        >
+            <div class="grid grid-flow-col justify-between items-stretch font-bold">
                 <p> <i class="fa-solid fa-plus"></i> Adicionar exercício</p>   
-                <button class="font-black" x-on:click="closeExerc()"> <i class="fa-solid fa-x"></i> </button>
+                <button x-on:click.prevent="closeCreateExercise()"> <i class="fa-solid fa-x"></i> </button>
             </div>
             
-            <label class="block text-lg font-bold leading-6 text-gray-900">Nome do exercício</label>
-            <div class="mt-2">
-                <input
-                    wire:model="nameExerc"
-                    type="text"
-                    class="block w-full rounded-md border-0 p-1.5 text-gray-900 drop-shadow-xl ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                >
+            <div class="flex flex-col gap-2">
+                <x-form.text name="muscle" type="text" label="Grupo Muscular" placeholder="Peitoral" model="muscle" />
+                <x-form.text name="name" type="text" label="Exercício" placeholder="Supino" model="name" />
             </div>
             <div class="flex flex-row justify-evenly space-x-8">
-                <x-form.text name="serie" type="number" label="Série" placeholder="" wire:model="serie"/> 
-                <x-form.text name="rep" type="number" label="Repetições" placeholder=""  wire:model="rep" /> 
-                <x-form.text name="carga" type="number" label="Carga" placeholder=""  wire:model="carga" /> 
+                <x-form.text name="serie" type="number" label="Série" placeholder="" model="series"/> 
+                <x-form.text name="repetitions" type="number" label="Repetições" placeholder="" model="repetitions" /> 
+                <x-form.text name="carga" type="number" label="Carga" placeholder="" model="weight" /> 
             </div>
-            <x-form.text name="data" type="date" label="Data" placeholder="" wire:model="data" /> 
+
+            <x-form.text name="made_data" type="date" label="Data" placeholder="" model="made_date" /> 
 
             <div class="grid grid-flow-col justify-between space-x-2">
-                <button type="submit" x-on:click="closeExerc()" class="  justify-center rounded-lg bg-gymhunt-purple-2 px-5 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cancelar</button>
-                <a href="{{route('workout_log')}}">
-                    <button type="submit" class="justify-center rounded-lg bg-gymhunt-purple-1 px-5 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Salvar</button>
-                </a>
+                <button type="submit" x-on:click="closeExerc()" class="justify-center rounded-lg bg-gymhunt-purple-2 px-5 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cancelar</button>
+                <button wire:click.prevent="store"
+                        class="justify-center rounded-lg bg-gymhunt-purple-1 px-5 p-1.5 text-sm
+                               font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline
+                               focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                    Salvar
+                </button>
+                
             </div>
+        </form>
+    </div>
+
+    <button x-on:click.prevent="openExerciseCreate()"
+        class="rounded-xl border-dashed border-4 border-gymhunt-purple-1 bg-gymhunt-purple-2 opacity-60 shadow-lg p-4 my-4 h-48 w-72" x-on:click="openExerc()">
+        <div class="text-gymhunt-purple-1 font-bold text-2xl">
+            <p>Adicionar</p>
+            <p>Exercício!</p>
         </div>
-    </form>  
+    </button>
 </div>
