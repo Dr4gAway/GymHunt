@@ -19,7 +19,7 @@
             enableScroll();
         }
     }">
-        <p class="font-semibold">{{$exercise->name}}</p>
+        <p class="font-semibold text-gymhunt-purple-1">{{$exercise->name}}</p>
 
         <button class="text-red-500"> <i class="fa-solid fa-trash-can" x-on:click.prevent="openDeleteExercise()"></i> </button>
         
