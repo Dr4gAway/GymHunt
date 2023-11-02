@@ -1,4 +1,4 @@
-<div x-data="{
+<div @exercise::close="closeCreateExercise()" x-data="{
     createModal: false,
 
     openExerciseCreate() {
@@ -11,7 +11,7 @@
         enableScroll();
     }
 }">
-    <div class="absolute inset-0 flex justify-center w-full z-20" x-show="createModal">
+    <div class="fixed inset-0 flex justify-center w-full h-full z-20" x-show="createModal">
         <!-- Overlay  -->
         <div class="bg-black bg-opacity-20 fixed w-full h-full" x-on:click="closeCreateExercise()"></div>
 
@@ -28,9 +28,9 @@
                 <x-form.text name="name" type="text" label="Exercício" placeholder="Supino" model="name" />
             </div>
             <div class="flex flex-row justify-evenly space-x-8">
-                <x-form.text name="serie" type="number" label="Série" placeholder="" model="series"/> 
-                <x-form.text name="repetitions" type="number" label="Repetições" placeholder="" model="repetitions" /> 
-                <x-form.text name="carga" type="number" label="Carga" placeholder="" model="weight" /> 
+                <x-form.text name="serie" type="number" label="Série" placeholder="3" model="series"/> 
+                <x-form.text name="repetitions" type="number" label="Repetições" placeholder="15" model="repetitions" /> 
+                <x-form.text name="carga" type="number" label="Carga(Kg)" placeholder="10" model="weight" /> 
             </div>
 
             <x-form.text name="made_data" type="date" label="Data" placeholder="" model="made_date" /> 
@@ -43,13 +43,12 @@
                                focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                     Salvar
                 </button>
-                
             </div>
         </form>
     </div>
 
     <button x-on:click.prevent="openExerciseCreate()"
-        class="rounded-xl border-dashed border-4 border-gymhunt-purple-1 bg-gymhunt-purple-2 opacity-60 shadow-lg p-4 my-4 h-48 w-72" x-on:click="openExerc()">
+        class="rounded-xl border-dashed border-4 border-gymhunt-purple-1 bg-gymhunt-purple-2 opacity-60 shadow-lg p-8" x-on:click="openExerc()">
         <div class="text-gymhunt-purple-1 font-bold text-2xl">
             <p>Adicionar</p>
             <p>Exercício!</p>

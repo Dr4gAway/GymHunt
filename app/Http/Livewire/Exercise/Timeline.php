@@ -13,21 +13,25 @@ class Timeline extends Component
 
     public $perPage = 5;
 
-    protected $listeners = [
+    public $exercises;
+    public $made_date;
+
+    /* protected $listeners = [
         'exercise::created' => '$refresh',
         'exercise::deleted' => '$refresh'
-    ];
+    ]; */
     
     public function render()
     {
+
         return view('livewire.exercise.timeline');
     }
 
-    public function getExercisesProperty(): LengthAwarePaginator {
+    /* public function getExercisesProperty(): LengthAwarePaginator {
         $exercises = Exercise::query()
                     ->latest()
                     ->paginate($this->perPage);
                 
         return $exercises;
-    }
+    } */
 }

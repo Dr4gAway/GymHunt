@@ -22,9 +22,7 @@ Route::get('/gerandoAvaliação', function(){
     return view('comentario');
 })->name('comentario');
 
-Route::get('/workoutlog', function(){
-    return view('workout_log');
-})->name('workoutlog');
+Route::get('/workoutlog', App\Http\Livewire\Exercise\Workoutlog::class)->name('workoutlog');
 
 Route::get('/explore', function() {
     return view('location.explore');

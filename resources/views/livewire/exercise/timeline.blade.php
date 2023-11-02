@@ -1,7 +1,12 @@
-<div>
+<div class="flex items-center gap-4">
     @foreach($this->exercises as $exercise)
-        <livewire:exercise.view :exercise="$exercise" />
+        <livewire:exercise.view :exercise="$exercise" wire:key="exercise-view--{{Ramsey\Uuid\Uuid::uuid4()}}" />
     @endforeach
 
-    <livewire:exercise.create />
+    @php
+        $teste = date('d/m/Y', strtotime($made_date));
+        
+    @endphp
+
+    <livewire:exercise.create :made_date="$teste"  :muscle="$exercise->muscle" />
 </div>
