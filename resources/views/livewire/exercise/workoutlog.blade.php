@@ -1,6 +1,6 @@
 @section('titulo', 'GymHunt - Exercícios')
 
-<div class="p-4 flex flex-col gap-4 w-full items-center  bg-[url('/public/img/backAvaliaçao.svg')]" x-data="{
+<div class="p-4 flex flex-col gap-4 w-full items-center bg-gymhunt-purple-2 bg-[url('/public/img/backAvaliaçao.svg')]" x-data="{
     editOpen: false,
 
     disableScroll() {
@@ -30,11 +30,12 @@
 
     <div class="flex gap-2 items-center cursor-pointer justify-start w-full max-w-[1280px]">
         
-        <button id="createGroup" class="flex flex-col justify-center" x-on:click="openCreateMuscle()">
+        <button id="createGroup" class="flex flex-col justify-center" {{-- x-on:click="openCreateMuscle()" --}}>
             <i class="fa-solid fa-plus fa-lg rounded-full bg-gymhunt-purple-1 py-4 px-2"></i>
         </button>
 
-        <label class="text-2xl text-black font-semibold" for="createGroup">Adicionar grupo muscular</label>
+        {{-- Actually grupo muscular --}}
+        <label class="text-2xl text-black font-semibold" for="createGroup">Adicionar exercício</label>
         
         {{-- Create Muscle Group Modal --}}
         <div class="fixed inset-0 flex flex-col w-screen h-screen p-8 gap-8 z-20" x-show="createMuscle">
