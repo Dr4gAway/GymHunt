@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Post;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
+use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -40,6 +41,21 @@ class Create extends Component
     public function render()
     {
         return view('livewire.post.create');
+    }
+
+    public function updatedPhotos($e)
+    {
+        foreach($e as $index => $item)
+        {
+            try
+            {
+                $this->validate(['photos.'.$index => 'mimes:jpeg,jpg,png,gif|max:2048']);
+            } catch(ValidationException $error) {
+                dd($e);
+                unset($this->photos[$index]);
+                throw $error;
+            }
+        }
     }
 
     public function store() {

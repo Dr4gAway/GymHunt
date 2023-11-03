@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Profile\Common;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Common;
@@ -49,11 +50,36 @@ class Update extends Component
             $this->email =$this->user->email;
             $this->phone = $this->user->phone;
             $this->about = $this->user->about;
+            
             $this->avatar = $this->user->avatar;
             $this->banner = $this->user->banner;
             $common = Common::where('user_id', $this->user->id)->first();
             $this->cpf = $common->cpf;
             $this->birth = $common->birth;
+        }
+    }
+
+    public function updatedAvatar()
+    {
+        try
+        {
+            $this->validate(['avatar' => 'mimes:jpeg,jpg,png,gif|max:2048']);
+
+        } catch(ValidationException $error) {
+            $this->avatar = $this->user->avatar;
+            throw $error;
+        }
+    }
+
+    public function updatedBanner()
+    {
+        try
+        {
+            $this->validate(['banner' => 'mimes:jpeg,jpg,png,gif|max:2048']);
+
+        } catch(ValidationException $error) {
+            $this->banner = $this->user->banner;
+            throw $error;
         }
     }
 
@@ -79,7 +105,7 @@ class Update extends Component
         if(!is_string($this->avatar))
         {
             $this->validate([
-                'avatar' => 'image|max:2048',
+                'avatar' => 'mimes:jpeg,jpg,png,gif|max:2048',
             ]);
 
             $this->cleanupUserImages($this->user->avatar);
@@ -89,7 +115,7 @@ class Update extends Component
         if(!is_string($this->banner))
         {
             $this->validate([
-                'banner' => 'image|max:2048',
+                'banner' => 'mimes:jpeg,jpg,png,gif|max:2048',
             ]);
 
             $this->cleanupUserImages($this->user->banner);
@@ -106,8 +132,6 @@ class Update extends Component
     public function cleanupUserImages($imagePath)
     {
         $storage = Storage::disk('public');
-
-        //dd('$storage');
 
         if(Str::contains($imagePath, 'storage/'))
         {

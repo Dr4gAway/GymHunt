@@ -14,10 +14,11 @@
 
             <div class="grid grid-flow-col justify-items-center space-x-3">
                 <div class="relative w-24 h-24 rounded-full overflow-hidden">
-                    <label for="avatarInput" class="absolute w-full h-full flex items-center justify-center bg-gymhunt-purple-2 bg-opacity-50">
+                    <label for="avatarInput" class="absolute w-full h-full flex items-center justify-center bg-gymhunt-purple-2 bg-opacity-50 cursor-pointer">
                         <i class="fa-solid fa-pencil"></i>
                     </label>
                     <input id="avatarInput" type="file" wire:model="avatar" class="hidden">
+
                     @if(is_string($avatar))
                         <img src="/{{$user->avatar}}" class="w-full h-full object-cover">
                     @else
@@ -25,12 +26,10 @@
                     @endif
                     
                 </div>
-                @error('avatar')
-                    <p class="text-red-500"> {{$message}} </p>   
-                @enderror
+                
 
                 <div class="relative w-96 h-24 rounded-2xl overflow-hidden">
-                    <label for="bannerInput" class="absolute w-full h-full flex items-center justify-center bg-gymhunt-purple-2 bg-opacity-50">
+                    <label for="bannerInput" class="absolute w-full h-full flex items-center justify-center bg-gymhunt-purple-2 bg-opacity-50 cursor-pointer">
                         <i class="fa-solid fa-pencil"></i>
                     </label>
                     <input id="bannerInput" type="file" wire:model="banner" class="hidden">
@@ -41,6 +40,13 @@
                     @endif
                 </div>
             </div>
+
+            @error('avatar')
+                <p class="text-red-500"> {{ $message }} </p>   
+            @enderror
+            @error('banner')
+                <p class="text-red-500"> {{ $message }} </p>   
+            @enderror
             
             <div class="w-full h-1 bg-slate-950"></div>
 
@@ -49,11 +55,6 @@
             <x-form.text name="phone" label="Telefone" model="phone" type="text" placeholder="ex: +55 (14) 99722-1343"/>
 
             <x-resizable-text placeholder="Biografia" model="about"/>
-
-            {{-- <div class="flex items-center gap-4">
-                <x-form.text class="w-full" name="timeOpen" label="Horário de abertura" type="time" />
-                <x-form.text class="w-full" name="timeClose" label="Horário de fechamento" type="time"/>
-            </div> --}}
 
             <div class="flex items-center gap-4">
                 <x-form.text wire="birth" type="date" model="birth" class="w-full" name="birth" label="Data de nascimento" placeholder="ex: 28/02/2006"/>

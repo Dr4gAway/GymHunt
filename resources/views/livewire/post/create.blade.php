@@ -2,15 +2,13 @@
     <img src="/{{Auth::user()->avatar}}" class="flex-none rounded-full h-10 w-10 overflow-hidden">
 
     <div class="flex flex-col w-full gap-4">
-        <div class="flex">
+        <div class="flex gap-4">
             <x-resizable-text model="body" placeholder="Como vai seu treino?" />
             
             <button type="submit">
-    
                 @php
                    echo file_get_contents("img/icons/send-icon.svg") 
                 @endphp
-               
             </button>
         </div>
 
@@ -29,8 +27,6 @@
                 @endforeach
             </div>
         @endisset
-        
-        @error('photos.*') <span class="error">{{ $message }}</span> @enderror
         @if($errors->any())
             <div class="flex flex-col text-red-500">
                 {!! implode('', $errors->all(':message')) !!}

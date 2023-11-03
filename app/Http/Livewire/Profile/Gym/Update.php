@@ -86,10 +86,30 @@ class Update extends Component
         
             $this->longitude = $this->gym->longitude;
             $this->latitude = $this->gym->latitude;
+        }
+    }
 
-            /* $common = Common::where('user_id', $this->user->id)->first();
-            $this->cpf = $common->cpf;
-            $this->birth = $common->birth; */
+    public function updatedAvatar()
+    {
+        try
+        {
+            $this->validate(['avatar' => 'mimes:jpeg,jpg,png,gif|max:2048']);
+
+        } catch(ValidationException $error) {
+            $this->avatar = $this->user->avatar;
+            throw $error;
+        }
+    }
+
+    public function updatedBanner()
+    {
+        try
+        {
+            $this->validate(['banner' => 'mimes:jpeg,jpg,png,gif|max:2048']);
+
+        } catch(ValidationException $error) {
+            $this->banner = $this->user->banner;
+            throw $error;
         }
     }
 
@@ -132,7 +152,7 @@ class Update extends Component
         if(!is_string($this->avatar))
         {
             $this->validate([
-                'avatar' => 'image|max:2048',
+                'avatar' => 'mimes:jpeg,jpg,png,gif|max:2048',
             ]);
 
             $this->cleanupUserImages($this->user->avatar);
@@ -142,7 +162,7 @@ class Update extends Component
         if(!is_string($this->banner))
         {
             $this->validate([
-                'banner' => 'image|max:2048',
+                'banner' => 'mimes:jpeg,jpg,png,gif|max:2048',
             ]);
 
             $this->cleanupUserImages($this->user->banner);
