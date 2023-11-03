@@ -3,7 +3,7 @@
     <x-form.text name="search" placeholder="Pesquisar academias" model="search" class="w-[432px]" />
     <div class="max-h-[500px] rounded-2xl overflow-y-scroll flex flex-col gap-4">
         @foreach ($this->gyms as $gym)  
-                <livewire:gym.view :avatar="$gym->avatar" :about="$gym->about" :name="$gym->name" :gymId="$gym->id" wire:key="gym-{{$gym->id}}"/>
+                <livewire:gym.view :avatar="$gym->avatar" :about="$gym->about" :name="$gym->name" :gym="$gym" wire:key="gym-{{$gym->id}}"/>
         @endforeach
     </div>
 </div>

@@ -64,7 +64,7 @@
                                             </span>
                                         </div>
                                         <div class="flex items-center gap-4 h-fit">
-                                            <a href="/gym/${gym.id}" wire:ignore
+                                            <a href="/gym/${gym.user_id}" wire:ignore
                                                 class="w-full h-full py-1 px-2 rounded-lg bg-gymhunt-purple-1 text-white font-bold text-base focus:ring-4 focus:ring-gymhunt-purple-1">
                                                 Visitar perfil
                                             </a>

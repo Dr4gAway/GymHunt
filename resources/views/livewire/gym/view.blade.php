@@ -4,7 +4,8 @@
             <img src="/{{$avatar}}" class="h-8 w-8 rounded-full overflow-hidden" alt="">
             <span>{{$name}}</span>
         </div>
-        @if(date('H:i') > $gym->close_schedule && date('H:i') < $gym->open_schedule)
+        {{-- {{dd( date('H:i:s') < date('H:i:s', strtotime($gym->open_schedule)))}} --}}
+        {{-- @if(date('H:i:s') > date('H:i:s', strtotime($gym->close_schedule))  || date('H:i:s') < date('H:i:s', strtotime($gym->open_schedule)))
             <div class="flex items-center gap-1">
                 <div class="bg-red-500 rounded-full h-2 w-2"></div>
                 <span class="text-sm">Fechada</span>
@@ -14,7 +15,11 @@
                 <div class="bg-green-500 rounded-full h-2 w-2"></div>
                 <span class="text-sm">Aberto</span>
             </div>
-        @endif
+        @endif --}}
+        <div class="flex items-center gap-1 text-sm">
+            <div class="bg-gymhunt-purple-1 rounded-full h-2 w-2"></div>
+            <span>{{date('H:i', strtotime($gym->open_schedule))}} - {{date('H:i', strtotime($gym->close_schedule))}}</span>
+        </div>
     </div>
     <div class="w-full h-1 bg-black rounded-full"></div>
     <div class="space-y-2">
