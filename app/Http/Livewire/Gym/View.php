@@ -7,6 +7,8 @@ use Livewire\Component;
 class View extends Component
 {
     public String $name;
+    public String $avatar;
+    public String $about;
 
     public $gymId;
     

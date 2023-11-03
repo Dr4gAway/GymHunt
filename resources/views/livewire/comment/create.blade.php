@@ -1,5 +1,5 @@
 <div class="flex w-full gap-4">
-	<div class="flex-none rounded-full h-10 w-10 bg-red-500"></div>
+	<img src="/{{Auth::user()->avatar}}" class="flex-none rounded-full h-10 w-10 overflow-hidden">
     <x-resizable-text model="body" placeholder="O que você achou?" />
 	
     <button wire:click="store">

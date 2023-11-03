@@ -54,8 +54,8 @@ class Update extends Component
         'phone' => 'required|string|size:13',
         'about' => 'string|max:2000',
         /* Gym data */
-        'open_schedule' => 'required|date_format:H:i:s',
-        'close_schedule' => 'required|date_format:H:i:s',
+        'open_schedule' => 'required|date_format:H:i',
+        'close_schedule' => 'required|date_format:H:i',
         'city' => 'required|string|max:64',
         'state' => 'required|string|max:64',
         'district' => 'required|string|max:64',
@@ -75,8 +75,8 @@ class Update extends Component
             $this->banner = $this->user->banner;
             /* Gym Data */
             $this->cpnj = $this->gym->cnpj;
-            $this->open_schedule = $this->gym->open_schedule;
-            $this->close_schedule = $this->gym->close_schedule;
+            $this->open_schedule = date('H:i', strtotime($this->gym->open_schedule));
+            $this->close_schedule = date('H:i', strtotime($this->gym->close_schedule));
             /* Adress Data */
             $this->city = $this->gym->city;
             $this->state = $this->gym->state;

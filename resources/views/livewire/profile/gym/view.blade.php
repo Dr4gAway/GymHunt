@@ -91,14 +91,14 @@
             <div class="flex space-x-6">
                 <a href="#" class="font-medium"><b>{{$this->followersCount}}</b> seguidores</a>
                 <a href="#" class="font-medium"><b>{{$this->followingCount}}</b> seguindo</a>
-                <div class="flex items-center gap-3">
+                {{-- <div class="flex items-center gap-3">
                     <div class="flex items-center space-x-[-10px]">
                         <div class="rounded-full bg-blue-400 w-6 h-6 ring ring-white"></div>
                         <div class="rounded-full bg-blue-500 w-6 h-6 ring ring-white"></div>
                         <div class="rounded-full bg-blue-600 w-6 h-6 ring ring-white"></div>
                     </div>
                     <a href="#">Também seguem</a>
-                </div>
+                </div> --}}
             </div>
         </div>
 

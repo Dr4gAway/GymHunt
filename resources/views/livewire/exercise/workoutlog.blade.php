@@ -1,6 +1,6 @@
 @section('titulo', 'GymHunt - Exercícios')
 
-<div class="p-4 flex flex-col gap-4 w-full items-center bg-gymhunt-purple-2 bg-[url('/public/img/backAvaliaçao.svg')]" x-data="{
+<div class="p-4 flex flex-col gap-4 w-full min-h-full items-center bg-gymhunt-purple-2 bg-[url('/public/img/backAvaliaçao.svg')]" x-data="{
     editOpen: false,
 
     disableScroll() {

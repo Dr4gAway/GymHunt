@@ -45,7 +45,8 @@
                             .setHTML(`
                                 <div class="visible bg-white w-[250px] rounded-2xl overflow-hidden font-poppins">
                                     <div class="relative bg-gymhunt-purple-1 w-full h-16 mb-8">
-                                        <div class="absolute left-1/2 top-0 translate-y-1/2 -translate-x-1/2 rounded-full bg-red-500 w-16 h-16"></div>
+                                        <img src="/${gym.avatar}" class="absolute left-1/2 top-0 translate-y-1/2 -translate-x-1/2 object-cover rounded-full overflow-hidden w-16 h-16" />
+                                        
                                     </div>
                                     <div class="relative flex flex-col gap-4 p-3">
                                         <h3 class="font-bold text-xl text-center">${gym.name}</h3>
@@ -56,7 +57,7 @@
                                                 <span>12:00 - 18:00</span>
                                             </div>
                                             <span class="text-justify">
-                                                ${"{{Illuminate\Support\Str::limit('Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit tenetur atque consectetur consequuntur maxime delectus iusto beatae accusamus aperiam, dicta reiciendis unde assumenda inventore in, quas eveniet pariatur ex nostrum. ', 80, '...')}}"}
+                                                ${gym.about}
                                             </span>
                                 
                                         </div>
@@ -74,6 +75,8 @@
                                 </div>
                             `)
                             .addTo(map);
+
+                            console
 
                 const marker = new mapboxgl.Marker()
                                 .setLngLat([gym.longitude, gym.latitude])

@@ -28,7 +28,7 @@ class Search extends Component
                            $query->where('id', 'user_id');
                         }); */
 
-            $gyms = User::select('name', 'users.id')
+            $gyms = User::select('name', 'users.id', 'avatar', 'about')
                         ->join('gyms', 'users.id', '=', 'gyms.user_id')
                         ->where('users.name', 'like', '%'.$this->search.'%')
                         ->get();
