@@ -55,10 +55,9 @@
                                     <div class="relative flex flex-col gap-4 p-3">
                                         <h3 class="font-bold text-xl text-center">${gym.name}</h3>
                                         <div class="flex flex-col gap-1">
-                                            <span class="text-justify">
-                                                ${"{{Illuminate\Support\Str::limit('Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit tenetur atque consectetur consequuntur maxime delectus iusto beatae accusamus aperiam, dicta reiciendis unde assumenda inventore in, quas eveniet pariatur ex nostrum. ', 80, '...')}}"}
+                                            <span class=" max-h-28 text-justify text-ellipsis overflow-hidden">
+                                                ${gym.about}
                                             </span>
-                                
                                         </div>
                                         <div class="flex items-center gap-4 h-fit">
                                             <button wire:ignore @click.prevent
@@ -89,6 +88,8 @@
                         const {_sw, _ne} = map.getBounds()
                         const {_lngLat: {lng}, _lngLat: {lat}} = marker
                         const { transform: {_zoom}} = map
+                        /* Latitude in Ne stands for north */
+                        /* Longitude in Ne stands for East */
                         return (
                             lng > _sw.lng &&
                             lng < _ne.lng &&
@@ -102,8 +103,6 @@
                         marker.addTo(map);
                     else
                         marker.remove()
-                    /* Latitude in Ne stands for north */
-                    /* Longitude in Ne stands for East */
                 })
             })
         }

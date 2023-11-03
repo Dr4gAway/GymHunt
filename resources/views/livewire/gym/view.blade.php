@@ -20,14 +20,10 @@
     <div class="space-y-2">
         <span class="max-w-full">
             {{
-                Illuminate\Support\Str::limit(' Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit tenetur atque consectetur consequuntur maxime delectus iusto beatae accusamus aperiam, dicta reiciendis unde assumenda inventore in, quas eveniet pariatur ex nostrum. ', 180, '...')
+                Illuminate\Support\Str::limit($gym->about, 180, '...')
             }}
         </span>
-        <div class="flex justify-between items-center">
-            <div class="text-2xl text-gymhunt-purple-1">
-                <i class="fa-regular fa-star"></i>
-                <span class="font-medium">3.7</span>
-            </div>
+        <div class="flex justify-end items-center">
             <div class="flex gap-2">
                 <button wire:ignore @click.prevent onclick="goTo('{{$gym->longitude}}', '{{$gym->latitude}}')"
                         class="h-full py-1 px-2 rounded-xl bg-transparent border-4 border-gymhunt-purple-1 text-gymhunt-purple-1 font-bold text-base">
