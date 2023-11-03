@@ -6,6 +6,7 @@ use Livewire\Component;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Gate;
 
 class Create extends Component
 {
@@ -18,6 +19,9 @@ class Create extends Component
     }
 
     public function store() {
+        if (Gate::denies('create', Comment::class))
+            return redirect(route('login'));
+        
         Comment::create([
             'body' => $this->body,
             'created_by' => Auth::id(),
