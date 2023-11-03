@@ -82,6 +82,9 @@ class View extends Component
 
     public function handleLike()
     {
+        if(!Auth::check())
+            return redirect()->route('login');
+        
         if ($this->liked)
         {
             $this->liked->delete();
