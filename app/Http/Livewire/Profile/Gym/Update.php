@@ -6,6 +6,7 @@ use Livewire\Component;
 
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Str;
 
 use App\Models\User;
@@ -13,6 +14,9 @@ use App\Models\Gym;
 
 class Update extends Component
 {
+    use WithFileUploads;
+    use AuthorizesRequests;
+
     public function render(User $user, Gym $gym)
     {
         $this->$user = $user;
@@ -114,6 +118,8 @@ class Update extends Component
     }
 
     public function store() {
+        $this->authorize('update', Gym::where('user_id', $this->user->id)->firstOrFail());
+
         $mapChanged = false;
 
         if ($this->email != $this->user->email)

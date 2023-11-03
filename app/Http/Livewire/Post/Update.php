@@ -7,6 +7,7 @@ use Livewire\WithFileUploads;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Str;
 use App\Models\Post;
 use App\Models\Image;
@@ -14,6 +15,7 @@ use App\Models\Image;
 class Update extends Component
 {
     use WithFileUploads;
+    use AuthorizesRequests;
 
     public ?string $body = null;
     public Post $post;
@@ -44,6 +46,8 @@ class Update extends Component
 
     public function store() {
         $this->validate();
+
+        $this->authorize('update', $this->post);
 
         if($this->images || $this->oldImages)
         {

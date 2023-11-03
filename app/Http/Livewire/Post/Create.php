@@ -9,6 +9,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 
 use App\Models\Post;
@@ -59,6 +60,9 @@ class Create extends Component
     }
 
     public function store() {
+        if (Gate::denies('create', Post::class))
+            return redirect(route('login'));
+
         if(!Auth::check())
         {
             return redirect()->route('login');

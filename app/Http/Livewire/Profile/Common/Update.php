@@ -4,15 +4,19 @@ namespace App\Http\Livewire\Profile\Common;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Str;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
 use App\Models\User;
 use App\Models\Common;
 
 class Update extends Component
 {
     use WithFileUploads;
+    use AuthorizesRequests;
 
     public User $user;
 
@@ -50,7 +54,7 @@ class Update extends Component
             $this->email =$this->user->email;
             $this->phone = $this->user->phone;
             $this->about = $this->user->about;
-            
+
             $this->avatar = $this->user->avatar;
             $this->banner = $this->user->banner;
             $common = Common::where('user_id', $this->user->id)->first();
@@ -84,6 +88,8 @@ class Update extends Component
     }
 
     public function store() {
+        $this->authorize('update', Common::where('user_id', $this->user->id)->firstOrFail());
+
         if ($this->email != $this->user->email)
         {
             $this->validate([
