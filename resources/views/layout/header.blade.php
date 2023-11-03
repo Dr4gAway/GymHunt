@@ -19,9 +19,9 @@
         @stack('custom-header')
     </head>
 
-    <header class="text-base font-normal px-8 h-[100px] bg-white shadow-lg font-poppins flex">
+    <header class="flex justify-center text-base font-normal px-8 h-[100px] bg-white shadow-lg font-poppins">
         @auth
-            <nav class="flex items-center justify-between w-full transition-all" aria-label="Global">
+            <nav class="flex items-center justify-between w-full max-w-[1280px] transition-all" aria-label="Global">
                 {{-- <div class="flex items-center justify-center center justify-items-center gap-8 flex-grow">
                     <a href="/">
                         <img src="\img\logo.svg" alt="Gym hunt brand" class="h-12">
@@ -104,19 +104,19 @@
         @endauth
 
         @guest
-            <nav class="flex items-center justify-between w-full transition-all">
-                <div class="flex items-center gap-8">
+            <nav class="flex items-center justify-between h-[100px] w-full max-w-[1280px] transition-all">
+                <div class="flex items-stretch gap-8">
                     <a href="/">
                         <img src="\img\logo.svg" alt="Gym hunt brand" class="h-12">
                     </a>
-                    <a href="{{route('home')}}" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Home</a>
-                    <a href="#func" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Produto</a>
-                    <a href="#sobre" class="text-2xl leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Sobre nós</a>
+                    <a href="{{route('home')}}" class="flex items-center leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Home</a>
+                    <a href="{{route('feed')}}" class="flex items-center leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Feed</a>
+                    <a href="{{route('explore')}}" class="flex items-center leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Explorar</a>
                 </div>  
                 
                 <div class="flex items-center justify-center center gap-8">
-                    <a href="{{route('login')}}" class="font-medium outline-4 hover:text-gymhunt-purple-1 hover:ring ring-gymhunt-purple-1 rounded-2xl transition-all px-4 py-2">Login</a>
-                    <a href="{{route('signup')}}" class="w-[176px] h-12 text-2xl text-center bg-gymhunt-purple-1 rounded-2xl text-white px-4 py-2"><span>Sign Up</span></a>
+                    <a href="{{route('login')}}" class="font-medium outline-4 hover:text-gymhunt-purple-1 hover:ring ring-gymhunt-purple-1 rounded-xl transition-all px-4 py-2">Login</a>
+                    <a href="{{route('signup')}}" class="flex items-center justify-center w-[176px] text-center bg-gymhunt-purple-1 hover:bg-gymhunt-purple-2 rounded-xl text-white px-4 py-2"><span>Sign Up</span></a>
                 </div>
             </nav>
         @endguest
