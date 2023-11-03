@@ -36,7 +36,7 @@
             <x-form.text name="made_data" type="date" label="Data" placeholder="" model="made_date" /> 
 
             <div class="grid grid-flow-col justify-between space-x-2">
-                <button type="submit" x-on:click="closeExerc()" class="justify-center rounded-lg bg-gymhunt-purple-2 px-5 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cancelar</button>
+                <button x-on:click.prevent="closeCreateExercise()" class="justify-center rounded-lg bg-gymhunt-purple-2 px-5 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cancelar</button>
                 <button wire:click.prevent="store"
                         class="justify-center rounded-lg bg-gymhunt-purple-1 px-5 p-1.5 text-sm
                                font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline
