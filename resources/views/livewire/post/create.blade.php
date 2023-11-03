@@ -1,6 +1,11 @@
 <form wire:submit.prevent="store" method="POST" class="w-full flex gap-4 bg-white p-4 rounded-2xl"  enctype="multipart/form-data" >
-    <img src="/{{Auth::user()->avatar}}" class="flex-none rounded-full h-10 w-10 overflow-hidden">
-
+    
+    @auth
+        <img src="/{{Auth::user()->avatar}}" class="flex-none rounded-full h-10 w-10 overflow-hidden">
+    @endauth
+    @guest
+        <img src="{{URL::asset('img\profile\default_avatar.jpeg')}}" class="flex-none rounded-full h-10 w-10 overflow-hidden">
+    @endguest
     <div class="flex flex-col w-full gap-4">
         <div class="flex gap-4">
             <x-resizable-text model="body" placeholder="Como vai seu treino?" />
