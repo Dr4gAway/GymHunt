@@ -58,7 +58,8 @@
         <!-- End Modal -->
 
         <div class="flex items-center gap-4">
-            <div class="rounded-full h-10 w-10 bg-red-500"></div>
+            
+            <img src="/{{$post->user->avatar}}" class="flex-none rounded-full h-10 w-10 object-cover overflow-hidden">
             <a href="{{$this->setProfile() == 'common' ? route('profile_common', $post->user->id) : route('profile_gym', $post->user->id)}}">
                 <h4 class="font-bold">{{$post->user->name}}</h4>
             </a>
