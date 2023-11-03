@@ -6,7 +6,7 @@ use App\Http\Controllers\ProfileController;
 
 use App\Http\Middleware\UserIsGym;
 
-Route::View('/', 'home')->name('home');
+Route::View('/', 'home')->name('home')->middleware('guest');
 
 Route::View('/feed', 'feed')->name('feed');
 
