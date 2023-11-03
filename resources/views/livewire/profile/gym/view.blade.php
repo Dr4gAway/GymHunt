@@ -145,7 +145,58 @@
         @endif
 
     @elseif($page == 'about')
-        about
+    <div class="flex flex-col w-full max-w-[1280px] gap-4 p-4">
+        <div>
+            <h3 class="font-bold text-lg">Endereço</h3>
+            <div>
+                <h4 class="font-bold text-md">Estado</h4>
+                {{$gym->state}}
+            </div>
+
+            <div class="flex gap-4">
+                <div>
+                    <h4 class="font-bold text-md">Cidade</h4>
+                    {{$gym->city}}
+                </div>
+                <div>
+                    <h4 class="font-bold text-md">Bairro</h4>
+                    {{$gym->district}}
+                </div>
+                <div>
+                    <h4 class="font-bold text-md">Rua</h4>
+                    {{$gym->street}}
+                </div>
+                <div>
+                    <h4 class="font-bold text-md">Número</h4>
+                    {{$gym->number}}
+                </div>
+            </div>
+        </div>
+        <div>
+            <h3 class="font-bold text-lg">Horário de funcionamento</h3>
+            <div class="flex gap-2">
+                <span>Dás</span>
+                <span class="font-bold text-gymhunt-purple-1">
+                    {{ date('H:i', strtotime($gym->open_schedule)) }}
+                </span>
+                <span>às</span>
+                <span class="font-bold text-gymhunt-purple-1">
+                    {{ date('H:i', strtotime($gym->close_schedule)) }}
+                </span>
+            </div>
+        </div>
+        <div>
+            <h3 class="font-bold text-lg">Contato</h3>
+            <div>
+                <h4 class="font-bold text-md">Email</h4>
+                {{$user->email}}
+            </div>
+            <div>
+                <h4 class="font-bold text-md">Telefone</h4>
+                {{$user->phone}}
+            </div>
+        </div>
+    </div>
     @else
         <div class="flex flex-col w-full max-w-[1280px] gap-4 p-4">
             <div class="flex gap-4">
