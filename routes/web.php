@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 
+use App\Http\Middleware\UserIsGym;
+
 Route::View('/', 'home')->name('home');
 
 Route::View('/feed', 'feed')->name('feed');
@@ -22,7 +24,9 @@ Route::get('/gerandoAvaliação', function(){
     return view('comentario');
 })->name('comentario'); */
 
-Route::get('/workoutlog', App\Http\Livewire\Exercise\Workoutlog::class)->name('workoutlog');
+Route::get('/workoutlog', App\Http\Livewire\Exercise\Workoutlog::class)
+->name('workoutlog')
+->middleware([UserIsGym::class]);
 
 Route::get('/explore', function() {
     return view('location.explore');

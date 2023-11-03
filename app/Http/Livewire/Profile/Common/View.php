@@ -17,6 +17,8 @@ class View extends Component
 
     public $perPage = 5;
 
+    public $page = 'activity';
+
     protected $listeners = [
         'user::updated' => '$refresh',
         'post::created' => '$refresh'
@@ -48,6 +50,12 @@ class View extends Component
     public function loadMore() {
         $this->perPage += 5;
     }
+
+    public function handlePageChange($type)
+    {
+        $this->page = $type;
+    }
+
 
     public function getFollowingCountProperty() {
         return Follower::where('follower', $this->user->id)

@@ -36,23 +36,21 @@
                     <img src="\img\logo.svg" alt="Gym hunt brand" class="h-12">
                 </a>
                 
-                <div class="flex items-center justify-items-center gap-8">
-                    <a href="{{route('feed')}}" class=" leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Feed </a>
-                    <a href="{{route('explore')}}" class=" leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Explorar</a>
-                    
-                    
-                    {{-- <form class="text-center self-center bg-gymhunt-purple-1 rounded-2xl text-white px-4 py-2"
-                        action="{{url('/logout')}}" method="POST">
-                        @csrf
-                        @method('POST')
-                        <input type="submit" value="Sair">
-                    </form> --}}
+                <div class="flex items-stretch justify-items-center gap-8">
+                    <a href="{{route('feed')}}" class="flex items-center leading-6 hover:border-b-4 border-black transition-all px-3 py-2">
+                        Feed
+                    </a>
+                    <a href="{{route('explore')}}" class="flex items-center leading-6 hover:border-b-4 border-black transition-all px-3 py-2">
+                        Explorar
+                    </a>
 
                     @php
                         $common = App\Models\Common::where('user_id', Auth::id())->count();
                     @endphp
                     @if ($common)
-                        <a href="{{route('workoutlog')}}" class=" leading-6 hover:border-b-4 border-black transition-all px-3 py-2">Exercícios</a>
+                    <a href="{{route('workoutlog')}}" class="flex items-center leading-6 hover:border-b-4 border-black transition-all px-3 py-2">
+                        Workoutlog
+                    </a>
                         <div class="relative" x-data="{
                             profileModal: false,
                         }">

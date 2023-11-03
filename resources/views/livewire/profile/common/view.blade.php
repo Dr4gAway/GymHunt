@@ -105,8 +105,8 @@
 
     <div class="w-full">
         <div class="flex flex-row justify-center font-poppins font-medium text-2xl">
-            <a href="#" class="border-b-4 border-gymhunt-purple-2 text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Atividade</a>
-            <a href="#" class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center cursor-pointer">Galeria</a>
+            <a href="#"  x-on:click.prevent wire:click="handlePageChange('activity')" class="{{$page == 'activity' ? 'border-b-4 border-gymhunt-purple-2 text-gymhunt-purple-2' : 'hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2'}} transition-all px-4 py-2 text-center">Atividade</a>
+            <a href="#" x-on:click.prevent wire:click="handlePageChange('galery')" class="{{$page == 'galery' ? 'border-b-4 border-gymhunt-purple-2 text-gymhunt-purple-2' : 'hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2'}} transition-all px-4 py-2 text-center cursor-pointer">Galeria</a>
             {{-- <a href="{{route('avaliacoesGym')}}" class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Avaliações</a> --}}
             {{-- <a href="#" class="hover:border-b-4 border-gymhunt-purple-2 hover:text-gymhunt-purple-2 transition-all px-4 py-2 text-center">Sobre nós</a> --}}
         </div>
@@ -114,50 +114,70 @@
         <div class="w-full h-0.5 bg-slate-950"></div>
     </div>
 
-    <div class="flex flex-col w-full max-w-[1280px] gap-4 p-4">
-        <div class="flex gap-4">
-            <div class="flex flex-col items-center w-full gap-4">
-                @if($this->user->id == Auth::id())
-                <div class="max-w-[662px] w-full">
-                    <livewire:post.create />
+    @if($page == 'galery')
+        @if($user->images()->count() > 0)
+        <div class="flex flex-wrap justify-center gap-4 items-center w-full max-w-[1280px] p-4" x-data="{
+            updateImages(images) {
+                imageOpen = true
+
+                console.log(imageOpen)
+                disableScroll();
+                Livewire.emitTo('carousel', 'carousel::updated', images)
+            }
+        }">
+            @foreach ($user->images as $image)
+                <div x-on:click="updateImages({{$image}})" class="w-max basis-60 aspect-square overflow-hidden">
+                    <img src="/{{$image->path}}" class="object-cover w-full h-full">
                 </div>
-                @endif
-                @if($this->posts->count() > 0)
-                    @foreach ($this->posts as $post)
-                        <livewire:post.view :post="$post" wire:key="post-{{$post->id}}">
-                    @endforeach
-                    @if(!$this->posts->onLastPage())
-                        <div x-data="{
-                            infinityScroll() {
-                                const observer = new IntersectionObserver((items) => {
-                                    items.forEach((item) => {
-                                        if(item.isIntersecting)
-                                            @this.loadMore();
-                                        })
-                                    }, {
-                                        rootMargin: '300px'
-                                    })
-                                    observer.observe(this.$el)
-                            },
-
-                        }" x-init="infinityScroll()" class="w-6 h-6">
-                        </div>
+            @endforeach
+        </div>
+        @else
+            <h4 class="text-2xl font-bold text-center">Nenhuma imagem disponível!</h4>
+        @endif
+    @else
+        <div class="flex flex-col w-full max-w-[1280px] gap-4 p-4">
+            <div class="flex gap-4">
+                <div class="flex flex-col items-center w-full gap-4">
+                    @if($this->user->id == Auth::id())
+                    <div class="max-w-[662px] w-full">
+                        <livewire:post.create />
+                    </div>
                     @endif
-                @else
-                    <h3 class="text-gymhunt-purple-1 font-bold text-5xl">Nenhum post ainda!</h3>
-                    <span class="font-bold">Parece que este usuário ainda não disse nada...</span>
-                @endif
-            </div>
-    
-            
-        </div>
+                    @if($this->posts->count() > 0)
+                        @foreach ($this->posts as $post)
+                            <livewire:post.view :post="$post" wire:key="post-{{$post->id}}">
+                        @endforeach
+                        @if(!$this->posts->onLastPage())
+                            <div x-data="{
+                                infinityScroll() {
+                                    const observer = new IntersectionObserver((items) => {
+                                        items.forEach((item) => {
+                                            if(item.isIntersecting)
+                                                @this.loadMore();
+                                            })
+                                        }, {
+                                            rootMargin: '300px'
+                                        })
+                                        observer.observe(this.$el)
+                                },
 
-        <div class="flex items-center justify-center w-full">
-            <div class="w-full h-0.5 bg-gymhunt-purple-2"></div>
-            <a href="{{route('feed')}}" class="text-gymhunt-purple-2 font-semibold text-lg text-center px-2">
-                <span class="w- break-keep">Veja mais publicações</span>
-            </a>
-            <div class="w-full h-0.5 bg-gymhunt-purple-2"></div>
+                            }" x-init="infinityScroll()" class="w-6 h-6">
+                            </div>
+                        @endif
+                    @else
+                        <h3 class="text-gymhunt-purple-1 font-bold text-5xl">Nenhum post ainda!</h3>
+                        <span class="font-bold">Parece que este usuário ainda não disse nada...</span>
+                    @endif
+                </div> 
+            </div>
+
+            <div class="flex items-center justify-center w-full">
+                <div class="w-full h-0.5 bg-gymhunt-purple-2"></div>
+                <a href="{{route('feed')}}" class="text-gymhunt-purple-2 font-semibold text-lg text-center px-2">
+                    <span class="w- break-keep">Veja mais publicações</span>
+                </a>
+                <div class="w-full h-0.5 bg-gymhunt-purple-2"></div>
+            </div>
         </div>
-    </div>
+    @endif
 </div>
