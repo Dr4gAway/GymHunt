@@ -175,6 +175,12 @@
                 const address = Array.from(addressFields.querySelectorAll("div > div > div > input")).map((field) => field.value);
                 const searchString = address.join(' ').trim().replace(/\s+/g, '+');
 
+                if(searchString == '' || searchString == '+')
+                {
+                    alert('Endereço inválido!')
+                    return
+                }
+
                 let uuid = "{{ Ramsey\Uuid\Uuid::uuid4() }}"
 
                 const suggestions = `https://api.mapbox.com/search/searchbox/v1/suggest?q=${searchString}&language=pt&limit=1&session_token=${uuid}&country=BR&access_token=pk.eyJ1IjoiZHI0Z2F3YXkiLCJhIjoiY2xtdnc2YjdnMG1nNzJpcGNiaDI4aXAzcSJ9.9XTO-r1_cZp9p51MazueCw`
