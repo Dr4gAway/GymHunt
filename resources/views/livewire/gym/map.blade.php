@@ -1,8 +1,36 @@
-<div>
-    <livewire:gym.search />
+@push('custom-header')
+    <style>
+        /* Marker tweaks */
+        .mapboxgl-popup {
+            font-family: 'poppins';
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+        .mapboxgl-popup-close-button {
+            display: none;
+        }
+        .mapboxgl-popup-content {
+            font-family: 'poppins' !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            width: fit-content !important;
+            border-radius: 50% !important;
+        }
+        mapbox-search-box > div > input::placeholder {
+            content: 'teste'
+        }
+    </style>
 
-    <div id='map' class="w-full h-full"></div>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+@endpush
 
+    <div class="relative w-full h-full">
+        <livewire:gym.search />
+
+        <div id='map' class="w-full h-full"></div>
+
+    @push('custom-scripts')
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
 
     <script id="search-js" defer="" src="https://api.mapbox.com/search-js/v1.0.0-beta.17/web.js"></script>
@@ -115,4 +143,7 @@
 
         loadGyms()
     </script>
+@endpush
+
+    
 </div>

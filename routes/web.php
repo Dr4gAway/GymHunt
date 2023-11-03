@@ -28,8 +28,10 @@ Route::get('/workoutlog', App\Http\Livewire\Exercise\Workoutlog::class)
 ->name('workoutlog')
 ->middleware([UserIsGym::class]);
 
-Route::get('/explore', function() {
+/* Route::get('/explore', function() {
     return view('location.explore');
-})->name('explore');
+})->name('explore'); */
+
+Route::get('/explore', App\Http\Livewire\Gym\Map::class)->name('explore');
 
 require __DIR__.'/auth.php';

@@ -11,7 +11,8 @@ class Map extends Component
 {
     public function render()
     {
-        return view('livewire.gym.map');
+        return view('livewire.gym.map')
+        ->layout('layout.site');
     }
 
     function getGymsProperty() {
