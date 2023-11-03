@@ -23,9 +23,19 @@ class Carousel extends Component
 
     public function updateImages($newImages)
     {
-        $this->imageSelected = $newImages[0]['path'];
+        if(array_key_exists('path', $newImages))
+        {
+            $this->imageSelected = $newImages['path'];
+            $this->images = array($newImages);
+            //dd($this->images);
+        }
+        else
+        {
+            $this->imageSelected = $newImages[0]['path'];
+            $this->images = $newImages;
+            //dd($this->images);
+        }
         //dd($this->imageSelected);
-        $this->images = $newImages;
     }
 
     public function changeImage($newImage)

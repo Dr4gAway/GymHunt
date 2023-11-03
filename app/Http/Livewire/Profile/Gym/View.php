@@ -20,6 +20,8 @@ class View extends Component
 
     public ?Follower $following = null;
 
+    public $page = 'activity';
+
     protected $listeners = [
         'user::updated' => '$refresh',
         'post::created' => '$refresh'
@@ -41,6 +43,15 @@ class View extends Component
         session(['gym_id' => $this->gym->id]);
         session(['id' => $id]);
     }
+
+    /* public function updatedPage($page)
+    {
+        dd($this->page);
+        if($this->page == 'activity')
+        {
+            $this->dispatchBrowserEvent('map::updated', [$this->gym->longitude, $this->gym->latitude]);
+        }
+    } */
 
     public function getFollowingCountProperty() {
         return Follower::where('follower', $this->user->id)
@@ -71,6 +82,11 @@ class View extends Component
 
     public function loadMore() {
         $this->perPage += 5;
+    }
+
+    public function handlePageChange($type)
+    {
+        $this->page = $type;
     }
 
     public function handleFollow() {
