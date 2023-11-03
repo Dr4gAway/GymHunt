@@ -81,7 +81,7 @@
                     class="rounded-lg bg-gymhunt-purple-1 px-5 p-1.5 text-white font-bold">Alterar marcador no mapa</button>
                 <div class="w-full flex flex-col space-y-1 col-span-1">
                     <p class="font-poppins font-bold text-lg">CNPJ</p>
-                    <label class="p-1.5 rounded-md ring-1 ring-gray-300 shadow-xl bg-neutral-500 opacity-40" x-on:click="openAlert()">458.066.118-41</label>
+                    <label class="p-1.5 rounded-md ring-1 ring-gray-300 shadow-xl bg-neutral-500 opacity-40" x-on:click="openAlert()">{{$cpnj}}</label>
                 </div>
             </div>
 

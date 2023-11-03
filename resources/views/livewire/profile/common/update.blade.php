@@ -60,7 +60,7 @@
                 <x-form.text wire="birth" type="date" model="birth" class="w-full" name="birth" label="Data de nascimento" placeholder="ex: 28/02/2006"/>
                 <div class="w-full flex flex-col space-y-1 col-span-1">
                     <p class="font-poppins font-bold text-lg">CPF</p>
-                    <label class="p-1.5 rounded-md ring-1 ring-gray-300 shadow-xl bg-neutral-500 opacity-40" x-on:click="openAlert()">458.066.118-41</label>
+                    <label class="p-1.5 rounded-md ring-1 ring-gray-300 shadow-xl bg-neutral-500 opacity-40" x-on:click="openAlert()">{{$cpf}}</label>
                 </div>
             </div>
 
