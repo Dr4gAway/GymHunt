@@ -52,7 +52,6 @@ class Create extends Component
             {
                 $this->validate(['photos.'.$index => 'mimes:jpeg,jpg,png,gif|max:2048']);
             } catch(ValidationException $error) {
-                dd($e);
                 unset($this->photos[$index]);
                 throw $error;
             }

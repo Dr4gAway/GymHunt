@@ -16,6 +16,15 @@ class Create extends Component
     public ?int $weight = null;
     public $made_date = null;
 
+    protected $rules = [
+        'name' => 'required|string',
+        'series' => 'required|integer|min:1',
+        'repetitions' => 'required|integer|min:1',
+        'muscle' => 'required|string',
+        'weight' => 'required|integer|min:1',
+        'made_date' => 'required|date',
+    ];
+
     public function render()
     {
         return view('livewire.exercise.create');
@@ -23,6 +32,8 @@ class Create extends Component
 
     public function store()
     {
+        $this->validate();
+        
        $exercise = Exercise::create([
         'user_id' => Auth::id(),
         'name'=> $this->name,
