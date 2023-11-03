@@ -15,10 +15,7 @@ class Map extends Component
     }
 
     function getGymsProperty() {
-        $gyms = User::select('name', 'longitude', 'latitude', 'users.id', 'avatar', 'about')
-                        ->join('gyms', 'users.id', '=', 'gyms.user_id')
-                        ->get();
-        
+        $gyms = User::join('gyms', 'users.id', '=', 'gyms.user_id')->get();        
         return $gyms;
     }
 }

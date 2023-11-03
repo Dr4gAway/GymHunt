@@ -28,14 +28,12 @@ class Search extends Component
                            $query->where('id', 'user_id');
                         }); */
 
-            $gyms = User::select('name', 'users.id', 'avatar', 'about')
+            $gyms = User::select('name', 'avatar', 'about', 'open_schedule', 'close_schedule', 'users.id', 'latitude', 'longitude')
                         ->join('gyms', 'users.id', '=', 'gyms.user_id')
                         ->where('users.name', 'like', '%'.$this->search.'%')
                         ->get();
 
             //$gyms = DB::table('users')->where('name', 'LIKE', $this->search)->select('name')->join('gyms', 'gyms.user_id', '=', 'users.id')->get();
-
-            //dd($gyms);
             //dd($gyms);
 
             return $gyms;

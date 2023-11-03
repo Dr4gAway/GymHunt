@@ -23,8 +23,8 @@ class GymFactory extends Factory
         return [
             'user_id' => null,
             'cnpj' => fake()->numerify('##############'),
-            'open_schedule' => fake()->time('H:i:s'),
-            'close_schedule' => fake()->time('H:i:s'),
+            'open_schedule' => fake()->date('H:i'),
+            'close_schedule' => fake()->date('H:i'),
             'city' => fake()->city(),
             'district' => fake()->name(),
             'state' => Str::random(2),

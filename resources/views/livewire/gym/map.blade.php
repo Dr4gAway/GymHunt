@@ -39,7 +39,10 @@
         async function loadGyms() {
             const gymMarkers = @js($this->gyms)
 
+            console.log(await gymMarkers)
+
             gymMarkers.forEach(gym => {
+                console.log(gym);
                 const popup = new mapboxgl.Popup({ closeOnClick: true, closeButton: false, autoPanPadding: 0 })
                             .setLngLat([gym.longitude, gym.latitude])
                             .setHTML(`
@@ -53,13 +56,12 @@
                                         <div class="flex flex-col gap-1">
                                             <div class="flex items-center gap-2">
                                                 <div class="bg-gymhunt-purple-1 h-4 w-4 rounded-full"></div>
-                                                <span class="text-gymhunt-purple-1 font-semibold">Aberta</span>
-                                                <span>12:00 - 18:00</span>
+                                                <span class="text-gymhunt-purple-1 font-semibold">Horário</span>
+                                                <span>${gym.open_schedule} - ${gym.close_schedule}</span>
                                             </div>
-                                            <span class="text-justify">
+                                            <span class=" max-h-28 text-justify text-ellipsis overflow-hidden">
                                                 ${gym.about}
                                             </span>
-                                
                                         </div>
                                         <div class="flex items-center gap-4 h-fit">
                                             <a href="/gym/${gym.id}" wire:ignore
@@ -92,6 +94,8 @@
                         const {_sw, _ne} = map.getBounds()
                         const {_lngLat: {lng}, _lngLat: {lat}} = marker
                         const { transform: {_zoom}} = map
+                        /* Latitude in Ne stands for north */
+                        /* Longitude in Ne stands for East */
                         return (
                             lng > _sw.lng &&
                             lng < _ne.lng &&
@@ -105,8 +109,6 @@
                         marker.addTo(map);
                     else
                         marker.remove()
-                    /* Latitude in Ne stands for north */
-                    /* Longitude in Ne stands for East */
                 })
             })
         }

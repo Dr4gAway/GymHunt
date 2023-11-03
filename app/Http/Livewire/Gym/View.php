@@ -10,7 +10,7 @@ class View extends Component
     public String $avatar;
     public String $about;
 
-    public $gymId;
+    public $gym;
     
     public function render()
     {
