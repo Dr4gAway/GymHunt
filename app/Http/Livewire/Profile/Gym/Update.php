@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Profile\Gym;
 use Livewire\Component;
 
 use Livewire\WithFileUploads;
+
+use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Str;
@@ -25,8 +27,6 @@ class Update extends Component
 
         return view('livewire.profile.gym.update');
     }
-
-    use WithFileUploads;
 
     public User $user;
     public Gym $gym;

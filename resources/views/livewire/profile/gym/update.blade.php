@@ -30,9 +30,7 @@
                     @endif
                     
                 </div>
-                @error('avatar')
-                    <p class="text-red-500"> {{$message}} </p>   
-                @enderror
+                
 
                 <div class="relative w-96 h-24 rounded-2xl overflow-hidden">
                     <label for="bannerInput" class="absolute w-full h-full flex items-center justify-center bg-gymhunt-purple-2 bg-opacity-50">
@@ -46,6 +44,13 @@
                     @endif
                 </div>
             </div>
+
+            @error('avatar')
+                <p class="text-red-500"> {{$message}} </p>   
+            @enderror
+            @error('banner')
+                <p class="text-red-500"> {{$message}} </p>   
+            @enderror
             
             <div class="w-full h-1 bg-slate-950"></div>
 
