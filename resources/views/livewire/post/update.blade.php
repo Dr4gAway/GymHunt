@@ -41,7 +41,6 @@
                 </div>
             @endisset
 
-            @error('photos.*') <span class="error">{{ $message }}</span> @enderror
             @if($errors->any())
                 <div class="flex flex-col text-red-500">
                     {!! implode('', $errors->all(':message')) !!}

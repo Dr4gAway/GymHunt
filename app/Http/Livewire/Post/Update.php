@@ -5,10 +5,12 @@ namespace App\Http\Livewire\Post;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+
 use App\Models\Post;
 use App\Models\Image;
 
@@ -98,6 +100,20 @@ class Update extends Component
         $this->body = $this->post->body;
         $this->images = $images;
         $this->oldImages = $images;
+    }
+
+    public function updatedImages($e)
+    {
+        foreach($e as $index => $item)
+        {
+            try
+            {
+                $this->validate(['images.'.$index => 'mimes:jpeg,jpg,png,gif|max:2048']);
+            } catch(ValidationException $error) {
+                unset($this->images[$index]);
+                throw $error;
+            }
+        }
     }
 
     public function removeImage($index)
