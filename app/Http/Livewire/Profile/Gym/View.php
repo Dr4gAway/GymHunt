@@ -24,7 +24,8 @@ class View extends Component
 
     protected $listeners = [
         'user::updated' => '$refresh',
-        'post::created' => '$refresh'
+        'post::created' => '$refresh',
+        'post::deleted' => '$refresh'
     ];
 
     public function render()

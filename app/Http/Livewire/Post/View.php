@@ -155,7 +155,8 @@ class View extends Component
         if($redirect)
             return redirect()->route('feed');
         else
-            $this->emitTo('timeline', 'post::deleted');
+            //$this->emitTo('timeline', 'post::deleted');
+            $this->emitUp('post::deleted');
     }
 
     protected function cleanupPostImages()
