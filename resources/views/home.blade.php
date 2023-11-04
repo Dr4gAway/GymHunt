@@ -12,7 +12,7 @@
 
             <p class="sm:text-xl md:text-2xl lg:text-4xl font-poppins text-slate-600 font-medium w-3/5">Conheça o nosso sistema e treine na academia mais próxima com a melhor qualidade</p>
 
-            <a href="#">
+            <a href="{{route('explore')}}">
                 <button class="flex space-x-2 sm:text-md md:text-xl lg:text-3xl p-7 tracking-widest text-white uppercase bg-gymhunt-purple-2 hover:bg-white hover:text-gymhunt-purple-2 hover:ring-4 hover:ring-gymhunt-purple-2 border-solid border-1 my-10 rounded-lg">
                     <i class="fa-solid fa-map-location-dot fa-2x"></i>
                     <div>

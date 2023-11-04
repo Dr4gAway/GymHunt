@@ -1,37 +1,62 @@
-@extends('layout.site')
-@section('titulo', 'GymHunt - Login')
-@section('content') 
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GymHunt - Login</title>
 
-<div class="flex flex-col justify-center px-6 py-4 lg:px-8">
+    <!-- Import Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700;900&display=swap" rel="stylesheet">
+
+    <link rel="icon" href=".\img\logoIcon.png" >
+    <!-- Import TailwindCSS -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Import AlpineJs -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"></script>
     
-        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-            <img class="mx-auto w-auto" src=".\img\logoIcon.png" alt="Your Company">
-            <h2 class="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Faça login para entrar na sua conta!</h2>
+    @livewireStyles
+
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+    <link href="{{ URL::asset('css/signup.css'); }}" rel='stylesheet'/>
+</head>
+
+<body class="flex justify-center items-center font-poppins bg-[#DFE6F9] min-h-screen">
+{{-- bg-[url('/public/img/background/signupBackground.png')] --}}
+
+<div class="flex h-full w-full max-w-5xl max-h-[45rem] rounded-2xl">
+    <div class="flex flex-col w-full h-full mx-auto justify-between bg-white p-6 rounded-l-2xl overflow-scroll">
+        <div class="flex w-full justify-between">
+            <h2 class="flex self-start font-bold gap-4 text-4xl">Login</h2>
+            <img src="\img\logo.svg" alt="Logo Gym hunt" class="w-24">
+
         </div>
 
-        <div class="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
-            
-            <form class="space-y-6" action="{{route('login')}}" method="POST">
+        <form method="POST" action="{{route('login')}}" class="flex flex-col w-full gap-4" id="login" enctype="multipart/form-data">
+            {{ csrf_field() }}
 
-                @csrf
-                @method('POST')
+           <x-form.textunderlined name="email" label="Email" />
+           <x-form.textunderlined name="password" label="Senha" />
+        </form>
+        
+        <div class="flex w-full justify-between ">
+            <a href="{{route('home')}}"
+                    class="bg-transparent outline outline-4 text-gymhunt-purple-1 outline-gymhunt-purple-1 font-bold px-4 py-2 rounded-md">
+                Voltar
+            </a>
 
-                @error('invalid_credentials')
-                    <p class="text-red-500"> {{$message}} </p>   
-                @enderror
-
-                <x-form.text name="email" label="Email" placeholder="ex: seuemail@gmail.com.br" />
-                <x-form.text name="password" label="Senha" type="password" placeholder="ex: senha123"/>
-
-                <div>
-                    <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 p-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Logar</button>
-                </div>
-            </form>
-
-            <p class="mt-10 text-center text-md text-gray-700"> Não tem uma conta?
-                <a href="{{route('signup')}}" class="font-semibold leading-6 text-indigo-900 hover:text-indigo-300">Cadastre-se</a>
-            </p>
+            <input type="submit" value="Login" form="login"
+                    class="bg-gymhunt-purple-1 hover:bg-gymhunt-purple-2 text-white font-bold px-4 py-2 w-fit end rounded-md cursor-pointer ">
         </div>
     </div>
 
-@endsection
+    <div class="w-1/2 rounded-r-2xl overflow-hidden">
+        <img src="{{asset('img/background/dumbellBackground.png')}}" class="object-cover h-full">
+    </div>
+   {{-- <img src="/{{$this->post->images()->first()->path}}" class="w-full rounded-2xl object-cover max-h-[410px]"> --}}
+</div>
+
+@livewireScripts
+</body>
+
+</html>
