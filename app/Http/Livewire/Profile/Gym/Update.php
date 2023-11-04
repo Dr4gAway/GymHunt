@@ -55,7 +55,7 @@ class Update extends Component
     protected $rules = [
         /* User Data */
         'name' => 'required|string',
-        'phone' => 'required|string|size:13',
+        /* 'phone' => 'required|string|size:13', */
         'about' => 'string|max:2000',
         /* Gym data */
         'open_schedule' => 'required|date_format:H:i',

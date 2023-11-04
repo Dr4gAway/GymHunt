@@ -1,0 +1,726 @@
+[
+    {
+        "user": {
+            "name": "Maikai Academia",
+            "email": "maikaiacademy@gmail.com",
+            "phone": "551432270001",
+            "about": "Maikai Academia, treine conosco",
+            "password": "maikai123",
+            "password_confirmation": "maikai123",
+            "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+            "cpnj": "25.180.570/0001-31" ,
+            "open_schedule": "06:00",
+            "close_schedule": "22:00",
+            "city": "Bauru",
+            "state": "São Paulo" ,
+            "district": "Jardim Europa",
+            "street": "Avenida Getúlio Vargas",
+            "number":"18-46",
+            "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+            "name" : "Vila Class Bauru",
+            "email" : "villaclassbauru@gmail.com",
+            "phone" : "5514998052535",
+            "about" : "Vila Class Bauru, treine conosco",
+            "password" : "vilaclass",
+            "password_confirmation" : "vilaclass",
+            "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+            "cpnj" : "41.939.723/0001-38",
+            "open_schedule" : "06:00",
+            "close_schedule" : "22:00",
+            "city" : "Bauru",
+            "state": "São Paulo",
+            "district": "Jardim Auri Verde" ,
+            "street":"Rua Dionísio de Aguiar",
+            "number":"05-28",
+            "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "SmartFit ",
+        "email" : "sac@smartfitsupps.com.br" ,
+        "phone" : "5511998079600",
+        "about" : "A maior rede de academias da América Latina",
+        "password" : "smartfit1",
+        "password_confirmation" : "smartfit1",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "07.594.978/0001-78",
+        "open_schedule" : "06:00",
+        "close_schedule" : "23:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Jardim Aeroporto",
+        "street":"Avenida Getúlio Vargas",
+        "number":"8",
+        "longitude": 0,
+        "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Urban Fit Center",
+        "email" : "contato@urbanfitcenter.com.br",
+        "phone" : "551432432178",
+        "about" : "Urban Fit Center, treine conosco",
+        "password" : "urbanfit",
+        "password_confirmation" : "urbanfit",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "13.166.508/0001-06",
+        "open_schedule" : "06:00",
+        "close_schedule" : "00:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Jardim Contorno",
+        "street":"Rua Padre Francisco Van Der Maas",
+        "number":"6",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Bluefit",
+        "email" : "bluefit@hormail.com",
+        "phone" : "5514997116074",
+        "about" : "Treinar na Bluefit é muito mais vantagem.",
+        "password" : "bluefit123",
+        "password_confirmation" : "bluefit123",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "24.921.465/0001-43",
+        "open_schedule" : "05:00",
+        "close_schedule" : "01:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Parque Jardim Europa",
+        "street":"Avenida Getúlio Vargas",
+        "number":"19-116",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Academia Halter Fitness",
+        "email" : "academiahalterfitness@outlook.com",
+        "phone" : "551432026943",
+        "about" : "Academia Halter Fitness, venha treinar conosco",
+        "password" : "halterfit",
+        "password_confirmation" : "halterfit",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "49.110.170/0001-18",
+        "open_schedule" : "06:00",
+        "close_schedule" : "22:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Jardim Auri Verde",
+        "street": "Rua Cristiano Pagani",
+        "number":"2-32",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Academia Speed Fitness",
+        "email" : "academiabaurucurriculo@gmail.com",
+        "phone" : "5514998898685",
+        "about" : "Academia Speed Fitness, venha treinar conosco",
+        "password" : "speedfit",
+        "password_confirmation" : "speedfit",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "08.036.595/0001-47",
+        "open_schedule" : "06:00",
+        "close_schedule" : "23:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Centro",
+        "street":"Rua Dr. Lisboa Júnior",
+        "number":"1-28",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Academia Saude e Cia",
+        "email" : "sandra.amparado21@gmail.com",
+        "phone" : "5514981218645",
+        "about" : "Saude e Cia, sua saúde em primeiro lugar",
+        "password" : "saudecia",
+        "password_confirmation" : "saudecia",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "02.301.987/0002-90",
+        "open_schedule" : "06:00",
+        "close_schedule" : "22:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Vila Nova Cidade Universitária",
+        "street":"Rua Caetano Sampieri",
+        "number":"4-80",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "ElevenFit",
+        "email" : "elevenfit@hotmail.com",
+        "phone" : "5514996937400",
+        "about" : "ElevenFit, a melhor para você",
+        "password" : "elevenfit",
+        "password_confirmation" : "elevenfit",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "17.831.977/0001-53",
+        "open_schedule" : "09:00",
+        "close_schedule" : "19:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Vila Nova Cidade Universitária",
+        "street":"Avenida Nações Unidas",
+        "number":"26-56",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Nadart Jardim América",
+        "email" : "ortecservice@ortecservice.com.br",
+        "phone" : "551432230943",
+        "about" : "Nadart, venha treinar conosco",
+        "password" : "nadart123",
+        "password_confirmation" : "nadart123",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "36.140.190/001-16",
+        "open_schedule" : "06:30",
+        "close_schedule" : "22:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Jardim América",
+        "street":"Rua Aviador José de Barros Silva",
+        "number":"6-69",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Agitai Academia",
+        "email" : "contatoagitaiacademia@gmail.com",
+        "phone" : "5514998756601",
+        "about" : "Agitai, venha treinar conosco",
+        "password" : "agitai123",
+        "password_confirmation" : "agitai123",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "05.572.705/0001-05",
+        "open_schedule" : "06;30",
+        "close_schedule" : "21:30",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Nucleo Res. Pres. Geisel",
+        "street":"Rua Octacílio de Andrade Tourinho",
+        "number":"11-136",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Academia Mundo Elevare",
+        "email" : "tecma@tecma.adm.br",
+        "phone" : "551432272907",
+        "about" : "Mundo Elevare, venha treinar conosco",
+        "password" : "mundoelevare",
+        "password_confirmation" : "mundoelevare",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "05.979.226/0001-08",
+        "open_schedule" : "06:00",
+        "close_schedule" : "21:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Jardim Aeroporto",
+        "street":"Rua Júlio Mesquita Filho",
+        "number":"125",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Krusher Fit",
+        "email" : "fernandabianchisouza@hotmail.com",
+        "phone" : "5514991012003",
+        "about" : "Krusher Fit, venha treinar conosco",
+        "password" : "krusherfit",
+        "password_confirmation" : "krusherfit",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "32.043.129/0001-73",
+        "open_schedule" : "06:00",
+        "close_schedule" : "12:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Jardim América",
+        "street":"Rua Aviador Mario Fundagem Nogueira",
+        "number":"3-52",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Academia Moving",
+        "email" : "contato.movingacademia@gmail.com",
+        "phone" : "5514998238166",
+        "about" : "Academia Moving, venha treinar conosco",
+        "password" : "moving123",
+        "password_confirmation" : "moving123",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "05.900.465/0001-12",
+        "open_schedule" : "06:00",
+        "close_schedule" : "23:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Vila Cardia",
+        "street": "Avenida Duque de Caixias",
+        "number":"17-72",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Enjoy Fit Club",
+        "email" : "contato@enjoyfitclub.com.br",
+        "phone" : "551433216373",
+        "about" : "EnjoyFit Club, a melhor para você",
+        "password" : "enjoyfit",
+        "password_confirmation" : "enjoyfit",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "14.346.138/0001-51",
+        "open_schedule" : "06:00",
+        "close_schedule" : "22:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Jardim Estoril IV",
+        "street":"Rua José Fernandes",
+        "number":"450",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Start UP Academia - Unidade 1",
+        "email" : "startupbauru@gmail.com",
+        "phone" : "5514991177319",
+        "about" : "Start UP, venha treinar conosco",
+        "password" : "startup1",
+        "password_confirmation" : "startup1",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "34.567.554/0001-97",
+        "open_schedule" : "06:00",
+        "close_schedule" : "22:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Vila Garcia",
+        "street": "Rua Tenente Joaquim da Costa Guimarães",
+        "number":"2-134",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Academia PowerLife Gym",
+        "email" : "CONTATO@POWERLIFEGYM.COM.BR",
+        "phone" : "5514996121934",
+        "about" : "Academia Powerlife Gym, a melhor para você ",
+        "password" : "powerlife",
+        "password_confirmation" : "powerlife",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "07.222.643/0001-29",
+        "open_schedule" : "06:00",
+        "close_schedule" : "22:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Centro",
+        "street":"Rua Virgílio Malta",
+        "number":"12-35",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "academia Pulse",
+        "email" : "pulseacademia.rs@gmail.com",
+        "phone" : "5514981685544",
+        "about" : "Academia Pulse, venha treinar conosco",
+        "password" : "pulse123",
+        "password_confirmation" : "pulse123",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "17.247.744/0001-08",
+        "open_schedule" : "06:00",
+        "close_schedule" : "22:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Parque Vista Alegre",
+        "street":"Rua Floresta",
+        "number":"7-19",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "VIDA Academia - Bauru",
+        "email" : "contato@vidaacademia.com.br",
+        "phone" : "551432277330",
+        "about" : "Vida Academia, venha treinar conosco",
+        "password" : "vidaacademia",
+        "password_confirmation" : "vidaacademia",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "19.521.480/0001-64",
+        "open_schedule" : "06:00",
+        "close_schedule" : "22:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Vila Souto",
+        "street":"Rua Wenceslau Braz",
+        "number":"2-70",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "The Force Academia",
+        "email" : "flavikinha_@hotmail.com",
+        "phone" : "5514981783204",
+        "about" : "The Force, a melhor para o seu treino",
+        "password" : "theforce",
+        "password_confirmation" : "theforce",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "19.458.508/0001-66",
+        "open_schedule" : "06:00",
+        "close_schedule" : "22:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Parque Bauru",
+        "street":"Rua Rafael Pereira Martini",
+        "number":"1559",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "RedFit Academias Bauru",
+        "email" : "sac@redfit.com.br",
+        "phone" : "5511964696766",
+        "about" : "RedFit academias, a melhor e mais completa para você",
+        "password" : "redfit123",
+        "password_confirmation" : "redfit123",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "39.432.106/0021-43",
+        "open_schedule" : "06:00",
+        "close_schedule" : "23:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Vila Nova Cidade Universitária",
+        "street":"Rua Adolfo José Pereira",
+        "number":"65",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Four Gym",
+        "email" : "marceloartflex@hotmail.com",
+        "phone" : "5514996201960",
+        "about" : "Four gym, treine conosco",
+        "password" : "fourgym123",
+        "password_confirmation" : "fourgym123",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "29.253.929/0001-04",
+        "open_schedule" : "06:00",
+        "close_schedule" : "22:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Jardim Terra Branca",
+        "street":"Rua Argentina",
+        "number":"11",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Academia Marathon Class",
+        "email" : "gerenciaclass@marathon.com.br",
+        "phone" : "551432143082",
+        "about" : "Marathon Class, treine conosco",
+        "password" : "marathonc",
+        "password_confirmation" : "marathonc",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "46.572.238/0001-92",
+        "open_schedule" : "06:00",
+        "close_schedule" : "23:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Vila Aviação",
+        "street":"Rua Augusta Karg",
+        "number":"2-23",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Academia Marathon Wellness",
+        "email" : "gerenciaclass@marathon.com.br",
+        "phone" : "5514988009475",
+        "about" : "Marathon Wellness, a mais completa para seu treino",
+        "password" : "marathonw",
+        "password_confirmation" : "marathonw",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "46.572.238/0001-92",
+        "open_schedule" : "00:00",
+        "close_schedule" : "23:59",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Vila Bonfim",
+        "street":"Avenida Rodrigues Alves",
+        "number":"15",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Academia Overall Gym",
+        "email" : "academiaoverall@outlook.com",
+        "phone" : "5514997189312",
+        "about" : "Overall Gym, venha treinar conosco",
+        "password" : "overallgym",
+        "password_confirmation" : "overallgym",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "45.301.743/0001-30",
+        "open_schedule" : "06:00",
+        "close_schedule" :"21:30" ,
+        "city" : "Cabrália Paulista",
+        "state": "São Paulo",
+        "district":"Centro" ,
+        "street":"Rua Joaquim Cardoso Felício",
+        "number":"540",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" :"Patriotas Crosstraining" ,
+        "email" : "patriotastraining@gmail.com",
+        "phone" : "5514981482281",
+        "about" : "Patriotas Crosstraining, treine conosco",
+        "password" : "patriotas",
+        "password_confirmation" : "patriotas",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "42.657.245/0001-36",
+        "open_schedule" : "06:00",
+        "close_schedule" : "12:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Vila Falcão",
+        "street":"Avenia Alfredo Maia",
+        "number":"1110",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "LifeGym",
+        "email" : "lifegymacademia@outlook.com",
+        "phone" : "551432613093",
+        "about" : "LifeGym, a mais completa para o seu treino",
+        "password" : "lifegym123",
+        "password_confirmation" : "lifegym123",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "18.249.205/0001-70",
+        "open_schedule" : "06:00",
+        "close_schedule" : "22:00",
+        "city" : "Agudos",
+        "state": "São Paulo",
+        "district": "Jardim Canaa",
+        "street":"Rua Emanuel Octaviani",
+        "number":"62",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Habitus Academia",
+        "email" : "habitusacademia.com.br",
+        "phone" : "5514997281501",
+        "about" : "Habitus Academia, venha treinar conosco",
+        "password" : "habitus123",
+        "password_confirmation" : "habitus123",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : " 17.102.736/0001-73",
+        "open_schedule" : "05:00",
+        "close_schedule" : "01:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Vila Souto",
+        "street":"Rua Salvador Filardi",
+        "number":"2-50",
+        "longitude": 0,
+            "latitude": 0
+        }
+    },
+
+    {
+        "user": {
+        "name" : "Academia Bodyfit",
+        "email" : "bodyfit@gmail.com",
+        "phone" : "5514991291114",
+        "about" : "BodyFit academia, venha treinar conosco",
+        "password" : "bodyfit123",
+        "password_confirmation" : "bodyfit123",
+        "avatar": "img/profile/default_avatar.jpeg",
+            "banner":  "img/profile/default_banner.png"
+        },
+        "gym": {
+        "cpnj" : "13.166.508/0001-06",
+        "open_schedule" : "05:00",
+        "close_schedule" : "22:00",
+        "city" : "Bauru",
+        "state": "São Paulo",
+        "district": "Vila Conceição",
+        "street":"Rua Bauru",
+        "number":"8-90",
+        "longitude": 0,
+            "latitude": 0
+        }
+    }
+]

@@ -28,9 +28,9 @@
                 <x-form.text name="name" type="text" label="Exercício" placeholder="Supino" model="name" />
             </div>
             <div class="flex flex-row justify-evenly space-x-8">
-                <x-form.text name="serie" type="number" label="Série" placeholder="3" model="series"/> 
+                <x-form.text name="series" type="number" label="Série" placeholder="3" model="series"/> 
                 <x-form.text name="repetitions" type="number" label="Repetições" placeholder="15" model="repetitions" /> 
-                <x-form.text name="carga" type="number" label="Carga(Kg)" placeholder="10" model="weight" /> 
+                <x-form.text name="weight" type="number" label="Carga(Kg)" placeholder="10" model="weight" /> 
             </div>
 
             <x-form.text name="made_data" type="date" label="Data" placeholder="" model="made_date" /> 
