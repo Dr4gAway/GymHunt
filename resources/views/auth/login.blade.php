@@ -35,8 +35,8 @@
         <form method="POST" action="{{route('login')}}" class="flex flex-col w-full gap-4" id="login" enctype="multipart/form-data">
             {{ csrf_field() }}
 
-           <x-form.textunderlined name="email" label="Email" />
-           <x-form.textunderlined name="password" label="Senha" />
+           <x-form.textunderlined name="email" label="Email" type="email" />
+           <x-form.textunderlined name="password" label="Senha" type="password" />
         </form>
         
         <div class="flex w-full justify-between ">
