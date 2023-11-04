@@ -22,14 +22,11 @@
 </head>
 
 <body class="flex justify-center items-center font-poppins bg-[#DFE6F9] min-h-screen">
-{{-- bg-[url('/public/img/background/signupBackground.png')] --}}
 
 <div class="flex h-full w-full max-w-5xl max-h-[45rem] rounded-2xl">
     <div class="flex flex-col w-full h-full mx-auto justify-between bg-white p-6 rounded-l-2xl overflow-scroll">
-        <div class="flex w-full justify-between">
+        <div class="flex w-full">
             <h2 class="flex self-start font-bold gap-4 text-4xl">Login</h2>
-            <img src="\img\logo.svg" alt="Logo Gym hunt" class="w-24">
-
         </div>
 
         <form method="POST" action="{{route('login')}}" class="flex flex-col w-full gap-4" id="login" enctype="multipart/form-data">
