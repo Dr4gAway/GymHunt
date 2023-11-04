@@ -106,6 +106,7 @@ class Update extends Component
     {
         foreach($e as $index => $item)
         {
+            if(!is_string($item))
             try
             {
                 $this->validate(['images.'.$index => 'mimes:jpeg,jpg,png,gif|max:2048']);
