@@ -19,7 +19,7 @@
 
             <div class="grid grid-flow-col justify-items-center space-x-3">
                 <div class="relative w-24 h-24 rounded-full overflow-hidden">
-                    <label for="avatarInput" class="absolute w-full h-full flex items-center justify-center bg-gymhunt-purple-2 bg-opacity-50">
+                    <label for="avatarInput" class="cursor-pointer absolute w-full h-full flex items-center justify-center bg-gymhunt-purple-2 bg-opacity-50">
                         <i class="fa-solid fa-pencil"></i>
                     </label>
                     <input id="avatarInput" type="file" wire:model="avatar" class="hidden">
@@ -28,12 +28,10 @@
                     @else
                         <img src="{{$avatar->temporaryUrl()}}" class="w-full h-full object-cover">
                     @endif
-                    
                 </div>
                 
-
                 <div class="relative w-96 h-24 rounded-2xl overflow-hidden">
-                    <label for="bannerInput" class="absolute w-full h-full flex items-center justify-center bg-gymhunt-purple-2 bg-opacity-50">
+                    <label for="bannerInput" class="cursor-pointer absolute w-full h-full flex items-center justify-center bg-gymhunt-purple-2 bg-opacity-50">
                         <i class="fa-solid fa-pencil"></i>
                     </label>
                     <input id="bannerInput" type="file" wire:model="banner" class="hidden">
@@ -83,14 +81,13 @@
 
             <div class="flex items-center gap-4">
                 <button wire:ignore onclick="fetchUserData()" @click.prevent='mapOpen = !mapOpen'
-                    class="rounded-lg bg-gymhunt-purple-1 px-5 p-1.5 text-white font-bold">Alterar marcador no mapa</button>
+                    class="rounded-lg bg-gymhunt-purple-1 px-5 p-1.5 text-white font-bold hover:bg-gymhunt-purple-2">Alterar marcador no mapa</button>
                 <div class="w-full flex flex-col space-y-1 col-span-1">
                     <p class="font-poppins font-bold text-lg">CNPJ</p>
                     <label class="p-1.5 rounded-md ring-1 ring-gray-300 shadow-xl bg-neutral-500 opacity-40" x-on:click="openAlert()">{{$cpnj}}</label>
                 </div>
             </div>
 
-            {{-- <div  class="w-64 h-64"></div> --}}
             <div class="fixed inset-0 flex flex-col w-full h-screen gap-8 z-20 p-8" x-show="mapOpen" x-data="{
     
             }">
@@ -109,9 +106,11 @@
 
             <div class="grid grid-flow-col justify-between space-x-2">
                 <button x-on:click.prevent="modalClose()" class="
-                    justify-center rounded-lg bg-gymhunt-purple-2 px-5 p-1.5
-                    text-sm font-semibold leading-6 text-white shadow-sm
-                    hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2
+                    justify-center rounded-lg bg-tranparent px-5 p-1.5
+                    text-sm font-semibold leading-6 shadow-sm transition-all
+                    border-2 border-gymhunt-purple-1 text-gymhunt-purple-1
+                    hover:bg-gymhunt-purple-1 hover:text-white
+                    focus-visible:outline focus-visible:outline-2
                     focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                     Cancelar
                 </button>
