@@ -1,4 +1,8 @@
-<div class="rounded-xl bg-white shadow-lg p-4 min-w-[280px]"> <!--cada card-->
+<div class="rounded-xl bg-white shadow-lg p-4 min-w-[280px] transition-all"
+    x-transition.opacity
+    x-transition:enter.duration.500ms
+    x-transition:leave.duration.400m
+>
 
     <div class="flex flex-row items-center justify-between"x-data="{
         deleteExercise: false,
@@ -21,7 +25,9 @@
     }">
         <p class="font-semibold text-gymhunt-purple-1">{{$exercise->name}}</p>
 
-        <button class="text-red-500"> <i class="fa-solid fa-trash-can" x-on:click.prevent="openDeleteExercise()"></i> </button>
+        <button class="text-red-500 hover:scale-105 transition-transform">
+            <i class="fa-solid fa-trash-can" x-on:click.prevent="openDeleteExercise()"></i>
+        </button>
         
         <div class="fixed inset-0 z-10 flex flex-col items-center justify-center w-full h-full" x-show="deleteExercise">
             <div class="bg-black bg-opacity-20 fixed inset-0 " x-on:click.prevent="closeDeleteExercise()"></div>

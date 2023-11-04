@@ -66,10 +66,12 @@
 
             <div class="grid grid-flow-col justify-between space-x-2">
                 <button x-on:click.prevent="modalClose()" class="
-                    justify-center rounded-lg bg-gymhunt-purple-2 px-5 p-1.5
-                    text-sm font-semibold leading-6 text-white shadow-sm
-                    hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2
-                    focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                        justify-center rounded-lg bg-tranparent px-5 p-1.5
+                        text-sm font-semibold leading-6 shadow-sm transition-all
+                        border-2 border-gymhunt-purple-1 text-gymhunt-purple-1
+                        hover:bg-gymhunt-purple-1 hover:text-white
+                        focus-visible:outline focus-visible:outline-2
+                        focus-visible:outline-offset-2 focus-visible:outline-indigo-600"">
                     Cancelar
                 </button>
                 <button type="submit" wire:click="store()"
