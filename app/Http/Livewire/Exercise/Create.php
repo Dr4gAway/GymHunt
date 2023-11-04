@@ -22,11 +22,12 @@ class Create extends Component
         'repetitions' => 'required|integer|min:1',
         'muscle' => 'required|string',
         'weight' => 'required|integer|min:1',
-        'made_date' => 'required|date',
+        'made_date' => 'required|date_format:Y-m-d',
     ];
 
     public function render()
     {
+        
         return view('livewire.exercise.create');
     }
 

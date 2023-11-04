@@ -3,10 +3,5 @@
         <livewire:exercise.view :exercise="$exercise" wire:key="exercise-view--{{Ramsey\Uuid\Uuid::uuid4()}}" />
     @endforeach
 
-    @php
-        $teste = date('d/m/Y', strtotime($made_date));
-        
-    @endphp
-
-    <livewire:exercise.create :made_date="$teste"  :muscle="$exercise->muscle" />
+    <livewire:exercise.create :made_date="date('Y-m-d', strtotime($made_date))" :muscle="$exercise->muscle" />
 </div>
