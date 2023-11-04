@@ -81,10 +81,13 @@
                     <button x-on:click="showGroup = !showGroup"
                         class="w-fit rounded-xl px-2 py-1 bg-slate-200 shadow-lg"
                     >
-                        <i class="fa-solid fa-chevron-down"></i>
+                        <i :class=" showGroup === false ? '-rotate-90' : '' "
+                            class="transition-transform fa-solid fa-chevron-down"></i>
                         <span>{{$index}}</span>
                     </button>
-                    <div class="overflow-x-scroll" x-show="showGroup">
+                    <div class="overflow-x-scroll" x-show="showGroup" x-transition.opacity
+                                                                      x-transition:enter.duration.300ms
+                                                                      x-transition:leave.duration.300ms>
                         <livewire:exercise.timeline :made_date="$date" :exercises="$exercises" wire:key="timeline-{{Ramsey\Uuid\Uuid::uuid4()}}" />
                     </div>
                 </div>
