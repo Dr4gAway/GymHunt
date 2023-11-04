@@ -125,7 +125,7 @@
     {{-- Atividade --}}
     @if($page == 'galery')
         @if($user->images()->count() > 0)
-        <div class="flex flex-wrap justify-center gap-4 items-center w-full max-w-[1280px] p-4" x-data="{
+        <div class="flex flex-wrap justify-center gap-6 items-center w-full max-w-[1280px] min-h-[384px] p-4" x-data="{
             updateImages(images) {
                 imageOpen = true
     
@@ -135,17 +135,24 @@
             }
         }">
             @foreach ($user->images as $image)
-                <div x-on:click="updateImages({{$image}})" class="w-max basis-60 aspect-square overflow-hidden">
+                <div x-on:click="updateImages({{$image}})"
+                    class="p-4 bg-white
+                           w-max basis-60 aspect-square overflow-hidden
+                           rounded-2xl cursor-pointer
+                           hover:shadow-2xl transition-all"
+                >
                     <img src="/{{$image->path}}" class="object-cover w-full h-full">
                 </div>
             @endforeach
         </div>
         @else
-        Nenhuma imagem
+            <div class="flex flex-col items-center justify-center gap-4 h-96">
+                <h3 class="text-gymhunt-purple-1 font-bold text-5xl">Nenhuma imagem ainda!</h3>
+                <span class="font-bold">Parece que este usuário ainda não publicou nenhuma imagem...</span>
+            </div>
         @endif
-
     @elseif($page == 'about')
-    <div class="flex flex-col w-full max-w-[1280px] gap-4 p-4">
+    <div class="flex flex-col w-full max-w-[1280px] gap-4 p-4 bg-white rounded-2xl m-4">
         <div>
             <h3 class="font-bold text-lg">Endereço</h3>
             <div>
@@ -247,10 +254,6 @@
             </div>
         </div>
     @endif
-
-    {{-- Galeria --}}
-
-    {{-- Sobre nós --}}
 
     @push('custom-scripts')
         <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
