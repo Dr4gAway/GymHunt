@@ -11,9 +11,9 @@ class Create extends Component
 {
     public ?string $name = null; 
     public ?string $muscle = null; 
-    public ?int $series = null;
-    public ?int $repetitions = null;
-    public ?int $weight = null;
+    public $series = null;
+    public $repetitions = null;
+    public $weight = null;
     public $made_date = null;
 
     protected $rules = [
