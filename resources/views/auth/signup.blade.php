@@ -237,7 +237,11 @@
 
         </form>
         
-        <div class="flex w-full" :class="formStep === 'usertype' ? 'justify-end' : 'justify-between' ">
+        <div class="flex items-center w-full justify-between" {{-- :class="formStep === 'usertype' ? 'justify-end' : 'justify-between' " --}}>
+            <a href="{{route('home')}}" :class="formStep == 'usertype' ? '' : 'hidden' "
+                class="px-4 py-2 hover:text-gymhunt-purple-1">
+                Sair
+            </a>
             <button wire:ignore @click.prevent='stepBack' :class="formStep == 'usertype' ? 'hidden' : '' "
                     class="bg-transparent outline outline-4 text-gymhunt-purple-1 outline-gymhunt-purple-1 font-bold px-4 py-2 rounded-md">
                 Voltar
