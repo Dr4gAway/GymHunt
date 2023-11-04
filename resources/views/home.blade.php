@@ -106,14 +106,10 @@
         </div>
     </div>
 
-    <div class="self-center">
-        <livewire:counter />
-    </div>
-
-    <footer class="bg-gymhunt-purple-1 text-gymhunt-purple-2 ">
-       <div class="flex justify-between items-center space-x-8 mx-10 py-5 bottom-0">
+    <footer class="bg-gymhunt-purple-2">
+       <div class="flex justify-between space-x-8 mx-10 py-5 bottom-0">
             <div class="space-y-3">
-                <img width="200px" src=".\img\logoGymHunt.png"  alt="">
+                <img src="\img\logo.svg" alt="Gym hunt brand" class="h-16">
                 <div class="sm:text-sm md:text-md lg:text-lg">
                     <p>Plataforma unificada que localiza academias </p>
                     <p>e auxilia no seu cotidiano</p>
@@ -137,9 +133,8 @@
                 <h4 class="font-semibold">Navegue para</h4>
                 <div class="flex flex-col place-items-center space-y-2">
                     <a href="{{route('home')}}" " class="hover:border-b-2">Home</a>
-                    <a href="{{route('login')}}" class="hover:border-b-2">Feed</a>
-                    <a href="{{route('login')}}" " class="hover:border-b-2">Mapa</a>
-                    <a href="{{route('login')}}" " class="hover:border-b-2">Workout-log</a>
+                    <a href="{{route('feed')}}" class="hover:border-b-2">Feed</a>
+                    <a href="{{route('explore')}}" " class="hover:border-b-2">Mapa</a>
                 </div>
             </div>
             @endguest
@@ -148,23 +143,6 @@
                 <h4 class="font-semibold">Contate-nos</h4>
                 <a class="hover:border-b-2" href="mailto:equipegymhunt@gmail.com"> equipegymhunt@gmailcom</a>
             </div> 
-
-            <div class="space-y-3 flex flex-col place-items-center">
-                <h4 class="font-semibold">Cadastre-se</h4>
-                <div>
-                    <label for="name" class="block text-sm leading-6">Nome</label>
-                    <div class="mt-2">
-                        <input type="text" name="name" id="name" autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
-                </div>
-
-                <div>
-                    <label for="name" class="block text-sm leading-6">Email</label>
-                    <div class="mt-2">
-                        <input type="text" name="name" id="name" autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
-                </div>
-            </div>
        </div>
     </footer>
 
