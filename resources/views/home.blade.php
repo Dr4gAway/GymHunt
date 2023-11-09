@@ -116,28 +116,21 @@
                 </div>
             </div>
 
-            @auth
+            <div class="space-y-3 sm:text-sm md:text-md lg:text-lg">
+                <h4 class="font-semibold">Precisa de ajuda?</h4>
+                <div class="flex flex-col place-items-center space-y-2">
+                    <a href="{{URL::asset('/documents/help.pdf')}}" download="Help do sistema" class="hover:border-b-2">Help do sistema</a>
+                </div>
+            </div>
+
             <div class="space-y-3 sm:text-sm md:text-md lg:text-lg">
                 <h4 class="font-semibold">Navegue para</h4>
                 <div class="flex flex-col place-items-center space-y-2">
                     <a href="{{route('home')}}" " class="hover:border-b-2">Home</a>
                     <a href="{{route('feed')}}" class="hover:border-b-2">Feed</a>
                     <a href="{{route('feed')}}" " class="hover:border-b-2">Mapa</a>
-                    <a href="{{route('workoutlog')}}" " class="hover:border-b-2">Workout-log</a>
                 </div>
             </div>
-            @endauth
-
-            @guest
-            <div class="space-y-3 sm:text-sm md:text-md lg:text-lg">
-                <h4 class="font-semibold">Navegue para</h4>
-                <div class="flex flex-col place-items-center space-y-2">
-                    <a href="{{route('home')}}" " class="hover:border-b-2">Home</a>
-                    <a href="{{route('feed')}}" class="hover:border-b-2">Feed</a>
-                    <a href="{{route('explore')}}" " class="hover:border-b-2">Mapa</a>
-                </div>
-            </div>
-            @endguest
 
             <div class="space-y-5 flex flex-col place-items-center">
                 <h4 class="font-semibold">Contate-nos</h4>
